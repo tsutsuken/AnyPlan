@@ -56,7 +56,6 @@
 		1FA76DC1172D4E6B00EC659C /* note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA76DBD172D4E6B00EC659C /* note@2x.png */; };
 		1FA76DC8172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */; };
 		1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DCD172D704500EC659C /* CustomTabBarController.m */; };
-		1FACAA40174CAB25005A4F67 /* AllTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FACAA3F174CAB24005A4F67 /* AllTaskListViewController.m */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FBD4CD61727C41B003A5D5C /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CD51727C41B003A5D5C /* Task+Additions.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
@@ -148,8 +147,6 @@
 		1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarTitleWithSubtitleView.m; sourceTree = "<group>"; };
 		1FA76DCC172D704500EC659C /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		1FA76DCD172D704500EC659C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
-		1FACAA3E174CAB24005A4F67 /* AllTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTaskListViewController.h; sourceTree = "<group>"; };
-		1FACAA3F174CAB24005A4F67 /* AllTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTaskListViewController.m; sourceTree = "<group>"; };
 		1FBD4CC517277A76003A5D5C /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
 		1FBD4CC617277A76003A5D5C /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
 		1FBD4CD41727C41B003A5D5C /* Task+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Additions.h"; sourceTree = "<group>"; };
@@ -346,8 +343,6 @@
 			children = (
 				1FBD4CC517277A76003A5D5C /* TaskListViewController.h */,
 				1FBD4CC617277A76003A5D5C /* TaskListViewController.m */,
-				1FACAA3E174CAB24005A4F67 /* AllTaskListViewController.h */,
-				1FACAA3F174CAB24005A4F67 /* AllTaskListViewController.m */,
 				1FA65DED1729126000CA430E /* EditTaskViewController.h */,
 				1FA65DEE1729126000CA430E /* EditTaskViewController.m */,
 				1FC969651749DBC700D84A37 /* SelectProjectViewController.h */,
@@ -617,7 +612,6 @@
 				1F9806F917438B1100170740 /* Project.m in Sources */,
 				1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */,
 				1FC9696A1749FA1500D84A37 /* NSDictionary+Null.m in Sources */,
-				1FACAA40174CAB25005A4F67 /* AllTaskListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

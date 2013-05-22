@@ -28,8 +28,6 @@
 {
     [super viewDidLoad];
     
-    [self switchTaskListView];
-    
     for (UINavigationController *nvc in self.viewControllers)
     {
         id viewController = nvc.topViewController;
@@ -37,24 +35,6 @@
         [viewController setProject:self.project];
         [viewController setShouldDisplayAllProject:self.shouldDisplayAllProject];
     }
-}
-
-- (void)switchTaskListView
-{
-    LOG_METHOD;
-    
-    NSMutableArray *newViewControllers =  [NSMutableArray arrayWithArray:self.viewControllers];
-    
-    if (self.shouldDisplayAllProject)
-    {
-        [newViewControllers removeObjectAtIndex:1];
-    }
-    else
-    {
-        [newViewControllers removeObjectAtIndex:0];
-    }
-    
-    [self setViewControllers:newViewControllers animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

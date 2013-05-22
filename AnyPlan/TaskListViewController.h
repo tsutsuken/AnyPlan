@@ -17,7 +17,6 @@
 @property (strong, nonatomic) Project *project;
 @property (assign, nonatomic) BOOL shouldDisplayAllProject;
 
-- (void)configureCell:(TaskCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (IBAction)didTouchCheckBox:(id)sender event:(UIEvent*)event;
 
 @end
