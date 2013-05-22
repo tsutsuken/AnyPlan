@@ -94,7 +94,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="Ndu-V5-nbM" customClass="TaskCell">
-                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -129,31 +129,6 @@
                                     <outlet property="titleLabel" destination="eaU-vh-cf1" id="GPN-Un-Kfb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FooterButtonCell" textLabel="AqL-8j-tn2" detailTextLabel="yNG-Zi-xtT" style="IBUITableViewCellStyleValue1" id="P7H-QV-UYa">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AqL-8j-tn2">
-                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yNG-Zi-xtT">
-                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Bt6-N7-hKL"/>
@@ -163,7 +138,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPP-Ax-U5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="115"/>
+            <point key="canvasLocation" x="582" y="769"/>
         </scene>
         <!--Note List View Controller - Root View Controller-->
         <scene sceneID="Vze-k5-h8P">
@@ -192,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuE-dK-e0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="809"/>
+            <point key="canvasLocation" x="562" y="1463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEb-uO-PFd">
@@ -208,7 +183,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iT-BE-Wjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="809"/>
+            <point key="canvasLocation" x="28" y="1463"/>
         </scene>
         <!--Edit Task View Controller-->
         <scene sceneID="dKt-Ok-utN">
@@ -277,7 +252,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJe-UT-ud9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="105"/>
+            <point key="canvasLocation" x="1008" y="759"/>
         </scene>
         <!--Select Project View Controller-->
         <scene sceneID="Hwk-Mu-gKY">
@@ -316,7 +291,80 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXC-Be-czx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="107"/>
+            <point key="canvasLocation" x="1430" y="761"/>
+        </scene>
+        <!--All Task List View Controller - Root View Controller-->
+        <scene sceneID="QXb-r9-oi2">
+            <objects>
+                <tableViewController id="j0g-97-1sC" customClass="AllTaskListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Pog-AC-Wfk">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="la2-tC-Z13" customClass="TaskCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="13" id="1RB-Zz-0kw">
+                                            <rect key="frame" x="54" y="11" width="226" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jr5-1x-mUK">
+                                            <rect key="frame" x="10" y="5" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                            <state key="normal" image="checkbox_unchecked.png">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="checkbox_checked.png"/>
+                                            <connections>
+                                                <action selector="didTouchCheckBox:event:" destination="j0g-97-1sC" eventType="touchUpInside" id="Lyx-SW-Dr8"/>
+                                                <action selector="didTouchCheckBox:event:" destination="eZG-ZI-0h9" eventType="touchUpInside" id="zWx-jD-80t"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="checkBox" destination="Jr5-1x-mUK" id="gkI-qs-OTm"/>
+                                    <outlet property="titleLabel" destination="1RB-Zz-0kw" id="dss-Ze-aHP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="CeQ-m7-wtv"/>
+                    <connections>
+                        <segue destination="bvR-8d-ljF" kind="push" identifier="showEditTaskView" id="ee5-GE-qyg"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BV5-o3-MlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="562" y="105"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eng-mZ-Gsm">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="b6g-uf-WKz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="check.png" id="cNv-vG-df0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WGP-5H-Ezq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="j0g-97-1sC" kind="relationship" relationship="rootViewController" id="sAy-l0-hL9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kgg-q7-q4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cv8-Fc-L5X">
@@ -332,7 +380,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVb-eG-Kpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="22" y="141"/>
+            <point key="canvasLocation" x="20" y="795"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="nhy-Xq-zm5">
@@ -345,8 +393,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="oLe-jz-K77" kind="relationship" relationship="viewControllers" id="QxZ-lG-KA9"/>
-                        <segue destination="b8I-AH-Hm6" kind="relationship" relationship="viewControllers" id="4Ty-rl-ZbW"/>
+                        <segue destination="b6g-uf-WKz" kind="relationship" relationship="viewControllers" id="1B8-6N-MX6"/>
+                        <segue destination="oLe-jz-K77" kind="relationship" relationship="viewControllers" id="dB8-FI-vuS"/>
+                        <segue destination="b8I-AH-Hm6" kind="relationship" relationship="viewControllers" id="FVu-qs-sNn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOj-vO-KHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -510,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAj-4C-y19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="809"/>
+            <point key="canvasLocation" x="1022" y="1463"/>
         </scene>
     </scenes>
     <resources>
@@ -520,6 +569,71 @@
         <image name="gear.png" width="22" height="22"/>
         <image name="note.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="AllTaskListViewController" superclassName="TaskListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllTaskListViewController.h"/>
+        </class>
+        <class className="CustomTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTabBarController.h"/>
+        </class>
+        <class className="EditNoteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditNoteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="EditProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditProjectViewController.h"/>
+        </class>
+        <class className="EditTaskViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditTaskViewController.h"/>
+        </class>
+        <class className="EditableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="IIViewDeckController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
+            </relationships>
+        </class>
+        <class className="ManageProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProjectViewController.h"/>
+        </class>
+        <class className="MenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+        <class className="NoteListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteListViewController.h"/>
+        </class>
+        <class className="SelectProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectProjectViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+        </class>
+        <class className="TaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="checkBox" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaskListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didTouchCheckBox:event:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -527,5 +641,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="NmM-Vp-eJ1"/>
+        <segue reference="ee5-GE-qyg"/>
     </inferredMetricsTieBreakers>
 </document>
