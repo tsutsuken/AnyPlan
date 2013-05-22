@@ -14,8 +14,12 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+#define kVersionNumber @"kVersionNumber"
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self checkUpdates];
+    
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
@@ -177,6 +181,45 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Update
+
+- (void)checkUpdates
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    float loadedVersion = [[defaults objectForKey:kVersionNumber] floatValue];
+    
+    float bundleVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] floatValue];
+    
+    if (!loadedVersion || loadedVersion < bundleVersion)//現在のバージョンを起動したことがない場合
+    {
+        [self insertDefaultProjects];
+        
+        // 現在のバンドルバージョンを記録
+        [defaults setObject:[NSNumber numberWithFloat:bundleVersion] forKey:kVersionNumber];
+        [defaults synchronize];
+    }
+    else//現在のバージョンを起動したことがある場合
+    {
+    }
+}
+
+- (void)insertDefaultProjects
+{
+    NSArray *projectTitleArray = [NSArray arrayWithObjects:
+                             NSLocalizedString(@"Common_Project_Category_Inbox", nil),
+                             nil];
+    
+    int i = 0;
+    for (NSString *projectTitle in projectTitleArray)
+    {
+        Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
+        project.title = projectTitle;
+        project.displayOrder = [NSNumber numberWithInt:i];
+        i++;
+    }
+    
+    [self saveContext];
+}
 
 #pragma mark - Methods For Other Class
 
@@ -200,23 +243,32 @@
 {
     NSString *mainTitle;
     
-    if (project)
+    if (shouldDisplayAllProject)
     {
-        mainTitle = project.title;
+        mainTitle = NSLocalizedString(@"Common_Project_Category_All", nil);
     }
     else
     {
-        if (shouldDisplayAllProject)
-        {
-            mainTitle = NSLocalizedString(@"Common_Project_Category_All", nil);
-        }
-        else
-        {
-            mainTitle = NSLocalizedString(@"Common_Project_Category_Inbox", nil);
-        }
+        mainTitle = project.title;
     }
     
     return mainTitle;
+}
+
+- (Project *)inboxProjectInManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:YES];
+	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+	[fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error = nil;
+    NSArray *projectArray = [context executeFetchRequest:fetchRequest error:&error];
+    
+    return [projectArray objectAtIndex:0];
 }
 
 @end

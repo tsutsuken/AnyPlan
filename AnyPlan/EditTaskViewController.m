@@ -137,7 +137,7 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
-        cell.detailTextLabel.text = self.task.projectTitle;
+        cell.detailTextLabel.text = self.task.project.title;
         
         return cell;
     }

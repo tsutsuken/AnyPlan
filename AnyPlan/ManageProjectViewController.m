@@ -78,11 +78,6 @@
     return [sectionInfo numberOfObjects];
 }
 
-- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    return YES;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -96,9 +91,68 @@
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = project.title;
+    
+    if (indexPath.row == 0)
+    {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    else
+    {
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }
+}
+
+- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (NSIndexPath*)tableView:(UITableView*)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath*)sourceIndexPath toProposedIndexPath:(NSIndexPath*)proposedDestinationIndexPath
+{
+    if (proposedDestinationIndexPath.row == 0)
+    {
+        return sourceIndexPath;
+    }
+    else
+    {
+        return proposedDestinationIndexPath;
+    }
 }
 
 #pragma mark - Table view delegate
+
+- (NSIndexPath *)tableView: (UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return nil;
+    }
+    else
+    {
+        return indexPath;
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

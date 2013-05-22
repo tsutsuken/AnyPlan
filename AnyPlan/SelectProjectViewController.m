@@ -14,9 +14,6 @@
 
 @implementation SelectProjectViewController
 
-#define kObjectKeyForProjectData @"kObjectKeyForProjectData"
-#define kTitleKeyForProjectData @"kTitleKeyForProjectData"
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,16 +36,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.projectDataArray count];
+    return [[self.fetchedResultsController fetchedObjects] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.textLabel.text = [[self.projectDataArray objectAtIndex:indexPath.row] objectForKey:kTitleKeyForProjectData];
+    Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    Project *project = [[self.projectDataArray objectAtIndex:indexPath.row] objectForKeyNull:kObjectKeyForProjectData];
+    cell.textLabel.text = project.title;
+    
     if (self.task.project == project)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -60,71 +58,44 @@
     return cell;
 }
 
-- (NSArray *)projectDataArray
-{
-    if (_projectDataArray != nil) {
-        return _projectDataArray;
-    }
-    
-    NSMutableArray *projectDataArray = [NSMutableArray array];
-    
-    //未分類プロジェクトデータを挿入
-    [projectDataArray addObject:[self dataForInboxProject]];
-    
-    //その他のプロジェクトデータを挿入
-    NSArray *userAddedProjectArray = [self userAddedProjectArray];
-    for (Project *aProject in userAddedProjectArray)
-    {
-        NSDictionary * projectData = [NSDictionary dictionaryWithObjectsAndKeys:
-                              aProject, kObjectKeyForProjectData,
-                              aProject.title, kTitleKeyForProjectData,
-                              nil];
-        
-        [projectDataArray addObject:projectData];
-    }
-    
-    _projectDataArray = [projectDataArray copy];
-    
-    return _projectDataArray;
-}
-
-- (NSDictionary *)dataForInboxProject
-{
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObjectNull:[NSNull null] forKey:kObjectKeyForProjectData];
-    [dic setObject:NSLocalizedString(@"Common_Project_Category_Inbox", nil) forKey:kTitleKeyForProjectData];
-    
-    NSDictionary *dictionaryForInboxProject = [dic copy];
-    
-    return dictionaryForInboxProject;
-}
-
-- (NSArray *)userAddedProjectArray
-{
-    NSManagedObjectContext *context = self.task.managedObjectContext;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:YES];
-	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-	[fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSError *error = nil;
-    NSArray *userAddedProjectArray = [context executeFetchRequest:fetchRequest error:&error];
-    
-    return userAddedProjectArray;
-}
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.task.project = [[self.projectDataArray objectAtIndex:indexPath.row] objectForKeyNull:kObjectKeyForProjectData];
+    self.task.project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Fetched results controller
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchedResultsController *aFetchedResultsController = [APPDELEGATE fetchedResultsControllerForProjectWithContext:self.task.managedObjectContext];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return _fetchedResultsController;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    [self.tableView reloadData];
 }
 
 @end

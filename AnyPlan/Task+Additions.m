@@ -25,20 +25,4 @@
     }
 }
 
-- (NSString *)projectTitle
-{
-    NSString *projectTitle;
-    
-    if (self.project)
-    {
-        projectTitle = self.project.title;
-    }
-    else
-    {
-        projectTitle = NSLocalizedString(@"Common_Project_Category_Inbox", nil);
-    }
-    
-    return projectTitle;
-}
-
 @end

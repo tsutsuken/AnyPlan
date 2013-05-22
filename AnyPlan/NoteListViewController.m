@@ -102,22 +102,30 @@
             Note *selectedNote = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
             editingNote = selectedNote;
         }
-        else//New Task
+        else//New Note
         {
             LOG(@"Edit New Note");
             
             isNewNote = YES;
             
             Note *newNote = (Note *)[NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:self.managedObjectContext];
+            
+            if (self.shouldDisplayAllProject)
+            {
+                newNote.project = [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
+            }
+            else
+            {
+                newNote.project = self.project;
+            }
+            
             editingNote = newNote;
-            editingNote.project = self.project;
         }
         
         controller.isNewNote = isNewNote;
         controller.note = editingNote;
     }
 }
-
 
 #pragma mark EditTaskView
 

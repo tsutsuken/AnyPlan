@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectProjectViewController : UITableViewController
+@interface SelectProjectViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
-@property (strong, nonatomic) NSArray *projectDataArray;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

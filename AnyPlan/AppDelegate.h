@@ -24,5 +24,6 @@
 - (NSURL *)applicationDocumentsDirectory;
 - (NSFetchedResultsController *)fetchedResultsControllerForProjectWithContext:(NSManagedObjectContext *)context;
 - (NSString *)mainTitleForTabBarWithProject:(Project *)project shouldDisplayAllProject:(BOOL)shouldDisplayAllProject;
+- (Project *)inboxProjectInManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

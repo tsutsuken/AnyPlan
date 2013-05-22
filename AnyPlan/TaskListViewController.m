@@ -355,9 +355,17 @@
             isNewTask = YES;
             
             Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-            editingTask = newTask;
-            editingTask.project = self.project;
+        
+            if (self.shouldDisplayAllProject)
+            {
+                newTask.project = [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
+            }
+            else
+            {
+                newTask.project = self.project;
+            }
             
+            editingTask = newTask;
         }
         
         controller.isNewTask = isNewTask;
@@ -401,10 +409,7 @@
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    if (self.shouldDisplayAllProject)
-    {
-    }
-    else
+    if (!self.shouldDisplayAllProject)
     {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project == %@", self.project];
         [fetchRequest setPredicate:predicate];
@@ -441,15 +446,12 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
-    LOG_METHOD;
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            LOG(@"Insert");
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            LOG(@"Delete");
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }

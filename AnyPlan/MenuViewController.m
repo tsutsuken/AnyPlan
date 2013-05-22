@@ -58,7 +58,7 @@
     
     if (section == 0)
     {
-        numberOfRows = 2;
+        numberOfRows = 1;
     }
     else if (section == 1)
     {
@@ -77,16 +77,7 @@
     if (indexPath.section == 0)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        
-        if (indexPath.row == 0)
-        {
-            cell.textLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
-        }
-        else
-        {
-            cell.textLabel.text = NSLocalizedString(@"Common_Project_Category_Inbox", nil);
-        }
-        
+        cell.textLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
         
         return cell;
     }
@@ -141,9 +132,9 @@
         controller.isNewProject = YES;
         
         Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
-        controller.project = newProject;
-        
         newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
+        controller.project = newProject;
+    
     }
     if([[segue identifier] isEqualToString:@"showSettingView"])
     {
@@ -207,15 +198,8 @@
     
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 0)
-        {
-            //すべて
-            tabBarController.shouldDisplayAllProject = YES;
-        }
-        else
-        {
-            //未分類
-        }
+        //すべて
+        tabBarController.shouldDisplayAllProject = YES;
     }
     else
     {
