@@ -17,6 +17,11 @@
     BOOL shouldDeleteTask;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];//Task編集後のデータを反映させるため
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -132,7 +137,7 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
-        cell.detailTextLabel.text = self.task.project.title;
+        cell.detailTextLabel.text = self.task.projectTitle;
         
         return cell;
     }
@@ -159,6 +164,7 @@
     }
     else if (indexPath.row == 1)
     {
+        [self showSelectProjectView];
     }
 }
 
@@ -167,6 +173,19 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     LOG(@"%@", [segue identifier]);
+    
+    if([[segue identifier] isEqualToString:@"showSelectProjectView"])
+    {
+        SelectProjectViewController *controller = (SelectProjectViewController *)segue.destinationViewController;
+        controller.task = self.task;
+    }
+}
+
+#pragma mark SelectProjectView
+
+- (void)showSelectProjectView
+{
+    [self performSegueWithIdentifier:@"showSelectProjectView" sender:self.navigationItem.rightBarButtonItem];
 }
 
 #pragma mark - TextField delegate

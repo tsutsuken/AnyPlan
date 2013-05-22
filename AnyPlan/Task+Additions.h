@@ -11,5 +11,6 @@
 @interface Task (Additions)
 
 - (void)saveContext;
+- (NSString *)projectTitle;
 
 @end
