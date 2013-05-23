@@ -66,44 +66,68 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     
-    if (section == [self sectionForCompletedTask])
+    if (self.shouldDisplayAllProject)
     {
-        if (shouldHideCompletedTask)
+        return [sectionInfo numberOfObjects];
+    }
+    else
+    {
+        if (section == [self sectionForCompletedTask])
         {
-            return 0;
+            if (shouldHideCompletedTask)
+            {
+                return 0;
+            }
+            else
+            {
+                return [sectionInfo numberOfObjects];
+            }
         }
         else
         {
             return [sectionInfo numberOfObjects];
         }
     }
-    else
-    {
-        return [sectionInfo numberOfObjects];
-    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == [self sectionForCompletedTask])
+    if (self.shouldDisplayAllProject)
     {
-        return [self sectionTitleForCompletedTask];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        Task *task = [[sectionInfo objects] objectAtIndex:0];
+        
+        return task.project.title;
     }
     else
     {
-        return nil;
+        if (section == [self sectionForCompletedTask])
+        {
+            return [self sectionTitleForCompletedTask];
+        }
+        else
+        {
+            return nil;
+        }
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == [self sectionForCompletedTask])
+    if (self.shouldDisplayAllProject)
     {
-        return [self viewForHeaderInSection:section];
+        return nil;
     }
     else
     {
-        return nil;
+        if (section == [self sectionForCompletedTask])
+        {
+            return [self viewForHeaderInSection:section];
+        }
+        else
+        {
+            return nil;
+        }
     }
 }
 
@@ -402,6 +426,7 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -409,21 +434,18 @@
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    if (!self.shouldDisplayAllProject)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project == %@", self.project];
-        [fetchRequest setPredicate:predicate];
-    }
+    [fetchRequest setPredicate:[self predicate]];
     
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isDone" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    // Edit the sort key as appropriate.    
+    [fetchRequest setSortDescriptors:[self sortDescriptors]];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"isDone" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc]
+                                                             initWithFetchRequest:fetchRequest
+                                                             managedObjectContext:self.managedObjectContext
+                                                             sectionNameKeyPath:[self sectionNameKeyPath]
+                                                             cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -436,6 +458,56 @@
 	}
     
     return _fetchedResultsController;
+}
+
+- (NSPredicate *)predicate
+{
+    NSPredicate *predicate;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        predicate = [NSPredicate predicateWithFormat:@"isDone == NO"];
+    }
+    else
+    {
+        predicate = [NSPredicate predicateWithFormat:@"project == %@", self.project];
+    }
+    
+    return predicate;
+}
+
+- (NSArray *)sortDescriptors
+{
+    NSSortDescriptor *sortDescriptor;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES];
+    }
+    else
+    {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isDone" ascending:YES];
+    }
+    
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    return sortDescriptors;
+}
+
+- (NSString *)sectionNameKeyPath
+{
+    NSString *sectionNameKeyPath;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        sectionNameKeyPath = @"project.displayOrder";
+    }
+    else
+    {
+        sectionNameKeyPath = @"isDone";
+    }
+    
+    return sectionNameKeyPath;
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller

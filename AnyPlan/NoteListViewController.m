@@ -57,6 +57,21 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (self.shouldDisplayAllProject)
+    {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        Note *note = [[sectionInfo objects] objectAtIndex:0];
+        
+        return note.project.title;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
@@ -162,22 +177,15 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-     
-    if (!self.shouldDisplayAllProject)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"project == %@", self.project];
-        [fetchRequest setPredicate:predicate];
-    }
+    
+    [fetchRequest setPredicate:[self predicate]];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setSortDescriptors: [self sortDescriptors]];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:[self sectionNameKeyPath] cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -190,6 +198,56 @@
 	}
     
     return _fetchedResultsController;
+}
+
+- (NSPredicate *)predicate
+{
+    NSPredicate *predicate;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        predicate = nil;
+    }
+    else
+    {
+        predicate = [NSPredicate predicateWithFormat:@"project == %@", self.project];
+    }
+    
+    return predicate;
+}
+
+- (NSArray *)sortDescriptors
+{
+    NSSortDescriptor *sortDescriptor;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES];
+    }
+    else
+    {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:YES];
+    }
+    
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    return sortDescriptors;
+}
+
+- (NSString *)sectionNameKeyPath
+{
+    NSString *sectionNameKeyPath;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        sectionNameKeyPath = @"project.displayOrder";
+    }
+    else
+    {
+        sectionNameKeyPath = nil;
+    }
+    
+    return sectionNameKeyPath;
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
