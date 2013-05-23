@@ -72,9 +72,7 @@
         }
         else//BackButton Pushed
         {
-            NSString *textInTextField = [self textInTextField];
-            
-            if(!textInTextField||[textInTextField isEqualToString:@""])
+            if(!self.task.title||[self.task.title isEqualToString:@""])
             {
                 if (self.isNewTask)
                 {
@@ -87,26 +85,16 @@
             }
             else
             {
-                self.task.title = textInTextField;
+                self.task.title = self.task.title;
             }
         }
         
-        [self.delegate editTaskViewController:self didFinishWithSave:YES];
+        [self.task saveContext];
     }
     else//次のViewに行った時
     {
         //[self hideKeyBoard];
     }
-}
-
-- (NSString *)textInTextField
-{
-    NSString *textInTextField;
-    
-    EditableCell *editableCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    textInTextField = editableCell.textField.text;
-    
-    return textInTextField;
 }
 
 #pragma mark - Table view data source
@@ -189,6 +177,12 @@
 }
 
 #pragma mark - TextField delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    self.task.title = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

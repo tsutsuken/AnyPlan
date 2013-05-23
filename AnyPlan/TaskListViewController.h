@@ -10,7 +10,7 @@
 #import "EditTaskViewController.h"
 #import "TaskCell.h"
 
-@interface TaskListViewController : UITableViewController <NSFetchedResultsControllerDelegate, EditTaskViewControllerDelegate>
+@interface TaskListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

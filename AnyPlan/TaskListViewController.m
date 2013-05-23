@@ -362,7 +362,6 @@
     if([[segue identifier] isEqualToString:@"showEditTaskView"])
     {
         EditTaskViewController *controller = (EditTaskViewController *)segue.destinationViewController;
-        controller.delegate = self;
         
         BOOL isNewTask;
         Task *editingTask;
@@ -402,19 +401,6 @@
 - (void)showEditTaskView
 {
     [self performSegueWithIdentifier:@"showEditTaskView" sender:self.navigationItem.rightBarButtonItem];
-}
-
-- (void)editTaskViewController:(EditTaskViewController *)controller didFinishWithSave:(BOOL)save
-{
-    if (save)
-    {
-        [controller.task saveContext];
-        
-        if (controller.isNewTask)
-        {
-            [self.tableView reloadData];//Tableviewに反映されないのを防ぐため
-        }
-	}
 }
 
 #pragma mark - Fetched results controller
