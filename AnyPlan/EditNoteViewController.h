@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol EditNoteViewControllerDelegate;
 
-@interface EditNoteViewController : UIViewController <UIActionSheetDelegate>
+@interface EditNoteViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate>
 
 @property (assign, nonatomic) id <EditNoteViewControllerDelegate> delegate;
 @property (strong, nonatomic) Note *note;

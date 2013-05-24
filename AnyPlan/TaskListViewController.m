@@ -336,7 +336,18 @@
             
             Task *selectedTask = (Task *)[self.managedObjectContext objectWithID:objectID];
             selectedTask.isDone = [[NSNumber alloc] initWithBool:isDone];
-            selectedTask.completedDate = [NSDate date];
+            
+            if (isDone)
+            {
+                selectedTask.completedDate = [NSDate date];
+                selectedTask.addedDate = nil;
+            }
+            else
+            {
+                selectedTask.completedDate = nil;
+                selectedTask.addedDate = [NSDate date];
+            }
+            
             [selectedTask saveContext];
         });
     });
@@ -348,7 +359,6 @@
     UITouch* touch = [[event allTouches] anyObject];
     CGPoint p = [touch locationInView:self.tableView];
     indexPath = [self.tableView indexPathForRowAtPoint:p];
-    LOG(@"%s%@",__FUNCTION__, indexPath);
     
     return indexPath;
 }
@@ -378,6 +388,7 @@
             isNewTask = YES;
             
             Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+            newTask.addedDate = [NSDate date];
         
             if (self.shouldDisplayAllProject)
             {
@@ -464,18 +475,22 @@
 
 - (NSArray *)sortDescriptors
 {
-    NSSortDescriptor *sortDescriptor;
+    NSSortDescriptor *mainSortDescriptor;
     
     if (self.shouldDisplayAllProject)
     {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES];
+        mainSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES];
     }
     else
     {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isDone" ascending:YES];
+        mainSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isDone" ascending:YES];
     }
     
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                   mainSortDescriptor,
+                   [[NSSortDescriptor alloc] initWithKey:@"addedDate" ascending:YES],
+                   [[NSSortDescriptor alloc] initWithKey:@"completedDate" ascending:NO],
+                   nil];
     
     return sortDescriptors;
 }

@@ -14,13 +14,19 @@
 
 @implementation EditNoteViewController
 {
-    IBOutlet UITextView *textView;
+    IBOutlet UITextView *noteTextView;
     BOOL shouldDeleteNote;
+    BOOL isEdited;
+    NSString *tempNoteText;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    tempNoteText = self.note.text;
+    
+    noteTextView.text = tempNoteText;
     
     if (self.isNewNote)
     {
@@ -30,8 +36,6 @@
     {
         self.title = NSLocalizedString(@"EditNoteView_Title_ExistingNote", nil);
     }
-    
-    textView.text = self.note.text;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                            target:self
@@ -52,9 +56,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (!self.note.text||[self.note.text isEqualToString:@""])
+    if (!tempNoteText||[tempNoteText isEqualToString:@""])
     {
-        [textView becomeFirstResponder];
+        [noteTextView becomeFirstResponder];
     }
 }
 
@@ -63,22 +67,47 @@
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    
     if (shouldDeleteNote)
     {
         [self.note.managedObjectContext deleteObject:self.note];
+        [self.delegate editNoteViewController:self didFinishWithSave:YES];
     }
     else
     {
-        self.note.text = textView.text;
+        if (isEdited)
+        {
+            if(!tempNoteText||[tempNoteText isEqualToString:@""])
+            {
+                if (self.isNewNote)
+                {
+                    [self.note.managedObjectContext deleteObject:self.note];
+                }
+                else
+                {
+                    self.note.text = NSLocalizedString(@"Common_Untitled", nil);
+                }
+            }
+            else
+            {
+                self.note.text = tempNoteText;
+            }
+            
+            [self.delegate editNoteViewController:self didFinishWithSave:YES];
+        }
+        else
+        {
+           [self.delegate editNoteViewController:self didFinishWithSave:NO];
+        }
     }
-
-    [self.delegate editNoteViewController:self didFinishWithSave:YES];
 }
 
 ////textViewがキーボードで隠れないようにする。下記を参考
 //http://hitoshiohtubo.blog.fc2.com/blog-entry-18.html
 - (void)keyboardDidShow:(NSNotification *)anotification
 {
+    isEdited = YES;
+    
     NSDictionary *info = [anotification userInfo];
     
     //表示開始時のキーボードのRect
@@ -87,10 +116,10 @@
     //表示完了時のキーボードのRect
     CGRect endRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    CGRect cBeginRect = [[textView superview] convertRect:beginRect toView:nil];
-    CGRect cEndRect = [[textView superview] convertRect:endRect toView:nil];
+    CGRect cBeginRect = [[noteTextView superview] convertRect:beginRect toView:nil];
+    CGRect cEndRect = [[noteTextView superview] convertRect:endRect toView:nil];
     
-    CGRect frame = [textView frame];
+    CGRect frame = [noteTextView frame];
     if (cBeginRect.size.height == cEndRect.size.height)//新しいキーボードが表示された時（開始時と完了時で、キーボードのサイズが同じ）
     {
         frame.size.height -= cBeginRect.size.height;
@@ -99,7 +128,14 @@
     {
         frame.size.height -= (cEndRect.size.height - cBeginRect.size.height);
     }
-    [textView setFrame:frame];
+    [noteTextView setFrame:frame];
+}
+
+#pragma mark - TextView Delegate
+
+- (void)textViewDidChange:(UITextView*)textView
+{
+    tempNoteText = textView.text;
 }
 
 #pragma mark - Delete Task

@@ -84,7 +84,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text =note.text;
+    cell.textLabel.text = note.text;
 }
 
 #pragma mark - Table view delegate
@@ -153,11 +153,13 @@
 {
     if (save)
     {
+        controller.note.editedDate = [NSDate date];
+        
         [controller.note saveContext];
         
         if (controller.isNewNote)
         {
-            [self.tableView reloadData];//Tableviewに反映されないのを防ぐため
+            [self.tableView reloadData];//Tableviewに反映されないのを防ぐため。どうにかしたい
         }
 	}
 }
@@ -218,20 +220,25 @@
 
 - (NSArray *)sortDescriptors
 {
-    NSSortDescriptor *sortDescriptor;
-    
     if (self.shouldDisplayAllProject)
     {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                    [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES],
+                                    [[NSSortDescriptor alloc] initWithKey:@"editedDate" ascending:NO],
+                                    nil];
+        
+        return sortDescriptors;
     }
     else
     {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                    [[NSSortDescriptor alloc] initWithKey:@"editedDate" ascending:NO],
+                                    nil];
+        
+        return sortDescriptors;
     }
     
-    NSArray *sortDescriptors = @[sortDescriptor];
     
-    return sortDescriptors;
 }
 
 - (NSString *)sectionNameKeyPath

@@ -85,7 +85,7 @@
             }
             else
             {
-                self.task.title = self.task.title;
+                //Do nothing
             }
         }
         
