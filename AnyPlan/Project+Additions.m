@@ -21,7 +21,6 @@
         abort();
     }
     else {
-        LOG(@"Saved Context");
     }
 }
 

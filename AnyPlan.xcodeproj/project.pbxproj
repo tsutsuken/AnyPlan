@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F0D5BC1174E4C0E0025EAB4 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D5BC0174E4C0E0025EAB4 /* Note.m */; };
 		1F0D5BC4174E4C1A0025EAB4 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D5BC3174E4C1A0025EAB4 /* Task.m */; };
+		1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC501175216F80004CD4B /* NoteInfoViewController.m */; };
 		1F22235B17266D830034CC80 /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235A17266D830034CC80 /* EditProjectViewController.m */; };
 		1F22235F17269B8D0034CC80 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235E17269B8D0034CC80 /* EditableCell.m */; };
 		1F2223651726A93D0034CC80 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2223671726A93D0034CC80 /* Localizable.strings */; };
@@ -81,6 +82,8 @@
 		1F0D5BC0174E4C0E0025EAB4 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		1F0D5BC2174E4C1A0025EAB4 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		1F0D5BC3174E4C1A0025EAB4 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		1F1EC500175216F80004CD4B /* NoteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfoViewController.h; sourceTree = "<group>"; };
+		1F1EC501175216F80004CD4B /* NoteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoViewController.m; sourceTree = "<group>"; };
 		1F22235917266D830034CC80 /* EditProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProjectViewController.h; sourceTree = "<group>"; };
 		1F22235A17266D830034CC80 /* EditProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProjectViewController.m; sourceTree = "<group>"; };
 		1F22235D17269B8D0034CC80 /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableCell.h; sourceTree = "<group>"; };
@@ -368,6 +371,8 @@
 				1FA76D49172CAF7300EC659C /* NoteListViewController.m */,
 				1FA76DA0172D05C000EC659C /* EditNoteViewController.h */,
 				1FA76DA1172D05C000EC659C /* EditNoteViewController.m */,
+				1F1EC500175216F80004CD4B /* NoteInfoViewController.h */,
+				1F1EC501175216F80004CD4B /* NoteInfoViewController.m */,
 			);
 			name = Note;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 				1FC9696A1749FA1500D84A37 /* NSDictionary+Null.m in Sources */,
 				1F0D5BC1174E4C0E0025EAB4 /* Note.m in Sources */,
 				1F0D5BC4174E4C1A0025EAB4 /* Task.m in Sources */,
+				1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

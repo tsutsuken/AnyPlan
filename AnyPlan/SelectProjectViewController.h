@@ -10,7 +10,7 @@
 
 @interface SelectProjectViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) NSManagedObject *editedObject;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

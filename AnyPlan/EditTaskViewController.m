@@ -165,7 +165,7 @@
     if([[segue identifier] isEqualToString:@"showSelectProjectView"])
     {
         SelectProjectViewController *controller = (SelectProjectViewController *)segue.destinationViewController;
-        controller.task = self.task;
+        controller.editedObject = self.task;
     }
 }
 
@@ -173,7 +173,7 @@
 
 - (void)showSelectProjectView
 {
-    [self performSegueWithIdentifier:@"showSelectProjectView" sender:self.navigationItem.rightBarButtonItem];
+    [self performSegueWithIdentifier:@"showSelectProjectView" sender:self];
 }
 
 #pragma mark - TextField delegate
