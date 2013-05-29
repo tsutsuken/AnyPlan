@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SelectProjectViewController.h"
 
-@interface EditTaskViewController : UITableViewController <UITextFieldDelegate, UIActionSheetDelegate>
+@interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *taskInfoTableView;
 @property (strong, nonatomic) Task *task;
 @property (assign, nonatomic) BOOL isNewTask;
+
+- (IBAction)didPushDeleteButton;
 
 @end

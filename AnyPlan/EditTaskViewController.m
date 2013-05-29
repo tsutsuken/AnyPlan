@@ -19,7 +19,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView reloadData];//Task編集後のデータを反映させるため
+    [self.taskInfoTableView reloadData];//Task編集後のデータを反映させるため
 }
 
 - (void)viewDidLoad
@@ -34,10 +34,6 @@
     {
         self.title = NSLocalizedString(@"EditTaskView_Title_ExistingTask", nil);
     }
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-                                                                                           target:self
-                                                                                           action:@selector(showActionSheetForDeletingTask)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -49,7 +45,7 @@
 }
 - (void)showKeyBoard
 {
-    EditableCell *editableCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EditableCell *editableCell = (EditableCell *)[self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [editableCell.textField becomeFirstResponder];
 }
 
@@ -192,7 +188,7 @@
 
 #pragma mark - Delete Task
 
-- (void)didPushDeleteButton
+- (IBAction)didPushDeleteButton
 {
     [self showActionSheetForDeletingTask];
 }
