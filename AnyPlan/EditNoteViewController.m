@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     self.noteTextView.text = self.note.text;
+    self.noteTextView.alwaysBounceVertical = YES;
     
     [self setTitle];
     
@@ -170,7 +171,6 @@
     }
     
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
 }
 
 - (void)didPushDoneButton
@@ -180,7 +180,12 @@
 
 #pragma mark - Delete Note
 
-- (IBAction)showActionSheetForDeletingNote
+- (IBAction)didPushDeleteButton
+{
+    [self showActionSheetForDeletingNote];
+}
+
+- (void)showActionSheetForDeletingNote
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.delegate = self;

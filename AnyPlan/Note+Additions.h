@@ -11,5 +11,9 @@
 @interface Note (Additions)
 
 - (void)saveContext;
+- (NSString *)title;
+- (NSString *)body;
+- (NSString *)editedDateString;
+- (NSString *)editedMonthString;
 
 @end

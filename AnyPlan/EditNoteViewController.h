@@ -18,7 +18,7 @@
 @property (weak  , nonatomic) IBOutlet UITextView *noteTextView;
 @property (assign, nonatomic) BOOL isNewNote;
 
-- (IBAction)showActionSheetForDeletingNote;
+- (IBAction)didPushDeleteButton;
 
 
 @end

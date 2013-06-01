@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0D5BC1174E4C0E0025EAB4 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D5BC0174E4C0E0025EAB4 /* Note.m */; };
 		1F0D5BC4174E4C1A0025EAB4 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D5BC3174E4C1A0025EAB4 /* Task.m */; };
+		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
 		1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC501175216F80004CD4B /* NoteInfoViewController.m */; };
 		1F22235B17266D830034CC80 /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235A17266D830034CC80 /* EditProjectViewController.m */; };
 		1F22235F17269B8D0034CC80 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235E17269B8D0034CC80 /* EditableCell.m */; };
@@ -43,6 +43,7 @@
 		1FA48EDD1722416300D1AF30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA48EB31722416200D1AF30 /* CoreData.framework */; };
 		1FA48EE51722416400D1AF30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EE31722416400D1AF30 /* InfoPlist.strings */; };
 		1FA48EE81722416400D1AF30 /* AnyPlanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA48EE71722416400D1AF30 /* AnyPlanTests.m */; };
+		1FA5EB6617585DBB00025605 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5EB6517585DBB00025605 /* Note.m */; };
 		1FA60AB6173E43BA0037399E /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA60AB4173E43BA0037399E /* gear.png */; };
 		1FA60AB7173E43BA0037399E /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA60AB5173E43BA0037399E /* gear@2x.png */; };
 		1FA60ABA173E471C0037399E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA60AB9173E471C0037399E /* SettingViewController.m */; };
@@ -78,10 +79,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0D5BBF174E4C0E0025EAB4 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		1F0D5BC0174E4C0E0025EAB4 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		1F0D5BC2174E4C1A0025EAB4 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		1F0D5BC3174E4C1A0025EAB4 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
+		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		1F1EC500175216F80004CD4B /* NoteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfoViewController.h; sourceTree = "<group>"; };
 		1F1EC501175216F80004CD4B /* NoteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoViewController.m; sourceTree = "<group>"; };
 		1F22235917266D830034CC80 /* EditProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProjectViewController.h; sourceTree = "<group>"; };
@@ -128,6 +129,8 @@
 		1FA48EE41722416400D1AF30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1FA48EE61722416400D1AF30 /* AnyPlanTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnyPlanTests.h; sourceTree = "<group>"; };
 		1FA48EE71722416400D1AF30 /* AnyPlanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnyPlanTests.m; sourceTree = "<group>"; };
+		1FA5EB6417585DBB00025605 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		1FA5EB6517585DBB00025605 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		1FA60AB4173E43BA0037399E /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		1FA60AB5173E43BA0037399E /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 		1FA60AB8173E471C0037399E /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				1F22235E17269B8D0034CC80 /* EditableCell.m */,
 				1F5EE434172F7629004EAD94 /* TaskCell.h */,
 				1F5EE435172F7629004EAD94 /* TaskCell.m */,
+				1F0EDC7A1756213B0096D4F1 /* NoteCell.h */,
+				1F0EDC7B1756213B0096D4F1 /* NoteCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -427,8 +432,8 @@
 				1F0D5BC3174E4C1A0025EAB4 /* Task.m */,
 				1FBD4CD41727C41B003A5D5C /* Task+Additions.h */,
 				1FBD4CD51727C41B003A5D5C /* Task+Additions.m */,
-				1F0D5BBF174E4C0E0025EAB4 /* Note.h */,
-				1F0D5BC0174E4C0E0025EAB4 /* Note.m */,
+				1FA5EB6417585DBB00025605 /* Note.h */,
+				1FA5EB6517585DBB00025605 /* Note.m */,
 				1FA76DA6172D06F100EC659C /* Note+Additions.h */,
 				1FA76DA7172D06F100EC659C /* Note+Additions.m */,
 			);
@@ -615,9 +620,10 @@
 				1F9806F917438B1100170740 /* Project.m in Sources */,
 				1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */,
 				1FC9696A1749FA1500D84A37 /* NSDictionary+Null.m in Sources */,
-				1F0D5BC1174E4C0E0025EAB4 /* Note.m in Sources */,
 				1F0D5BC4174E4C1A0025EAB4 /* Task.m in Sources */,
 				1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */,
+				1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */,
+				1FA5EB6617585DBB00025605 /* Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

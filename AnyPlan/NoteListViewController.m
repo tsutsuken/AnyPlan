@@ -57,34 +57,40 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 78;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (self.shouldDisplayAllProject)
-    {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-        Note *note = [[sectionInfo objects] objectAtIndex:0];
-        
-        return note.project.title;
-    }
-    else
-    {
-        return nil;
-    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    Note *note = [[sectionInfo objects] objectAtIndex:0];
+    
+    return note.editedMonthString;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
+    NoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(NoteCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = note.text;
+    cell.titleLabel.text = note.title;
+    cell.editedDateLabel.text = note.editedDateString;
+    cell.bodyLabel.text = note.body;
+    
+    //Labelのサイズを調整
+    [cell.bodyLabel sizeToFit];
+    CGRect frame = cell.bodyLabel.frame;
+    frame.size.width = 300;//セル再利用時の不具合を防ぐため
+    [cell.bodyLabel setFrame:frame];
 }
 
 #pragma mark - Table view delegate
@@ -183,11 +189,14 @@
     [fetchRequest setPredicate:[self predicate]];
     
     // Edit the sort key as appropriate.
-    [fetchRequest setSortDescriptors: [self sortDescriptors]];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                [[NSSortDescriptor alloc] initWithKey:@"editedDate" ascending:NO],
+                                nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:[self sectionNameKeyPath] cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"editedMonthString" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -216,45 +225,6 @@
     }
     
     return predicate;
-}
-
-- (NSArray *)sortDescriptors
-{
-    if (self.shouldDisplayAllProject)
-    {
-        NSArray *sortDescriptors = [NSArray arrayWithObjects:
-                                    [[NSSortDescriptor alloc] initWithKey:@"project.displayOrder" ascending:YES],
-                                    [[NSSortDescriptor alloc] initWithKey:@"editedDate" ascending:NO],
-                                    nil];
-        
-        return sortDescriptors;
-    }
-    else
-    {
-        NSArray *sortDescriptors = [NSArray arrayWithObjects:
-                                    [[NSSortDescriptor alloc] initWithKey:@"editedDate" ascending:NO],
-                                    nil];
-        
-        return sortDescriptors;
-    }
-    
-    
-}
-
-- (NSString *)sectionNameKeyPath
-{
-    NSString *sectionNameKeyPath;
-    
-    if (self.shouldDisplayAllProject)
-    {
-        sectionNameKeyPath = @"project.displayOrder";
-    }
-    else
-    {
-        sectionNameKeyPath = nil;
-    }
-    
-    return sectionNameKeyPath;
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
@@ -292,7 +262,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(NoteCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
