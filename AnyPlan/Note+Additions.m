@@ -52,39 +52,6 @@
     return body;
 }
 
-- (NSString *)editedDateString
-{
-    NSString *editedDateString;
-    
-    NSDate *editedDay = [self dateWithOutTime:self.editedDate];
-    NSDate *today = [self dateWithOutTime:[NSDate date]];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
-    if ([editedDay isEqualToDate:today])
-    {
-        [formatter setDateFormat:@"HH:mm"];
-        
-        editedDateString = [formatter stringFromDate:self.editedDate];
-    }
-    else
-    {
-        NSDate *yesterday = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:today];
-        
-        if ([editedDay isEqualToDate:yesterday])
-        {
-            editedDateString = NSLocalizedString(@"Note_EditedDateString_Yesterday", nil);
-        }
-        else
-        {
-            [formatter setDateStyle:NSDateFormatterMediumStyle];
-            editedDateString = [formatter stringFromDate:self.editedDate];
-        }
-    }
-    
-    return editedDateString;
-}
-
 - (NSString *)editedMonthString
 {
     NSString *editedMonthString;
@@ -94,20 +61,6 @@
     editedMonthString = [formatter stringFromDate:self.editedDate];
     
     return editedMonthString;
-}
-
--(NSDate *)dateWithOutTime:(NSDate *)date
-{
-    if(date == nil)
-    {
-        date = [NSDate date];
-    }
-    
-    NSDateComponents* comps = [[NSCalendar currentCalendar]
-                               components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-                               fromDate:date];
-    
-    return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
 @end

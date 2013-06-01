@@ -83,7 +83,7 @@
 {
     Note *note = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = note.title;
-    cell.editedDateLabel.text = note.editedDateString;
+    cell.projectLabel.text = note.project.title;
     cell.bodyLabel.text = note.body;
     
     //Labelのサイズを調整
@@ -116,8 +116,6 @@
         
         if (sender == self.tableView)//Existing Task
         {
-            LOG(@"Edit Existing Note");
-            
             isNewNote = NO;
             
             Note *selectedNote = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
@@ -125,8 +123,6 @@
         }
         else//New Note
         {
-            LOG(@"Edit New Note");
-            
             isNewNote = YES;
             
             Note *newNote = (Note *)[NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:self.managedObjectContext];

@@ -12,5 +12,5 @@
 
 @property IBOutlet UILabel *titleLabel;
 @property IBOutlet UILabel *bodyLabel;
-@property IBOutlet UILabel *editedDateLabel;
+@property IBOutlet UILabel *projectLabel;
 @end

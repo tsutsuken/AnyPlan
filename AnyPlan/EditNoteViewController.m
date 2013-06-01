@@ -86,8 +86,6 @@
     }
     else
     {
-        LOG(@"hasChanges_%@",[NSNumber numberWithBool:self.note.hasChanges]);
-        
         if (self.note.hasChanges)//編集された場合
         {
             if(!self.note.text||[self.note.text isEqualToString:@""])

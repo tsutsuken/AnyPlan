@@ -182,7 +182,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="13" id="alt-sk-1az">
-                                            <rect key="frame" x="10" y="2" width="223" height="21"/>
+                                            <rect key="frame" x="10" y="2" width="199" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -195,8 +195,8 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2000/01/01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RoM-eY-7IV">
-                                            <rect key="frame" x="233" y="2" width="77" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Project" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="RoM-eY-7IV">
+                                            <rect key="frame" x="211" y="2" width="99" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -207,7 +207,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="bodyLabel" destination="Fyx-L2-EiZ" id="IQr-tM-gYS"/>
-                                    <outlet property="editedDateLabel" destination="RoM-eY-7IV" id="Wf0-v7-rOM"/>
+                                    <outlet property="projectLabel" destination="RoM-eY-7IV" id="j4M-sF-Qnz"/>
                                     <outlet property="titleLabel" destination="alt-sk-1az" id="kX3-FM-J92"/>
                                 </connections>
                             </tableViewCell>
@@ -633,6 +633,84 @@
         <image name="gear.png" width="22" height="22"/>
         <image name="note.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CustomTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTabBarController.h"/>
+        </class>
+        <class className="EditNoteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditNoteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didPushDeleteButton"/>
+                <relationship kind="outlet" name="noteTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="EditProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditProjectViewController.h"/>
+        </class>
+        <class className="EditTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditTaskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didPushDeleteButton"/>
+                <relationship kind="outlet" name="taskInfoTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="EditableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="IIViewDeckController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
+            </relationships>
+        </class>
+        <class className="ManageProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProjectViewController.h"/>
+        </class>
+        <class className="MenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+        <class className="NoteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bodyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="projectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NoteInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteInfoViewController.h"/>
+        </class>
+        <class className="NoteListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteListViewController.h"/>
+        </class>
+        <class className="SelectProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectProjectViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+        </class>
+        <class className="TaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="checkBox" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaskListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didTouchCheckBox:event:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
