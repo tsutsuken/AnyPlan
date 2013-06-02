@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    self.tabBarController.viewDeckController.enabled = NO;
+    
     self.noteTextView.text = self.note.text;
     self.noteTextView.alwaysBounceVertical = YES;
     
@@ -78,31 +80,41 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [self setTextToManagedObjectIfNeeded];
-    
-    if (self.note.isDeleted)
+    if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
     {
-        [self.delegate editNoteViewController:self didFinishWithSave:YES];
-    }
-    else
-    {
-        if (self.note.hasChanges)//編集された場合
+        self.tabBarController.viewDeckController.enabled = YES;
+        
+        [self setTextToManagedObjectIfNeeded];
+        
+        if (self.note.isDeleted)
         {
-            if(!self.note.text||[self.note.text isEqualToString:@""])
-            {
-                [self.note.managedObjectContext deleteObject:self.note];
-            }
-            else
-            {
-                //Do nothing
-            }
-            
             [self.delegate editNoteViewController:self didFinishWithSave:YES];
         }
         else
         {
-           [self.delegate editNoteViewController:self didFinishWithSave:NO];
+            if (self.note.hasChanges)//編集された場合
+            {
+                if(!self.note.text||[self.note.text isEqualToString:@""])
+                {
+                    [self.note.managedObjectContext deleteObject:self.note];
+                }
+                else
+                {
+                    //Do nothing
+                }
+                
+                [self.delegate editNoteViewController:self didFinishWithSave:YES];
+            }
+            else
+            {
+                [self.delegate editNoteViewController:self didFinishWithSave:NO];
+            }
         }
+
+    }
+    else//次のViewに行った時
+    {
+        
     }
 }
 

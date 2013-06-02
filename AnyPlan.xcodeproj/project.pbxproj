@@ -61,7 +61,6 @@
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FBD4CD61727C41B003A5D5C /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CD51727C41B003A5D5C /* Task+Additions.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
-		1FC9696A1749FA1500D84A37 /* NSDictionary+Null.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969691749FA1500D84A37 /* NSDictionary+Null.m */; };
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
 		1FE947071747BF4F00FBBA49 /* eye_opened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */; };
 		1FE947081747BF4F00FBBA49 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */; };
@@ -159,8 +158,6 @@
 		1FBD4CD51727C41B003A5D5C /* Task+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Additions.m"; sourceTree = "<group>"; };
 		1FC969651749DBC700D84A37 /* SelectProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectProjectViewController.h; sourceTree = "<group>"; };
 		1FC969661749DBC700D84A37 /* SelectProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProjectViewController.m; sourceTree = "<group>"; };
-		1FC969681749FA1500D84A37 /* NSDictionary+Null.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Null.h"; sourceTree = "<group>"; };
-		1FC969691749FA1500D84A37 /* NSDictionary+Null.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Null.m"; sourceTree = "<group>"; };
 		1FE3094B172561510063BD50 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		1FE3094C172561510063BD50 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_opened@2x.png"; sourceTree = "<group>"; };
@@ -389,8 +386,6 @@
 				1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */,
 				1FA76DCC172D704500EC659C /* CustomTabBarController.h */,
 				1FA76DCD172D704500EC659C /* CustomTabBarController.m */,
-				1FC969681749FA1500D84A37 /* NSDictionary+Null.h */,
-				1FC969691749FA1500D84A37 /* NSDictionary+Null.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -619,7 +614,6 @@
 				1FA60ABD173E4AB90037399E /* ManageProjectViewController.m in Sources */,
 				1F9806F917438B1100170740 /* Project.m in Sources */,
 				1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */,
-				1FC9696A1749FA1500D84A37 /* NSDictionary+Null.m in Sources */,
 				1F0D5BC4174E4C1A0025EAB4 /* Task.m in Sources */,
 				1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */,
 				1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */,

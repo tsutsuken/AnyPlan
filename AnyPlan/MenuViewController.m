@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.clearsSelectionOnViewWillAppear = NO;
     
     self.navigationController.navigationBarHidden = YES;
@@ -118,7 +119,6 @@
     }
 }
 
-
 #pragma mark - Show Other View
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -143,7 +143,6 @@
         controller.managedObjectContext = self.managedObjectContext;
     }
 }
-
 
 #pragma mark EditProjectView
 

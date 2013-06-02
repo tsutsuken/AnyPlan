@@ -25,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tabBarController.viewDeckController.enabled = NO;
 
     if (self.isNewTask)
     {
@@ -43,11 +45,6 @@
         [self showKeyBoard];
     }
 }
-- (void)showKeyBoard
-{
-    EditableCell *editableCell = (EditableCell *)[self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [editableCell.textField becomeFirstResponder];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,6 +52,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showKeyBoard
+{
+    EditableCell *editableCell = (EditableCell *)[self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [editableCell.textField becomeFirstResponder];
+}
 
 #pragma mark - CloseView
 
@@ -62,6 +64,8 @@
 {
     if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
     {
+        self.tabBarController.viewDeckController.enabled = YES;
+        
         if (shouldDeleteTask)
         {
             [self.task.managedObjectContext deleteObject:self.task];

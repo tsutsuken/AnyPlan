@@ -23,9 +23,10 @@
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
+    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
     deckController.centerController = [self tabBarController];
     deckController.leftController = [self menuViewNavigationController];
-
+    
     return YES;
 }
 
