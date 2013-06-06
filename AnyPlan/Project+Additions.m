@@ -25,3 +25,33 @@
 }
 
 @end
+
+@implementation ImageToDataTransformer
+
+//http://blog.natsuapps.com/2010/02/core-data-9.htmlを参照
+
++ (BOOL)allowsReverseTransformation
+{
+	return YES;
+}
+
++ (Class)transformedValueClass
+{
+	return [NSData class];
+}
+
+- (id)transformedValue:(id)value
+{
+    //UIImageからNSDataへ変換
+	NSData *data = UIImagePNGRepresentation(value);
+	return data;
+}
+
+- (id)reverseTransformedValue:(id)value
+{
+    //NSDataからUIImageへ変換
+	UIImage *uiImage = [[UIImage alloc] initWithData:value];
+	return uiImage;
+}
+
+@end

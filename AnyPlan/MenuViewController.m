@@ -77,16 +77,18 @@
 {
     if (indexPath.section == 0)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        cell.textLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
+        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
+        cell.iconView.image = [UIImage imageNamed:@"eye_opened"];
         
         return cell;
     }
     else if (indexPath.section == 1)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
-        cell.textLabel.text = project.title;
+        cell.titleLabel.text = project.title;
+        cell.iconView.image = project.icon;
         
         return cell;
     }

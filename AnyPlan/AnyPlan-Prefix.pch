@@ -21,6 +21,8 @@
     #import "Note+Additions.h"
     #import "AppDelegate.h"
     #import "EditableCell.h"
+    #import "ProjectCell.h"
+    #import "IconCell.h"
     #import "NoteCell.h"
     #import "TaskCell.h"
     #import "NavigationBarTitleWithSubtitleView.h"

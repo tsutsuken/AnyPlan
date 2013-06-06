@@ -13,3 +13,8 @@
 - (void)saveContext;
 
 @end
+
+
+@interface ImageToDataTransformer : NSValueTransformer {
+}
+@end

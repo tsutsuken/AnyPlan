@@ -17,9 +17,14 @@
     BOOL shouldDeleteProject;
 }
 
+#define kTagForActionSheetDeleteProject 1
+#define kTagForActionSheetSelectIconStyle 2
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.project.icon = [UIImage imageNamed:@"test"];
     
     if (self.isNewProject)
     {
@@ -163,18 +168,32 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditableCell"];
+    if (indexPath.row == 0)
+    {
+        EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditableCell"];
+        
+        cell.textField.delegate = self;
+        cell.textField.placeholder = NSLocalizedString(@"EditProjectView_TextField_PlaceHolder", nil);
+        cell.textField.text = self.project.title;
+        
+        return cell;
+    }
+    else
+    {
+        IconCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IconCell"];
+        
+#warning 翻訳
+        cell.titleLabel.text = NSLocalizedString(@"アイコン", nil);
+        cell.iconView.image = self.project.icon;
+        
+        return cell;
+    }
     
-    cell.textField.delegate = self;
-    cell.textField.placeholder = NSLocalizedString(@"EditProjectView_TextField_PlaceHolder", nil);
-    cell.textField.text = self.project.title;
-    
-    return cell;
 }
 
 
@@ -194,6 +213,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 1)
+    {
+        [self showActionSheetForSelectIconStyle];
+        
+        //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 #pragma mark - TextField delegate
@@ -215,6 +240,7 @@
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.delegate = self;
+    actionSheet.tag = kTagForActionSheetDeleteProject;
     
     [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Delete", nil)];
     [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Cancel", nil)];
@@ -224,15 +250,47 @@
     [actionSheet showInView:self.view];
 }
 
+- (void)showActionSheetForSelectIconStyle
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
+    actionSheet.delegate = self;
+    actionSheet.tag = kTagForActionSheetSelectIconStyle;
+    
+#warning 翻訳
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"標準アイコンから選択", nil)];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"アルバムから選択", nil)];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Cancel", nil)];
+    actionSheet.cancelButtonIndex = 2;
+    
+    [actionSheet showInView:self.view];
+}
+
 -(void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
-            [self closeViewWithDeletingTask];
-            break;
-        case 1:
-            //Do Nothing
-            break;
+    if (actionSheet.tag == kTagForActionSheetDeleteProject)
+    {
+        switch (buttonIndex) {
+            case 0:
+                [self closeViewWithDeletingTask];
+                break;
+            case 1:
+                //Do Nothing
+                break;
+        }
+    }
+    else
+    {
+        switch (buttonIndex) {
+            case 0:
+                //[self closeViewWithDeletingTask];
+                break;
+            case 1:
+                //[self closeViewWithDeletingTask];
+                break;
+            case 2:
+                [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:YES];
+                break;
+        }
     }
 }
 
