@@ -15,6 +15,8 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 #define kVersionNumber @"kVersionNumber"
+#define kProjectTitle @"kProjectTitle"
+#define kProjectIconImageName @"kProjectIconImageName"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -206,20 +208,31 @@
 
 - (void)insertDefaultProjects
 {
-    NSArray *projectTitleArray = [NSArray arrayWithObjects:
-                             NSLocalizedString(@"Common_Project_Category_Inbox", nil),
-                             nil];
+    NSArray *defaultProjectDataArray = [self defaultProjectDataArray];
     
     int i = 0;
-    for (NSString *projectTitle in projectTitleArray)
+    for (NSDictionary *dictionary in defaultProjectDataArray)
     {
         Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
-        project.title = projectTitle;
+        project.title = [dictionary objectForKey:kProjectTitle];
+        project.icon = [UIImage imageNamed:[dictionary objectForKey:kProjectIconImageName]];
         project.displayOrder = [NSNumber numberWithInt:i];
         i++;
     }
     
     [self saveContext];
+}
+
+- (NSArray *)defaultProjectDataArray
+{
+    NSMutableArray *defaultProjectDataArray = [NSMutableArray array];
+
+    [defaultProjectDataArray  addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                              NSLocalizedString(@"Common_Project_Category_Inbox", nil), kProjectTitle,
+                              kImageNameForInboxProjectIcon, kProjectIconImageName,
+							  nil]];
+    
+    return [defaultProjectDataArray copy];
 }
 
 #pragma mark - Methods For Other Class

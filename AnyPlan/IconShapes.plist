@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>flag</string>
+	<string>star</string>
+	<string>heart</string>
+	<string>folder</string>
+	<string>person</string>
+	<string>people</string>
+	<string>running</string>
+	<string>home</string>
+	<string>briefcase</string>
+	<string>book</string>
+	<string>bulb</string>
+	<string>chart</string>
+	<string>gift</string>
+	<string>cup</string>
+	<string>dumbbell</string>
+	<string>music</string>
+	<string>plane</string>
+	<string>rocket</string>
+	<string>globe</string>
+	<string>sun</string>
+	<string>trophy</string>
+	<string>mountain</string>
+	<string>exclamation</string>
+	<string>skull</string>
+</array>
+</plist>

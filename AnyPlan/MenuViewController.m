@@ -75,24 +75,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-    {
-        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
-        cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
-        cell.iconView.image = [UIImage imageNamed:@"eye_opened"];
-        
-        return cell;
-    }
-    else if (indexPath.section == 1)
-    {
-        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
-        Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
-        cell.titleLabel.text = project.title;
-        cell.iconView.image = project.icon;
-        
-        return cell;
-    }
-    else
+    if (indexPath.section == 2)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddProjectCell"];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:38];
@@ -100,6 +83,25 @@
         
         return cell;
     }
+    else
+    {
+        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+
+        if (indexPath.section == 0)
+        {
+            cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
+            cell.iconView.image = [UIImage imageNamed:kImageNameForAllProjectIcon];
+        }
+        else
+        {
+            Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
+            cell.titleLabel.text = project.title;
+            cell.iconView.image = project.icon;
+        }
+        
+        return cell;
+    }
+
 }
 
 #pragma mark - Table view delegate
@@ -135,8 +137,8 @@
         
         Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
+        newProject.icon = [self defaultIconForProject];
         controller.project = newProject;
-    
     }
     if([[segue identifier] isEqualToString:@"showSettingView"])
     {
@@ -151,6 +153,18 @@
 - (void)showEditProjectView
 {
     [self performSegueWithIdentifier:@"showEditProjectView" sender:self];
+}
+
+- (UIImage *)defaultIconForProject
+{
+    UIImage *defaultIconForProject;
+    
+    UIImage *backGroundImage = [UIImage imageWithColor:[UIColor colorWithHexString:kColorHexForDefaultProjectIcon]];
+    UIImage *iconImage = [UIImage imageNamed:kImageNameForDefaultProjectIcon];
+    CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
+    defaultIconForProject = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
+    
+    return defaultIconForProject;
 }
 
 #pragma mark - Fetched results controller

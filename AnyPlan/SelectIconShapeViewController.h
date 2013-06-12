@@ -1,5 +1,5 @@
 //
-//  IconCell.h
+//  SelectIconShapeViewController.h
 //  AnyPlan
 //
 //  Created by Ken Tsutsumi on 13/06/06.
@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectIconViewController.h"
 
-@interface IconCell : UITableViewCell
-
-@property IBOutlet UIImageView *iconView;
-@property IBOutlet UILabel *titleLabel;
+@interface SelectIconShapeViewController : SelectIconViewController
 
 @end

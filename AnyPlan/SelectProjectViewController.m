@@ -43,18 +43,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
+    ProjectCell *cell = (ProjectCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ProjectCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    cell.textLabel.text = project.title;
+    cell.titleLabel.text = project.title;
+    cell.iconView.image = project.icon;
     
     if ([self.editedObject valueForKey:kKeyForProject] == project)
     {
@@ -134,7 +134,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(ProjectCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:

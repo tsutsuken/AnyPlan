@@ -123,9 +123,10 @@
     }
     else
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
-        cell.detailTextLabel.text = self.task.project.title;
+        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
+        cell.detailLabel.text = self.task.project.title;
+        cell.iconView.image = self.task.project.icon;
         
         return cell;
     }

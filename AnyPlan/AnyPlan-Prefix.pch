@@ -20,20 +20,35 @@
     #import "Note.h"
     #import "Note+Additions.h"
     #import "AppDelegate.h"
+    #import "UIImage+Additions.h"
     #import "EditableCell.h"
     #import "ProjectCell.h"
-    #import "IconCell.h"
     #import "NoteCell.h"
     #import "TaskCell.h"
     #import "NavigationBarTitleWithSubtitleView.h"
     #import "CustomTabBarController.h"
+    #import "UIColor+ColorWithHex.h"
+
 
 #endif
 
 /*Common*/
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
+#define kColorHexForDefaultProjectIcon @"a8a8a8"
+#define kImageNameForDefaultProjectIcon @"flag"
+#define kLengthForDefaultProjectIcon 60
+#define kImageNameForAllProjectIcon @"infinity"
+#define kImageNameForInboxProjectIcon @"inbox"
 
+#define LOG(...) NSLog(__VA_ARGS__)
+#define LOG_PRINTF(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define LOG_METHOD NSLog(@"%s", __func__)
+#define LOG_METHOD_AND_ABORT LOG_METHOD; abort()
+#define LOG_POINT(p) NSLog(@"%f, %f", p.x, p.y)
+#define LOG_SIZE(p) NSLog(@"%f, %f", p.width, p.height)
+#define LOG_RECT(p) NSLog(@"%f, %f - %f, %f", p.origin.x, p.origin.y, p.size.width, p.size.height)
 
+/*
 #ifdef DEBUG
     #define LOG(...) NSLog(__VA_ARGS__)
     #define LOG_PRINTF(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -55,3 +70,4 @@
     #define LOG_SIZE(p)
     #define LOG_RECT(p)
 #endif
+*/

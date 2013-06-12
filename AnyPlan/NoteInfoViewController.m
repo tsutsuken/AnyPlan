@@ -46,10 +46,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
 
-    cell.textLabel.text = NSLocalizedString(@"NoteInfoView_Cell_Project", nil);
-    cell.detailTextLabel.text = self.note.project.title;
+    cell.titleLabel.text = NSLocalizedString(@"NoteInfoView_Cell_Project", nil);
+    cell.detailLabel.text = self.note.project.title;
+    cell.iconView.image = self.note.project.icon;
     
     return cell;
 }

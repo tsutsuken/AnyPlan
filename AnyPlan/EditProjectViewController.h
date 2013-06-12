@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectIconShapeViewController.h"
 
-@interface EditProjectViewController : UITableViewController <UITextFieldDelegate, UIActionSheetDelegate>
+@interface EditProjectViewController : UITableViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic) Project *project;
 @property (assign, nonatomic) BOOL isNewProject;

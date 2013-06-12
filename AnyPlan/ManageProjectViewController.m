@@ -19,12 +19,7 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setToolBar];
+    self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -37,6 +32,18 @@
     }
     else//次のViewに行った時
     {
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //UITableViewControllerではないため、手動でやる必要がある
+    NSIndexPath *indexPath = self.myTableView.indexPathForSelectedRow;
+    if (indexPath)
+    {
+        [self.myTableView deselectRowAtIndexPath:indexPath animated:animated];
     }
 }
 
@@ -59,12 +66,6 @@
     }
 }
 
-- (void)setToolBar
-{
-    self.toolbarItems = [NSArray arrayWithObjects:self.editButtonItem, nil];
-    self.navigationController.toolbarHidden = NO;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -80,27 +81,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
+    ProjectCell *cell = (ProjectCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ProjectCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = project.title;
+    cell.titleLabel.text = project.title;
+    cell.iconView.image = project.icon;
     
     if (indexPath.row == 0)
     {
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.titleLabel.textColor = [UIColor lightGrayColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     else
     {
-        cell.textLabel.textColor = [UIColor blackColor];
+        cell.titleLabel.textColor = [UIColor blackColor];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 }
 
@@ -164,6 +167,8 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+    
+    [self.myTableView setEditing:editing animated:animated];
     
     if (!editing)
     {
@@ -244,7 +249,7 @@
     if([[segue identifier] isEqualToString:@"showEditProjectView"])
     {
         EditProjectViewController *controller = (EditProjectViewController *)segue.destinationViewController;
-        controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.myTableView indexPathForSelectedRow]];
     }
 }
 
@@ -280,7 +285,7 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView beginUpdates];
+    [self.myTableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
@@ -288,11 +293,11 @@
 {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.myTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.myTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -301,7 +306,7 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.tableView;
+    UITableView *tableView = self.myTableView;
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
@@ -313,7 +318,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(ProjectCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
@@ -325,7 +330,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView endUpdates];
+    [self.myTableView endUpdates];
 }
 
 @end

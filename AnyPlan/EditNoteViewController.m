@@ -110,7 +110,6 @@
                 [self.delegate editNoteViewController:self didFinishWithSave:NO];
             }
         }
-
     }
     else//次のViewに行った時
     {

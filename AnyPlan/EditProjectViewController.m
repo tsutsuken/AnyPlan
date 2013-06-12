@@ -15,6 +15,7 @@
 @implementation EditProjectViewController
 {
     BOOL shouldDeleteProject;
+    NSString *tempTitle;//画面遷移時にも、値を保持するため
 }
 
 #define kTagForActionSheetDeleteProject 1
@@ -24,8 +25,8 @@
 {
     [super viewDidLoad];
     
-    self.project.icon = [UIImage imageNamed:@"test"];
-    
+    tempTitle = self.project.title;
+
     if (self.isNewProject)
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_NewProject", nil);
@@ -38,9 +39,14 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];//アイコン編集後のデータを反映させるため
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (!self.project.title)
+    if (!tempTitle)
     {
         [self showKeyBoard];
     }
@@ -94,6 +100,24 @@
 
 #pragma mark - CloseView
 
+- (NSString *)projectTitle
+{
+    NSString *projectTitle;
+    
+    if(!tempTitle||[tempTitle isEqualToString:@""])
+    {
+        projectTitle = NSLocalizedString(@"Common_Untitled", nil);
+    }
+    else
+    {
+        projectTitle = tempTitle;
+    }
+    
+    return projectTitle;
+}
+
+#pragma mark Existing Project
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     if (self.isNewProject)
@@ -120,25 +144,6 @@
             //[self hideKeyBoard];
         }
     }
-}
-
-- (NSString *)projectTitle
-{
-    NSString *projectTitle;
-    
-    EditableCell *editableCell = (EditableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    NSString *textInTextField = editableCell.textField.text;
-    
-    if(!textInTextField||[textInTextField isEqualToString:@""])
-    {
-        projectTitle = NSLocalizedString(@"Common_Untitled", nil);
-    }
-    else
-    {
-        projectTitle = textInTextField;
-    }
-    
-    return projectTitle;
 }
 
 #pragma mark New Project
@@ -171,31 +176,38 @@
     return 2;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return tableView.rowHeight;//storyboardで設定
+    }
+    else
+    {
+        return 76;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)
     {
         EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditableCell"];
-        
         cell.textField.delegate = self;
         cell.textField.placeholder = NSLocalizedString(@"EditProjectView_TextField_PlaceHolder", nil);
-        cell.textField.text = self.project.title;
+        cell.textField.text = tempTitle;
         
         return cell;
     }
     else
     {
-        IconCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IconCell"];
-        
-#warning 翻訳
-        cell.titleLabel.text = NSLocalizedString(@"アイコン", nil);
+        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditProjectView_Cell_Icon", nil);
         cell.iconView.image = self.project.icon;
         
         return cell;
     }
-    
 }
-
 
 #pragma mark - Table view delegate
 
@@ -216,17 +228,73 @@
     if (indexPath.row == 1)
     {
         [self showActionSheetForSelectIconStyle];
-        
-        //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
+#pragma mark - Show Other View
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    LOG(@"%@", [segue identifier]);
+    
+    if([[segue identifier] isEqualToString:@"showSelectIconShapeView"])
+    {
+        UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+        SelectIconShapeViewController *controller = (SelectIconShapeViewController *)navigationController.topViewController;
+        controller.project = self.project;
+    }
+}
+
+#pragma mark SelectIconShapeView
+
+- (void)showSelectIconShapeView
+{
+    [self performSegueWithIdentifier:@"showSelectIconShapeView" sender:self];
+}
+
 #pragma mark - TextField delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    tempTitle = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - ActionSheet delegate
+
+-(void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == kTagForActionSheetDeleteProject)
+    {
+        switch (buttonIndex) {
+            case 0:
+                [self closeViewWithDeletingTask];
+                break;
+            case 1:
+                //Do Nothing
+                break;
+        }
+    }
+    else
+    {
+        switch (buttonIndex) {
+            case 0:
+                [self showSelectIconShapeView];
+                break;
+            case 1:
+                [self pickImageWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+                break;
+            case 2:
+                [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:YES];
+                break;
+        }
+    }
 }
 
 #pragma mark - Delete Project
@@ -250,54 +318,48 @@
     [actionSheet showInView:self.view];
 }
 
+- (void)closeViewWithDeletingTask
+{
+    shouldDeleteProject = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Select Icon
+
 - (void)showActionSheetForSelectIconStyle
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.delegate = self;
     actionSheet.tag = kTagForActionSheetSelectIconStyle;
-    
-#warning 翻訳
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"標準アイコンから選択", nil)];
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"アルバムから選択", nil)];
+
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_SelectFromDefaultIcon", nil)];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_SelectFromLibrary", nil)];
     [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Cancel", nil)];
     actionSheet.cancelButtonIndex = 2;
     
     [actionSheet showInView:self.view];
 }
 
--(void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+-(void)pickImageWithSourceType:(UIImagePickerControllerSourceType)sourceType
 {
-    if (actionSheet.tag == kTagForActionSheetDeleteProject)
+    if([UIImagePickerController isSourceTypeAvailable:sourceType])
     {
-        switch (buttonIndex) {
-            case 0:
-                [self closeViewWithDeletingTask];
-                break;
-            case 1:
-                //Do Nothing
-                break;
-        }
-    }
-    else
-    {
-        switch (buttonIndex) {
-            case 0:
-                //[self closeViewWithDeletingTask];
-                break;
-            case 1:
-                //[self closeViewWithDeletingTask];
-                break;
-            case 2:
-                [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:YES];
-                break;
-        }
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = sourceType;
+        imagePicker.allowsEditing = YES;
+        [self presentModalViewController:imagePicker animated:YES];
     }
 }
 
-- (void)closeViewWithDeletingTask
+#pragma mark ImagePicker delegate
+
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingImage:(UIImage*)image editingInfo:(NSDictionary*)editingInfo
 {
-    shouldDeleteProject = YES;
-    [self.navigationController popViewControllerAnimated:YES];
+    self.project.icon = image;
+    
+    [self dismissModalViewControllerAnimated:YES];
+    [self.tableView reloadData];//セル内の画像を更新するため
 }
 
 @end
