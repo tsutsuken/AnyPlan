@@ -10,13 +10,12 @@
 
 @interface EditProjectViewController ()
 
+@property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
+@property (assign, nonatomic) BOOL shouldDeleteProject;
+
 @end
 
 @implementation EditProjectViewController
-{
-    BOOL shouldDeleteProject;
-    NSString *tempTitle;//画面遷移時にも、値を保持するため
-}
 
 #define kTagForActionSheetDeleteProject 1
 #define kTagForActionSheetSelectIconStyle 2
@@ -25,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    tempTitle = self.project.title;
+    self.tempTitle = self.project.title;
 
     if (self.isNewProject)
     {
@@ -46,7 +45,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (!tempTitle)
+    if (!self.tempTitle)
     {
         [self showKeyBoard];
     }
@@ -104,13 +103,13 @@
 {
     NSString *projectTitle;
     
-    if(!tempTitle||[tempTitle isEqualToString:@""])
+    if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
     {
         projectTitle = NSLocalizedString(@"Common_Untitled", nil);
     }
     else
     {
-        projectTitle = tempTitle;
+        projectTitle = self.tempTitle;
     }
     
     return projectTitle;
@@ -128,7 +127,7 @@
     {
         if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
         {
-            if (shouldDeleteProject)
+            if (self.shouldDeleteProject)
             {
                 [self.project.managedObjectContext deleteObject:self.project];
             }
@@ -153,7 +152,7 @@
     [self.project.managedObjectContext deleteObject:self.project];
     [self.project saveContext];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didPushDoneButton
@@ -161,7 +160,7 @@
     self.project.title = [self projectTitle];
     [self.project saveContext];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -195,7 +194,7 @@
         EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditableCell"];
         cell.textField.delegate = self;
         cell.textField.placeholder = NSLocalizedString(@"EditProjectView_TextField_PlaceHolder", nil);
-        cell.textField.text = tempTitle;
+        cell.textField.text = self.tempTitle;
         
         return cell;
     }
@@ -256,7 +255,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    tempTitle = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    self.tempTitle = [textField.text stringByReplacingCharactersInRange:range withString:string];
     return YES;
 }
 
@@ -320,7 +319,7 @@
 
 - (void)closeViewWithDeletingTask
 {
-    shouldDeleteProject = YES;
+    self.shouldDeleteProject = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -348,7 +347,7 @@
         imagePicker.delegate = self;
         imagePicker.sourceType = sourceType;
         imagePicker.allowsEditing = YES;
-        [self presentModalViewController:imagePicker animated:YES];
+        [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }
 

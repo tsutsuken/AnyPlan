@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SelectIconViewController.h"
+#import "IconCell.h"
 
-@interface SelectIconShapeViewController : SelectIconViewController
+@interface SelectIconShapeViewController : UICollectionViewController
+
+@property (strong, nonatomic) Project *project;
 
 @end

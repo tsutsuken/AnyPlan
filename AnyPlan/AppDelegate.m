@@ -210,14 +210,14 @@
 {
     NSArray *defaultProjectDataArray = [self defaultProjectDataArray];
     
-    int i = 0;
-    for (NSDictionary *dictionary in defaultProjectDataArray)
+    for (int i = 0; i < [defaultProjectDataArray count]; i++)
     {
+        NSDictionary *dictionary = [defaultProjectDataArray objectAtIndex:i];
+        
         Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         project.title = [dictionary objectForKey:kProjectTitle];
         project.icon = [UIImage imageNamed:[dictionary objectForKey:kProjectIconImageName]];
         project.displayOrder = [NSNumber numberWithInt:i];
-        i++;
     }
     
     [self saveContext];

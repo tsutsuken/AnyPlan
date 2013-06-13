@@ -10,6 +10,8 @@
 
 @interface SelectIconColorViewController ()
 
+@property (strong, nonatomic) NSArray *colorHexArray;
+
 @end
 
 @implementation SelectIconColorViewController
@@ -17,10 +19,6 @@
 - (void)viewDidLoad
 {
     self.title = NSLocalizedString(@"SelectIconColorView_Title", nil);
-    
-    self.dataArray = [self colorHexArray];
-    
-    [self setScrollView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,40 +27,53 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didPushIconButton:(id)sender
+#pragma mark - CollectionView delegate
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    UIButton *button = (UIButton *)sender;
-    int selectedItemIndex = button.tag;
-    NSString *hexString = [self.dataArray objectAtIndex:selectedItemIndex];
-    UIColor *selectedColor = [UIColor colorWithHexString:hexString];
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.colorHexArray count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor colorWithHexString:[self.colorHexArray objectAtIndex:indexPath.item]];
+    cell.imageView.image = [UIImage imageNamed:self.iconImageName];
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIColor *selectedColor = [UIColor colorWithHexString:[self.colorHexArray objectAtIndex:indexPath.item]];
     UIImage *backGroundImage = [UIImage imageWithColor:selectedColor];
+    
     UIImage *iconImage = [UIImage imageNamed:self.iconImageName];
+    
     CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
+    
     self.project.icon = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
     //saveはしない
     
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (NSString *)iconImageNameForItemIndex:(int)itemIndex
-{
-    return self.iconImageName;
-}
-
-- (UIColor *)iconColorForItemIndex:(int)itemIndex
-{
-    NSString *hexString = [self.dataArray objectAtIndex:itemIndex];
-    return [UIColor colorWithHexString:hexString];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSArray *)colorHexArray
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:
-                      @"IconColors" ofType:@"plist"];
-    NSArray *colorHexArray = [[NSArray alloc] initWithContentsOfFile:path];
+    if (_colorHexArray != nil) {
+        return _colorHexArray;
+    }
     
-    return colorHexArray;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"IconColors" ofType:@"plist"];
+    self.colorHexArray = [[NSArray alloc] initWithContentsOfFile:filePath];
+    
+    return _colorHexArray;
 }
 
 @end

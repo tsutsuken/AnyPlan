@@ -101,7 +101,6 @@
         
         return cell;
     }
-
 }
 
 #pragma mark - Table view delegate

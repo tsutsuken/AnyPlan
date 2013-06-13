@@ -7,10 +7,11 @@
 //
 
 #import "SelectIconShapeViewController.h"
-#import "SelectIconViewController.h"
+#import "IconCell.h"
 
-@interface SelectIconColorViewController : SelectIconViewController
+@interface SelectIconColorViewController : UICollectionViewController
 
+@property (strong, nonatomic) Project *project;
 @property (strong, nonatomic) NSString *iconImageName;
 
 @end

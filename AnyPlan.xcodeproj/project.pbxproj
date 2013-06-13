@@ -67,7 +67,6 @@
 		1F3F2F911767574C007A0606 /* people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F8F1767574C007A0606 /* people@2x.png */; };
 		1F3F2F94176757B9007A0606 /* skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F92176757B9007A0606 /* skull.png */; };
 		1F3F2F95176757B9007A0606 /* skull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F93176757B9007A0606 /* skull@2x.png */; };
-		1F4734D51762D5E600D78618 /* SelectIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4734D41762D5E600D78618 /* SelectIconViewController.m */; };
 		1F4734D71763069300D78618 /* IconColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4734D61763069300D78618 /* IconColors.plist */; };
 		1F4734DA17630BE900D78618 /* UIColor+ColorWithHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */; };
 		1F4D237E172B73F600081E94 /* delete_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D237D172B73F600081E94 /* delete_button@2x.png */; };
@@ -80,6 +79,7 @@
 		1F5EE430172F6B6A004EAD94 /* checkbox_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */; };
+		1F9A212217696FCD000F5E0C /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A212117696FCD000F5E0C /* IconCell.m */; };
 		1F9D07311766129300D3BBF9 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D07301766129300D3BBF9 /* UIImage+Additions.m */; };
 		1FA078B9175F7BBC005B594F /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA078B8175F7BBC005B594F /* Project.m */; };
 		1FA078BC175F7DF5005B594F /* ProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA078BB175F7DF4005B594F /* ProjectCell.m */; };
@@ -207,8 +207,6 @@
 		1F3F2F8F1767574C007A0606 /* people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people@2x.png"; sourceTree = "<group>"; };
 		1F3F2F92176757B9007A0606 /* skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skull.png; sourceTree = "<group>"; };
 		1F3F2F93176757B9007A0606 /* skull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skull@2x.png"; sourceTree = "<group>"; };
-		1F4734D31762D5E600D78618 /* SelectIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconViewController.h; sourceTree = "<group>"; };
-		1F4734D41762D5E600D78618 /* SelectIconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconViewController.m; sourceTree = "<group>"; };
 		1F4734D61763069300D78618 /* IconColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IconColors.plist; sourceTree = "<group>"; };
 		1F4734D817630BE900D78618 /* UIColor+ColorWithHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHex.h"; sourceTree = "<group>"; };
 		1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWithHex.m"; sourceTree = "<group>"; };
@@ -224,6 +222,8 @@
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		1F911CB91761E96300CA468A /* SelectIconColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconColorViewController.h; sourceTree = "<group>"; };
 		1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconColorViewController.m; sourceTree = "<group>"; };
+		1F9A212017696FCD000F5E0C /* IconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
+		1F9A212117696FCD000F5E0C /* IconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconCell.m; sourceTree = "<group>"; };
 		1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		1F9D07301766129300D3BBF9 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		1FA078B7175F7BBC005B594F /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
@@ -412,14 +412,8 @@
 		1F22235C17269B8D0034CC80 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				1F22235D17269B8D0034CC80 /* EditableCell.h */,
-				1F22235E17269B8D0034CC80 /* EditableCell.m */,
-				1F5EE434172F7629004EAD94 /* TaskCell.h */,
-				1F5EE435172F7629004EAD94 /* TaskCell.m */,
-				1F0EDC7A1756213B0096D4F1 /* NoteCell.h */,
-				1F0EDC7B1756213B0096D4F1 /* NoteCell.m */,
-				1FA078BA175F7DF4005B594F /* ProjectCell.h */,
-				1FA078BB175F7DF4005B594F /* ProjectCell.m */,
+				1F9A211E17696F6B000F5E0C /* UITableView */,
+				1F9A211F17696F73000F5E0C /* UICollectionView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -429,16 +423,7 @@
 			children = (
 				1FA60AB8173E471C0037399E /* SettingViewController.h */,
 				1FA60AB9173E471C0037399E /* SettingViewController.m */,
-				1FA60ABB173E4AB90037399E /* ManageProjectViewController.h */,
-				1FA60ABC173E4AB90037399E /* ManageProjectViewController.m */,
-				1F22235917266D830034CC80 /* EditProjectViewController.h */,
-				1F22235A17266D830034CC80 /* EditProjectViewController.m */,
-				1F4734D31762D5E600D78618 /* SelectIconViewController.h */,
-				1F4734D41762D5E600D78618 /* SelectIconViewController.m */,
-				1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */,
-				1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */,
-				1F911CB91761E96300CA468A /* SelectIconColorViewController.h */,
-				1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */,
+				1F9A21231769B5CE000F5E0C /* Edit Project */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -454,6 +439,45 @@
 				1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		1F9A211E17696F6B000F5E0C /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				1F22235D17269B8D0034CC80 /* EditableCell.h */,
+				1F22235E17269B8D0034CC80 /* EditableCell.m */,
+				1F5EE434172F7629004EAD94 /* TaskCell.h */,
+				1F5EE435172F7629004EAD94 /* TaskCell.m */,
+				1F0EDC7A1756213B0096D4F1 /* NoteCell.h */,
+				1F0EDC7B1756213B0096D4F1 /* NoteCell.m */,
+				1FA078BA175F7DF4005B594F /* ProjectCell.h */,
+				1FA078BB175F7DF4005B594F /* ProjectCell.m */,
+			);
+			name = UITableView;
+			sourceTree = "<group>";
+		};
+		1F9A211F17696F73000F5E0C /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1F9A212017696FCD000F5E0C /* IconCell.h */,
+				1F9A212117696FCD000F5E0C /* IconCell.m */,
+			);
+			name = UICollectionView;
+			sourceTree = "<group>";
+		};
+		1F9A21231769B5CE000F5E0C /* Edit Project */ = {
+			isa = PBXGroup;
+			children = (
+				1FA60ABB173E4AB90037399E /* ManageProjectViewController.h */,
+				1FA60ABC173E4AB90037399E /* ManageProjectViewController.m */,
+				1F22235917266D830034CC80 /* EditProjectViewController.h */,
+				1F22235A17266D830034CC80 /* EditProjectViewController.m */,
+				1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */,
+				1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */,
+				1F911CB91761E96300CA468A /* SelectIconColorViewController.h */,
+				1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */,
+			);
+			name = "Edit Project";
 			sourceTree = "<group>";
 		};
 		1FA48EA11722416100D1AF30 = {
@@ -875,9 +899,9 @@
 				1FA078BC175F7DF5005B594F /* ProjectCell.m in Sources */,
 				1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */,
 				1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */,
-				1F4734D51762D5E600D78618 /* SelectIconViewController.m in Sources */,
 				1F4734DA17630BE900D78618 /* UIColor+ColorWithHex.m in Sources */,
 				1F9D07311766129300D3BBF9 /* UIImage+Additions.m in Sources */,
+				1F9A212217696FCD000F5E0C /* IconCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,7 +986,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -986,7 +1010,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1001,7 +1025,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnyPlan/AnyPlan-Prefix.pch";
 				INFOPLIST_FILE = "AnyPlan/AnyPlan-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "AA0A7544-B29D-4703-98C8-AEF09042426C";
 				WRAPPER_EXTENSION = app;
@@ -1015,7 +1039,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnyPlan/AnyPlan-Prefix.pch";
 				INFOPLIST_FILE = "AnyPlan/AnyPlan-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

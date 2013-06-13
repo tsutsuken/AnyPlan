@@ -221,7 +221,7 @@
     label.backgroundColor   = [UIColor clearColor];
     label.shadowColor       = [UIColor whiteColor];
     label.shadowOffset      = CGSizeMake(0, 1);
-    label.textAlignment     = UITextAlignmentLeft;
+    label.textAlignment     = NSTextAlignmentLeft;
     label.numberOfLines     = 2;
     [headerView addSubview:label];
     
