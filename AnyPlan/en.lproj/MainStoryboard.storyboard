@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ruH-Hd-Ilw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ruH-Hd-Ilw">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--View Deck Controller-->
@@ -10,11 +9,10 @@
             <objects>
                 <viewController id="ruH-Hd-Ilw" customClass="IIViewDeckController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PyQ-yj-tHv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41M-lD-KMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -24,7 +22,6 @@
         <scene sceneID="4ZC-Mk-3LV">
             <objects>
                 <navigationController storyboardIdentifier="MenuViewNavigationController" definesPresentationContext="YES" id="EtP-o8-UYE" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iKG-Ci-v6P">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -39,9 +36,9 @@
         <!--Menu View Controller-->
         <scene sceneID="idN-AZ-kLy">
             <objects>
-                <tableViewController id="CFo-qn-BUt" customClass="MenuViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="CFo-qn-BUt" customClass="MenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="U4O-Jz-hAh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -60,7 +57,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="D2k-dJ-MFW">
-                                            <rect key="frame" x="0.0" y="-1" width="44" height="44"/>
+                                            <rect key="frame" x="0.0" y="-0.5" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -86,7 +83,6 @@
                             <outlet property="delegate" destination="CFo-qn-BUt" id="f76-EG-42g"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems>
                         <barButtonItem image="gear.png" id="Zj2-2p-dWQ">
                             <connections>
@@ -115,10 +111,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="Ndu-V5-nbM" customClass="TaskCell">
-                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="13" id="eaU-vh-cf1">
@@ -151,10 +147,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FooterButtonCell" textLabel="AqL-8j-tn2" detailTextLabel="yNG-Zi-xtT" style="IBUITableViewCellStyleValue1" id="P7H-QV-UYa">
-                                <rect key="frame" x="0.0" y="99" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AqL-8j-tn2">
@@ -177,7 +173,6 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Bt6-N7-hKL"/>
                     <connections>
                         <segue destination="fij-Wj-8LE" kind="push" identifier="showEditTaskView" id="msT-H0-v8D"/>
@@ -235,7 +230,6 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="uSK-bh-qb4"/>
                     <connections>
                         <segue destination="Sr7-uo-56z" kind="push" identifier="showEditNoteView" id="flb-n9-TPy"/>
@@ -249,7 +243,6 @@
         <scene sceneID="OEb-uO-PFd">
             <objects>
                 <navigationController definesPresentationContext="YES" id="b8I-AH-Hm6" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" image="note.png" id="V0a-yq-DYT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sad-AI-7h8">
                         <autoresizingMask key="autoresizingMask"/>
@@ -276,10 +269,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditableCell" id="NY9-SX-kBq" customClass="EditableCell">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="MTk-xn-Xyo">
@@ -295,10 +288,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProjectCell" id="Y7E-dZ-QSJ" customClass="ProjectCell">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0lj-sa-PqX">
@@ -350,7 +343,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="HEP-3T-ZM8"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -403,7 +395,6 @@
                             <outlet property="delegate" destination="tMu-Sv-Q1U" id="8Db-ix-lLH"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="4sR-1D-nCt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXC-Be-czx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -413,8 +404,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Cv8-Fc-L5X">
             <objects>
-                <navigationController definesPresentationContext="YES" id="oLe-jz-K77" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController storyboardIdentifier="" definesPresentationContext="YES" id="oLe-jz-K77" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="check.png" id="KzQ-Mw-w1o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QSb-Ww-gWD">
                         <autoresizingMask key="autoresizingMask"/>
@@ -431,7 +421,6 @@
         <scene sceneID="nhy-Xq-zm5">
             <objects>
                 <tabBarController storyboardIdentifier="CenterTabBarController" definesPresentationContext="YES" id="Jh6-nN-kZd" customClass="CustomTabBarController" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bEw-Rp-hNM">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -457,17 +446,16 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="b0S-Ap-fry">
-                                <rect key="frame" x="0.0" y="55" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="wUd-c9-bkS"/>
                     <connections>
                         <segue destination="0at-rw-glr" kind="push" identifier="showManageProjectView" id="wLv-vl-Hfc"/>
@@ -491,10 +479,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProjectCell" id="PSI-UI-goX" customClass="ProjectCell">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kJg-kn-47I">
@@ -530,7 +518,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ifp-p2-610"/>
                     <connections>
                         <outlet property="myTableView" destination="q09-ED-dss" id="Daf-dN-3cs"/>
@@ -546,7 +533,6 @@
         <scene sceneID="QEW-f5-X9d">
             <objects>
                 <navigationController definesPresentationContext="YES" id="4SG-mi-Htd" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YHV-bE-Q6U">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -568,10 +554,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditableCell" id="sXz-NR-Ssz" customClass="EditableCell">
-                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="WJb-BR-WMd">
@@ -587,10 +573,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProjectCell" rowHeight="76" id="ff6-d9-cjN" customClass="ProjectCell">
-                                <rect key="frame" x="0.0" y="99" width="320" height="77"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="75"/>
+                                    <rect key="frame" x="10" y="0.0" width="280" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="GtQ-iE-eKo">
@@ -614,7 +600,6 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="vaQ-3Q-TIY"/>
                     <connections>
                         <segue destination="cap-Hd-The" kind="modal" identifier="showSelectIconShapeView" id="swp-eq-tQe"/>
@@ -628,7 +613,6 @@
         <scene sceneID="ZBM-Ie-Vqd">
             <objects>
                 <navigationController definesPresentationContext="YES" id="cap-Hd-The" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AwR-JC-nek">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -680,7 +664,6 @@
                             <outlet property="delegate" destination="gZe-9w-gWm" id="bja-JO-TPM"/>
                         </connections>
                     </collectionView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="93h-aj-jbO"/>
                     <connections>
                         <segue destination="ROk-P9-S95" kind="push" identifier="showSelectIconColorView" id="aGZ-Yz-cUL"/>
@@ -694,7 +677,6 @@
         <scene sceneID="3rr-ud-tSo">
             <objects>
                 <navigationController definesPresentationContext="YES" id="aM7-nl-pOm" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YWs-u8-Shp">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -740,7 +722,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="IH4-jg-4Hb"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -802,7 +783,6 @@
                             <outlet property="delegate" destination="P7g-pq-x0e" id="HpG-uW-JQG"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="ZsE-GV-Tay"/>
                     <connections>
                         <segue destination="tMu-Sv-Q1U" kind="push" identifier="showSelectProjectView" id="Xep-Di-rr9"/>
@@ -852,7 +832,6 @@
                             <outlet property="delegate" destination="ROk-P9-S95" id="qBD-qj-rf1"/>
                         </connections>
                     </collectionView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Kue-2V-x75"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vwy-0c-KxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -867,6 +846,120 @@
         <image name="gear.png" width="22" height="22"/>
         <image name="note.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CustomTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTabBarController.h"/>
+        </class>
+        <class className="EditNoteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditNoteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didPushDeleteButton"/>
+                <relationship kind="outlet" name="noteTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="EditProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditProjectViewController.h"/>
+        </class>
+        <class className="EditTaskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditTaskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didPushDeleteButton"/>
+                <relationship kind="outlet" name="taskInfoTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="EditableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="IIViewDeckController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
+            </relationships>
+        </class>
+        <class className="IconCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IconCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ManageProjectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProjectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="myToolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="MenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+        <class className="NoteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bodyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="projectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NoteInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteInfoViewController.h"/>
+        </class>
+        <class className="NoteListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteListViewController.h"/>
+        </class>
+        <class className="ProjectCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SelectIconColorViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectIconColorViewController.h"/>
+        </class>
+        <class className="SelectIconShapeViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectIconShapeViewController.h"/>
+        </class>
+        <class className="SelectProjectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectProjectViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+        </class>
+        <class className="TaskCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="checkBox" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaskListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didTouchCheckBox:event:"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
