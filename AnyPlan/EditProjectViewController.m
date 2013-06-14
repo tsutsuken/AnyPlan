@@ -26,27 +26,33 @@
     
     self.tempTitle = self.project.title;
     
+    //アイコン
+    if (self.isNewProject)
+    {
+    self.project.icon = [self defaultIcon];
+    }
+    
+    //タイトル
     if (self.isNewProject)
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_NewProject", nil);
-        self.project.icon = [self defaultIcon];
-        
-        if (self.navigationController.isBeingPresented)//Modalによって表示された場合
-        {
-            [self setNavigationButtons];
-        }
-        else
-        {
-            [self setDeleteButton];
-        }
     }
     else
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_ExistingProject", nil);
-        [self setDeleteButton];
     }
     
-    LOG(@"%@",[NSNumber numberWithBool:self.navigationController.isBeingPresented]);
+    //ナビゲーションボタン
+    if (self.navigationController.isBeingPresented)//Modalによって表示された場合
+    {
+        [self setNavigationButtons];
+    }
+
+    //削除ボタン
+    if (!self.navigationController.isBeingPresented && ![self isDefaultProject])//Modalではない & デフォルトプロジェクトではない場合
+    {
+        [self setDeleteButton];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -120,24 +126,20 @@
     return defaultIconForProject;
 }
 
-#pragma mark - CloseView
-/*
-- (NSString *)projectTitle
+- (BOOL)isDefaultProject
 {
-    NSString *projectTitle;
-    
-    if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
+    if ([self.project.displayOrder intValue] == 0)
     {
-        projectTitle = NSLocalizedString(@"Common_Untitled", nil);
+        return YES;
     }
     else
     {
-        projectTitle = self.tempTitle;
+        return NO;
     }
-    
-    return projectTitle;
 }
-*/
+
+#pragma mark - CloseView
+
 #pragma mark Existing Project
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -220,6 +222,12 @@
         cell.textField.delegate = self;
         cell.textField.placeholder = NSLocalizedString(@"EditProjectView_TextField_PlaceHolder", nil);
         cell.textField.text = self.tempTitle;
+        
+        if ([self isDefaultProject])
+        {
+            cell.textField.enabled = NO;
+            cell.textField.textColor = [UIColor lightGrayColor];
+        }
         
         return cell;
     }

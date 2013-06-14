@@ -44,6 +44,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 1)
+    {
+        return tableView.sectionHeaderHeight;
+    }else
+    {
+        return 0;
+    }
+    /*
     if (section == 0)
     {
         return tableView.sectionHeaderHeight;
@@ -51,6 +59,7 @@
     {
         return 0;
     }
+     */
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -83,6 +92,16 @@
         
         return cell;
     }
+    /*
+    else if (indexPath.section == 0)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddProjectCell"];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+        cell.textLabel.text = @"すべて";
+        
+        return cell;
+    }
+     */
     else
     {
         ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];

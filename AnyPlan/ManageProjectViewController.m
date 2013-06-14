@@ -95,19 +95,6 @@
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = project.title;
     cell.iconView.image = project.icon;
-    
-    if (indexPath.row == 0)
-    {
-        cell.titleLabel.textColor = [UIColor lightGrayColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    else
-    {
-        cell.titleLabel.textColor = [UIColor blackColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
 }
 
 - (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath
@@ -147,18 +134,6 @@
 }
 
 #pragma mark - Table view delegate
-
-- (NSIndexPath *)tableView: (UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0)
-    {
-        return nil;
-    }
-    else
-    {
-        return indexPath;
-    }
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
