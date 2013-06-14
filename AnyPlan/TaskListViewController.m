@@ -46,7 +46,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
-                                                                                           action:@selector(showEditTaskView)];
+                                                                                           action:@selector(showEditTaskViewWithNewTask)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -409,7 +409,7 @@
 
 #pragma mark EditTaskView
 
-- (void)showEditTaskView
+- (void)showEditTaskViewWithNewTask
 {
     [self performSegueWithIdentifier:@"showEditTaskView" sender:self.navigationItem.rightBarButtonItem];
 }

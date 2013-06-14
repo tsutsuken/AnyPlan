@@ -136,7 +136,6 @@
         
         Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
-        newProject.icon = [self defaultIconForProject];
         controller.project = newProject;
     }
     if([[segue identifier] isEqualToString:@"showSettingView"])
@@ -152,18 +151,6 @@
 - (void)showEditProjectView
 {
     [self performSegueWithIdentifier:@"showEditProjectView" sender:self];
-}
-
-- (UIImage *)defaultIconForProject
-{
-    UIImage *defaultIconForProject;
-    
-    UIImage *backGroundImage = [UIImage imageWithColor:[UIColor colorWithHexString:kColorHexForDefaultProjectIcon]];
-    UIImage *iconImage = [UIImage imageNamed:kImageNameForDefaultProjectIcon];
-    CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
-    defaultIconForProject = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
-    
-    return defaultIconForProject;
 }
 
 #pragma mark - Fetched results controller

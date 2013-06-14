@@ -10,12 +10,12 @@
 
 @interface EditTaskViewController ()
 
+@property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
+@property (assign, nonatomic) BOOL shouldDeleteTask;
+
 @end
 
 @implementation EditTaskViewController
-{
-    BOOL shouldDeleteTask;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -25,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tempTitle = self.task.title;
     
     self.tabBarController.viewDeckController.enabled = NO;
 
@@ -40,7 +42,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (!self.task.title)
+    if (!self.tempTitle)
     {
         [self showKeyBoard];
     }
@@ -66,13 +68,13 @@
     {
         self.tabBarController.viewDeckController.enabled = YES;
         
-        if (shouldDeleteTask)
+        if (self.shouldDeleteTask)
         {
             [self.task.managedObjectContext deleteObject:self.task];
         }
         else//BackButton Pushed
         {
-            if(!self.task.title||[self.task.title isEqualToString:@""])
+            if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
             {
                 if (self.isNewTask)
                 {
@@ -85,7 +87,7 @@
             }
             else
             {
-                //Do nothing
+                self.task.title = self.tempTitle;
             }
         }
         
@@ -117,7 +119,7 @@
         
         cell.textField.delegate = self;
         cell.textField.placeholder = NSLocalizedString(@"EditTaskView_Cell_Title_Placeholder", nil);
-        cell.textField.text = self.task.title;
+        cell.textField.text = self.tempTitle;
         
         return cell;
     }
@@ -181,7 +183,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    self.task.title = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    self.tempTitle = [textField.text stringByReplacingCharactersInRange:range withString:string];
     return YES;
 }
 
@@ -225,7 +227,7 @@
 
 - (void)closeViewWithDeletingTask
 {
-    shouldDeleteTask = YES;
+    self.shouldDeleteTask = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

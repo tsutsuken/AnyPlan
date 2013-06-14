@@ -20,6 +20,9 @@
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
     self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(showEditProjectViewWithNewProject)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -159,7 +162,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self showEditProjectView];
+    [self performSegueWithIdentifier:@"showEditProjectView" sender:self.myTableView];
 }
 
 #pragma mark - Edit
@@ -170,8 +173,13 @@
     
     [self.myTableView setEditing:editing animated:animated];
     
-    if (!editing)
+    if (editing)
     {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
         [self saveContext];
     }
 }
@@ -249,15 +257,28 @@
     if([[segue identifier] isEqualToString:@"showEditProjectView"])
     {
         EditProjectViewController *controller = (EditProjectViewController *)segue.destinationViewController;
-        controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.myTableView indexPathForSelectedRow]];
+
+        if (sender == self.myTableView)//Existing Project
+        {
+            controller.isNewProject = NO;
+            controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.myTableView indexPathForSelectedRow]];
+        }
+        else//New Project
+        {
+            controller.isNewProject = YES;
+            
+            Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
+            newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
+            controller.project = newProject;
+        }
     }
 }
 
 #pragma mark EditProjectView
 
-- (void)showEditProjectView
+- (void)showEditProjectViewWithNewProject
 {
-    [self performSegueWithIdentifier:@"showEditProjectView" sender:self];
+    [self performSegueWithIdentifier:@"showEditProjectView" sender:self.navigationItem.rightBarButtonItem];
 }
 
 #pragma mark - Fetched results controller

@@ -25,17 +25,28 @@
     [super viewDidLoad];
     
     self.tempTitle = self.project.title;
-
+    
     if (self.isNewProject)
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_NewProject", nil);
-        [self setNavigationButtons];
+        self.project.icon = [self defaultIcon];
+        
+        if (self.navigationController.isBeingPresented)//Modalによって表示された場合
+        {
+            [self setNavigationButtons];
+        }
+        else
+        {
+            [self setDeleteButton];
+        }
     }
     else
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_ExistingProject", nil);
         [self setDeleteButton];
     }
+    
+    LOG(@"%@",[NSNumber numberWithBool:self.navigationController.isBeingPresented]);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -97,8 +108,20 @@
     [editableCell.textField becomeFirstResponder];
 }
 
-#pragma mark - CloseView
+- (UIImage *)defaultIcon
+{
+    UIImage *defaultIconForProject;
+    
+    UIImage *backGroundImage = [UIImage imageWithColor:[UIColor colorWithHexString:kColorHexForDefaultProjectIcon]];
+    UIImage *iconImage = [UIImage imageNamed:kImageNameForDefaultProjectIcon];
+    CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
+    defaultIconForProject = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
+    
+    return defaultIconForProject;
+}
 
+#pragma mark - CloseView
+/*
 - (NSString *)projectTitle
 {
     NSString *projectTitle;
@@ -114,34 +137,41 @@
     
     return projectTitle;
 }
-
+*/
 #pragma mark Existing Project
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (self.isNewProject)
+    if (self.isMovingFromParentViewController || self.navigationController.isBeingDismissed)//NavBarで前に戻った、もしくはModalを閉じた場合
     {
-        
-    }
-    else
-    {
-        if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
+        if (self.shouldDeleteProject)
         {
-            if (self.shouldDeleteProject)
+            [self.project.managedObjectContext deleteObject:self.project];
+        }
+        else
+        {
+            if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
             {
-                [self.project.managedObjectContext deleteObject:self.project];
+                if (self.isNewProject)
+                {
+                    [self.project.managedObjectContext deleteObject:self.project];
+                }
+                else
+                {
+                    self.project.title = NSLocalizedString(@"Common_Untitled", nil);
+                }
             }
             else
             {
-                self.project.title = [self projectTitle];
+                self.project.title = self.tempTitle;
             }
-            
-            [self.project saveContext];
         }
-        else//次のViewに行った時
-        {
-            //[self hideKeyBoard];
-        }
+        
+        [self.project saveContext];
+    }
+    else//次のViewに行った時
+    {
+        //[self hideKeyBoard];
     }
 }
 
@@ -149,17 +179,12 @@
 
 - (void)didPushCancelButton
 {
-    [self.project.managedObjectContext deleteObject:self.project];
-    [self.project saveContext];
-    
+    self.shouldDeleteProject = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didPushDoneButton
 {
-    self.project.title = [self projectTitle];
-    [self.project saveContext];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
