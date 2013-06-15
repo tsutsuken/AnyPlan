@@ -29,8 +29,6 @@
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
 
-
-
 #endif
 
 /*Common*/

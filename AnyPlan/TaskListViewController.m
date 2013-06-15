@@ -8,6 +8,12 @@
 
 #import "TaskListViewController.h"
 
+#define kTagForLabelInSectionHeaderView 1
+#define kTagForButtonInSectionHeaderView 2
+#define kErrorValueForSection -1
+#define kSectionNameForCompletedTask @"1"
+#define kShouldHideCompletedTask @"ShouldHideCompletedTask"
+
 @interface TaskListViewController ()
 
 @end
@@ -16,12 +22,6 @@
 {
     BOOL shouldHideCompletedTask;
 }
-
-#define kTagForLabelInSectionHeaderView 1
-#define kTagForButtonInSectionHeaderView 2
-#define kErrorValueForSection -1
-#define kSectionNameForCompletedTask @"1"
-#define kShouldHideCompletedTask @"ShouldHideCompletedTask"
 
 - (void)awakeFromNib
 {

@@ -8,8 +8,12 @@
 
 #import "EditTaskViewController.h"
 
+#define kMaxSizeForMemoLabel CGSizeMake(197, 2000)
+
+
 @interface EditTaskViewController ()
 
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
 @property (assign, nonatomic) BOOL shouldDeleteTask;
 
@@ -19,7 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.taskInfoTableView reloadData];//Task編集後のデータを反映させるため
+    [self.myTableView reloadData];//Task編集後のデータを反映させるため
 }
 
 - (void)viewDidLoad
@@ -56,7 +60,7 @@
 
 - (void)showKeyBoard
 {
-    EditableCell *editableCell = (EditableCell *)[self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [editableCell.textField becomeFirstResponder];
 }
 
@@ -108,7 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,7 +127,7 @@
         
         return cell;
     }
-    else
+    else if (indexPath.row == 1)
     {
         ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
@@ -131,6 +135,38 @@
         cell.iconView.image = self.task.project.icon;
         
         return cell;
+    }
+    else
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
+        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Memo", nil);
+        cell.detailTextLabel.text = self.task.memo;
+        
+        //ラベルのサイズを設定
+        CGSize labelSize = [self.task.memo sizeWithFont:cell.detailTextLabel.font
+                             constrainedToSize:kMaxSizeForMemoLabel
+                                 lineBreakMode:cell.detailTextLabel.lineBreakMode];
+        cell.detailTextLabel.frame = CGRectMake(0, 0, labelSize.width, labelSize.height);
+        
+        return cell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 2)
+    {
+        float heightForMemoCell;
+        
+        UITableViewCell *memoCell = [self tableView:self.myTableView cellForRowAtIndexPath:indexPath];
+        float memoLabelHeight = memoCell.detailTextLabel.frame.size.height;
+        heightForMemoCell = MAX(memoLabelHeight + 20, self.myTableView.rowHeight);
+        
+        return heightForMemoCell;
+    }
+    else
+    {
+        return self.myTableView.rowHeight;
     }
 }
 
@@ -157,6 +193,10 @@
     {
         [self showSelectProjectView];
     }
+    else
+    {
+        [self showEditMemoView];
+    }
 }
 
 #pragma mark - Show Other Views
@@ -170,6 +210,11 @@
         SelectProjectViewController *controller = (SelectProjectViewController *)segue.destinationViewController;
         controller.editedObject = self.task;
     }
+    else if([[segue identifier] isEqualToString:@"showEditMemoView"])
+    {
+        EditMemoViewController *controller = (EditMemoViewController *)segue.destinationViewController;
+        controller.task = self.task;
+    }
 }
 
 #pragma mark SelectProjectView
@@ -177,6 +222,13 @@
 - (void)showSelectProjectView
 {
     [self performSegueWithIdentifier:@"showSelectProjectView" sender:self];
+}
+
+#pragma mark EditMemoView
+
+- (void)showEditMemoView
+{
+    [self performSegueWithIdentifier:@"showEditMemoView" sender:self];
 }
 
 #pragma mark - TextField delegate

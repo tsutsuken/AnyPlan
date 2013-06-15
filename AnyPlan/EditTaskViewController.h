@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SelectProjectViewController.h"
+#import "EditMemoViewController.h"
 
 @interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *taskInfoTableView;
 @property (strong, nonatomic) Task *task;
 @property (assign, nonatomic) BOOL isNewTask;
 

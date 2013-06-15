@@ -26,7 +26,6 @@
     self.tabBarController.viewDeckController.enabled = NO;
     
     self.noteTextView.text = self.note.text;
-    self.noteTextView.alwaysBounceVertical = YES;
     
     [self setTitle];
     
