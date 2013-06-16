@@ -8,7 +8,8 @@
 
 #import "EditTaskViewController.h"
 
-#define kMaxSizeForMemoLabel CGSizeMake(197, 2000)
+#define kMaxSizeForMemoLabel CGSizeMake(194, 2000)
+#define kDefaultOriginForMemoLabel CGPointMake(83, 12)
 
 
 @interface EditTaskViewController ()
@@ -138,15 +139,15 @@
     }
     else
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
-        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Memo", nil);
-        cell.detailTextLabel.text = self.task.memo;
+        MemoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Memo", nil);
+        cell.detailLabel.text = self.task.memo;
         
         //ラベルのサイズを設定
-        CGSize labelSize = [self.task.memo sizeWithFont:cell.detailTextLabel.font
-                             constrainedToSize:kMaxSizeForMemoLabel
-                                 lineBreakMode:cell.detailTextLabel.lineBreakMode];
-        cell.detailTextLabel.frame = CGRectMake(0, 0, labelSize.width, labelSize.height);
+        CGSize labelSize = [self.task.memo sizeWithFont:cell.detailLabel.font
+                                      constrainedToSize:kMaxSizeForMemoLabel
+                                          lineBreakMode:cell.detailLabel.lineBreakMode];
+        cell.detailLabel.frame = CGRectMake(kDefaultOriginForMemoLabel.x, kDefaultOriginForMemoLabel.y, labelSize.width, labelSize.height);
         
         return cell;
     }
@@ -158,8 +159,8 @@
     {
         float heightForMemoCell;
         
-        UITableViewCell *memoCell = [self tableView:self.myTableView cellForRowAtIndexPath:indexPath];
-        float memoLabelHeight = memoCell.detailTextLabel.frame.size.height;
+        MemoCell *memoCell = (MemoCell *)[self tableView:self.myTableView cellForRowAtIndexPath:indexPath];
+        float memoLabelHeight = memoCell.detailLabel.frame.size.height;
         heightForMemoCell = MAX(memoLabelHeight + 20, self.myTableView.rowHeight);
         
         return heightForMemoCell;

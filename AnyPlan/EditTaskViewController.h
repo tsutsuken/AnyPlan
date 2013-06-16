@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SelectProjectViewController.h"
 #import "EditMemoViewController.h"
+#import "MemoCell.h"
 
 @interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 
