@@ -123,11 +123,12 @@
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
 		1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C1176C345C0080FA18 /* Task+Additions.m */; };
-		1FD829C5176C347E0080FA18 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C4176C347E0080FA18 /* Task.m */; };
 		1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C7176C379B0080FA18 /* EditMemoViewController.m */; };
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
 		1FE947071747BF4F00FBBA49 /* eye_opened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */; };
 		1FE947081747BF4F00FBBA49 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */; };
+		1FEA5B92176EAAD30075BB2F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA5B91176EAAD30075BB2F /* Task.m */; };
+		1FEA5B95176EDD780075BB2F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */; };
 		3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9077C873054A4505A8F049D1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -290,14 +291,16 @@
 		1FC969661749DBC700D84A37 /* SelectProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProjectViewController.m; sourceTree = "<group>"; };
 		1FD829C0176C345C0080FA18 /* Task+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Additions.h"; sourceTree = "<group>"; };
 		1FD829C1176C345C0080FA18 /* Task+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Additions.m"; sourceTree = "<group>"; };
-		1FD829C3176C347E0080FA18 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		1FD829C4176C347E0080FA18 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		1FD829C6176C379B0080FA18 /* EditMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMemoViewController.h; sourceTree = "<group>"; };
 		1FD829C7176C379B0080FA18 /* EditMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMemoViewController.m; sourceTree = "<group>"; };
 		1FE3094B172561510063BD50 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		1FE3094C172561510063BD50 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_opened@2x.png"; sourceTree = "<group>"; };
 		1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_closed@2x.png"; sourceTree = "<group>"; };
+		1FEA5B90176EAAD30075BB2F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		1FEA5B91176EAAD30075BB2F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		1FEA5B93176EDD780075BB2F /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		9077C873054A4505A8F049D1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -624,6 +627,8 @@
 				1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */,
 				1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */,
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
+				1FEA5B93176EDD780075BB2F /* NSDate+Additions.h */,
+				1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */,
 				1F22235C17269B8D0034CC80 /* Cell */,
 			);
 			name = Common;
@@ -663,8 +668,8 @@
 				1FA078B8175F7BBC005B594F /* Project.m */,
 				1F22236E1726AE980034CC80 /* Project+Additions.h */,
 				1F22236F1726AE980034CC80 /* Project+Additions.m */,
-				1FD829C3176C347E0080FA18 /* Task.h */,
-				1FD829C4176C347E0080FA18 /* Task.m */,
+				1FEA5B90176EAAD30075BB2F /* Task.h */,
+				1FEA5B91176EAAD30075BB2F /* Task.m */,
 				1FD829C0176C345C0080FA18 /* Task+Additions.h */,
 				1FD829C1176C345C0080FA18 /* Task+Additions.m */,
 				1FA5EB6417585DBB00025605 /* Note.h */,
@@ -919,9 +924,10 @@
 				1F9D07311766129300D3BBF9 /* UIImage+Additions.m in Sources */,
 				1F9A212217696FCD000F5E0C /* IconCell.m in Sources */,
 				1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */,
-				1FD829C5176C347E0080FA18 /* Task.m in Sources */,
 				1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */,
 				1F85D42A176D9842009C7362 /* MemoCell.m in Sources */,
+				1FEA5B92176EAAD30075BB2F /* Task.m in Sources */,
+				1FEA5B95176EDD780075BB2F /* NSDate+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

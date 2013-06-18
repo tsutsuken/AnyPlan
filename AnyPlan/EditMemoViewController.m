@@ -39,7 +39,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.textView becomeFirstResponder];
+    if (!self.textView.text||[self.textView.text isEqualToString:@""])
+    {
+        [self.textView becomeFirstResponder];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

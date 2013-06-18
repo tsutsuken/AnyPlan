@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
 @property (assign, nonatomic) BOOL shouldDeleteTask;
+@property (strong, nonatomic) UIActionSheet *actionSheetForPicker;
 
 @end
 
@@ -65,6 +66,12 @@
     [editableCell.textField becomeFirstResponder];
 }
 
+- (void)hideKeyBoard
+{
+    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [editableCell.textField resignFirstResponder];
+}
+
 #pragma mark - CloseView
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -100,7 +107,7 @@
     }
     else//次のViewに行った時
     {
-        //[self hideKeyBoard];
+        [self hideKeyBoard];
     }
 }
 
@@ -113,7 +120,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -137,6 +144,14 @@
         
         return cell;
     }
+    else if (indexPath.row == 2)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_DueDate", nil);
+        cell.detailTextLabel.text = [self.task.dueDate dateStringWithStyle:NSDateFormatterFullStyle];
+        
+        return cell;
+    }
     else
     {
         MemoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
@@ -155,7 +170,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 2)
+    if (indexPath.row == 3)
     {
         float heightForMemoCell;
         
@@ -194,6 +209,10 @@
     {
         [self showSelectProjectView];
     }
+    else if (indexPath.row == 2)
+    {
+        [self showDueDatePicker];
+    }
     else
     {
         [self showEditMemoView];
@@ -230,6 +249,81 @@
 - (void)showEditMemoView
 {
     [self performSegueWithIdentifier:@"showEditMemoView" sender:self];
+}
+
+#pragma mark - PickerView
+
+- (void)showDueDatePicker
+{
+    //アクションシートの作成
+     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                              delegate:self
+                                     cancelButtonTitle:nil
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:nil];
+    
+	//ピッカーの作成
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.minimumDate = [[NSDate date] initWithTimeIntervalSinceNow:-1*365*24*60*60];
+    [datePicker addTarget:self action:@selector(didChangeValueOnDatePicker:) forControlEvents:UIControlEventValueChanged];
+    if (!self.task.dueDate)
+    {
+        self.task.dueDate = [NSDate date];
+        [self.myTableView reloadData];
+    }
+    datePicker.date = self.task.dueDate;
+    
+    
+    //ツールバーの作成
+    UIToolbar *toolBar = [[UIToolbar alloc] init];
+    toolBar.barStyle = UIBarStyleBlackTranslucent;
+	[toolBar sizeToFit];
+    
+	 //スペースの作成
+	UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                            target:self
+                                                                            action:nil];
+    
+	 //Doneボタンの作成
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                          target:self
+                                                                          action:@selector(didPushDoneButtonForDatePicker)];
+    
+     //Deleteボタンの作成
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(didPushDeleteButtonForDatePicker)];
+    toolBar.items = [NSArray arrayWithObjects:deleteButton, spacer, doneButton, nil];
+	
+    
+	[actionSheet addSubview:toolBar];
+	[actionSheet addSubview:datePicker];
+    self.actionSheetForPicker = actionSheet;
+    
+    [self.actionSheetForPicker showInView:self.view];
+	[self.actionSheetForPicker setBounds:CGRectMake(0, 0, 320, 500)];//高さは、手動で調整
+}
+
+-(void)didChangeValueOnDatePicker:(UIDatePicker*)datePicker
+{
+    self.task.dueDate = datePicker.date;
+    
+    [self.myTableView reloadData];
+}
+
+- (void)didPushDoneButtonForDatePicker
+{
+    [self.actionSheetForPicker dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)didPushDeleteButtonForDatePicker
+{
+    self.task.dueDate = nil;
+    [self.myTableView reloadData];
+    
+    [self.actionSheetForPicker dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 #pragma mark - TextField delegate

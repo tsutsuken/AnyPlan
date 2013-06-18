@@ -21,6 +21,7 @@
     #import "Note+Additions.h"
     #import "AppDelegate.h"
     #import "UIImage+Additions.h"
+    #import "NSDate+Additions.h"
     #import "EditableCell.h"
     #import "ProjectCell.h"
     #import "NoteCell.h"
@@ -28,6 +29,7 @@
     #import "NavigationBarTitleWithSubtitleView.h"
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
+
 
 #endif
 

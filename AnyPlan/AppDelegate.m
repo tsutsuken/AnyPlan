@@ -29,7 +29,22 @@
     deckController.centerController = [self tabBarController];
     deckController.leftController = [self menuViewNavigationController];
     
+    [self setReviewRequestSystem];
+    
     return YES;
+}
+
+- (void)setReviewRequestSystem
+{
+#warning 本番IDを入れる
+    [Appirater setAppId:@"523946175"];//LevelUp
+    [Appirater setDaysUntilPrompt:1];
+    [Appirater setUsesUntilPrompt:10];
+    [Appirater setTimeBeforeReminding:2];//「後で」を押された後に、何日間待つか
+
+    [Appirater appLaunched:YES];//didFinishLaunchingWithOptionsの最後に呼ぶ必要がある
+    
+    //[Appirater setDebug:YES];
 }
 
 - (CustomTabBarController *)tabBarController
@@ -73,6 +88,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

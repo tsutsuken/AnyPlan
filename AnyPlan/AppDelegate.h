@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Appirater.h"
 #import "IIViewDeckController.h"
 #import "MenuViewController.h"
 #import "TaskListViewController.h"

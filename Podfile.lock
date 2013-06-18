@@ -1,10 +1,13 @@
 PODS:
+  - Appirater (1.0.3)
   - ViewDeck (2.2.9)
 
 DEPENDENCIES:
+  - Appirater (= 1.0.3)
   - ViewDeck
 
 SPEC CHECKSUMS:
+  Appirater: 1c146af7b0ef3e2114a17db2e185f94367f63a99
   ViewDeck: ac3ff2388bcb13e832d7878ccb6e0e320d10a779
 
-COCOAPODS: 0.18.1
+COCOAPODS: 0.20.2

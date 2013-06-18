@@ -2,7 +2,7 @@
 //  Task.m
 //  AnyPlan
 //
-//  Created by Ken Tsutsumi on 2013/06/15.
+//  Created by Ken Tsutsumi on 2013/06/17.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
 //
 
@@ -15,8 +15,9 @@
 @dynamic addedDate;
 @dynamic completedDate;
 @dynamic isDone;
-@dynamic title;
 @dynamic memo;
+@dynamic title;
+@dynamic dueDate;
 @dynamic project;
 
 @end

@@ -162,23 +162,30 @@
 
 - (void)setRightBarButtonWithDoneButton:(BOOL)isDoneButton
 {
-    UIBarButtonItem *rightBarButtonItem;
-    
+    NSMutableArray *rightBarButtonItems = [NSMutableArray array];
+                                        
     if (isDoneButton)
     {
-        rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(didPushDoneButton)];
+        
+        [rightBarButtonItems addObject:doneButton];
     }
     else
     {
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        [infoButton addTarget:self action:@selector(didPushInfoButton) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        [button addTarget:self action:@selector(didPushInfoButton) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithCustomView:button];
         
-        rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        space.width = 10.0;
+        
+        [rightBarButtonItems addObject:space];
+        [rightBarButtonItems addObject:infoButton];
     }
-    
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+
+    self.navigationItem.rightBarButtonItems = [rightBarButtonItems copy];
 }
 
 - (void)didPushDoneButton
