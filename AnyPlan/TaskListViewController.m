@@ -131,6 +131,11 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.tableView.rowHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
@@ -143,8 +148,9 @@
 - (void)configureCell:(TaskCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.titleLabel.text = task.title;
     cell.checkBox.selected = [task.isDone boolValue];
+    cell.titleLabel.text = task.title;
+    cell.detailLabel.text = [NSString stringWithFormat:@"%@ %@", task.repeatIconString, task.dueDateStringShort];
 }
 
 #pragma mark Supporting Methods
@@ -341,6 +347,8 @@
             {
                 selectedTask.completedDate = [NSDate date];
                 selectedTask.addedDate = nil;
+                
+                [selectedTask repeatTaskIfNeeded];
             }
             else
             {

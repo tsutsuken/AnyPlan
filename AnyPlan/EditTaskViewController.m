@@ -10,6 +10,11 @@
 
 #define kMaxSizeForMemoLabel CGSizeMake(194, 2000)
 #define kDefaultOriginForMemoLabel CGPointMake(83, 12)
+#define kHeightForCustomActionSheet 500
+#define kTagForActionSheetDueDatePicker 1
+#define kTagForActionSheetRepeatPicker 2
+#define kIndexPathForCellDueDate [NSIndexPath indexPathForRow:2 inSection:0]
+#define kIndexPathForCellRepeat [NSIndexPath indexPathForRow:3 inSection:0]
 
 
 @interface EditTaskViewController ()
@@ -17,7 +22,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
 @property (assign, nonatomic) BOOL shouldDeleteTask;
-@property (strong, nonatomic) UIActionSheet *actionSheetForPicker;
+@property (strong, nonatomic) UIActionSheet *myActionSheet;
+@property (strong, nonatomic) NSArray *unitNameArray;
 
 @end
 
@@ -120,7 +126,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,7 +154,15 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_DueDate", nil);
-        cell.detailTextLabel.text = [self.task.dueDate dateStringWithStyle:NSDateFormatterFullStyle];
+        cell.detailTextLabel.text = self.task.dueDateStringLong;
+        
+        return cell;
+    }
+    else if (indexPath.row == 3)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Repeat", nil);
+        cell.detailTextLabel.text = self.task.repeat.title;
         
         return cell;
     }
@@ -170,7 +184,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 3)
+    if (indexPath.row == 4)
     {
         float heightForMemoCell;
         
@@ -213,6 +227,10 @@
     {
         [self showDueDatePicker];
     }
+    else if (indexPath.row == 3)
+    {
+        [self showRepeatPicker];
+    }
     else
     {
         [self showEditMemoView];
@@ -251,16 +269,179 @@
     [self performSegueWithIdentifier:@"showEditMemoView" sender:self];
 }
 
-#pragma mark - PickerView
+#pragma mark - Picker
+#pragma mark Common
+
+- (UIActionSheet *)actionSheetForPicker
+{
+    //アクションシートの作成
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    //ツールバーの作成
+    UIToolbar *toolBar = [[UIToolbar alloc] init];
+    toolBar.barStyle = UIBarStyleBlackTranslucent;
+	[toolBar sizeToFit];
+    
+    //スペースの作成
+	UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                            target:self
+                                                                            action:nil];
+    
+    //Doneボタンの作成
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(didPushDoneButtonForPicker)];
+    
+    //Deleteボタンの作成
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(didPushDeleteButtonForPicker)];
+    toolBar.items = [NSArray arrayWithObjects:deleteButton, spacer, doneButton, nil];
+	[actionSheet addSubview:toolBar];
+    
+    return actionSheet;
+}
+
+- (void)didPushDoneButtonForPicker
+{
+    if (self.myActionSheet.tag == kTagForActionSheetDueDatePicker)
+    {
+        [self.myTableView deselectRowAtIndexPath:kIndexPathForCellDueDate animated:YES];
+    }
+    else
+    {
+        self.myTableView.contentInset = UIEdgeInsetsZero;
+        [self.myTableView deselectRowAtIndexPath:kIndexPathForCellRepeat animated:YES];
+    }
+    
+    [self.myActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)didPushDeleteButtonForPicker
+{
+    if (self.myActionSheet.tag == kTagForActionSheetDueDatePicker)
+    {
+        self.task.dueDate = nil;
+        [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:NO];
+    }
+    else
+    {
+        self.myTableView.contentInset = UIEdgeInsetsZero;
+        
+        [self.task.managedObjectContext deleteObject:self.task.repeat];
+        self.task.repeat = nil;
+        [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:NO];
+    }
+    
+    [self.myActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)reloadRowAtIndexPath:(NSIndexPath *)indexPath withSelected:(BOOL)selected
+{
+    [self.myTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    if (selected)
+    {
+        [self.myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+}
+
+#pragma mark RepeatPicker
+
+- (void)showRepeatPicker
+{
+    //必要データの取得
+    if (!self.task.repeat)
+    {
+        Repeat *repeat = (Repeat *)[NSEntityDescription insertNewObjectForEntityForName:@"Repeat"
+                                                                 inManagedObjectContext:self.task.managedObjectContext];
+        self.task.repeat = repeat;
+        [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:YES];
+    }
+    self.unitNameArray = self.task.repeat.unitNameArray;
+    
+    
+    //アクションシートの作成
+    UIActionSheet *actionSheet = [self actionSheetForPicker];
+    actionSheet.tag = kTagForActionSheetRepeatPicker;
+    
+    
+	//ピッカーの作成
+    UIPickerView *repeatPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
+    repeatPicker.delegate = self;
+    repeatPicker.dataSource = self;
+    repeatPicker.showsSelectionIndicator = YES;
+    [repeatPicker selectRow:([self.task.repeat.number intValue] - 1) inComponent:0 animated:YES];
+    [repeatPicker selectRow:[self.task.repeat.unitId intValue] inComponent:1 animated:YES];
+    [actionSheet addSubview:repeatPicker];
+    
+    
+    //アクションシートのセット
+    self.myActionSheet = actionSheet;
+    [self.myActionSheet showInView:self.view];
+	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
+    
+    //TableViewの表示位置を調整
+    self.myTableView.contentInset = UIEdgeInsetsMake(0, 0, 216, 0);//216 = Picker+Toolbar-BottomToolbar(myActionSheetのframeは当てにならない)
+    [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]
+                            atScrollPosition:UITableViewScrollPositionMiddle
+                                    animated:YES];
+}
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+{
+    if(component == 0)
+    {
+        return self.task.repeat.maxNumber;
+    }else
+    {
+        return [self.unitNameArray count];
+    }
+}
+
+// 表示する内容を返す例
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if(component == 0)
+    {
+        return [NSString stringWithFormat:@"%d", row + 1];
+    }else
+    {
+        return [self.unitNameArray objectAtIndex:row];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (component == 0)
+    {
+        self.task.repeat.number = @(row + 1);
+    }
+    else
+    {
+        self.task.repeat.unitId = @(row);
+        [pickerView reloadComponent:0];
+    }
+    
+    [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:YES];
+}
+
+#pragma mark DueDatePicker
 
 - (void)showDueDatePicker
 {
     //アクションシートの作成
-     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                              delegate:self
-                                     cancelButtonTitle:nil
-                                destructiveButtonTitle:nil
-                                     otherButtonTitles:nil];
+    UIActionSheet *actionSheet = [self actionSheetForPicker];
+    actionSheet.tag = kTagForActionSheetDueDatePicker;
     
 	//ピッカーの作成
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
@@ -270,60 +451,21 @@
     if (!self.task.dueDate)
     {
         self.task.dueDate = [NSDate date];
-        [self.myTableView reloadData];
+        [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
     }
     datePicker.date = self.task.dueDate;
+    [actionSheet addSubview:datePicker];
     
     
-    //ツールバーの作成
-    UIToolbar *toolBar = [[UIToolbar alloc] init];
-    toolBar.barStyle = UIBarStyleBlackTranslucent;
-	[toolBar sizeToFit];
-    
-	 //スペースの作成
-	UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                            target:self
-                                                                            action:nil];
-    
-	 //Doneボタンの作成
-	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                          target:self
-                                                                          action:@selector(didPushDoneButtonForDatePicker)];
-    
-     //Deleteボタンの作成
-    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(didPushDeleteButtonForDatePicker)];
-    toolBar.items = [NSArray arrayWithObjects:deleteButton, spacer, doneButton, nil];
-	
-    
-	[actionSheet addSubview:toolBar];
-	[actionSheet addSubview:datePicker];
-    self.actionSheetForPicker = actionSheet;
-    
-    [self.actionSheetForPicker showInView:self.view];
-	[self.actionSheetForPicker setBounds:CGRectMake(0, 0, 320, 500)];//高さは、手動で調整
+    self.myActionSheet = actionSheet;
+    [self.myActionSheet showInView:self.view];
+	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
 }
 
 -(void)didChangeValueOnDatePicker:(UIDatePicker*)datePicker
 {
     self.task.dueDate = datePicker.date;
-    
-    [self.myTableView reloadData];
-}
-
-- (void)didPushDoneButtonForDatePicker
-{
-    [self.actionSheetForPicker dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)didPushDeleteButtonForDatePicker
-{
-    self.task.dueDate = nil;
-    [self.myTableView reloadData];
-    
-    [self.actionSheetForPicker dismissWithClickedButtonIndex:0 animated:YES];
+    [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
 }
 
 #pragma mark - TextField delegate

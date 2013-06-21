@@ -11,7 +11,7 @@
 #import "EditMemoViewController.h"
 #import "MemoCell.h"
 
-@interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
+@interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) Task *task;
 @property (assign, nonatomic) BOOL isNewTask;

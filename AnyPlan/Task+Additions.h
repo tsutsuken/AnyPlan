@@ -11,5 +11,9 @@
 @interface Task (Additions)
 
 - (void)saveContext;
+- (NSString *)dueDateStringShort;
+- (NSString *)dueDateStringLong;
+- (NSString *)repeatIconString;
+- (void)repeatTaskIfNeeded;
 
 @end

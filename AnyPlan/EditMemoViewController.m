@@ -85,6 +85,7 @@
         frame.size.height -= (cEndRect.size.height - cBeginRect.size.height);
     }
     [self.textView setFrame:frame];
+
 }
 
 @end

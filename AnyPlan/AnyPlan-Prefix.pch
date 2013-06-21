@@ -17,11 +17,12 @@
     #import "Project+Additions.h"
     #import "Task.h"
     #import "Task+Additions.h"
+    #import "Repeat.h"
+    #import "Repeat+Additions.h"
     #import "Note.h"
     #import "Note+Additions.h"
     #import "AppDelegate.h"
     #import "UIImage+Additions.h"
-    #import "NSDate+Additions.h"
     #import "EditableCell.h"
     #import "ProjectCell.h"
     #import "NoteCell.h"
@@ -29,6 +30,7 @@
     #import "NavigationBarTitleWithSubtitleView.h"
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
+
 
 
 #endif
@@ -49,6 +51,7 @@
 #define LOG_SIZE(p, comment) NSLog(@"%@:%f, %f", comment, p.width, p.height)
 #define LOG_RECT(p, comment) NSLog(@"%@:%f, %f - %f, %f", comment, p.origin.x, p.origin.y, p.size.width, p.size.height)
 #define LOG_BOOL(bool, comment)  NSLog(@"%@:%@",comment,(bool ? @"YES":@"NO"))
+#define LOG_DATE(date, comment)  NSLog(@"%@:%@",comment,[date description])
 
 /*
 #ifdef DEBUG

@@ -81,6 +81,9 @@
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
 		1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */; };
+		1F97700E17719FC4004321FF /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97700D17719FC4004321FF /* Repeat.m */; };
+		1F97701117719FD4004321FF /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97701017719FD4004321FF /* Task.m */; };
+		1F9770171771A102004321FF /* Repeat+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9770161771A102004321FF /* Repeat+Additions.m */; };
 		1F9A212217696FCD000F5E0C /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A212117696FCD000F5E0C /* IconCell.m */; };
 		1F9D07311766129300D3BBF9 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D07301766129300D3BBF9 /* UIImage+Additions.m */; };
 		1FA078B9175F7BBC005B594F /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA078B8175F7BBC005B594F /* Project.m */; };
@@ -127,8 +130,6 @@
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
 		1FE947071747BF4F00FBBA49 /* eye_opened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */; };
 		1FE947081747BF4F00FBBA49 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */; };
-		1FEA5B92176EAAD30075BB2F /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA5B91176EAAD30075BB2F /* Task.m */; };
-		1FEA5B95176EDD780075BB2F /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */; };
 		3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9077C873054A4505A8F049D1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +230,12 @@
 		1F85D429176D9842009C7362 /* MemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoCell.m; sourceTree = "<group>"; };
 		1F911CB91761E96300CA468A /* SelectIconColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconColorViewController.h; sourceTree = "<group>"; };
 		1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconColorViewController.m; sourceTree = "<group>"; };
+		1F97700C17719FC4004321FF /* Repeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repeat.h; sourceTree = "<group>"; };
+		1F97700D17719FC4004321FF /* Repeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repeat.m; sourceTree = "<group>"; };
+		1F97700F17719FD3004321FF /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		1F97701017719FD4004321FF /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		1F9770151771A102004321FF /* Repeat+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Repeat+Additions.h"; sourceTree = "<group>"; };
+		1F9770161771A102004321FF /* Repeat+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Repeat+Additions.m"; sourceTree = "<group>"; };
 		1F9A212017696FCD000F5E0C /* IconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
 		1F9A212117696FCD000F5E0C /* IconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconCell.m; sourceTree = "<group>"; };
 		1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
@@ -297,10 +304,6 @@
 		1FE3094C172561510063BD50 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_opened@2x.png"; sourceTree = "<group>"; };
 		1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_closed@2x.png"; sourceTree = "<group>"; };
-		1FEA5B90176EAAD30075BB2F /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		1FEA5B91176EAAD30075BB2F /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		1FEA5B93176EDD780075BB2F /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
-		1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		9077C873054A4505A8F049D1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -454,6 +457,43 @@
 				1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		1F97701217719FF6004321FF /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				1FA078B7175F7BBC005B594F /* Project.h */,
+				1FA078B8175F7BBC005B594F /* Project.m */,
+				1F22236E1726AE980034CC80 /* Project+Additions.h */,
+				1F22236F1726AE980034CC80 /* Project+Additions.m */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		1F9770131771A0A6004321FF /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				1FA5EB6417585DBB00025605 /* Note.h */,
+				1FA5EB6517585DBB00025605 /* Note.m */,
+				1FA76DA6172D06F100EC659C /* Note+Additions.h */,
+				1FA76DA7172D06F100EC659C /* Note+Additions.m */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
+		1F9770141771A0AB004321FF /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				1F97700F17719FD3004321FF /* Task.h */,
+				1F97701017719FD4004321FF /* Task.m */,
+				1FD829C0176C345C0080FA18 /* Task+Additions.h */,
+				1FD829C1176C345C0080FA18 /* Task+Additions.m */,
+				1F97700C17719FC4004321FF /* Repeat.h */,
+				1F97700D17719FC4004321FF /* Repeat.m */,
+				1F9770151771A102004321FF /* Repeat+Additions.h */,
+				1F9770161771A102004321FF /* Repeat+Additions.m */,
+			);
+			name = Task;
 			sourceTree = "<group>";
 		};
 		1F9A211E17696F6B000F5E0C /* UITableView */ = {
@@ -627,8 +667,6 @@
 				1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */,
 				1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */,
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
-				1FEA5B93176EDD780075BB2F /* NSDate+Additions.h */,
-				1FEA5B94176EDD780075BB2F /* NSDate+Additions.m */,
 				1F22235C17269B8D0034CC80 /* Cell */,
 			);
 			name = Common;
@@ -664,18 +702,9 @@
 		1FE3095A172568B20063BD50 /* Managed Object */ = {
 			isa = PBXGroup;
 			children = (
-				1FA078B7175F7BBC005B594F /* Project.h */,
-				1FA078B8175F7BBC005B594F /* Project.m */,
-				1F22236E1726AE980034CC80 /* Project+Additions.h */,
-				1F22236F1726AE980034CC80 /* Project+Additions.m */,
-				1FEA5B90176EAAD30075BB2F /* Task.h */,
-				1FEA5B91176EAAD30075BB2F /* Task.m */,
-				1FD829C0176C345C0080FA18 /* Task+Additions.h */,
-				1FD829C1176C345C0080FA18 /* Task+Additions.m */,
-				1FA5EB6417585DBB00025605 /* Note.h */,
-				1FA5EB6517585DBB00025605 /* Note.m */,
-				1FA76DA6172D06F100EC659C /* Note+Additions.h */,
-				1FA76DA7172D06F100EC659C /* Note+Additions.m */,
+				1F97701217719FF6004321FF /* Project */,
+				1F9770141771A0AB004321FF /* Task */,
+				1F9770131771A0A6004321FF /* Note */,
 			);
 			name = "Managed Object";
 			sourceTree = "<group>";
@@ -926,8 +955,9 @@
 				1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */,
 				1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */,
 				1F85D42A176D9842009C7362 /* MemoCell.m in Sources */,
-				1FEA5B92176EAAD30075BB2F /* Task.m in Sources */,
-				1FEA5B95176EDD780075BB2F /* NSDate+Additions.m in Sources */,
+				1F97700E17719FC4004321FF /* Repeat.m in Sources */,
+				1F97701117719FD4004321FF /* Task.m in Sources */,
+				1F9770171771A102004321FF /* Repeat+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
