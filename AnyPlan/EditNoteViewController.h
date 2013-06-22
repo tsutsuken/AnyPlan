@@ -15,10 +15,10 @@
 
 @property (assign, nonatomic) id <EditNoteViewControllerDelegate> delegate;
 @property (strong, nonatomic) Note *note;
-@property (weak  , nonatomic) IBOutlet UITextView *noteTextView;
 @property (assign, nonatomic) BOOL isNewNote;
 
 - (IBAction)didPushDeleteButton;
+- (IBAction)didPushExportButton;
 
 
 @end

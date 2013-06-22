@@ -10,12 +10,12 @@
 
 @interface EditNoteViewController ()
 
+@property (weak  , nonatomic) IBOutlet UITextView *noteTextView;
+@property (assign, nonatomic) CGRect defaultFrameForTextView;
+
 @end
 
 @implementation EditNoteViewController
-{
-    CGRect defaultFrameForTextView;
-}
 
 #define kHeightForToolbar 44
 
@@ -54,12 +54,14 @@
 {
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];//UIActivityViewの後の呼び出しで、余分に追加するのを防ぐため
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
-    if (CGRectIsEmpty(defaultFrameForTextView))
+    if (CGRectIsEmpty(self.defaultFrameForTextView))
     {
-        defaultFrameForTextView = self.noteTextView.frame;//viewDidLoadだと、frameが初期化されていない。
+        self.defaultFrameForTextView = self.noteTextView.frame;//viewDidLoadだと、frameが初期化されていない。
     }
 }
 
@@ -150,6 +152,7 @@
     {
         frame.size.height -= (cEndRect.size.height - cBeginRect.size.height);
     }
+    
     [self.noteTextView setFrame:frame];
 }
 
@@ -157,7 +160,7 @@
 {
     [self setRightBarButtonWithDoneButton:NO];
     
-    [self.noteTextView setFrame:defaultFrameForTextView];
+    [self.noteTextView setFrame:self.defaultFrameForTextView];
 }
 
 - (void)setRightBarButtonWithDoneButton:(BOOL)isDoneButton
@@ -231,6 +234,19 @@
     //contextのsaveはしない。isDeleteにするため
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Export Note
+
+- (IBAction)didPushExportButton
+{
+    NSString *exportingText = self.noteTextView.text;
+    NSArray* actItems = @[exportingText];
+    
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:actItems applicationActivities:nil];
+    activityView.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter];
+    
+    [self presentViewController:activityView animated:YES completion:nil];
 }
 
 #pragma mark - Show Other View

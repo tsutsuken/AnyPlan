@@ -757,6 +757,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="g7z-x8-hMT"/>
+                                    <barButtonItem style="plain" systemItem="action" id="hSH-3l-q1f">
+                                        <connections>
+                                            <action selector="didPushExportButton" destination="Sr7-uo-56z" id="a6h-dc-Wb8"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -932,6 +937,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditNoteViewController.h"/>
             <relationships>
                 <relationship kind="action" name="didPushDeleteButton"/>
+                <relationship kind="action" name="didPushExportButton"/>
                 <relationship kind="outlet" name="noteTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
