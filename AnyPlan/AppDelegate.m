@@ -22,6 +22,8 @@
 {
     [self checkUpdates];
     
+    [self setParse];
+    
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
@@ -32,6 +34,12 @@
     [self setReviewRequestSystem];
     
     return YES;
+}
+
+- (void)setParse
+{
+    [Parse setApplicationId:@"cRs7jfZBOrZHD5v5sjePexOIPSQiNRlpDoJzSTRt"
+                  clientKey:@"VGkmHDzt8cUv1hHtDtCtCSYW60FySLNuBhbf4Kfg"];
 }
 
 - (void)setReviewRequestSystem
@@ -87,7 +95,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[PFUser currentUser] refreshInBackgroundWithTarget:nil selector:nil];
     
     [Appirater appEnteredForeground:YES];
 }

@@ -80,7 +80,11 @@
 		1F5EE430172F6B6A004EAD94 /* checkbox_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
+		1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB515177D9840007E4F58 /* check_HUD.png */; };
+		1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB516177D9840007E4F58 /* check_HUD@2x.png */; };
 		1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */; };
+		1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9435F0177D26B500C4E408 /* UserAccountViewController.m */; };
+		1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */; };
 		1F97700E17719FC4004321FF /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97700D17719FC4004321FF /* Repeat.m */; };
 		1F97701117719FD4004321FF /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97701017719FD4004321FF /* Task.m */; };
 		1F9770171771A102004321FF /* Repeat+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9770161771A102004321FF /* Repeat+Additions.m */; };
@@ -122,6 +126,8 @@
 		1FA76DC1172D4E6B00EC659C /* note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA76DBD172D4E6B00EC659C /* note@2x.png */; };
 		1FA76DC8172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */; };
 		1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DCD172D704500EC659C /* CustomTabBarController.m */; };
+		1FA76E02177A8F5C0052F191 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */; };
+		1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB496A0177BE8BF00934413 /* MySignUpViewController.m */; };
 		1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
@@ -130,6 +136,7 @@
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
 		1FE947071747BF4F00FBBA49 /* eye_opened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */; };
 		1FE947081747BF4F00FBBA49 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */; };
+		1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */; };
 		3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9077C873054A4505A8F049D1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -228,8 +235,14 @@
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		1F85D428176D9842009C7362 /* MemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoCell.h; sourceTree = "<group>"; };
 		1F85D429176D9842009C7362 /* MemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoCell.m; sourceTree = "<group>"; };
+		1F8EB515177D9840007E4F58 /* check_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_HUD.png; sourceTree = "<group>"; };
+		1F8EB516177D9840007E4F58 /* check_HUD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_HUD@2x.png"; sourceTree = "<group>"; };
 		1F911CB91761E96300CA468A /* SelectIconColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconColorViewController.h; sourceTree = "<group>"; };
 		1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconColorViewController.m; sourceTree = "<group>"; };
+		1F9435EF177D26B500C4E408 /* UserAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountViewController.h; sourceTree = "<group>"; };
+		1F9435F0177D26B500C4E408 /* UserAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountViewController.m; sourceTree = "<group>"; };
+		1F9435F6177D324900C4E408 /* ChangeEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeEmailViewController.h; sourceTree = "<group>"; };
+		1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeEmailViewController.m; sourceTree = "<group>"; };
 		1F97700C17719FC4004321FF /* Repeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repeat.h; sourceTree = "<group>"; };
 		1F97700D17719FC4004321FF /* Repeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repeat.m; sourceTree = "<group>"; };
 		1F97700F17719FD3004321FF /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -290,6 +303,10 @@
 		1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarTitleWithSubtitleView.m; sourceTree = "<group>"; };
 		1FA76DCC172D704500EC659C /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		1FA76DCD172D704500EC659C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		1FA76E00177A8F5C0052F191 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		1FB4969F177BE8BF00934413 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
+		1FB496A0177BE8BF00934413 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
 		1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconShapeViewController.h; sourceTree = "<group>"; };
 		1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconShapeViewController.m; sourceTree = "<group>"; };
 		1FBD4CC517277A76003A5D5C /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
@@ -304,6 +321,7 @@
 		1FE3094C172561510063BD50 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_opened@2x.png"; sourceTree = "<group>"; };
 		1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_closed@2x.png"; sourceTree = "<group>"; };
+		1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_bg_1@2x.png"; sourceTree = "<group>"; };
 		9077C873054A4505A8F049D1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -441,6 +459,7 @@
 			children = (
 				1FA60AB8173E471C0037399E /* SettingViewController.h */,
 				1FA60AB9173E471C0037399E /* SettingViewController.m */,
+				1F9435F2177D31FA00C4E408 /* Account */,
 				1F9A21231769B5CE000F5E0C /* Edit Project */,
 			);
 			name = Setting;
@@ -457,6 +476,17 @@
 				1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		1F9435F2177D31FA00C4E408 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1F9435EF177D26B500C4E408 /* UserAccountViewController.h */,
+				1F9435F0177D26B500C4E408 /* UserAccountViewController.m */,
+				1F9435F6177D324900C4E408 /* ChangeEmailViewController.h */,
+				1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */,
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 		1F97701217719FF6004321FF /* Project */ = {
@@ -667,6 +697,10 @@
 				1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */,
 				1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */,
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
+				1FA76E00177A8F5C0052F191 /* WelcomeViewController.h */,
+				1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */,
+				1FB4969F177BE8BF00934413 /* MySignUpViewController.h */,
+				1FB496A0177BE8BF00934413 /* MySignUpViewController.m */,
 				1F22235C17269B8D0034CC80 /* Cell */,
 			);
 			name = Common;
@@ -687,6 +721,8 @@
 				1F1F75141766CDD60022FC11 /* ProjectIcon */,
 				1FA60AB4173E43BA0037399E /* gear.png */,
 				1FA60AB5173E43BA0037399E /* gear@2x.png */,
+				1F8EB515177D9840007E4F58 /* check_HUD.png */,
+				1F8EB516177D9840007E4F58 /* check_HUD@2x.png */,
 				1FA76DBA172D4E6B00EC659C /* check.png */,
 				1FA76DBB172D4E6B00EC659C /* check@2x.png */,
 				1FA76DBC172D4E6B00EC659C /* note.png */,
@@ -695,6 +731,7 @@
 				1F4D237F172BCD5600081E94 /* delete_button.png */,
 				1F4D2381172BCDA300081E94 /* list@2x.png */,
 				1F4D2382172BCDA300081E94 /* list.png */,
+				1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -862,6 +899,9 @@
 				1F28C662176B38A900EEE302 /* inbox_with_background@2x.png in Resources */,
 				1F28C663176B38A900EEE302 /* inbox.png in Resources */,
 				1F28C664176B38A900EEE302 /* inbox@2x.png in Resources */,
+				1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */,
+				1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */,
+				1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +998,10 @@
 				1F97700E17719FC4004321FF /* Repeat.m in Sources */,
 				1F97701117719FD4004321FF /* Task.m in Sources */,
 				1F9770171771A102004321FF /* Repeat+Additions.m in Sources */,
+				1FA76E02177A8F5C0052F191 /* WelcomeViewController.m in Sources */,
+				1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */,
+				1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */,
+				1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

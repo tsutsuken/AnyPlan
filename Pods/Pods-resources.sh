@@ -53,6 +53,15 @@ install_resource 'Appirater/sv.lproj'
 install_resource 'Appirater/tr.lproj'
 install_resource 'Appirater/zh-Hans.lproj'
 install_resource 'Appirater/zh-Hant.lproj'
+install_resource 'Facebook-iOS-SDK/src/FacebookSDKResources.bundle'
+install_resource 'Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/back_icon.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/back_icon@2x.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/forward_icon.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/forward_icon@2x.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/reload_icon.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/images/reload_icon@2x.png'
+install_resource 'TSMiniWebBrowser/TSMiniWebBrowser/TSMiniWebBrowser.xib'
 
 rsync -avr --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rm "$RESOURCES_TO_COPY"

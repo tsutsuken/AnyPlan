@@ -44,9 +44,14 @@
     return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,7 +59,15 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_ManageProject", nil);
+    if (indexPath.row == 0)
+    {
+        cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_ManageProject", nil);
+    }
+    else
+    {
+        cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Account", nil);
+        cell.detailTextLabel.text = [[PFUser currentUser] username];
+    }
     
     return cell;
 }
@@ -63,7 +76,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self showManageProjectView];
+    if (indexPath.row == 0)
+    {
+        [self showManageProjectView];
+    }
+    else
+    {
+        [self showUserAccountView];
+    }
 }
 
 #pragma mark - Show Other View
@@ -85,5 +105,13 @@
 {
     [self performSegueWithIdentifier:@"showManageProjectView" sender:self];
 }
+
+#pragma mark UserAccountView
+
+- (void)showUserAccountView
+{
+    [self performSegueWithIdentifier:@"showUserAccountView" sender:self];
+}
+
 
 @end

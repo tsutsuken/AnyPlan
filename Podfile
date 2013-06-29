@@ -1,3 +1,6 @@
 platform :ios,'5.0'
+pod 'Parse'
 pod 'ViewDeck'
 pod 'Appirater', '1.0.3'
+pod 'TSMiniWebBrowser'
+pod 'MBProgressHUD'
