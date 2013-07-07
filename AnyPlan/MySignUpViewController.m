@@ -10,6 +10,7 @@
 
 #define kTagForFooterButton 1
 #define kFontSizeForFooterButton 12
+#define kURLForPrivacyPolicy @"http://www.privacychoice.org/policy/mobile?policy=a5d670d3ea88dad71c15d239ceeb48f7"
 
 @interface MySignUpViewController ()
 
@@ -63,7 +64,7 @@
 - (void)didPushFooterButton
 {
 #warning 本番URLを挿入
-    [self showWebBrowserWithURL:[NSURL URLWithString:@"http://lvupp.com"]];
+    [self showWebBrowserWithURL:[NSURL URLWithString:kURLForPrivacyPolicy]];
 }
 
 - (void)showWebBrowserWithURL:(NSURL *)url

@@ -1162,11 +1162,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnyPlan/AnyPlan-Prefix.pch";
 				INFOPLIST_FILE = "AnyPlan/AnyPlan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5C0BDC42-6436-4623-B276-4D41431E76A9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C0BDC42-6436-4623-B276-4D41431E76A9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

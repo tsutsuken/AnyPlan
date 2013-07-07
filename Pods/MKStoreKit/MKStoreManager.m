@@ -334,13 +334,11 @@ static MKStoreManager* _sharedStoreManager;
     
     receiptData = [NSData dataFromBase64String:[payloadDict objectForKey:@"purchase-info"]];
     
-    //expiresDateは数分後になっている。ちゃんとサーバから拾った値っぽい。いつ拾った?
     NSDictionary *receiptDict = [NSPropertyListSerialization propertyListWithData:receiptData
                                                                           options:NSPropertyListImmutable
                                                                            format:&plistFormat
                                                                             error:nil];
     
-#warning test
     NSDate *expireDate = [receiptDict objectForKey:@"expires-date-formatted"];
     NSLog(@"expireDate_%@", expireDate);
     

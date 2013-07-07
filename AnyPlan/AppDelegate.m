@@ -36,7 +36,7 @@
     
     [self setReviewRequestSystem];
     
-#warning test
+//#warning test
     //[PFUser logOut];
     
     return YES;
