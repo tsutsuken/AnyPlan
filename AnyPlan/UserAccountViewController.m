@@ -10,6 +10,8 @@
 
 @interface UserAccountViewController ()
 
+@property (strong, nonatomic) MBProgressHUD *HUD;
+
 @end
 
 @implementation UserAccountViewController
@@ -59,7 +61,7 @@
     else
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogOutCell" forIndexPath:indexPath];
-        cell.textLabel.text = @"ログアウト";
+        cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Restore", nil);
         
         return cell;
     }
@@ -75,8 +77,60 @@
     }
     else
     {
-        [PFUser logOut];
+        [self restorePurchase];
     }
+}
+
+#pragma mark - Restore
+
+- (void)restorePurchase
+{
+    [self showHUD];
+    
+    [[MKStoreManager sharedManager] restorePreviousTransactionsOnComplete:^()
+    {
+        LOG(@"Restored");
+        [self hideHUDWithCompleted:YES];
+    }
+                                                                  onError:^(NSError* error)
+    {
+        LOG(@"Canceled");
+        [self hideHUDWithCompleted:NO];
+    }];
+}
+
+- (void)showHUD
+{
+	self.HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:self.HUD];
+	
+	self.HUD.delegate = self;
+	self.HUD.labelText = NSLocalizedString(@"UserAccountView_HUD_Restore", nil);
+	self.HUD.minSize = CGSizeMake(135.f, 135.f);
+	
+	[self.HUD show:YES];
+}
+
+- (void)hideHUDWithCompleted:(BOOL)isCompleted
+{
+    NSString *imageName;
+    NSString *labelText;
+    
+    if (isCompleted)
+    {
+        imageName = @"check_HUD.png";
+        labelText = NSLocalizedString(@"UserAccountView_HUD_Completed", nil);
+    }
+    else
+    {
+        imageName = @"cross_HUD.png";
+        labelText = NSLocalizedString(@"UserAccountView_HUD_Canceled", nil);;
+    }
+    
+    self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    self.HUD.mode = MBProgressHUDModeCustomView;
+    self.HUD.labelText = labelText;
+    [self.HUD hide:YES afterDelay:1];
 }
 
 #pragma mark - Show Other View

@@ -17,10 +17,13 @@
 #define kVersionNumber @"kVersionNumber"
 #define kProjectTitle @"kProjectTitle"
 #define kProjectIconImageName @"kProjectIconImageName"
+#define kMaxNumberOfProject 5
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkUpdates];
+    
+    [MKStoreManager sharedManager];
     
     [self setParse];
     
@@ -33,6 +36,9 @@
     
     [self setReviewRequestSystem];
     
+#warning test
+    //[PFUser logOut];
+    
     return YES;
 }
 
@@ -40,6 +46,9 @@
 {
     [Parse setApplicationId:@"cRs7jfZBOrZHD5v5sjePexOIPSQiNRlpDoJzSTRt"
                   clientKey:@"VGkmHDzt8cUv1hHtDtCtCSYW60FySLNuBhbf4Kfg"];
+    
+    PFACL *defaultACL = [PFACL ACL];//read,write,共にNo
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
 }
 
 - (void)setReviewRequestSystem
@@ -308,6 +317,70 @@
     NSArray *projectArray = [context executeFetchRequest:fetchRequest error:&error];
     
     return [projectArray objectAtIndex:0];
+}
+
+- (BOOL)isPremiumUser
+{
+    BOOL isPremiumUser;
+    
+    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
+    {
+        isPremiumUser = YES;
+    }
+    else if([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
+    {
+        isPremiumUser = YES;
+    }
+    else
+    {
+        isPremiumUser = NO;
+    }
+
+    return isPremiumUser;
+}
+
+- (BOOL)canAddNewProject
+{
+    BOOL canAddNewProject;
+    
+    int numberOfProject = [self numberOfProject];
+    
+    if (numberOfProject < kMaxNumberOfProject)
+    {
+        canAddNewProject = YES;
+    }
+    else
+    {
+        if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
+        {
+            canAddNewProject = YES;
+        }
+        else if([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
+        {
+            canAddNewProject = YES;
+        }
+        else
+        {
+            canAddNewProject = NO;
+        }
+    }
+    
+    LOG_BOOL(canAddNewProject, @"canAddNewProject");
+    
+    return canAddNewProject;
+}
+
+- (int)numberOfProject
+{
+    int numberOfProject;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
+	[fetchRequest setEntity:entity];
+    
+    numberOfProject = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    
+    return numberOfProject;
 }
 
 @end

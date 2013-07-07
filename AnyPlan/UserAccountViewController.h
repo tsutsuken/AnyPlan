@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserAccountViewController : UITableViewController
+@interface UserAccountViewController : UITableViewController <MBProgressHUDDelegate>
 
 @end

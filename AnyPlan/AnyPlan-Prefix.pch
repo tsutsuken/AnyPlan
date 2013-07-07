@@ -32,8 +32,8 @@
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
     #import "MBProgressHUD.h"
-
-
+    #import "MKStoreManager.h"
+    #import "MF_Base64Additions.h"
 
 #endif
 
@@ -54,6 +54,10 @@
 #define LOG_RECT(p, comment) NSLog(@"%@:%f, %f - %f, %f", comment, p.origin.x, p.origin.y, p.size.width, p.size.height)
 #define LOG_BOOL(bool, comment)  NSLog(@"%@:%@",comment,(bool ? @"YES":@"NO"))
 #define LOG_DATE(date, comment)  NSLog(@"%@:%@",comment,[date description])
+
+/*In-App-Purchase*/
+#define kProductIdSubscriptionMonth @"com.lvup.AnyPlan.Subscription_Month"
+#define kProductIdSubscriptionYear @"com.lvup.AnyPlan.Subscription_Year"
 
 /*
 #ifdef DEBUG

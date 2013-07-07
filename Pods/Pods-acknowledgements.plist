@@ -257,6 +257,17 @@ THE SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>MKStoreKit uses MIT Licensing And so all of my source code can
+                           be used royalty-free into your app. Just make sure that you don’t
+                           remove the copyright notice from the source code if you make your
+                           app open source and in the about page.</string>
+			<key>Title</key>
+			<string>MKStoreKit</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>See https://parse.com/about/terms</string>
 			<key>Title</key>
 			<string>Parse</string>

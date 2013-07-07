@@ -57,6 +57,7 @@
     [signUpViewController setDelegate:self];
     signUpViewController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsEmail | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton ;
     //signUpViewController.signUpView.usernameField.placeholder = @"Email";
+    [signUpViewController.signUpView setLogo:nil];
     
     [self presentViewController:signUpViewController animated:YES completion:NULL];
 }
@@ -66,6 +67,7 @@
     PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
     [logInViewController setDelegate:self];
     logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsPasswordForgotten | PFLogInFieldsDismissButton ;
+    [logInViewController.logInView setLogo:nil];
     
     [self presentViewController:logInViewController animated:YES completion:NULL];
 }

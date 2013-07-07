@@ -22,7 +22,7 @@
     self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
-                                                                                           action:@selector(showEditProjectViewWithNewProject)];
+                                                                                           action:@selector(didPushAddButton)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -249,11 +249,30 @@
     }
 }
 
+- (void)didPushAddButton
+{
+    if ([APPDELEGATE canAddNewProject])
+    {
+        [self showEditProjectViewWithNewProject];
+    }
+    else
+    {
+        [self showUpgradeAccountView];
+    }
+}
+
 #pragma mark EditProjectView
 
 - (void)showEditProjectViewWithNewProject
 {
     [self performSegueWithIdentifier:@"showEditProjectView" sender:self.navigationItem.rightBarButtonItem];
+}
+
+#pragma mark UpgradeAccountView
+
+- (void)showUpgradeAccountView
+{
+    [self performSegueWithIdentifier:@"showUpgradeAccountView" sender:self];
 }
 
 #pragma mark - Fetched results controller

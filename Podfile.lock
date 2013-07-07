@@ -1,7 +1,9 @@
 PODS:
   - Appirater (1.0.3)
+  - Base64 (1.0.1)
   - Facebook-iOS-SDK (3.5.3)
   - MBProgressHUD (0.7)
+  - MKStoreKit (4.99)
   - Parse (1.2.10):
     - Facebook-iOS-SDK (~> 3.5.1)
   - TSMiniWebBrowser (1.0.1)
@@ -9,15 +11,19 @@ PODS:
 
 DEPENDENCIES:
   - Appirater (= 1.0.3)
+  - Base64
   - MBProgressHUD
+  - MKStoreKit
   - Parse
   - TSMiniWebBrowser
   - ViewDeck
 
 SPEC CHECKSUMS:
   Appirater: 1c146af7b0ef3e2114a17db2e185f94367f63a99
+  Base64: eaac9f2088ba659c5db1db960576eb0f2969ebaf
   Facebook-iOS-SDK: c11e851555d8cb8b55853ec2990b01d9e343d09e
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MKStoreKit: e93873e40a030328487a527b08b5e12287efc1df
   Parse: f678a56974e34a2549c21eabb0dcbad309b270b1
   TSMiniWebBrowser: b0d1e578f250f29615541093564df0c2aebcda07
   ViewDeck: ac3ff2388bcb13e832d7878ccb6e0e320d10a779

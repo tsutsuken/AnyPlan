@@ -51,15 +51,6 @@
     {
         return 0;
     }
-    /*
-    if (section == 0)
-    {
-        return tableView.sectionHeaderHeight;
-    }else
-    {
-        return 0;
-    }
-     */
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -137,7 +128,14 @@
     }
     else
     {
-        [self showEditProjectView];
+        if ([APPDELEGATE canAddNewProject])
+        {
+            [self showEditProjectView];
+        }
+        else
+        {
+            [self showUpgradeAccountView];
+        }
     }
 }
 
@@ -170,6 +168,13 @@
 - (void)showEditProjectView
 {
     [self performSegueWithIdentifier:@"showEditProjectView" sender:self];
+}
+
+#pragma mark UpgradeAccountView
+
+- (void)showUpgradeAccountView
+{
+    [self performSegueWithIdentifier:@"showUpgradeAccountView" sender:self];
 }
 
 #pragma mark - Fetched results controller

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F00DA2317886A3B006EF467 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2217886A3A006EF467 /* Icon.png */; };
+		1F00DA2517886A40006EF467 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2417886A40006EF467 /* Icon@2x.png */; };
 		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
 		1F1A73A217675AAB00EED3D5 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1A73A017675AAB00EED3D5 /* sun.png */; };
 		1F1A73A317675AAB00EED3D5 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1A73A117675AAB00EED3D5 /* sun@2x.png */; };
@@ -24,6 +26,8 @@
 		1F28C662176B38A900EEE302 /* inbox_with_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F28C65E176B38A900EEE302 /* inbox_with_background@2x.png */; };
 		1F28C663176B38A900EEE302 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F28C65F176B38A900EEE302 /* inbox.png */; };
 		1F28C664176B38A900EEE302 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F28C660176B38A900EEE302 /* inbox@2x.png */; };
+		1F3E36CD17858BF800BF8ED9 /* cross_HUD.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */; };
+		1F3E36CE17858BF800BF8ED9 /* cross_HUD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E36CC17858BF800BF8ED9 /* cross_HUD@2x.png */; };
 		1F3F2F5A176753BA007A0606 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F2E176753BA007A0606 /* book.png */; };
 		1F3F2F5B176753BA007A0606 /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F2F176753BA007A0606 /* book@2x.png */; };
 		1F3F2F5C176753BA007A0606 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2F30176753BA007A0606 /* briefcase.png */; };
@@ -79,6 +83,7 @@
 		1F5EE42F172F6B6A004EAD94 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EE42B172F6B6A004EAD94 /* checkbox_unchecked.png */; };
 		1F5EE430172F6B6A004EAD94 /* checkbox_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
+		1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
 		1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB515177D9840007E4F58 /* check_HUD.png */; };
 		1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB516177D9840007E4F58 /* check_HUD@2x.png */; };
@@ -128,6 +133,7 @@
 		1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DCD172D704500EC659C /* CustomTabBarController.m */; };
 		1FA76E02177A8F5C0052F191 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */; };
 		1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB496A0177BE8BF00934413 /* MySignUpViewController.m */; };
+		1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */; };
 		1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
@@ -151,6 +157,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F00DA2217886A3A006EF467 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1F00DA2417886A40006EF467 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		1F1A739F176758AA00EED3D5 /* AnyPlan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnyPlan-Prefix.pch"; sourceTree = "<group>"; };
@@ -176,6 +184,8 @@
 		1F28C65E176B38A900EEE302 /* inbox_with_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox_with_background@2x.png"; sourceTree = "<group>"; };
 		1F28C65F176B38A900EEE302 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
 		1F28C660176B38A900EEE302 /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
+		1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross_HUD.png; sourceTree = "<group>"; };
+		1F3E36CC17858BF800BF8ED9 /* cross_HUD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross_HUD@2x.png"; sourceTree = "<group>"; };
 		1F3F2F2E176753BA007A0606 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		1F3F2F2F176753BA007A0606 /* book@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book@2x.png"; sourceTree = "<group>"; };
 		1F3F2F30176753BA007A0606 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
@@ -233,6 +243,7 @@
 		1F5EE42C172F6B6A004EAD94 /* checkbox_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_unchecked@2x.png"; sourceTree = "<group>"; };
 		1F5EE434172F7629004EAD94 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
 		1F85D428176D9842009C7362 /* MemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoCell.h; sourceTree = "<group>"; };
 		1F85D429176D9842009C7362 /* MemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoCell.m; sourceTree = "<group>"; };
 		1F8EB515177D9840007E4F58 /* check_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_HUD.png; sourceTree = "<group>"; };
@@ -307,6 +318,8 @@
 		1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		1FB4969F177BE8BF00934413 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
 		1FB496A0177BE8BF00934413 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
+		1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeAccountViewController.h; sourceTree = "<group>"; };
+		1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeAccountViewController.m; sourceTree = "<group>"; };
 		1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconShapeViewController.h; sourceTree = "<group>"; };
 		1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconShapeViewController.m; sourceTree = "<group>"; };
 		1FBD4CC517277A76003A5D5C /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
@@ -367,6 +380,7 @@
 			children = (
 				1FA76DC5172D533500EC659C /* Common */,
 				1FA76D46172CAF4800EC659C /* Menu */,
+				1F296544173F331500174C15 /* Setting */,
 				1FA76D45172CAF3A00EC659C /* Task */,
 				1FA76D47172CAF5500EC659C /* Note */,
 			);
@@ -376,6 +390,7 @@
 		1F0D2C71172516B400273284 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */,
 				1F4734D61763069300D78618 /* IconColors.plist */,
 				1FA7445B176445CD00E46469 /* IconShapes.plist */,
 				1F2223671726A93D0034CC80 /* Localizable.strings */,
@@ -460,7 +475,7 @@
 				1FA60AB8173E471C0037399E /* SettingViewController.h */,
 				1FA60AB9173E471C0037399E /* SettingViewController.m */,
 				1F9435F2177D31FA00C4E408 /* Account */,
-				1F9A21231769B5CE000F5E0C /* Edit Project */,
+				1F9A21231769B5CE000F5E0C /* Project */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -552,7 +567,7 @@
 			name = UICollectionView;
 			sourceTree = "<group>";
 		};
-		1F9A21231769B5CE000F5E0C /* Edit Project */ = {
+		1F9A21231769B5CE000F5E0C /* Project */ = {
 			isa = PBXGroup;
 			children = (
 				1FA60ABB173E4AB90037399E /* ManageProjectViewController.h */,
@@ -564,12 +579,14 @@
 				1F911CB91761E96300CA468A /* SelectIconColorViewController.h */,
 				1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */,
 			);
-			name = "Edit Project";
+			name = Project;
 			sourceTree = "<group>";
 		};
 		1FA48EA11722416100D1AF30 = {
 			isa = PBXGroup;
 			children = (
+				1F00DA2417886A40006EF467 /* Icon@2x.png */,
+				1F00DA2217886A3A006EF467 /* Icon.png */,
 				1FA48EB51722416200D1AF30 /* AnyPlan */,
 				1FA48EE01722416400D1AF30 /* AnyPlanTests */,
 				1FA48EAC1722416200D1AF30 /* Frameworks */,
@@ -668,7 +685,6 @@
 			children = (
 				1FE3094B172561510063BD50 /* MenuViewController.h */,
 				1FE3094C172561510063BD50 /* MenuViewController.m */,
-				1F296544173F331500174C15 /* Setting */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -701,6 +717,8 @@
 				1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */,
 				1FB4969F177BE8BF00934413 /* MySignUpViewController.h */,
 				1FB496A0177BE8BF00934413 /* MySignUpViewController.m */,
+				1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */,
+				1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */,
 				1F22235C17269B8D0034CC80 /* Cell */,
 			);
 			name = Common;
@@ -723,6 +741,8 @@
 				1FA60AB5173E43BA0037399E /* gear@2x.png */,
 				1F8EB515177D9840007E4F58 /* check_HUD.png */,
 				1F8EB516177D9840007E4F58 /* check_HUD@2x.png */,
+				1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */,
+				1F3E36CC17858BF800BF8ED9 /* cross_HUD@2x.png */,
 				1FA76DBA172D4E6B00EC659C /* check.png */,
 				1FA76DBB172D4E6B00EC659C /* check@2x.png */,
 				1FA76DBC172D4E6B00EC659C /* note.png */,
@@ -902,6 +922,11 @@
 				1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */,
 				1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */,
 				1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */,
+				1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */,
+				1F3E36CD17858BF800BF8ED9 /* cross_HUD.png in Resources */,
+				1F3E36CE17858BF800BF8ED9 /* cross_HUD@2x.png in Resources */,
+				1F00DA2317886A3B006EF467 /* Icon.png in Resources */,
+				1F00DA2517886A40006EF467 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1027,7 @@
 				1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */,
 				1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */,
 				1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */,
+				1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
