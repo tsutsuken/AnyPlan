@@ -35,6 +35,13 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+}
+
 - (NSString *)currentPlan
 {
     NSString *currentPlan;

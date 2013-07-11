@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F000F5A178E23E10034AC98 /* AnalyticsManager.m */; };
 		1F00DA2317886A3B006EF467 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2217886A3A006EF467 /* Icon.png */; };
 		1F00DA2517886A40006EF467 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2417886A40006EF467 /* Icon@2x.png */; };
 		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
@@ -143,6 +144,7 @@
 		1FE947071747BF4F00FBBA49 /* eye_opened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */; };
 		1FE947081747BF4F00FBBA49 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */; };
 		1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */; };
+		1FFB0B45178BCDA300274A92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFB0B44178BCDA300274A92 /* Crashlytics.framework */; };
 		3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9077C873054A4505A8F049D1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +159,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F000F59178E23E10034AC98 /* AnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsManager.h; sourceTree = "<group>"; };
+		1F000F5A178E23E10034AC98 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
 		1F00DA2217886A3A006EF467 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1F00DA2417886A40006EF467 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 		1FE947051747BF4F00FBBA49 /* eye_opened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_opened@2x.png"; sourceTree = "<group>"; };
 		1FE947061747BF4F00FBBA49 /* eye_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_closed@2x.png"; sourceTree = "<group>"; };
 		1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_bg_1@2x.png"; sourceTree = "<group>"; };
+		1FFB0B44178BCDA300274A92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9077C873054A4505A8F049D1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -349,6 +354,7 @@
 				1FA48EB21722416200D1AF30 /* CoreGraphics.framework in Frameworks */,
 				1FA48EB41722416200D1AF30 /* CoreData.framework in Frameworks */,
 				3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */,
+				1FFB0B45178BCDA300274A92 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +613,7 @@
 		1FA48EAC1722416200D1AF30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FFB0B44178BCDA300274A92 /* Crashlytics.framework */,
 				1FA48EAD1722416200D1AF30 /* UIKit.framework */,
 				1FA48EAF1722416200D1AF30 /* Foundation.framework */,
 				1FA48EB11722416200D1AF30 /* CoreGraphics.framework */,
@@ -709,6 +716,8 @@
 				1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */,
 				1FA76DCC172D704500EC659C /* CustomTabBarController.h */,
 				1FA76DCD172D704500EC659C /* CustomTabBarController.m */,
+				1F000F59178E23E10034AC98 /* AnalyticsManager.h */,
+				1F000F5A178E23E10034AC98 /* AnalyticsManager.m */,
 				1F4734D817630BE900D78618 /* UIColor+ColorWithHex.h */,
 				1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */,
 				1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */,
@@ -778,6 +787,7 @@
 				1FA48EA71722416100D1AF30 /* Frameworks */,
 				1FA48EA81722416100D1AF30 /* Resources */,
 				C4690271B5544D3D91A7CA95 /* Copy Pods Resources */,
+				1FFB0B43178BCCFE00274A92 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -954,6 +964,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		1FFB0B43178BCCFE00274A92 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 05bba97476be46a19cd9fe6700e03312cdd38e05";
+		};
 		C4690271B5544D3D91A7CA95 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1028,6 +1051,7 @@
 				1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */,
 				1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */,
 				1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */,
+				1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,6 +1172,10 @@
 			baseConfigurationReference = BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ken Tsutsumi (5TFUJSDX5M)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnyPlan/AnyPlan-Prefix.pch";
 				INFOPLIST_FILE = "AnyPlan/AnyPlan-Info.plist";
@@ -1164,6 +1192,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnyPlan/AnyPlan-Prefix.pch";
 				INFOPLIST_FILE = "AnyPlan/AnyPlan-Info.plist";

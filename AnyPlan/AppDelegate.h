@@ -12,6 +12,7 @@
 #import "MenuViewController.h"
 #import "TaskListViewController.h"
 #import "NoteListViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -28,5 +29,6 @@
 - (Project *)inboxProjectInManagedObjectContext:(NSManagedObjectContext *)context;
 - (BOOL)isPremiumUser;
 - (BOOL)canAddNewProject;
+- (int)numberOfProject;
 
 @end

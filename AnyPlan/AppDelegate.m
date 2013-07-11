@@ -18,14 +18,19 @@
 #define kProjectTitle @"kProjectTitle"
 #define kProjectIconImageName @"kProjectIconImageName"
 #define kMaxNumberOfProject 5
+#define kMixpanelToken @"72593cb7c1133b0ade53cef1b1bd4311"
+#define kFlurryApplicationKey @"8PPTHYBKBKJVFF4BK8Y8"
+#define kGoogleAnalyticsTrackingId @"UA-42302139-1"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkUpdates];
+    [self setNotificationCenter];//[MKStoreManager sharedManager]より先である必要がある
     
     [MKStoreManager sharedManager];
-    
     [self setParse];
+    [self setReviewRequestSystem];
+    [self setAnalyticsSystem];
     
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
@@ -34,12 +39,30 @@
     deckController.centerController = [self tabBarController];
     deckController.leftController = [self menuViewNavigationController];
     
-    [self setReviewRequestSystem];
-    
 //#warning test
     //[PFUser logOut];
     
     return YES;
+}
+
+- (void)setNotificationCenter
+{
+    //アプリ完全終了時に消えれば良いから、removeは不要
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didResignSubscription:)
+                                                 name:kSubscriptionsInvalidNotification object:nil];
+}
+
+- (void)setAnalyticsSystem
+{
+    [Mixpanel sharedInstanceWithToken:kMixpanelToken];
+    
+    [Flurry startSession:kFlurryApplicationKey];
+    
+    [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingId];
+    
+    //Set Top but after all 3rd party
+    [Crashlytics startWithAPIKey:@"05bba97476be46a19cd9fe6700e03312cdd38e05"];
 }
 
 - (void)setParse
@@ -132,6 +155,26 @@
             abort();
         } 
     }
+}
+
+#pragma mark - MKStorekit Delegate
+
+- (void)didResignSubscription:(NSNotification *)notification
+{
+    LOG(@"didResignSubscription_%@", [notification object]);
+    
+    NSString *productId = [notification object];
+    
+    if ([productId isEqualToString:kProductIdSubscriptionMonth])
+    {
+        [ANALYTICS trackEvent:kEventResignPremiumMonth sender:self];
+    }
+    else
+    {
+        [ANALYTICS trackEvent:kEventResignPremiumYear sender:self];
+    }
+    
+    [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType:kPropertyValueAccountTypeFree}];
 }
 
 #pragma mark - Core Data stack
@@ -372,6 +415,7 @@
 
 - (int)numberOfProject
 {
+    LOG(@"start");
     int numberOfProject;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -379,6 +423,8 @@
 	[fetchRequest setEntity:entity];
     
     numberOfProject = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    
+    LOG(@"finish");
     
     return numberOfProject;
 }

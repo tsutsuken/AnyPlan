@@ -39,6 +39,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+    
     if (!self.textView.text||[self.textView.text isEqualToString:@""])
     {
         [self.textView becomeFirstResponder];

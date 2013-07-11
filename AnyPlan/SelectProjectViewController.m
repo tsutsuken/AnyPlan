@@ -23,6 +23,13 @@
     self.title = NSLocalizedString(@"SelectProjectView_Title", nil);
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

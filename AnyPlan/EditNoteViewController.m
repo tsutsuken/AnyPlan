@@ -44,12 +44,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -67,6 +61,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+    
     NSString *textInTextView = self.noteTextView.text;
     
     if (!textInTextView||[textInTextView isEqualToString:@""])
@@ -74,6 +72,14 @@
         [self.noteTextView becomeFirstResponder];
     }
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CloseView
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -102,6 +108,11 @@
                 else
                 {
                     //Do nothing
+                }
+                
+                if (self.isNewNote){
+                    [ANALYTICS trackEvent:kEventAddNote sender:self];
+                    [ANALYTICS trackPropertyWithKey:kPropertyKeyNoteText value:self.note.text sender:self];
                 }
                 
                 [self.delegate editNoteViewController:self didFinishWithSave:YES];

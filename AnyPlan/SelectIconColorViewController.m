@@ -18,7 +18,16 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     self.title = NSLocalizedString(@"SelectIconColorView_Title", nil);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
 }
 
 - (void)didReceiveMemoryWarning

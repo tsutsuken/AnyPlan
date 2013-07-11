@@ -62,6 +62,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+    
     if (!self.tempTitle)
     {
         [self showKeyBoard];
@@ -73,6 +77,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Initialize
 
 - (void)setNavigationButtons
 {
@@ -166,6 +172,13 @@
             else
             {
                 self.project.title = self.tempTitle;
+                
+                if (self.isNewProject)
+                {
+                    [ANALYTICS trackEvent:kEventAddProject sender:self];
+                    [ANALYTICS trackPropertyWithKey:kPropertyKeyProjectTitle value:self.project.title sender:self];
+                    [ANALYTICS registerSuperProperties:@{kPropertyKeyProjectCount:@([APPDELEGATE numberOfProject])}];
+                }
             }
         }
         

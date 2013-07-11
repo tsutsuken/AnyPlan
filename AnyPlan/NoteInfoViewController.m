@@ -23,7 +23,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.tableView reloadData];//Note編集後のデータを反映させるため
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
 }
 
 - (void)didReceiveMemoryWarning

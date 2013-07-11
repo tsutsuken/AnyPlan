@@ -49,6 +49,13 @@
                                                                                            action:@selector(showEditTaskViewWithNewTask)];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -349,6 +356,8 @@
                 selectedTask.addedDate = nil;
                 
                 [selectedTask repeatTaskIfNeeded];
+                
+                [ANALYTICS trackEvent:kEventExecuteTask sender:self];
             }
             else
             {

@@ -19,6 +19,15 @@
     [super viewDidLoad];
     
     [self addButtons];
+    
+    [ANALYTICS trackEvent:kEventShowWelcomeView sender:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
 }
 
 - (void)addButtons
@@ -113,6 +122,8 @@
 {
     //大元のWelcomeViewを閉じる
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    [ANALYTICS trackEvent:kEventCreateAccount sender:self];
 }
 
 #pragma mark PFLogInViewControllerDelegate

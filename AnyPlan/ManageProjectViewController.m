@@ -42,6 +42,8 @@
 {
     [super viewDidAppear:animated];
     
+    [ANALYTICS trackView:self];
+    
     //UITableViewControllerではないため、手動でやる必要がある
     NSIndexPath *indexPath = self.myTableView.indexPathForSelectedRow;
     if (indexPath)

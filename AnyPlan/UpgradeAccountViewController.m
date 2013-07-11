@@ -29,14 +29,24 @@
     {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                               target:self action:@selector(didPushCancelButton)];
+        [ANALYTICS trackEvent:kEventShowUpgradeViewByLimit sender:self];
+    }
+    else
+    {
+        [ANALYTICS trackEvent:kEventShowUpgradeViewByButton sender:self];
     }
     
     [self setPurchaseButtons];
     
     self.explanationLabel.text = NSLocalizedString(@"UpgradeAccountView_Explanation", nil);
     [self.explanationLabel sizeToFit];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    //[self getPurchaseInfo];
+    [ANALYTICS trackView:self];
 }
 
 - (void)setPurchaseButtons
@@ -73,8 +83,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - CloseView
-
 - (void)didPushCancelButton
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -84,8 +92,6 @@
 
 - (void)didPushPurchaseMonthButton
 {
-    LOG_METHOD;
-    
     [self showHUD];
     
     [self purchaseItemWithProductId:kProductIdSubscriptionMonth];
@@ -108,17 +114,17 @@
          [self hideHUDWithCompleted:YES];
          
          [self setPurchaseButtons];
-         //[self.purchaseMonthButton setTitle:@"購入済み" forState:UIControlStateNormal];
          
-         /*
-         NSString *receiptString = [[NSString alloc] initWithData:purchasedReceipt encoding:NSUTF8StringEncoding];
-         
-         PFObject *purchaseInfo = [PFObject objectWithClassName:@"PurchaseInfo"];
-         [purchaseInfo setObject:receiptString forKey:@"receiptString"];
-         [purchaseInfo saveInBackground];
-         
-         LOG(@"receiptString_%@",receiptString);
-          */
+         if ([purchasedFeature isEqualToString:kProductIdSubscriptionMonth])
+         {
+             [ANALYTICS trackEvent:kEventPurchasePremiumMonth sender:self];
+             [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType: kPropertyValueAccountTypePremiumMonth}];
+         }
+         else
+         {
+             [ANALYTICS trackEvent:kEventPurchasePremiumYear sender:self];
+             [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType: kPropertyValueAccountTypePremiumYear}];
+         }
      }
                                    onCancelled:^
      {
@@ -127,15 +133,6 @@
          
          [self hideHUDWithCompleted:NO];
      }];
-}
-
-- (void)getPurchaseInfo
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"PurchaseInfo"];
-    PFObject *purchaseInfo = [query getFirstObject];
-    NSString *receiptString = [purchaseInfo objectForKey:@"receiptString"];
-    
-    LOG(@"receiptString_%@", receiptString);
 }
 
 - (void)showHUD

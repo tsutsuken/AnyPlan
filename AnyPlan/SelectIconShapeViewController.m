@@ -20,9 +20,18 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     self.title = NSLocalizedString(@"SelectIconShapeView_Title", nil);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
 }
 
 - (void)didReceiveMemoryWarning

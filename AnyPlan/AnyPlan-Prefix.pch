@@ -33,7 +33,10 @@
     #import "UIColor+ColorWithHex.h"
     #import "MBProgressHUD.h"
     #import "MKStoreManager.h"
-    #import "MF_Base64Additions.h"
+    #import "Mixpanel.h"
+    #import "Flurry.h"
+    #import "GAI.h"
+    #import "AnalyticsManager.h"
 
 #endif
 
@@ -58,6 +61,35 @@
 /*In-App-Purchase*/
 #define kProductIdSubscriptionMonth @"com.lvup.AnyPlan.Subscription_Month"
 #define kProductIdSubscriptionYear @"com.lvup.AnyPlan.Subscription_Year"
+
+/*Analytics*/
+#define ANALYTICS  [AnalyticsManager sharedInstance]
+
+#define kEventShowWelcomeView @"WelcomeView Showed"
+#define kEventCreateAccount @"Account Created"
+#define kEventShowUpgradeViewByButton @"UpgradeView Showed By Button"
+#define kEventShowUpgradeViewByLimit @"UpgradeView Showed By Limit"
+#define kEventPurchasePremiumMonth @"Premium(Month) Purchased"
+#define kEventPurchasePremiumYear @"Premium(Year) Purchased"
+#define kEventResignPremiumMonth @"Premium(Month) Resigned"
+#define kEventResignPremiumYear @"Premium(Year) Resigned"
+#define kEventAddProject @"Project Added"
+#define kEventAddTask @"Task Added"
+#define kEventExecuteTask @"Task Executed"
+#define kEventAddNote @"Note Added"
+
+#define kPropertyKeyAccountType @"Account Type"
+#define kPropertyKeyProjectCount @"Project Count"
+#define kPropertyKeyProjectTitle @"Project Title"
+#define kPropertyKeyTaskTitle @"Task Title"
+#define kPropertyKeyTaskDueDateIsOn @"Task DueDate Is On"
+#define kPropertyKeyTaskRepeat @"Task Repeat"
+#define kPropertyKeyTaskMemo @"Task Memo"
+#define kPropertyKeyNoteText @"Note Text"
+
+#define kPropertyValueAccountTypeFree @"Free"
+#define kPropertyValueAccountTypePremiumMonth @"Premium(Month)"
+#define kPropertyValueAccountTypePremiumYear @"Premium(Year)"
 
 /*
 #ifdef DEBUG

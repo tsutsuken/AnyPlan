@@ -54,6 +54,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
+    
     if (!self.tempTitle)
     {
         [self showKeyBoard];
@@ -64,18 +68,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)showKeyBoard
-{
-    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [editableCell.textField becomeFirstResponder];
-}
-
-- (void)hideKeyBoard
-{
-    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [editableCell.textField resignFirstResponder];
 }
 
 #pragma mark - CloseView
@@ -106,6 +98,12 @@
             else
             {
                 self.task.title = self.tempTitle;
+                
+                if (self.isNewTask)
+                {
+                    [ANALYTICS trackEvent:kEventAddTask sender:self];
+                    [ANALYTICS trackPropertyWithTask:self.task sender:self];
+                }
             }
         }
         
@@ -115,6 +113,18 @@
     {
         [self hideKeyBoard];
     }
+}
+
+- (void)showKeyBoard
+{
+    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [editableCell.textField becomeFirstResponder];
+}
+
+- (void)hideKeyBoard
+{
+    EditableCell *editableCell = (EditableCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [editableCell.textField resignFirstResponder];
 }
 
 #pragma mark - Table view data source
