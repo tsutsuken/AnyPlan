@@ -22,6 +22,22 @@
     
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.toolbarHidden = NO;
+    
+    [self setToolbar];
+}
+
+- (void)setToolbar
+{
+    // ツールバー
+    UIImage *toolbarDarkImage = [UIImage imageNamed:@"toolbar_dark.png"];
+    [self.navigationController.toolbar setBackgroundImage:toolbarDarkImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [customView setImage:[UIImage imageNamed:@"gear.png"] forState:UIControlStateNormal];
+    [customView addTarget:self action:@selector(showSettingView) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    
+    self.toolbarItems = @[buttonItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -42,22 +58,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return NSLocalizedString(@"MenuView_SectionHeader_Project", nil);
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 1)
-    {
-        return tableView.sectionHeaderHeight;
-    }else
-    {
-        return 0;
-    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -84,40 +84,64 @@
 {
     if (indexPath.section == 2)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddProjectCell"];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:38];
-        cell.textLabel.text = @"　　　+";
+        MenuCell *cell = (MenuCell *)[tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
+        cell.selectedBackgroundView = [self highlightView];
+        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexForDefaultProjectIcon];
         
         return cell;
     }
-    /*
-    else if (indexPath.section == 0)
-    {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddProjectCell"];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-        cell.textLabel.text = @"すべて";
-        
-        return cell;
-    }
-     */
     else
     {
         ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        cell.selectedBackgroundView = [self highlightView];
 
         if (indexPath.section == 0)
         {
             cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
             cell.iconView.image = [UIImage imageNamed:kImageNameForAllProjectIcon];
+            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexForDefaultProjectIcon];
         }
         else
         {
             Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
             cell.titleLabel.text = project.title;
             cell.iconView.image = project.icon;
+            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
         }
         
         return cell;
     }
+}
+
+- (UIView *)highlightView
+{
+    //ハイライトを透明にする(SelectionStyleNoneではダメ。highlightedTextColorが反応しない)
+    UIView *highlightView = [[UIView alloc] init];
+    highlightView.backgroundColor = [UIColor clearColor];
+    
+    return highlightView;
+}
+
+#pragma mark Section Header
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1)
+    {
+#warning test
+        return kHeightForSectionHeaderPlain;
+        //return 0;
+    }else
+    {
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *title = [NSString stringWithFormat: NSLocalizedString(@"MenuView_SectionHeader_Project_%i", nil),
+                              [APPDELEGATE numberOfProject]];
+    return [[SectionHeaderView alloc] initWithStyle:UITableViewStylePlain title:title];
 }
 
 #pragma mark - Table view delegate
@@ -143,6 +167,8 @@
         {
             [self showUpgradeAccountView];
         }
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
@@ -182,6 +208,13 @@
 - (void)showUpgradeAccountView
 {
     [self performSegueWithIdentifier:@"showUpgradeAccountView" sender:self];
+}
+
+#pragma mark SettingView
+
+- (void)showSettingView
+{
+    [self performSegueWithIdentifier:@"showSettingView" sender:self];
 }
 
 #pragma mark - Fetched results controller

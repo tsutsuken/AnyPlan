@@ -45,7 +45,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (section == 0 && [APPDELEGATE isPremiumUser])
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,8 +60,16 @@
     if (indexPath.section == 0)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Email", nil);
-        cell.detailTextLabel.text = [[PFUser currentUser] email];
+        
+        if (indexPath.row == 0)
+        {
+            cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Email", nil);
+            cell.detailTextLabel.text = [[PFUser currentUser] email];
+        }
+        else
+        {
+            cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_ManageSubscription", nil);
+        }
         
         return cell;
     }
@@ -73,7 +88,14 @@
 {
     if (indexPath.section == 0)
     {
-        [self showChangeEmailView];
+        if (indexPath.row == 0)
+        {
+            [self showChangeEmailView];
+        }
+        else
+        {
+            [self showManageSubscriptionView];
+        }
     }
     else
     {
@@ -97,6 +119,14 @@
         LOG(@"Canceled");
         [self hideHUDWithCompleted:NO];
     }];
+}
+
+#pragma mark - Manage Subscription
+
+- (void)showManageSubscriptionView
+{
+    NSURL *url = [NSURL URLWithString:@"https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions"];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void)showHUD

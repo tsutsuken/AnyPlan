@@ -8,6 +8,8 @@
 
 #import "SettingViewController.h"
 
+#define kHeightForFooter 53
+
 @interface SettingViewController ()
 
 @property (assign, nonatomic) BOOL isPremiumUser;
@@ -21,9 +23,11 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"SettingView_Title", nil);
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self action:@selector(didPushDoneButton)];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self action:@selector(didPushDoneButton)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,7 +54,7 @@
     {
         currentPlan = NSLocalizedString(@"SettingView_PlanType_Premium_Month", nil);
     }
-    else if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
+    else if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
     {
         currentPlan = NSLocalizedString(@"SettingView_PlanType_Premium_Year", nil);
     }
@@ -82,81 +86,6 @@
     return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        return NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
-    }
-    else
-    {
-        return NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        if (self.isPremiumUser)
-        {
-            return 0;
-        }
-        else
-        {
-            return 53;
-        }
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        if (self.isPremiumUser)
-        {
-            return nil;
-        }
-        else
-        {
-            return [self viewForFooter];
-        }
-    }
-    else
-    {
-        return nil;
-    }
-}
-
-#pragma mark Section Header
-
-- (UIView *)viewForFooter
-{
-    int heightForHeader = 53;
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, heightForHeader)];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self action:@selector(didPushFooterButton) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:NSLocalizedString(@"SettingView_SectionFooter_BecomePremium", nil) forState:UIControlStateNormal];
-    button.frame = CGRectMake(10, 5, 300, heightForHeader - 10);
-    [headerView addSubview:button];
-                      
-    return headerView;
-}
-
-- (void)didPushFooterButton
-{
-    LOG_METHOD;
-    
-    [self showUpgradeAccountView];
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
@@ -187,7 +116,6 @@
         else
         {
             cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Account", nil);
-            //cell.detailTextLabel.text = [[PFUser currentUser] username];
         }
     }
     else
@@ -198,7 +126,75 @@
     return cell;
 }
 
+#pragma mark Section Header
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return kHeightForSectionHeaderGrouped;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *title;
+    
+    if (section == 0)
+    {
+        title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
+    }
+    else
+    {
+        title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
+    }
+    
+    return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+}
+
+#pragma mark Section Footer
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 0 && !self.isPremiumUser)
+    {
+        return kHeightForFooter;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 0 && !self.isPremiumUser)
+    {
+        return [self viewForFooter];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (UIView *)viewForFooter
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, kHeightForFooter)];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(didPushFooterButton) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:NSLocalizedString(@"SettingView_SectionFooter_BecomePremium", nil) forState:UIControlStateNormal];
+    button.frame = CGRectMake(10, 5, 300, kHeightForFooter - 10);
+    [view addSubview:button];
+                      
+    return view;
+}
+
+- (void)didPushFooterButton
+{
+    [self showUpgradeAccountView];
+}
+
 #pragma mark - Table view delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)

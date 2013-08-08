@@ -31,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //[self.tableView setBackgroundViewForGroupedStyle];
 
     shouldHideCompletedTask = [[NSUserDefaults standardUserDefaults] boolForKey:kShouldHideCompletedTask];
     
@@ -44,9 +46,10 @@
                                                                             target:self.viewDeckController
                                                                             action:@selector(toggleLeftView)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                           target:self
-                                                                                           action:@selector(showEditTaskViewWithNewTask)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:self
+                                                                            action:@selector(showEditTaskViewWithNewTask)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -97,47 +100,6 @@
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (self.shouldDisplayAllProject)
-    {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-        Task *task = [[sectionInfo objects] objectAtIndex:0];
-        
-        return task.project.title;
-    }
-    else
-    {
-        if (section == [self sectionForCompletedTask])
-        {
-            return [self sectionTitleForCompletedTask];
-        }
-        else
-        {
-            return nil;
-        }
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (self.shouldDisplayAllProject)
-    {
-        return nil;
-    }
-    else
-    {
-        if (section == [self sectionForCompletedTask])
-        {
-            return [self viewForHeaderInSection:section];
-        }
-        else
-        {
-            return nil;
-        }
-    }
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.tableView.rowHeight;
@@ -160,7 +122,41 @@
     cell.detailLabel.text = [NSString stringWithFormat:@"%@ %@", task.repeatIconString, task.dueDateStringShort];
 }
 
-#pragma mark Supporting Methods
+#pragma mark Section Header
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (!self.shouldDisplayAllProject && section != [self sectionForCompletedTask])
+    {
+        return 0;
+    }
+    else
+    {
+        return kHeightForSectionHeaderGrouped;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (self.shouldDisplayAllProject)
+    {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        Task *task = [[sectionInfo objects] objectAtIndex:0];
+        
+        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:task.project.title];
+    }
+    else
+    {
+        if (section == [self sectionForCompletedTask])
+        {
+            return [self headerViewForCompletedTaskWithTitle:[self sectionTitleForCompletedTask]];
+        }
+        else
+        {
+            return nil;
+        }
+    }
+}
 
 - (int)sectionForCompletedTask
 {
@@ -192,44 +188,15 @@
     return sectionForCompletedTask;
 }
 
-- (int)countOfCompletedTask
+- (UIControl *)headerViewForCompletedTaskWithTitle:(NSString *)title
 {
-    int countOfCompletedTask;
-    
-    int sectionForCompletedTask = [self sectionForCompletedTask];
-    
-    if (sectionForCompletedTask == kErrorValueForSection)
-    {
-        countOfCompletedTask = 0;
-    }
-    else
-    {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:sectionForCompletedTask];
-        countOfCompletedTask = [sectionInfo numberOfObjects];
-    }
-    
-    return countOfCompletedTask;
-}
-
-- (NSString *)sectionTitleForCompletedTask
-{
-    return [NSString stringWithFormat: NSLocalizedString(@"TaskListView_SectionHeader_CompletedTask_%i", nil),[self countOfCompletedTask]];
-}
-
-#pragma mark Section Header
-
-- (UIControl *)viewForHeaderInSection:(NSInteger)section
-{
-    int heightForHeader = 30;
-    
-    UIControl *headerView = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, heightForHeader)];
+    UIControl *headerView = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, kHeightForSectionHeaderGrouped)];
     [headerView addTarget:self action:@selector(didTouchSectionHeader) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.tableView.bounds.size.width - 20, heightForHeader)];
+    UILabel *label = [[UILabel alloc] initWithFrame:kFrameForSectionHeaderLabelGrouped];
     label.tag = kTagForLabelInSectionHeaderView;
-    label.text              = [self tableView:self.tableView titleForHeaderInSection:section];
-    label.textColor         = [UIColor colorWithRed:0.298 green:0.337 blue:0.423 alpha:1.000];
+    label.text              = title;
+    label.textColor         = [UIColor colorWithHexString:kColorHexSectionHeaderTitle];
     label.font              = [UIFont boldSystemFontOfSize:17.0];
     label.backgroundColor   = [UIColor clearColor];
     label.shadowColor       = [UIColor whiteColor];
@@ -240,18 +207,19 @@
     
     UIButton *eyeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     eyeButton.tag = kTagForButtonInSectionHeaderView;
-    eyeButton.frame = CGRectMake(260, 0, 50, heightForHeader);
     eyeButton.userInteractionEnabled = NO;
-    [eyeButton setImage:[UIImage imageNamed:@"eye_opened.png"] forState:UIControlStateNormal];
-    [eyeButton setImage:[UIImage imageNamed:@"eye_closed.png"] forState:UIControlStateSelected];
+    
+    UIImage *eyeOpen = [UIImage imageNamed:@"eye_open.png"];
+    UIImage *eyeClosed = [UIImage imageNamed:@"eye_closed.png"];
+    [eyeButton setImage:eyeOpen forState:UIControlStateNormal];
+    [eyeButton setImage:eyeClosed forState:UIControlStateSelected];
+    
+    LOG_SIZE(eyeOpen.size, nil);
+    
+    eyeButton.frame = CGRectMake(276, 20, eyeOpen.size.width, eyeOpen.size.height);
+    
     eyeButton.selected = [[NSUserDefaults standardUserDefaults] boolForKey:kShouldHideCompletedTask];
     [headerView addSubview:eyeButton];
-    
-    /*
-    headerView.backgroundColor = [UIColor redColor];
-    label.backgroundColor = [UIColor blueColor];
-    eyeButton.backgroundColor = [UIColor yellowColor];
-     */
     
     return headerView;
 }
@@ -282,6 +250,11 @@
     [self.tableView endUpdates];
 }
 
+- (NSString *)sectionTitleForCompletedTask
+{
+    return [NSString stringWithFormat: NSLocalizedString(@"TaskListView_SectionHeader_CompletedTask_%i", nil),[self countOfCompletedTask]];
+}
+
 - (NSArray *)indexPathsForCompletedTask
 {
     int sectionForCompletedTask = [self sectionForCompletedTask];
@@ -302,6 +275,25 @@
 {
     UILabel *label = (UILabel*)[self.view viewWithTag:kTagForLabelInSectionHeaderView];
     label.text = [self sectionTitleForCompletedTask];;
+}
+
+- (int)countOfCompletedTask
+{
+    int countOfCompletedTask;
+    
+    int sectionForCompletedTask = [self sectionForCompletedTask];
+    
+    if (sectionForCompletedTask == kErrorValueForSection)
+    {
+        countOfCompletedTask = 0;
+    }
+    else
+    {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:sectionForCompletedTask];
+        countOfCompletedTask = [sectionInfo numberOfObjects];
+    }
+    
+    return countOfCompletedTask;
 }
 
 #pragma mark - Table view delegate

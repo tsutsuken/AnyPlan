@@ -32,6 +32,12 @@
     self.project.icon = [self defaultIcon];
     }
     
+    //カラー
+    if (self.isNewProject)
+    {
+        self.project.colorHex = kColorHexForDefaultProjectIcon;
+    }
+    
     //タイトル
     if (self.isNewProject)
     {
@@ -85,8 +91,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self action:@selector(didPushDoneButton)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self action:@selector(didPushDoneButton)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)setDeleteButton

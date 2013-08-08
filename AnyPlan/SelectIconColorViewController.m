@@ -68,6 +68,7 @@
     CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
     
     self.project.icon = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
+    self.project.colorHex = [self.colorHexArray objectAtIndex:indexPath.item];
     //saveはしない
     
     [self dismissViewControllerAnimated:YES completion:nil];

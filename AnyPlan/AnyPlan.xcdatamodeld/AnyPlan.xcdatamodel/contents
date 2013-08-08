@@ -6,6 +6,7 @@
         <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="notes" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="colorHex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="displayOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,8 +30,8 @@
     </entity>
     <elements>
         <element name="Note" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Project" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Task" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Project" positionX="160" positionY="192" width="128" height="135"/>
         <element name="Repeat" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Task" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>

@@ -16,6 +16,4 @@
 @property (strong, nonatomic) Task *task;
 @property (assign, nonatomic) BOOL isNewTask;
 
-- (IBAction)didPushDeleteButton;
-
 @end

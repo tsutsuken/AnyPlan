@@ -27,8 +27,11 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                            target:self action:@selector(didPushCancelButton)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self action:@selector(didPushDoneButton)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self action:@selector(didPushDoneButton)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
+    self.navigationItem.rightBarButtonItem = doneButton;
+    
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -136,11 +139,6 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return NSLocalizedString(@"ChangeEmailView_SectionHeader_ChangeEmail", nil);
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
@@ -154,6 +152,20 @@
     cell.textField.placeholder =NSLocalizedString(@"ChangeEmailView_PlaceHolder_Email", nil);
     
     return cell;
+}
+
+#pragma mark Section Header
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return kHeightForSectionHeaderGrouped;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *title = NSLocalizedString(@"ChangeEmailView_SectionHeader_ChangeEmail", nil);
+    
+    return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
 }
 
 #pragma mark - TextField delegate

@@ -20,6 +20,7 @@
 @interface EditTaskViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) NSString *tempTitle;//画面遷移時にも、値を保持するため
 @property (assign, nonatomic) BOOL shouldDeleteTask;
 @property (strong, nonatomic) UIActionSheet *myActionSheet;
@@ -50,6 +51,20 @@
     {
         self.title = NSLocalizedString(@"EditTaskView_Title_ExistingTask", nil);
     }
+    
+    [self setToolbar];
+}
+
+- (void)setToolbar
+{
+    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
+    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    self.toolbar.items = @[space, buttonItem, space];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -305,6 +320,7 @@
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                 target:self
                                                                                 action:@selector(didPushDoneButtonForPicker)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     
     //Deleteボタンの作成
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)
@@ -466,7 +482,6 @@
     datePicker.date = self.task.dueDate;
     [actionSheet addSubview:datePicker];
     
-    
     self.myActionSheet = actionSheet;
     [self.myActionSheet showInView:self.view];
 	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
@@ -494,7 +509,7 @@
 
 #pragma mark - Delete Task
 
-- (IBAction)didPushDeleteButton
+- (void)didPushDeleteButton
 {
     [self showActionSheetForDeletingTask];
 }

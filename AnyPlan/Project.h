@@ -2,7 +2,7 @@
 //  Project.h
 //  AnyPlan
 //
-//  Created by Ken Tsutsumi on 13/06/05.
+//  Created by Ken Tsutsumi on 2013/07/15.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 @interface Project : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * displayOrder;
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) id icon;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * colorHex;
 @property (nonatomic, retain) NSSet *notes;
 @property (nonatomic, retain) NSSet *tasks;
 @end

@@ -17,9 +17,6 @@
 @property (strong, nonatomic) Note *note;
 @property (assign, nonatomic) BOOL isNewNote;
 
-- (IBAction)didPushDeleteButton;
-- (IBAction)didPushExportButton;
-
 
 @end
 

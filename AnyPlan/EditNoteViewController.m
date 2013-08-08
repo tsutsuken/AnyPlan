@@ -11,6 +11,7 @@
 @interface EditNoteViewController ()
 
 @property (weak  , nonatomic) IBOutlet UITextView *noteTextView;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (assign, nonatomic) CGRect defaultFrameForTextView;
 
 @end
@@ -28,7 +29,7 @@
     self.noteTextView.text = self.note.text;
     
     [self setTitle];
-    
+    [self setToolbar];
     [self setRightBarButtonWithDoneButton:NO];
 }
 
@@ -42,6 +43,23 @@
     {
         self.title = NSLocalizedString(@"EditNoteView_Title_ExistingNote", nil);
     }
+}
+
+- (void)setToolbar
+{
+    UIButton *trashButton = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [trashButton setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
+    [trashButton addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* trashBarButton = [[UIBarButtonItem alloc] initWithCustomView:trashButton];
+    
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(didPushShareButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* shareBarButton = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    self.toolbar.items = @[space, trashBarButton, space, shareBarButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -183,19 +201,17 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(didPushDoneButton)];
+        [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
         
         [rightBarButtonItems addObject:doneButton];
     }
     else
     {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        UIButton *button = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+        [button setImage:[UIImage imageNamed:@"info.png"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(didPushInfoButton) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] initWithCustomView:button];
         
-        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        space.width = 10.0;
-        
-        [rightBarButtonItems addObject:space];
         [rightBarButtonItems addObject:infoButton];
     }
 
@@ -209,7 +225,7 @@
 
 #pragma mark - Delete Note
 
-- (IBAction)didPushDeleteButton
+- (void)didPushDeleteButton
 {
     [self showActionSheetForDeletingNote];
 }
@@ -249,7 +265,7 @@
 
 #pragma mark - Export Note
 
-- (IBAction)didPushExportButton
+- (void)didPushShareButton
 {
     NSString *exportingText = self.noteTextView.text;
     NSArray* actItems = @[exportingText];

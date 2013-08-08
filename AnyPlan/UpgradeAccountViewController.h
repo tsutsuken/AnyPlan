@@ -10,4 +10,6 @@
 
 @interface UpgradeAccountViewController : UIViewController <MBProgressHUDDelegate>
 
+//@property (assign, nonatomic) BOOL isModal;
+
 @end

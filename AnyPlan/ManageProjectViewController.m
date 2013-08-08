@@ -20,9 +20,10 @@
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
     self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                           target:self
-                                                                                           action:@selector(didPushAddButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(didPushAddButton)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -153,10 +154,12 @@
     if (editing)
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;
+        [self.editButtonItem setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     }
     else
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
+        [self.editButtonItem setTitleColorForButtonStyle:UIBarButtonItemStylePlain];
         [self saveContext];
     }
 }

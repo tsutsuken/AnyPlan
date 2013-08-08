@@ -2,7 +2,7 @@
 //  Project.m
 //  AnyPlan
 //
-//  Created by Ken Tsutsumi on 13/06/05.
+//  Created by Ken Tsutsumi on 2013/07/15.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 @implementation Project
 
 @dynamic displayOrder;
-@dynamic title;
 @dynamic icon;
+@dynamic title;
+@dynamic colorHex;
 @dynamic notes;
 @dynamic tasks;
 

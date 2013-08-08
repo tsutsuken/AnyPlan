@@ -49,34 +49,6 @@
     [ANALYTICS trackView:self];
 }
 
-- (void)setPurchaseButtons
-{
-    NSDictionary *prices = [[MKStoreManager sharedManager] pricesDictionary];
-    
-    NSString *titleForMonth = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Month_%@", nil),
-                               [prices objectForKey:kProductIdSubscriptionMonth]];
-    
-    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
-    {
-        titleForMonth = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
-    }
-    
-    [self.purchaseMonthButton setTitle:titleForMonth forState:UIControlStateNormal];
-    [self.purchaseMonthButton addTarget:self action:@selector(didPushPurchaseMonthButton) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSString *titleForYear = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Year_%@", nil),
-                               [prices objectForKey:kProductIdSubscriptionYear]];
-    
-    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
-    {
-        titleForYear = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
-    }
-    
-    [self.purchaseYearButton setTitle:titleForYear forState:UIControlStateNormal];
-    [self.purchaseYearButton addTarget:self action:@selector(didPushPurchaseYearButton) forControlEvents:UIControlEventTouchUpInside];
-    
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -86,6 +58,42 @@
 - (void)didPushCancelButton
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)setPurchaseButtons
+{
+    NSDictionary *prices = [[MKStoreManager sharedManager] pricesDictionary];
+    
+    //Month
+    NSString *titleForMonth;
+    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
+    {
+        titleForMonth = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
+    }
+    else
+    {
+        titleForMonth = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Month_%@", nil),
+                         [prices objectForKey:kProductIdSubscriptionMonth]];
+    }
+    
+    [self.purchaseMonthButton setTitle:titleForMonth forState:UIControlStateNormal];
+    [self.purchaseMonthButton addTarget:self action:@selector(didPushPurchaseMonthButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    //Year
+    NSString *titleForYear;
+    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
+    {
+        titleForYear = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
+    }
+    else
+    {
+        titleForYear = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Year_%@", nil),
+                        [prices objectForKey:kProductIdSubscriptionYear]];
+    }
+    
+    [self.purchaseYearButton setTitle:titleForYear forState:UIControlStateNormal];
+    [self.purchaseYearButton addTarget:self action:@selector(didPushPurchaseYearButton) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Purchase
@@ -125,6 +133,8 @@
              [ANALYTICS trackEvent:kEventPurchasePremiumYear sender:self];
              [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType: kPropertyValueAccountTypePremiumYear}];
          }
+         
+        [self closeView];
      }
                                    onCancelled:^
      {
@@ -135,11 +145,25 @@
      }];
 }
 
+- (void)closeView
+{
+    int childViewCount = [self.navigationController.childViewControllers count];
+    
+    if (childViewCount == 1)//NVCのトップ画面=Modalで表示された
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else//NVCの２画面目以降
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (void)showHUD
 {
-	self.HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:self.HUD];
-	
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+	[self.view.window addSubview:self.HUD];
+    
 	self.HUD.delegate = self;
 	self.HUD.labelText = NSLocalizedString(@"UpgradeAccountView_HUD_Accessing", nil);
 	self.HUD.minSize = CGSizeMake(135.f, 135.f);
