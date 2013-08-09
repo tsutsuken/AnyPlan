@@ -80,7 +80,7 @@
 }
 
 -(BOOL) isSubscriptionActive
-{
+{    
   if(!self.receipt) return NO;
   if([[self.verifiedReceiptDictionary objectForKey:@"receipt"] objectForKey:@"expires_date"]){
     

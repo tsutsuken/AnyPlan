@@ -4,6 +4,41 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Appirater.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-FlurrySDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Pods-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-MKStoreKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Pods-Mixpanel.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Pods-ViewDeck.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +47,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0F11F65F09354B36AEF1300C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0FCB917C1CA740CAAB81BF7F</key>
 		<dict>
 			<key>primary</key>
@@ -52,6 +92,26 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5A7DA22E1BFD40D589B7F3D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A367A83E3524B35B8FE337E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BEF4376409B45D282421AF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7161B9C1A9F54A1D94EEAC16</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>777D316F007B40679A0607CF</key>
 		<dict>
 			<key>primary</key>
@@ -77,6 +137,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A62095F4725849B6BEF79F76</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7E73281C9CC44A6A95FDDBA</key>
 		<dict>
 			<key>primary</key>
@@ -87,7 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C5B1F4EC7DB041AAA20058F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D679308BF32D471F93EA0A5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E999275EE6CF46FBACCF4B8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -40,12 +40,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (section == 0 && [APPDELEGATE isPremiumUser])
+    if ([APPDELEGATE isPremiumUser])
     {
         return 2;
     }
@@ -55,28 +50,24 @@
     }
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
-        if (indexPath.row == 0)
-        {
-            cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Email", nil);
-            cell.detailTextLabel.text = [[PFUser currentUser] email];
-        }
-        else
-        {
-            cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_ManageSubscription", nil);
-        }
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogOutCell" forIndexPath:indexPath];
+        cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Restore", nil);
         
         return cell;
     }
     else
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogOutCell" forIndexPath:indexPath];
-        cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_Restore", nil);
+        cell.textLabel.text = NSLocalizedString(@"UserAccountView_Cell_ManageSubscription", nil);
         
         return cell;
     }
@@ -88,19 +79,14 @@
 {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 0)
-        {
-            [self showChangeEmailView];
-        }
-        else
-        {
-            [self showManageSubscriptionView];
-        }
+        [self restorePurchase];
     }
     else
     {
-        [self restorePurchase];
+        [self showManageSubscriptionView];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Restore
@@ -161,14 +147,6 @@
     self.HUD.mode = MBProgressHUDModeCustomView;
     self.HUD.labelText = labelText;
     [self.HUD hide:YES afterDelay:1];
-}
-
-#pragma mark - Show Other View
-#pragma mark ChangeEmailView
-
-- (void)showChangeEmailView
-{
-    [self performSegueWithIdentifier:@"showChangeEmailView" sender:self];
 }
 
 @end

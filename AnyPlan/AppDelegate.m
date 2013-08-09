@@ -28,7 +28,6 @@
     [self setNotificationCenter];//[MKStoreManager sharedManager]より先である必要がある
     
     [MKStoreManager sharedManager];
-    [self setParse];
     [self setReviewRequestSystem];
     [self setAnalyticsSystem];
     
@@ -109,15 +108,6 @@
     [Crashlytics startWithAPIKey:@"05bba97476be46a19cd9fe6700e03312cdd38e05"];
 }
 
-- (void)setParse
-{
-    [Parse setApplicationId:@"cRs7jfZBOrZHD5v5sjePexOIPSQiNRlpDoJzSTRt"
-                  clientKey:@"VGkmHDzt8cUv1hHtDtCtCSYW60FySLNuBhbf4Kfg"];
-    
-    PFACL *defaultACL = [PFACL ACL];//read,write,共にNo
-    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-}
-
 - (void)setReviewRequestSystem
 {
 #warning 本番IDを入れる
@@ -171,8 +161,6 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [[PFUser currentUser] refreshInBackgroundWithTarget:nil selector:nil];
-    
     [Appirater appEnteredForeground:YES];
 }
 

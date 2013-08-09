@@ -37,28 +37,10 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (![PFUser currentUser])// No user logged in
-    {
-        [self showWelcomeView];
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Show Other View
-#pragma mark WelcomeView
-
-- (void)showWelcomeView
-{
-    [self performSegueWithIdentifier:@"showWelcomeView" sender:self];
 }
 
 @end

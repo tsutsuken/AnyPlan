@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WelcomeViewController.h"
 
 @interface CustomTabBarController : UITabBarController
 

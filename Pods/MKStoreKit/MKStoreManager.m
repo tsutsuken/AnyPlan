@@ -316,34 +316,27 @@ static MKStoreManager* _sharedStoreManager;
 
 - (BOOL) isSubscriptionActive:(NSString*) featureId
 {
-    MKSKSubscriptionProduct *subscriptionProduct = [self.subscriptionProducts objectForKey:featureId];
-    if(!subscriptionProduct.receipt) return NO;
-    
-    //ダメな時は3pair、大丈夫な時は3pairある
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:subscriptionProduct.receipt options:NSJSONReadingAllowFragments error:nil];
-    
-    //ここから0byteになってる
-    
-    NSData *receiptData = [NSData dataFromBase64String:[jsonObject objectForKey:@"latest_receipt"]];
-    
-    NSPropertyListFormat plistFormat;
-    NSDictionary *payloadDict = [NSPropertyListSerialization propertyListWithData:receiptData
-                                                                          options:NSPropertyListImmutable
-                                                                           format:&plistFormat
-                                                                            error:nil];
-    
-    receiptData = [NSData dataFromBase64String:[payloadDict objectForKey:@"purchase-info"]];
-    
-    NSDictionary *receiptDict = [NSPropertyListSerialization propertyListWithData:receiptData
-                                                                          options:NSPropertyListImmutable
-                                                                           format:&plistFormat
-                                                                            error:nil];
-    
-    NSDate *expireDate = [receiptDict objectForKey:@"expires-date-formatted"];
-    NSLog(@"expireDate_%@", expireDate);
-    
-    NSTimeInterval expiresDate = [[receiptDict objectForKey:@"expires-date"] doubleValue]/1000.0f;
-    return expiresDate > [[NSDate date] timeIntervalSince1970];
+  MKSKSubscriptionProduct *subscriptionProduct = [self.subscriptionProducts objectForKey:featureId];
+  if(!subscriptionProduct.receipt) return NO;
+  
+  id jsonObject = [NSJSONSerialization JSONObjectWithData:subscriptionProduct.receipt options:NSJSONReadingAllowFragments error:nil];
+  NSData *receiptData = [NSData dataFromBase64String:[jsonObject objectForKey:@"latest_receipt"]];
+  
+  NSPropertyListFormat plistFormat;
+  NSDictionary *payloadDict = [NSPropertyListSerialization propertyListWithData:receiptData
+                                                                        options:NSPropertyListImmutable
+                                                                         format:&plistFormat
+                                                                          error:nil];
+  
+  receiptData = [NSData dataFromBase64String:[payloadDict objectForKey:@"purchase-info"]];
+  
+  NSDictionary *receiptDict = [NSPropertyListSerialization propertyListWithData:receiptData
+                                                                        options:NSPropertyListImmutable
+                                                                         format:&plistFormat
+                                                                          error:nil];
+  
+  NSTimeInterval expiresDate = [[receiptDict objectForKey:@"expires-date"] doubleValue]/1000.0f;
+  return expiresDate > [[NSDate date] timeIntervalSince1970];
 }
 
 // Call this function to populate your UI

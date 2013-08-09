@@ -20,7 +20,6 @@
 		1F22235F17269B8D0034CC80 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235E17269B8D0034CC80 /* EditableCell.m */; };
 		1F2223651726A93D0034CC80 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2223671726A93D0034CC80 /* Localizable.strings */; };
 		1F2223701726AE980034CC80 /* Project+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22236F1726AE980034CC80 /* Project+Additions.m */; };
-		1F2223721726DE6C0034CC80 /* mza_350428985234134843.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2223711726DE6C0034CC80 /* mza_350428985234134843.png */; };
 		1F28C663176B38A900EEE302 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F28C65F176B38A900EEE302 /* inbox.png */; };
 		1F28C664176B38A900EEE302 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F28C660176B38A900EEE302 /* inbox@2x.png */; };
 		1F3E36CD17858BF800BF8ED9 /* cross_HUD.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */; };
@@ -81,7 +80,6 @@
 		1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB516177D9840007E4F58 /* check_HUD@2x.png */; };
 		1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */; };
 		1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9435F0177D26B500C4E408 /* UserAccountViewController.m */; };
-		1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */; };
 		1F9465C81790041B00A3CD72 /* UIBarButtonItem+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9465C71790041A00A3CD72 /* UIBarButtonItem+Additions.m */; };
 		1F97700E17719FC4004321FF /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97700D17719FC4004321FF /* Repeat.m */; };
 		1F97701117719FD4004321FF /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97701017719FD4004321FF /* Task.m */; };
@@ -121,7 +119,6 @@
 		1FA76DC1172D4E6B00EC659C /* note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA76DBD172D4E6B00EC659C /* note@2x.png */; };
 		1FA76DC8172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */; };
 		1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DCD172D704500EC659C /* CustomTabBarController.m */; };
-		1FA76E02177A8F5C0052F191 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */; };
 		1FAE9864179226BF00DC16F9 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAE9863179226BF00DC16F9 /* SectionHeaderView.m */; };
 		1FAE98731792877C00DC16F9 /* navigationbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE98711792877C00DC16F9 /* navigationbar.png */; };
 		1FAE98741792877C00DC16F9 /* navigationbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE98721792877C00DC16F9 /* navigationbar@2x.png */; };
@@ -167,7 +164,6 @@
 		1FAF45A61794007800B250BC /* inbox_with_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAF45A21794007700B250BC /* inbox_with_background@2x.png */; };
 		1FAF45A71794007800B250BC /* infinity.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAF45A31794007700B250BC /* infinity.png */; };
 		1FAF45A81794007800B250BC /* infinity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAF45A41794007700B250BC /* infinity@2x.png */; };
-		1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB496A0177BE8BF00934413 /* MySignUpViewController.m */; };
 		1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */; };
 		1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
@@ -175,7 +171,6 @@
 		1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C1176C345C0080FA18 /* Task+Additions.m */; };
 		1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C7176C379B0080FA18 /* EditMemoViewController.m */; };
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
-		1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */; };
 		1FFB0B45178BCDA300274A92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFB0B44178BCDA300274A92 /* Crashlytics.framework */; };
 		3CDE1E50AB5C42919ED57831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9077C873054A4505A8F049D1 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -193,8 +188,8 @@
 /* Begin PBXFileReference section */
 		1F000F59178E23E10034AC98 /* AnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsManager.h; sourceTree = "<group>"; };
 		1F000F5A178E23E10034AC98 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
-		1F00DA2217886A3A006EF467 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		1F00DA2417886A40006EF467 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1F00DA2217886A3A006EF467 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../Icon.png; sourceTree = "<group>"; };
+		1F00DA2417886A40006EF467 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../Icon@2x.png"; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		1F1A739F176758AA00EED3D5 /* AnyPlan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnyPlan-Prefix.pch"; sourceTree = "<group>"; };
@@ -213,7 +208,6 @@
 		1F2223691726A96C0034CC80 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F22236E1726AE980034CC80 /* Project+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+Additions.h"; sourceTree = "<group>"; };
 		1F22236F1726AE980034CC80 /* Project+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+Additions.m"; sourceTree = "<group>"; };
-		1F2223711726DE6C0034CC80 /* mza_350428985234134843.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mza_350428985234134843.png; path = ../mza_350428985234134843.png; sourceTree = "<group>"; };
 		1F28C65F176B38A900EEE302 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
 		1F28C660176B38A900EEE302 /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
 		1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross_HUD.png; sourceTree = "<group>"; };
@@ -280,8 +274,6 @@
 		1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectIconColorViewController.m; sourceTree = "<group>"; };
 		1F9435EF177D26B500C4E408 /* UserAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountViewController.h; sourceTree = "<group>"; };
 		1F9435F0177D26B500C4E408 /* UserAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountViewController.m; sourceTree = "<group>"; };
-		1F9435F6177D324900C4E408 /* ChangeEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeEmailViewController.h; sourceTree = "<group>"; };
-		1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeEmailViewController.m; sourceTree = "<group>"; };
 		1F9465C61790041A00A3CD72 /* UIBarButtonItem+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Additions.h"; sourceTree = "<group>"; };
 		1F9465C71790041A00A3CD72 /* UIBarButtonItem+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Additions.m"; sourceTree = "<group>"; };
 		1F97700C17719FC4004321FF /* Repeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repeat.h; sourceTree = "<group>"; };
@@ -340,8 +332,6 @@
 		1FA76DC7172D534C00EC659C /* NavigationBarTitleWithSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarTitleWithSubtitleView.m; sourceTree = "<group>"; };
 		1FA76DCC172D704500EC659C /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		1FA76DCD172D704500EC659C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
-		1FA76E00177A8F5C0052F191 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
-		1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		1FAE9862179226BF00DC16F9 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		1FAE9863179226BF00DC16F9 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		1FAE98711792877C00DC16F9 /* navigationbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationbar.png; sourceTree = "<group>"; };
@@ -390,8 +380,6 @@
 		1FAF45A21794007700B250BC /* inbox_with_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox_with_background@2x.png"; sourceTree = "<group>"; };
 		1FAF45A31794007700B250BC /* infinity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infinity.png; sourceTree = "<group>"; };
 		1FAF45A41794007700B250BC /* infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infinity@2x.png"; sourceTree = "<group>"; };
-		1FB4969F177BE8BF00934413 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
-		1FB496A0177BE8BF00934413 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
 		1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeAccountViewController.h; sourceTree = "<group>"; };
 		1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeAccountViewController.m; sourceTree = "<group>"; };
 		1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconShapeViewController.h; sourceTree = "<group>"; };
@@ -406,7 +394,6 @@
 		1FD829C7176C379B0080FA18 /* EditMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMemoViewController.m; sourceTree = "<group>"; };
 		1FE3094B172561510063BD50 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		1FE3094C172561510063BD50 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_bg_1@2x.png"; sourceTree = "<group>"; };
 		1FFB0B44178BCDA300274A92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9077C873054A4505A8F049D1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA7C88A3EF94D8EA2F0815F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -574,8 +561,6 @@
 			children = (
 				1F9435EF177D26B500C4E408 /* UserAccountViewController.h */,
 				1F9435F0177D26B500C4E408 /* UserAccountViewController.m */,
-				1F9435F6177D324900C4E408 /* ChangeEmailViewController.h */,
-				1F9435F7177D324900C4E408 /* ChangeEmailViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -663,8 +648,6 @@
 		1FA48EA11722416100D1AF30 = {
 			isa = PBXGroup;
 			children = (
-				1F00DA2417886A40006EF467 /* Icon@2x.png */,
-				1F00DA2217886A3A006EF467 /* Icon.png */,
 				1FA48EB51722416200D1AF30 /* AnyPlan */,
 				1FA48EE01722416400D1AF30 /* AnyPlanTests */,
 				1FA48EAC1722416200D1AF30 /* Frameworks */,
@@ -718,7 +701,6 @@
 				1F1A739F176758AA00EED3D5 /* AnyPlan-Prefix.pch */,
 				1FA48EBB1722416200D1AF30 /* main.m */,
 				1FA48EC11722416200D1AF30 /* Default.png */,
-				1F2223711726DE6C0034CC80 /* mza_350428985234134843.png */,
 				1FA48EC31722416200D1AF30 /* Default@2x.png */,
 				1FA48EC51722416200D1AF30 /* Default-568h@2x.png */,
 			);
@@ -796,10 +778,6 @@
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
 				1F9465C61790041A00A3CD72 /* UIBarButtonItem+Additions.h */,
 				1F9465C71790041A00A3CD72 /* UIBarButtonItem+Additions.m */,
-				1FA76E00177A8F5C0052F191 /* WelcomeViewController.h */,
-				1FA76E01177A8F5C0052F191 /* WelcomeViewController.m */,
-				1FB4969F177BE8BF00934413 /* MySignUpViewController.h */,
-				1FB496A0177BE8BF00934413 /* MySignUpViewController.m */,
 				1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */,
 				1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */,
 				1F47F86817910C9E0057D6FD /* CustomTableView.h */,
@@ -866,6 +844,8 @@
 		1FE30951172564FC0063BD50 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1F00DA2417886A40006EF467 /* Icon@2x.png */,
+				1F00DA2217886A3A006EF467 /* Icon.png */,
 				1F8EB515177D9840007E4F58 /* check_HUD.png */,
 				1F8EB516177D9840007E4F58 /* check_HUD@2x.png */,
 				1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */,
@@ -876,7 +856,6 @@
 				1FA76DBD172D4E6B00EC659C /* note@2x.png */,
 				1F4D237D172B73F600081E94 /* delete_button@2x.png */,
 				1F4D237F172BCD5600081E94 /* delete_button.png */,
-				1FEDFF64177E7E010017C7F9 /* welcome_bg_1@2x.png */,
 				1FAE98711792877C00DC16F9 /* navigationbar.png */,
 				1FAE98721792877C00DC16F9 /* navigationbar@2x.png */,
 				1FAE98791792883D00DC16F9 /* sectionHeader.png */,
@@ -984,7 +963,6 @@
 				1FA48EC61722416200D1AF30 /* Default-568h@2x.png in Resources */,
 				1FA48EC91722416200D1AF30 /* MainStoryboard.storyboard in Resources */,
 				1F2223651726A93D0034CC80 /* Localizable.strings in Resources */,
-				1F2223721726DE6C0034CC80 /* mza_350428985234134843.png in Resources */,
 				1F4D237E172B73F600081E94 /* delete_button@2x.png in Resources */,
 				1F4D2380172BCD5600081E94 /* delete_button.png in Resources */,
 				1FA76DBE172D4E6B00EC659C /* check.png in Resources */,
@@ -1045,7 +1023,6 @@
 				1F28C664176B38A900EEE302 /* inbox@2x.png in Resources */,
 				1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */,
 				1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */,
-				1FEDFF65177E7E010017C7F9 /* welcome_bg_1@2x.png in Resources */,
 				1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */,
 				1F3E36CD17858BF800BF8ED9 /* cross_HUD.png in Resources */,
 				1F3E36CE17858BF800BF8ED9 /* cross_HUD@2x.png in Resources */,
@@ -1201,10 +1178,7 @@
 				1F97700E17719FC4004321FF /* Repeat.m in Sources */,
 				1F97701117719FD4004321FF /* Task.m in Sources */,
 				1F9770171771A102004321FF /* Repeat+Additions.m in Sources */,
-				1FA76E02177A8F5C0052F191 /* WelcomeViewController.m in Sources */,
-				1FB496A1177BE8BF00934413 /* MySignUpViewController.m in Sources */,
 				1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */,
-				1F9435F8177D324900C4E408 /* ChangeEmailViewController.m in Sources */,
 				1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */,
 				1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */,
 				1F9465C81790041B00A3CD72 /* UIBarButtonItem+Additions.m in Sources */,
