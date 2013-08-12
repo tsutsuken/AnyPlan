@@ -24,6 +24,19 @@
     }
 }
 
+#pragma mark - Icon
+
+- (UIImage *)iconWithColor
+{
+    UIImage *iconWithColor;
+    
+    UIImage *iconNormal = self.icon;
+    UIColor *color = [UIColor colorWithHexString:self.colorHex];
+    iconWithColor = [iconNormal imageTintedWithColor:color];
+    
+    return iconWithColor;
+}
+
 @end
 
 @implementation ImageToDataTransformer

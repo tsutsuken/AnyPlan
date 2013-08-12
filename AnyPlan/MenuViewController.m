@@ -82,30 +82,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+    cell.selectedBackgroundView = [self highlightView];
+    
     if (indexPath.section == 2)
     {
-        MenuCell *cell = (MenuCell *)[tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
-        cell.selectedBackgroundView = [self highlightView];
-        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexForDefaultProjectIcon];
+        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
+        
+        UIColor *highlightColor = [UIColor colorWithHexString:kColorHexDefaultProject];
+        cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightColor];
+        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
         
         return cell;
     }
     else
     {
-        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
-        cell.selectedBackgroundView = [self highlightView];
-
         if (indexPath.section == 0)
         {
             cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
-            cell.iconView.image = [UIImage imageNamed:kImageNameForAllProjectIcon];
-            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexForDefaultProjectIcon];
+            
+            UIColor *highlightColor = [UIColor colorWithHexString:kColorHexDefaultProject];
+            cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightColor];
+            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
         }
         else
         {
             Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
             cell.titleLabel.text = project.title;
-            cell.iconView.image = project.icon;
+            cell.iconView.image = project.iconWithColor;
             cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
         }
         
@@ -120,28 +124,6 @@
     highlightView.backgroundColor = [UIColor clearColor];
     
     return highlightView;
-}
-
-#pragma mark Section Header
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 1)
-    {
-#warning test
-        return kHeightForSectionHeaderPlain;
-        //return 0;
-    }else
-    {
-        return 0;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *title = [NSString stringWithFormat: NSLocalizedString(@"MenuView_SectionHeader_Project_%i", nil),
-                              [APPDELEGATE numberOfProject]];
-    return [[SectionHeaderView alloc] initWithStyle:UITableViewStylePlain title:title];
 }
 
 #pragma mark - Table view delegate
@@ -182,7 +164,7 @@
     {
         UINavigationController *navigationController = (UINavigationController*)segue.destinationViewController;
         EditProjectViewController *controller = (EditProjectViewController *)navigationController.topViewController;
-        controller.isNewProject = YES;
+        controller.isNew = YES;
         
         Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];

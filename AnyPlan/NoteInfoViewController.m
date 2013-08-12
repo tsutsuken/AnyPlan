@@ -59,7 +59,7 @@
 
     cell.titleLabel.text = NSLocalizedString(@"NoteInfoView_Cell_Project", nil);
     cell.detailLabel.text = self.note.project.title;
-    cell.iconView.image = self.note.project.icon;
+    cell.iconView.image = self.note.project.iconWithColor;
     
     return cell;
 }

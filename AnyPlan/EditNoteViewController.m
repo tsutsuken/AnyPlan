@@ -201,7 +201,6 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(didPushDoneButton)];
-        [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
         
         [rightBarButtonItems addObject:doneButton];
     }

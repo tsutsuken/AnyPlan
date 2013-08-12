@@ -17,9 +17,6 @@
 
 @implementation EditProjectViewController
 
-#define kTagForActionSheetDeleteProject 1
-#define kTagForActionSheetSelectIconStyle 2
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,19 +24,13 @@
     self.tempTitle = self.project.title;
     
     //アイコン
-    if (self.isNewProject)
+    if (self.isNew)
     {
-    self.project.icon = [self defaultIcon];
-    }
-    
-    //カラー
-    if (self.isNewProject)
-    {
-        self.project.colorHex = kColorHexForDefaultProjectIcon;
+        [self setDefaultIcon];
     }
     
     //タイトル
-    if (self.isNewProject)
+    if (self.isNew)
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_NewProject", nil);
     }
@@ -90,11 +81,9 @@
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:self action:@selector(didPushDoneButton)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
-    self.navigationItem.rightBarButtonItem = doneButton;
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                           target:self action:@selector(didPushDoneButton)];
 }
 
 - (void)setDeleteButton
@@ -128,16 +117,10 @@
     [editableCell.textField becomeFirstResponder];
 }
 
-- (UIImage *)defaultIcon
+- (void)setDefaultIcon
 {
-    UIImage *defaultIconForProject;
-    
-    UIImage *backGroundImage = [UIImage imageWithColor:[UIColor colorWithHexString:kColorHexForDefaultProjectIcon]];
-    UIImage *iconImage = [UIImage imageNamed:kImageNameForDefaultProjectIcon];
-    CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
-    defaultIconForProject = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
-    
-    return defaultIconForProject;
+    self.project.colorHex = kColorHexDefaultProject;
+    self.project.icon = [UIImage imageNamed:kImageDefaultProjectIcon];
 }
 
 - (BOOL)isDefaultProject
@@ -168,7 +151,7 @@
         {
             if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
             {
-                if (self.isNewProject)
+                if (self.isNew)
                 {
                     [self.project.managedObjectContext deleteObject:self.project];
                 }
@@ -181,7 +164,7 @@
             {
                 self.project.title = self.tempTitle;
                 
-                if (self.isNewProject)
+                if (self.isNew)
                 {
                     [ANALYTICS trackEvent:kEventAddProject sender:self];
                     [ANALYTICS trackPropertyWithKey:kPropertyKeyProjectTitle value:self.project.title sender:self];
@@ -256,7 +239,7 @@
     {
         ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         cell.titleLabel.text = NSLocalizedString(@"EditProjectView_Cell_Icon", nil);
-        cell.iconView.image = self.project.icon;
+        cell.iconView.image = self.project.iconWithColor;
         
         return cell;
     }
@@ -280,7 +263,7 @@
 {
     if (indexPath.row == 1)
     {
-        [self showActionSheetForSelectIconStyle];
+        [self showSelectIconShapeView];
     }
 }
 
@@ -323,30 +306,13 @@
 
 -(void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet.tag == kTagForActionSheetDeleteProject)
-    {
-        switch (buttonIndex) {
-            case 0:
-                [self closeViewWithDeletingTask];
-                break;
-            case 1:
-                //Do Nothing
-                break;
-        }
-    }
-    else
-    {
-        switch (buttonIndex) {
-            case 0:
-                [self showSelectIconShapeView];
-                break;
-            case 1:
-                [self pickImageWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-                break;
-            case 2:
-                [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:YES];
-                break;
-        }
+    switch (buttonIndex) {
+        case 0:
+            [self closeViewWithDeletingTask];
+            break;
+        case 1:
+            //Do Nothing
+            break;
     }
 }
 
@@ -361,7 +327,6 @@
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.delegate = self;
-    actionSheet.tag = kTagForActionSheetDeleteProject;
     
     [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Delete", nil)];
     [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Cancel", nil)];
@@ -375,44 +340,6 @@
 {
     self.shouldDeleteProject = YES;
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - Select Icon
-
-- (void)showActionSheetForSelectIconStyle
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.delegate = self;
-    actionSheet.tag = kTagForActionSheetSelectIconStyle;
-
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_SelectFromDefaultIcon", nil)];
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_SelectFromLibrary", nil)];
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"EditProjectView_ActionSheet_Button_Cancel", nil)];
-    actionSheet.cancelButtonIndex = 2;
-    
-    [actionSheet showInView:self.view];
-}
-
--(void)pickImageWithSourceType:(UIImagePickerControllerSourceType)sourceType
-{
-    if([UIImagePickerController isSourceTypeAvailable:sourceType])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = sourceType;
-        imagePicker.allowsEditing = YES;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
-#pragma mark ImagePicker delegate
-
--(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingImage:(UIImage*)image editingInfo:(NSDictionary*)editingInfo
-{
-    self.project.icon = image;
-    
-    [self dismissModalViewControllerAnimated:YES];
-    [self.tableView reloadData];//セル内の画像を更新するため
 }
 
 @end

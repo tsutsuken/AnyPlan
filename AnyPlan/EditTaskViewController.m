@@ -171,23 +171,23 @@
         ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
         cell.detailLabel.text = self.task.project.title;
-        cell.iconView.image = self.task.project.icon;
+        cell.iconView.image = self.task.project.iconWithColor;
         
         return cell;
     }
     else if (indexPath.row == 2)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_DueDate", nil);
-        cell.detailTextLabel.text = self.task.dueDateStringLong;
+        CustomDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_DueDate", nil);
+        cell.detailLabel.text = self.task.dueDateStringLong;
         
         return cell;
     }
     else if (indexPath.row == 3)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        cell.textLabel.text = NSLocalizedString(@"EditTaskView_Cell_Repeat", nil);
-        cell.detailTextLabel.text = self.task.repeat.title;
+        CustomDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Repeat", nil);
+        cell.detailLabel.text = self.task.repeat.title;
         
         return cell;
     }
@@ -320,7 +320,6 @@
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                 target:self
                                                                                 action:@selector(didPushDoneButtonForPicker)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     
     //Deleteボタンの作成
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)

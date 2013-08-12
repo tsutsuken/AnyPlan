@@ -12,7 +12,6 @@
 @interface SelectIconShapeViewController ()
 
 @property (strong, nonatomic) NSArray *imageNameArray;
-@property (assign, nonatomic) int selectedItemIndex;
 
 @end
 
@@ -25,6 +24,8 @@
     self.title = NSLocalizedString(@"SelectIconShapeView_Title", nil);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
+    
+    self.collectionView.backgroundColor = kColorBackGroundDark;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -55,16 +56,19 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor colorWithHexString:kColorHexForDefaultProjectIcon];
-    cell.imageView.image = [UIImage imageNamed:[self.imageNameArray objectAtIndex:indexPath.item]];
+
+    UIImage *imageNormal = [UIImage imageNamed:[self.imageNameArray objectAtIndex:indexPath.item]];
+    cell.imageView.image = [imageNormal imageTintedWithColor:kColorPaleWhite];
+    cell.imageView.highlightedImage = [imageNormal imageTintedWithColor:[UIColor lightGrayColor]];
 
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedItemIndex = indexPath.item;
+    NSString *selectedImageName = [self.imageNameArray objectAtIndex:indexPath.item];
+    self.project.icon = [UIImage imageNamed:selectedImageName];
+
     [self showSelectIconColorView];
 }
 
@@ -85,7 +89,6 @@
     {
         SelectIconColorViewController *controller = (SelectIconColorViewController *)segue.destinationViewController;
         controller.project = self.project;
-        controller.iconImageName = [self.imageNameArray objectAtIndex:self.selectedItemIndex];
     }
 }
 

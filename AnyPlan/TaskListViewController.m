@@ -46,10 +46,9 @@
                                                                             target:self.viewDeckController
                                                                             action:@selector(toggleLeftView)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:self
-                                                                            action:@selector(showEditTaskViewWithNewTask)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(showEditTaskViewWithNewTask)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -196,8 +195,8 @@
     UILabel *label = [[UILabel alloc] initWithFrame:kFrameForSectionHeaderLabelGrouped];
     label.tag = kTagForLabelInSectionHeaderView;
     label.text              = title;
-    label.textColor         = [UIColor colorWithHexString:kColorHexSectionHeaderTitle];
-    label.font              = [UIFont boldSystemFontOfSize:17.0];
+    label.textColor         = [UIColor darkGrayColor];
+    label.font              = [UIFont systemFontOfSize:14.0];
     label.backgroundColor   = [UIColor clearColor];
     label.shadowColor       = [UIColor whiteColor];
     label.shadowOffset      = CGSizeMake(0, 1);

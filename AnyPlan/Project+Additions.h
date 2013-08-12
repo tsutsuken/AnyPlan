@@ -11,6 +11,7 @@
 @interface Project (Additions)
 
 - (void)saveContext;
+- (UIImage *)iconWithColor;
 
 @end
 

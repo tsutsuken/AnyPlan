@@ -2,29 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>flag</string>
+	<string>lines</string>
 	<string>star</string>
 	<string>heart</string>
-	<string>folder</string>
+	<string>heart_double</string>
 	<string>person</string>
-	<string>people</string>
-	<string>running</string>
-	<string>home</string>
-	<string>briefcase</string>
-	<string>book</string>
-	<string>bulb</string>
-	<string>chart</string>
-	<string>gift</string>
+	<string>friends</string>
+	<string>couple</string>
+	<string>run</string>
+	<string>shopping</string>
+	<string>eat</string>
 	<string>cup</string>
-	<string>dumbbell</string>
-	<string>music</string>
+	<string>gift</string>
+	<string>foot</string>
+	<string>car</string>
 	<string>plane</string>
 	<string>rocket</string>
-	<string>globe</string>
-	<string>sun</string>
-	<string>exclamation</string>
-	<string>skull</string>
+	<string>briefcase</string>
+	<string>home</string>
+	<string>book</string>
+	<string>music</string>
+	<string>mountain</string>
 	<string>trophy</string>
+	<string>flag</string>
 	<string>inbox</string>
 </array>
 </plist>

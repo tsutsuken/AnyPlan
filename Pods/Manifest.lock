@@ -3,6 +3,7 @@ PODS:
   - FlurrySDK (4.2.1)
   - GoogleAnalytics-iOS-SDK (2.0beta4)
   - MBProgressHUD (0.7)
+  - MGImageUtilities (0.0.1)
   - Mixpanel (2.0.0)
   - MKStoreKit (4.99)
   - ViewDeck (2.2.9)
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - FlurrySDK
   - GoogleAnalytics-iOS-SDK
   - MBProgressHUD
+  - MGImageUtilities
   - Mixpanel
   - MKStoreKit
   - ViewDeck
@@ -21,6 +23,7 @@ SPEC CHECKSUMS:
   FlurrySDK: 9a38bbb195c9f636a40193190ef38fd07e6b76c5
   GoogleAnalytics-iOS-SDK: ae8e58e771b6dec84c0047154cc0e550a15e6f54
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MGImageUtilities: ab3580f2161b10f8a41331baea87aaafbd688950
   Mixpanel: e4af97adb60a10541b7869929a83d734025058a6
   MKStoreKit: 5dea8e2966c1218c0d0f0b5c749d2d9317141a2b
   ViewDeck: ac3ff2388bcb13e832d7878ccb6e0e320d10a779

@@ -31,6 +31,12 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 7
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
 
+// MGImageUtilities
+#define COCOAPODS_POD_AVAILABLE_MGImageUtilities
+#define COCOAPODS_VERSION_MAJOR_MGImageUtilities 0
+#define COCOAPODS_VERSION_MINOR_MGImageUtilities 0
+#define COCOAPODS_VERSION_PATCH_MGImageUtilities 1
+
 // MKStoreKit
 #define COCOAPODS_POD_AVAILABLE_MKStoreKit
 #define COCOAPODS_VERSION_MAJOR_MKStoreKit 4

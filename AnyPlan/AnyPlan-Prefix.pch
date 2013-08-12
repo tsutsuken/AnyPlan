@@ -36,28 +36,23 @@
     #import "Flurry.h"
     #import "GAI.h"
     #import "AnalyticsManager.h"
-    #import "UIBarButtonItem+Additions.h"
-    #import "CustomTableView.h"
     #import "SectionHeaderView.h"
     #import "MenuCell.h"
-
+    #import "CustomDetailCell.h"
+    #import "UIImage+Tint.h"
 
 #endif
 
 /*Common*/
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
-#define kColorHexForDefaultProjectIcon @"7F7F7F"
-#define kImageNameForDefaultProjectIcon @"flag"
-#define kLengthForDefaultProjectIcon 60
-#define kImageNameForAllProjectIcon @"infinity"
-#define kImageNameForInboxProjectIcon @"inbox_with_background"
-#define kColorHexNavigationBarTitle @"787878"
-#define kColorHexNavigationBarSubTitle @"8C8C8C"
-#define kColorHexSectionHeaderTitle @"828282"
+#define kColorHexDefaultProject @"787878"//colorlistの１番目と同じ
+#define kColorBackGroundDark [UIColor colorWithHexString:@"262626"]//MenuViewの背景と同じ
+#define kColorPaleWhite [UIColor colorWithHexString:@"E3E3E3"]//MenuViewのセルテキストと同じ
+#define kImageDefaultProjectIcon @"rocket"
 #define kFrameForBarButtonItem CGRectMake(0, 0, 40, 30)
 #define kHeightForSectionHeaderGrouped 46
 #define kHeightForSectionHeaderPlain 22
-#define kFrameForSectionHeaderLabelGrouped CGRectMake(19, 15, 300, 25)
+#define kFrameForSectionHeaderLabelGrouped CGRectMake(14, 15, 300, 25)
 
 /*Debug*/
 #define LOG(...) NSLog(__VA_ARGS__)

@@ -21,6 +21,8 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"SelectIconColorView_Title", nil);
+    
+    self.collectionView.backgroundColor = kColorBackGroundDark;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,25 +54,16 @@
 {
     IconCell *cell = (IconCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"IconCell" forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor colorWithHexString:[self.colorHexArray objectAtIndex:indexPath.item]];
-    cell.imageView.image = [UIImage imageNamed:self.iconImageName];
+    UIColor *color = [UIColor colorWithHexString:[self.colorHexArray objectAtIndex:indexPath.item]];
+    cell.imageView.image = [self.project.icon imageTintedWithColor:color];
+    cell.imageView.highlightedImage = [self.project.icon imageTintedWithColor:[UIColor whiteColor]];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIColor *selectedColor = [UIColor colorWithHexString:[self.colorHexArray objectAtIndex:indexPath.item]];
-    UIImage *backGroundImage = [UIImage imageWithColor:selectedColor];
-    
-    UIImage *iconImage = [UIImage imageNamed:self.iconImageName];
-    
-    CGRect rect = CGRectMake(0, 0, kLengthForDefaultProjectIcon, kLengthForDefaultProjectIcon);
-    
-    self.project.icon = [UIImage generateImageWithSourceImage:backGroundImage composeImage:iconImage rect:rect];
     self.project.colorHex = [self.colorHexArray objectAtIndex:indexPath.item];
-    //saveはしない
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

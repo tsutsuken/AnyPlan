@@ -31,9 +31,6 @@
     [self setReviewRequestSystem];
     [self setAnalyticsSystem];
     
-    [self setDefaultAppearance];
-    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
-    
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
     deckController.centerController = [self tabBarController];
@@ -43,49 +40,6 @@
     //[PFUser logOut];
     
     return YES;
-}
-
-- (void)setDefaultAppearance
-{
-    // ツールバー
-    UIImage *toolbarImage = [UIImage imageNamed:@"toolbar.png"];
-    [[UIToolbar appearance] setBackgroundImage:toolbarImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    
-    // ナビゲーションバー
-    UIImage *navigationBackgroundImage = [UIImage imageNamed:@"navigationbar.png"];
-    [[UINavigationBar appearance] setBackgroundImage:navigationBackgroundImage forBarMetrics:UIBarMetricsDefault];
-    
-    NSDictionary *textAttributesDictionary = @{UITextAttributeTextColor:[UIColor colorWithHexString:kColorHexNavigationBarTitle],
-                                               UITextAttributeTextShadowColor:[UIColor whiteColor],
-                                               UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetMake(0, 1)]
-                                               };
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:textAttributesDictionary];
-    
-    
-    // バーボタンアイテム
-    UIImage *rightButtonImage = [[UIImage imageNamed:@"navbarbutton_normal.png"]
-                                 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    [[UIBarButtonItem appearance]
-     setBackgroundImage:rightButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    
-    UIImage *leftButtonImage = [[UIImage imageNamed:@"navbarbutton_back.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(4, 15, 4, 4)];
-    [[UIBarButtonItem appearance]
-     setBackButtonBackgroundImage:leftButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    UIImage *doneButtonImage = [[UIImage imageNamed:@"navbarbutton_done.png"]
-                                    resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    
-    [[UIBarButtonItem appearance]
-     setBackgroundImage:doneButtonImage forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
-    
-    [[UIBarButtonItem appearance]
-     setTitleTextAttributes:textAttributesDictionary
-     forState:UIControlStateNormal];
-    
-    //ドロップシャドウ
 }
 
 - (void)setNotificationCenter
@@ -317,33 +271,23 @@
 
 - (void)insertDefaultProjects
 {
-    NSArray *defaultProjectDataArray = [self defaultProjectDataArray];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"DefaultProjects" ofType:@"plist"];
+    NSArray *defaultListDataArray = [[NSArray alloc] initWithContentsOfFile:filePath];
     
-    for (int i = 0; i < [defaultProjectDataArray count]; i++)
+    for (int i = 0; i < [defaultListDataArray count]; i++)
     {
-        NSDictionary *dictionary = [defaultProjectDataArray objectAtIndex:i];
+        NSDictionary *dictionary = [defaultListDataArray objectAtIndex:i];
         
         Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
-        project.title = [dictionary objectForKey:kProjectTitle];
-        project.icon = [UIImage imageNamed:[dictionary objectForKey:kProjectIconImageName]];
         project.displayOrder = [NSNumber numberWithInt:i];
-        project.colorHex = [dictionary objectForKey:kProjectColorHex];
+        project.title = [dictionary objectForKey:@"title"];
+        project.colorHex = [dictionary objectForKey:@"colorHex"];
+        
+        NSString *iconName = [dictionary objectForKey:@"iconName"];
+        project.icon = [UIImage imageNamed:iconName];
     }
     
     [self saveContext];
-}
-
-- (NSArray *)defaultProjectDataArray
-{
-    NSMutableArray *defaultProjectDataArray = [NSMutableArray array];
-    
-    [defaultProjectDataArray  addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                              NSLocalizedString(@"Common_Project_Category_Inbox", nil), kProjectTitle,
-                              kImageNameForInboxProjectIcon, kProjectIconImageName,
-                              kColorHexForDefaultProjectIcon, kProjectColorHex,
-							  nil]];
-    
-    return [defaultProjectDataArray copy];
 }
 
 #pragma mark - Methods For Other Class

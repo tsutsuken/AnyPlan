@@ -21,10 +21,10 @@
             
             UILabel *label = [[UILabel alloc] initWithFrame:kFrameForSectionHeaderLabelGrouped];
             label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor colorWithHexString:kColorHexSectionHeaderTitle];
+            label.textColor = [UIColor darkGrayColor];
             label.shadowColor = [UIColor whiteColor];
             label.shadowOffset = CGSizeMake(0, 1);
-            label.font = [UIFont boldSystemFontOfSize:17.0];
+            label.font = [UIFont systemFontOfSize:14.0];
             label.text = title;
             
             [self addSubview:label];
@@ -39,7 +39,7 @@
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 300, kHeightForSectionHeaderPlain - 1)];
             label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor colorWithHexString:kColorHexNavigationBarTitle];
+            label.textColor = [UIColor darkGrayColor];
             label.shadowColor = [UIColor whiteColor];
             label.shadowOffset = CGSizeMake(0, 1);
             label.font = [UIFont boldSystemFontOfSize:16.0];

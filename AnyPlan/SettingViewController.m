@@ -23,11 +23,9 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"SettingView_Title", nil);
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:self action:@selector(didPushDoneButton)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
-    self.navigationItem.rightBarButtonItem = doneButton;
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                           target:self action:@selector(didPushDoneButton)];;
 }
 
 - (void)viewWillAppear:(BOOL)animated

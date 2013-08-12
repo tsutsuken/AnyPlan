@@ -61,7 +61,7 @@
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = project.title;
-    cell.iconView.image = project.icon;
+    cell.iconView.image = project.iconWithColor;
     
     if ([self.editedObject valueForKey:kKeyForProject] == project)
     {

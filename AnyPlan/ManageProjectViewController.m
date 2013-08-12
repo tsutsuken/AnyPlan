@@ -20,10 +20,9 @@
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
     self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(didPushAddButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(didPushAddButton)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,7 +96,7 @@
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = project.title;
-    cell.iconView.image = project.icon;
+    cell.iconView.image = project.iconWithColor;
 }
 
 - (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath
@@ -154,12 +153,10 @@
     if (editing)
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;
-        [self.editButtonItem setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     }
     else
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        [self.editButtonItem setTitleColorForButtonStyle:UIBarButtonItemStylePlain];
         [self saveContext];
     }
 }
@@ -240,12 +237,12 @@
 
         if (sender == self.myTableView)//Existing Project
         {
-            controller.isNewProject = NO;
+            controller.isNew = NO;
             controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.myTableView indexPathForSelectedRow]];
         }
         else//New Project
         {
-            controller.isNewProject = YES;
+            controller.isNew = YES;
             
             Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
             newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
