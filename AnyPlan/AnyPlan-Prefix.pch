@@ -53,6 +53,7 @@
 #define kHeightForSectionHeaderGrouped 46
 #define kHeightForSectionHeaderPlain 22
 #define kFrameForSectionHeaderLabelGrouped CGRectMake(14, 15, 300, 25)
+#define kNotificationDidCloseManageProjectView @"kNotificationDidCloseManageProjectView"
 
 /*Debug*/
 #define LOG(...) NSLog(__VA_ARGS__)

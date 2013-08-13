@@ -19,10 +19,35 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
-    self.myToolbar.items = [NSArray arrayWithObjects:self.self.editButtonItem, nil];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:@selector(didPushAddButton)];
+    
+    [self setTableView];
+}
+
+- (void)setTableView
+{
+    self.tableView.editing = YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:YES animated:animated];
+    
+    [self checkDisplayOrder];
+}
+
+#warning test
+- (void)checkDisplayOrder
+{
+    for (Project *project in [self.fetchedResultsController fetchedObjects])
+    {
+        LOG(@"%@ %@", project.title, project.displayOrder);
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -31,11 +56,14 @@
     
     if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
     {
-        [self saveContext];//Editボタン押し忘れのため(追加、編集については対応済み)
+        [self sendNotification];
     }
-    else//次のViewに行った時
-    {
-    }
+}
+
+- (void)sendNotification
+{
+    NSNotification *notification = [NSNotification notificationWithName:kNotificationDidCloseManageProjectView object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -45,10 +73,10 @@
     [ANALYTICS trackView:self];
     
     //UITableViewControllerではないため、手動でやる必要がある
-    NSIndexPath *indexPath = self.myTableView.indexPathForSelectedRow;
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     if (indexPath)
     {
-        [self.myTableView deselectRowAtIndexPath:indexPath animated:animated];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
     }
 }
 
@@ -56,19 +84,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)saveContext
-{
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error])
-    {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    else{
-        NSLog(@"Saved Context");
-    }
 }
 
 #pragma mark - Table view data source
@@ -99,17 +114,14 @@
     cell.iconView.image = project.iconWithColor;
 }
 
-- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return NO;
-    }
-    else
-    {
-        return YES;
-    }
+    [self performSegueWithIdentifier:@"showEditProjectView" sender:self.tableView];
 }
+
+#pragma mark - MoveRow
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -123,53 +135,37 @@
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableview canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPat
+{
+    return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL)tableView:(UITableView *)tableview shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 - (NSIndexPath*)tableView:(UITableView*)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath*)sourceIndexPath toProposedIndexPath:(NSIndexPath*)proposedDestinationIndexPath
 {
-    if (proposedDestinationIndexPath.row == 0)
+    if (proposedDestinationIndexPath.row == 0)//未分類より上に行こうとした場合
     {
         return sourceIndexPath;
     }
     else
     {
         return proposedDestinationIndexPath;
-    }
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"showEditProjectView" sender:self.myTableView];
-}
-
-#pragma mark - Edit
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
-    [super setEditing:editing animated:animated];
-    
-    [self.myTableView setEditing:editing animated:animated];
-    
-    if (editing)
-    {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-    else
-    {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-        [self saveContext];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        Project *deletingProject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-		[self.managedObjectContext deleteObject:deletingProject];
-        [deletingProject saveContext];
-        
-        [self refreshDisplayOrder];
     }
 }
 
@@ -200,30 +196,21 @@
         start = toRow;
         end = fromRow - 1;
     }
-    NSLog(@"Change Displey Order from cellAtIndex:%i to cellAtIndex:%i", start, end);
     
     for (NSUInteger i = start; i <= end; i++)
     {
-        Project *aProject = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];
-        NSLog(@"「%@」 Displey Order changed from %i to %i",aProject.title, [aProject.displayOrder intValue], [aProject.displayOrder intValue]+delta);
-        
-        int newDisplayOrderInt = [aProject.displayOrder intValue] + delta;
-        aProject.displayOrder =  [[NSNumber alloc] initWithInt:newDisplayOrderInt];
+        Project *project = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];
+        NSNumber *newDisplayOrder = @([project.displayOrder intValue] + delta);
+        project.displayOrder =  newDisplayOrder;
     }
+    
+    [movingProject saveContext];
+    
+    [self.tableView reloadData];
+    
+    [self checkDisplayOrder];
 }
 
-- (void)refreshDisplayOrder
-{
-    //プロジェクトの削除で、displayOrderに空白が出来ないようにする
-    NSUInteger index = 0;
-    
-    Project * aProject;
-    for (aProject in self.fetchedResultsController.fetchedObjects)
-    {
-        aProject.displayOrder = [NSNumber numberWithInt:index];
-        index++;
-    }
-}
 
 #pragma mark - Show Other View
 
@@ -235,10 +222,10 @@
     {
         EditProjectViewController *controller = (EditProjectViewController *)segue.destinationViewController;
 
-        if (sender == self.myTableView)//Existing Project
+        if (sender == self.tableView)//Existing Project
         {
             controller.isNew = NO;
-            controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.myTableView indexPathForSelectedRow]];
+            controller.project = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
         }
         else//New Project
         {
@@ -302,7 +289,7 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.myTableView beginUpdates];
+    [self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
@@ -310,11 +297,11 @@
 {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.myTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.myTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -323,7 +310,7 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.myTableView;
+    UITableView *tableView = self.tableView;
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
@@ -347,7 +334,21 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.myTableView endUpdates];
+    [self.tableView endUpdates];
 }
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    else{
+        NSLog(@"Saved Context");
+    }
+}
+
 
 @end

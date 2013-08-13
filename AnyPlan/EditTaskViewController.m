@@ -57,14 +57,11 @@
 
 - (void)setToolbar
 {
-    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
-    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
-    
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self action:@selector(didPushDeleteButton)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    self.toolbar.items = @[space, buttonItem, space];
+    self.toolbar.items = @[space, deleteButton, space];
 }
 
 - (void)viewDidAppear:(BOOL)animated

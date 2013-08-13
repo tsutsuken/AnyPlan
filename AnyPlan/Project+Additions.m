@@ -24,6 +24,16 @@
     }
 }
 
+- (void)deleteWithRefreshDisplayOrder:(BOOL)shouldRefresh
+{
+    [self.managedObjectContext deleteObject:self];
+    
+    if (shouldRefresh)
+    {
+        [self refreshDisplayOrderOfProjects];
+    }
+}
+
 #pragma mark - Icon
 
 - (UIImage *)iconWithColor
@@ -35,6 +45,34 @@
     iconWithColor = [iconNormal imageTintedWithColor:color];
     
     return iconWithColor;
+}
+
+#pragma mark - DisplayOrder of Projects
+
+- (void)refreshDisplayOrderOfProjects
+{
+    //displayOrderに空白が出来ないようにする
+    NSArray *sortedLists = [self sortedProjects];
+    int index = 0;
+    
+    for (Project * project in sortedLists)
+    {
+        project.displayOrder = @(index);
+        index++;
+    }
+}
+
+- (NSArray *)sortedProjects
+{
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
+    
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
+    
+    NSArray* sortedLists = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    return sortedLists;
 }
 
 @end

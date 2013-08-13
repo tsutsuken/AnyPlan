@@ -11,6 +11,7 @@
 @interface Project (Additions)
 
 - (void)saveContext;
+- (void)deleteWithRefreshDisplayOrder:(BOOL)shouldRefresh;
 - (UIImage *)iconWithColor;
 
 @end

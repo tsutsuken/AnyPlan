@@ -72,8 +72,6 @@
 		1F4A16CB17B8D1C700136A4D /* IconShapes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A16CA17B8D1C600136A4D /* IconShapes.plist */; };
 		1F4A16CE17B8D57900136A4D /* DefaultProjects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A16D017B8D57900136A4D /* DefaultProjects.plist */; };
 		1F4A16D317B9009200136A4D /* IconColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A16D217B9009200136A4D /* IconColors.plist */; };
-		1F4D237E172B73F600081E94 /* delete_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D237D172B73F600081E94 /* delete_button@2x.png */; };
-		1F4D2380172BCD5600081E94 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D237F172BCD5600081E94 /* delete_button.png */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
@@ -120,10 +118,6 @@
 		1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76DCD172D704500EC659C /* CustomTabBarController.m */; };
 		1FAE98A517928FC100DC16F9 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989917928FC100DC16F9 /* info.png */; };
 		1FAE98A617928FC100DC16F9 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989A17928FC100DC16F9 /* info@2x.png */; };
-		1FAE98A717928FC100DC16F9 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989B17928FC100DC16F9 /* trash.png */; };
-		1FAE98A817928FC100DC16F9 /* trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989C17928FC100DC16F9 /* trash@2x.png */; };
-		1FAE98A917928FC100DC16F9 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989D17928FC100DC16F9 /* share@2x.png */; };
-		1FAE98AA17928FC100DC16F9 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE989E17928FC100DC16F9 /* share.png */; };
 		1FAE98C31792D13300DC16F9 /* eye_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE98BF1792D13300DC16F9 /* eye_closed.png */; };
 		1FAE98C41792D13300DC16F9 /* eye_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE98C01792D13300DC16F9 /* eye_closed@2x.png */; };
 		1FAE98C51792D13300DC16F9 /* eye_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAE98C11792D13300DC16F9 /* eye_open.png */; };
@@ -241,11 +235,9 @@
 		1F4A169617B8D19E00136A4D /* trophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trophy.png; sourceTree = "<group>"; };
 		1F4A169717B8D19E00136A4D /* trophy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophy@2x.png"; sourceTree = "<group>"; };
 		1F4A16CA17B8D1C600136A4D /* IconShapes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IconShapes.plist; sourceTree = "<group>"; };
-		1F4A16CF17B8D57900136A4D /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/DefaultProjects.plist; sourceTree = "<group>"; };
-		1F4A16D117B8D58300136A4D /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/DefaultProjects.plist; sourceTree = "<group>"; };
+		1F4A16CF17B8D57900136A4D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/DefaultProjects.plist; sourceTree = "<group>"; };
+		1F4A16D117B8D58300136A4D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/DefaultProjects.plist; sourceTree = "<group>"; };
 		1F4A16D217B9009200136A4D /* IconColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IconColors.plist; sourceTree = "<group>"; };
-		1F4D237D172B73F600081E94 /* delete_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_button@2x.png"; sourceTree = "<group>"; };
-		1F4D237F172BCD5600081E94 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_button.png; sourceTree = "<group>"; };
 		1F5EE434172F7629004EAD94 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
@@ -314,10 +306,6 @@
 		1FA76DCD172D704500EC659C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		1FAE989917928FC100DC16F9 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		1FAE989A17928FC100DC16F9 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
-		1FAE989B17928FC100DC16F9 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
-		1FAE989C17928FC100DC16F9 /* trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trash@2x.png"; sourceTree = "<group>"; };
-		1FAE989D17928FC100DC16F9 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
-		1FAE989E17928FC100DC16F9 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		1FAE98BF1792D13300DC16F9 /* eye_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_closed.png; sourceTree = "<group>"; };
 		1FAE98C01792D13300DC16F9 /* eye_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye_closed@2x.png"; sourceTree = "<group>"; };
 		1FAE98C11792D13300DC16F9 /* eye_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_open.png; sourceTree = "<group>"; };
@@ -757,10 +745,6 @@
 				1FAF45981793C77A00B250BC /* gear@2x.png */,
 				1FAE989917928FC100DC16F9 /* info.png */,
 				1FAE989A17928FC100DC16F9 /* info@2x.png */,
-				1FAE989B17928FC100DC16F9 /* trash.png */,
-				1FAE989C17928FC100DC16F9 /* trash@2x.png */,
-				1FAE989D17928FC100DC16F9 /* share@2x.png */,
-				1FAE989E17928FC100DC16F9 /* share.png */,
 			);
 			name = Icon;
 			sourceTree = "<group>";
@@ -798,8 +782,6 @@
 				1FA76DBB172D4E6B00EC659C /* check@2x.png */,
 				1FA76DBC172D4E6B00EC659C /* note.png */,
 				1FA76DBD172D4E6B00EC659C /* note@2x.png */,
-				1F4D237D172B73F600081E94 /* delete_button@2x.png */,
-				1F4D237F172BCD5600081E94 /* delete_button.png */,
 				1FAF458B1793C2CA00B250BC /* toolbar_dark.png */,
 				1FAF458C1793C2CA00B250BC /* toolbar_dark@2x.png */,
 				1F4A166517B8D19D00136A4D /* ProjectIcon */,
@@ -917,8 +899,6 @@
 				1F4A16BC17B8D19E00136A4D /* person.png in Resources */,
 				1F2223651726A93D0034CC80 /* Localizable.strings in Resources */,
 				1F4A16AE17B8D19E00136A4D /* heart_double.png in Resources */,
-				1F4D237E172B73F600081E94 /* delete_button@2x.png in Resources */,
-				1F4D2380172BCD5600081E94 /* delete_button.png in Resources */,
 				1F4A16B017B8D19E00136A4D /* home.png in Resources */,
 				1F4A16B917B8D19E00136A4D /* mountain@2x.png in Resources */,
 				1FA76DBE172D4E6B00EC659C /* check.png in Resources */,
@@ -962,12 +942,8 @@
 				1FAE98A517928FC100DC16F9 /* info.png in Resources */,
 				1F4A16B217B8D19E00136A4D /* inbox.png in Resources */,
 				1FAE98A617928FC100DC16F9 /* info@2x.png in Resources */,
-				1FAE98A717928FC100DC16F9 /* trash.png in Resources */,
-				1FAE98A817928FC100DC16F9 /* trash@2x.png in Resources */,
-				1FAE98A917928FC100DC16F9 /* share@2x.png in Resources */,
 				1F4A16A017B8D19E00136A4D /* cup.png in Resources */,
 				1F4A16CB17B8D1C700136A4D /* IconShapes.plist in Resources */,
-				1FAE98AA17928FC100DC16F9 /* share.png in Resources */,
 				1F4A16AF17B8D19E00136A4D /* heart_double@2x.png in Resources */,
 				1F4A16BB17B8D19E00136A4D /* music@2x.png in Resources */,
 				1FAE98C31792D13300DC16F9 /* eye_closed.png in Resources */,

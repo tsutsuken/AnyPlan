@@ -23,12 +23,6 @@
     
     self.tempTitle = self.project.title;
     
-    //アイコン
-    if (self.isNew)
-    {
-        [self setDefaultIcon];
-    }
-    
     //タイトル
     if (self.isNew)
     {
@@ -37,6 +31,12 @@
     else
     {
         self.title = NSLocalizedString(@"EditProjectView_Title_ExistingProject", nil);
+    }
+    
+    //アイコン
+    if (self.isNew)
+    {
+        [self setDefaultIcon];
     }
     
     //ナビゲーションボタン
@@ -48,7 +48,7 @@
     //削除ボタン
     if (!self.navigationController.isBeingPresented && ![self isDefaultProject])//Modalではない & デフォルトプロジェクトではない場合
     {
-        [self setDeleteButton];
+        [self setToolbar];
     }
 }
 
@@ -86,29 +86,15 @@
                                                                                            target:self action:@selector(didPushDoneButton)];
 }
 
-- (void)setDeleteButton
+- (void)setToolbar
 {
-    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [deleteButton addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-
-    [deleteButton setTitle:NSLocalizedString(@"EditProjectView_DeleteButton_Title", nil) forState:UIControlStateNormal];
+    self.navigationController.toolbarHidden = NO;
     
-    [deleteButton setBackgroundImage:[[UIImage imageNamed:@"delete_button.png"]
-                                      stretchableImageWithLeftCapWidth:8.0f
-                                      topCapHeight:0.0f]
-                            forState:UIControlStateNormal];
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self action:@selector(didPushDeleteButton)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    [deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    deleteButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    deleteButton.titleLabel.shadowColor = [UIColor lightGrayColor];
-    deleteButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
-    
-    deleteButton.frame = CGRectMake(10, 0, 300, 44);
-    
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    [footerView addSubview:deleteButton];
-    
-    self.tableView.tableFooterView = footerView;
+    self.toolbarItems = @[space, deleteButton, space];
 }
 
 - (void)showKeyBoard
@@ -145,20 +131,20 @@
     {
         if (self.shouldDeleteProject)
         {
-            [self.project.managedObjectContext deleteObject:self.project];
+            if (self.isNew)
+            {
+                [self.project deleteWithRefreshDisplayOrder:NO];//refreshすると落ちる
+            }
+            else
+            {
+                [self.project deleteWithRefreshDisplayOrder:YES];
+            }
         }
         else
         {
-            if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
+            if(self.tempTitle.length == 0)
             {
-                if (self.isNew)
-                {
-                    [self.project.managedObjectContext deleteObject:self.project];
-                }
-                else
-                {
-                    self.project.title = NSLocalizedString(@"Common_Untitled", nil);
-                }
+                self.project.title = NSLocalizedString(@"Common_Untitled", nil);
             }
             else
             {
@@ -174,10 +160,6 @@
         }
         
         [self.project saveContext];
-    }
-    else//次のViewに行った時
-    {
-        //[self hideKeyBoard];
     }
 }
 

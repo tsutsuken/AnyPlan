@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManageProjectViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface ManageProjectViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *myTableView;
-@property (strong, nonatomic) IBOutlet UIToolbar *myToolbar;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

@@ -47,19 +47,15 @@
 
 - (void)setToolbar
 {
-    UIButton *trashButton = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [trashButton setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
-    [trashButton addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* trashBarButton = [[UIBarButtonItem alloc] initWithCustomView:trashButton];
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self action:@selector(didPushDeleteButton)];
     
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(didPushShareButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* shareBarButton = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                  target:self action:@selector(didPushShareButton)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    self.toolbar.items = @[space, trashBarButton, space, shareBarButton];
+    self.toolbar.items = @[space, deleteButton, space, shareButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated

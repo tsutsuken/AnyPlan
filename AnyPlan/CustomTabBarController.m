@@ -28,12 +28,34 @@
 {
     [super viewDidLoad];
     
+    //[self setNotificationCenter];
+    
     for (UINavigationController *nvc in self.viewControllers)
     {
         id viewController = nvc.topViewController;
         [viewController setManagedObjectContext:self.managedObjectContext];
         [viewController setProject:self.project];
         [viewController setShouldDisplayAllProject:self.shouldDisplayAllProject];
+    }
+}
+
+- (void)setNotificationCenter
+{
+    //どうやっても重複しなかった。対応されたのかも。
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didCloseManageProjectView)
+                                                 name:kNotificationDidCloseManageProjectView object:nil];
+}
+
+- (void)didCloseManageProjectView
+{
+    //projectのdisplayorder変更を反映
+      //手動でデータを反映させるため、fetchし直す
+    for (UINavigationController *nvc in self.viewControllers)
+    {
+        id viewController = nvc.topViewController;
+        [viewController setFetchedResultsController:nil];
+        [[viewController tableView] reloadData];
     }
 }
 
