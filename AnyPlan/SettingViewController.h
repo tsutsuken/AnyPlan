@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import "MBProgressHUD.h"
 #import "ManageProjectViewController.h"
 
-@interface SettingViewController : UITableViewController
+@interface SettingViewController : UITableViewController <MFMailComposeViewControllerDelegate, MBProgressHUDDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

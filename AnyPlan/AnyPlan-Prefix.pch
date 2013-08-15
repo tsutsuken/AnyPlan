@@ -30,7 +30,6 @@
     #import "NavigationBarTitleWithSubtitleView.h"
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
-    #import "MBProgressHUD.h"
     #import "MKStoreManager.h"
     #import "Mixpanel.h"
     #import "Flurry.h"
@@ -54,6 +53,8 @@
 #define kHeightForSectionHeaderPlain 22
 #define kFrameForSectionHeaderLabelGrouped CGRectMake(14, 15, 300, 25)
 #define kNotificationDidCloseManageProjectView @"kNotificationDidCloseManageProjectView"
+
+#define kMailAddressSupport @"info@lvupp.com"
 
 /*Debug*/
 #define LOG(...) NSLog(__VA_ARGS__)
