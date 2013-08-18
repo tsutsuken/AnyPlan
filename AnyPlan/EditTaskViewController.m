@@ -56,9 +56,12 @@
 }
 
 - (void)setToolbar
-{
-    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-                                                                                  target:self action:@selector(didPushDeleteButton)];
+{    
+    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
+    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     self.toolbar.items = @[space, deleteButton, space];
@@ -317,13 +320,14 @@
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                 target:self
                                                                                 action:@selector(didPushDoneButtonForPicker)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     
     //Deleteボタンの作成
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(didPushDeleteButtonForPicker)];
-    toolBar.items = [NSArray arrayWithObjects:deleteButton, spacer, doneButton, nil];
+    toolBar.items = @[deleteButton, spacer, doneButton];
 	[actionSheet addSubview:toolBar];
     
     return actionSheet;

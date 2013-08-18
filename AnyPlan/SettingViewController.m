@@ -25,8 +25,10 @@
     
     self.title = NSLocalizedString(@"SettingView_Title", nil);
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self action:@selector(didPushDoneButton)];;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self action:@selector(didPushDoneButton)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,27 +137,34 @@
 
 #pragma mark Section Header
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    NSString *title;
-    
-    switch (section) {
-        case 0:
-            title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
-            break;
-        case 1:
-            title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
-            break;
-        case 2:
-            title = @"";
-            break;
-            
-        default:
-            title = @"";
-            break;
+    if (section == 0 || section == 1)
+    {
+        return kHeightForSectionHeaderGrouped;
     }
-    
-    return title;
+    else
+    {
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        NSString *title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
+        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+    }
+    else if (section == 1)
+    {
+        NSString *title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
+        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 #pragma mark Section Footer

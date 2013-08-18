@@ -23,6 +23,8 @@
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.toolbarHidden = NO;
     
+    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+    
     [self setToolbar];
 }
 
@@ -85,36 +87,30 @@
     ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
     cell.selectedBackgroundView = [self highlightView];
     
-    if (indexPath.section == 2)
+    if (indexPath.section == 0)
     {
-        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
+        cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
         
         UIColor *highlightColor = [UIColor colorWithHexString:kColorHexDefaultProject];
         cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightColor];
-        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
-        
-        return cell;
+        cell.titleLabel.highlightedTextColor = highlightColor;
+    }
+    else if (indexPath.section == 1)
+    {
+        Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
+        cell.titleLabel.text = project.title;
+        cell.iconView.image = project.iconWithColor;
+        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
     }
     else
     {
-        if (indexPath.section == 0)
-        {
-            cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
-            
-            UIColor *highlightColor = [UIColor colorWithHexString:kColorHexDefaultProject];
-            cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightColor];
-            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
-        }
-        else
-        {
-            Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
-            cell.titleLabel.text = project.title;
-            cell.iconView.image = project.iconWithColor;
-            cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
-        }
+        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
         
-        return cell;
+        cell.iconView.image = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorPaleWhite];
+        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
     }
+    
+    return cell;
 }
 
 - (UIView *)highlightView

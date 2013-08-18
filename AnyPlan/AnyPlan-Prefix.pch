@@ -39,22 +39,29 @@
     #import "MenuCell.h"
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
+    #import "UIBarButtonItem+Additions.h"
 
 #endif
 
 /*Common*/
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
-#define kColorHexDefaultProject @"787878"//colorlistの１番目と同じ
+#define kColorHexNavigationBarTitle @"787878"
+#define kColorHexNavigationBarSubTitle @"8C8C8C"
+#define kColorHexDefaultProject @"4CC1D9"//colorlistの１４番目と同じ
+#define kColorBarButtonTitleHighlighted [UIColor colorWithHexString:@"3c3c3c"]
 #define kColorBackGroundDark [UIColor colorWithHexString:@"262626"]//MenuViewの背景と同じ
 #define kColorPaleWhite [UIColor colorWithHexString:@"E3E3E3"]//MenuViewのセルテキストと同じ
 #define kImageDefaultProjectIcon @"rocket"
 #define kFrameForBarButtonItem CGRectMake(0, 0, 40, 30)
-#define kHeightForSectionHeaderGrouped 46
-#define kHeightForSectionHeaderPlain 22
-#define kFrameForSectionHeaderLabelGrouped CGRectMake(14, 15, 300, 25)
 #define kNotificationDidCloseManageProjectView @"kNotificationDidCloseManageProjectView"
 
 #define kMailAddressSupport @"info@lvupp.com"
+
+/* TableView */
+#define kColorHexSectionHeaderTitle @"828282"
+#define kHeightForSectionHeaderGrouped 46
+#define kHeightForSectionHeaderPlain 22
+#define kFrameForSectionHeaderLabelGrouped CGRectMake(19, 15, 300, 25)
 
 /*Debug*/
 #define LOG(...) NSLog(__VA_ARGS__)

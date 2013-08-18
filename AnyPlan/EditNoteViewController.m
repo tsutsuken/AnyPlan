@@ -47,11 +47,15 @@
 
 - (void)setToolbar
 {
-    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-                                                                                  target:self action:@selector(didPushDeleteButton)];
+    UIButton *deleteButtonSeed = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [deleteButtonSeed setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
+    [deleteButtonSeed addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:deleteButtonSeed];
     
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                  target:self action:@selector(didPushShareButton)];
+    UIButton *shareButtonSeed = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [shareButtonSeed setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+    [shareButtonSeed addTarget:self action:@selector(didPushShareButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* shareButton = [[UIBarButtonItem alloc] initWithCustomView:shareButtonSeed];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -197,7 +201,7 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(didPushDoneButton)];
-        
+        [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
         [rightBarButtonItems addObject:doneButton];
     }
     else
@@ -266,7 +270,7 @@
     NSArray* actItems = @[exportingText];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:actItems applicationActivities:nil];
-    activityView.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter];
+    activityView.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo];
     
     [self presentViewController:activityView animated:YES completion:nil];
 }

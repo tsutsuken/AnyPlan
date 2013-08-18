@@ -81,17 +81,22 @@
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                           target:self action:@selector(didPushDoneButton)];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self action:@selector(didPushDoneButton)];
+    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)setToolbar
 {
     self.navigationController.toolbarHidden = NO;
     
-    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
-                                                                                  target:self action:@selector(didPushDeleteButton)];
+    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
+    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
+    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     self.toolbarItems = @[space, deleteButton, space];
@@ -315,7 +320,7 @@
     actionSheet.destructiveButtonIndex = 0;
     actionSheet.cancelButtonIndex = 1;
     
-    [actionSheet showInView:self.view];
+    [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
 - (void)closeViewWithDeletingTask
