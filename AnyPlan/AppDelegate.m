@@ -314,6 +314,9 @@
     
     float bundleVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] floatValue];
     
+    LOG(@"loaded_%f",loadedVersion);
+    LOG(@"bundle_%f",bundleVersion);
+    
     if (loadedVersion == bundleVersion)//現在のバージョンを起動したことがある場合
     {
         //何もしない

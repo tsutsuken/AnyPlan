@@ -11,8 +11,6 @@
 @interface UpgradeAccountViewController ()
 
 @property (strong, nonatomic) MBProgressHUD *HUD;
-@property (strong, nonatomic) IBOutlet UIButton *purchaseMonthButton;
-@property (strong, nonatomic) IBOutlet UIButton *purchaseYearButton;
 @property (strong, nonatomic) IBOutlet UILabel *explanationLabel;
 
 @end
@@ -36,10 +34,8 @@
         [ANALYTICS trackEvent:kEventShowUpgradeViewByButton sender:self];
     }
     
-    [self setPurchaseButtons];
-    
-    self.explanationLabel.text = NSLocalizedString(@"UpgradeAccountView_Explanation", nil);
-    [self.explanationLabel sizeToFit];
+    self.explanationLabel.attributedText = [self attributedTextForHeader];
+    //[self.explanationLabel sizeToFit];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -60,57 +56,163 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)setPurchaseButtons
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    if (indexPath.section == 0)
+    {
+        cell.textLabel.text = [self labelTitleForMonthCell];
+    }
+    else
+    {
+        cell.textLabel.text = [self labelTitleForYearCell];
+    }
+    
+    return cell;
+}
+
+- (NSString *)labelTitleForMonthCell
 {
     NSDictionary *prices = [[MKStoreManager sharedManager] pricesDictionary];
     
-    //Month
-    NSString *titleForMonth;
+    NSString *title;
+    
     if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
     {
-        titleForMonth = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
+        title = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
     }
     else
     {
-        titleForMonth = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Month_%@", nil),
+        title = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Month_%@", nil),
                          [prices objectForKey:kProductIdSubscriptionMonth]];
     }
     
-    [self.purchaseMonthButton setTitle:titleForMonth forState:UIControlStateNormal];
-    [self.purchaseMonthButton addTarget:self action:@selector(didPushPurchaseMonthButton) forControlEvents:UIControlEventTouchUpInside];
+    return title;
+}
+
+- (NSString *)labelTitleForYearCell
+{
+    NSDictionary *prices = [[MKStoreManager sharedManager] pricesDictionary];
     
+    NSString *title;
     
-    //Year
-    NSString *titleForYear;
     if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
     {
-        titleForYear = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
+        title = NSLocalizedString(@"UpgradeAccountView_Button_Purchased", nil);
     }
     else
     {
-        titleForYear = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Year_%@", nil),
-                        [prices objectForKey:kProductIdSubscriptionYear]];
+        title = [NSString stringWithFormat: NSLocalizedString(@"UpgradeAccountView_Unit_Year_%@", nil),
+                 [prices objectForKey:kProductIdSubscriptionYear]];
     }
     
-    [self.purchaseYearButton setTitle:titleForYear forState:UIControlStateNormal];
-    [self.purchaseYearButton addTarget:self action:@selector(didPushPurchaseYearButton) forControlEvents:UIControlEventTouchUpInside];
+    return title;
+}
+
+#pragma mark HeaderView
+
+- (NSAttributedString *)attributedTextForHeader
+{
+    NSAttributedString *attributedTextForHeader;
+    
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"UpgradeAccountView_Header_Part_1", nil)
+                                                                  attributes:nil];
+    [mutableAttributedString appendAttributedString:string1];
+    
+    NSDictionary *attributes2 = @{ NSFontAttributeName : [UIFont boldSystemFontOfSize:17] };
+    NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"UpgradeAccountView_Header_Part_2", nil)
+                                                                  attributes:attributes2];
+    [mutableAttributedString appendAttributedString:string2];
+    
+    NSAttributedString *string3 = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"UpgradeAccountView_Header_Part_3", nil)
+                                                                  attributes:nil];
+    [mutableAttributedString appendAttributedString:string3];
+    
+    
+    attributedTextForHeader = [mutableAttributedString copy];
+    
+    return attributedTextForHeader;
+}
+
+#pragma mark Section Footer
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    NSString *title;
+    
+    if (section == 0)
+    {
+        title = NSLocalizedString(@"UpgradeAccountView_SectionFooter_Month", nil);
+    }
+    else
+    {
+        title = NSLocalizedString(@"UpgradeAccountView_SectionFooter_Year", nil);
+    }
+    
+    return [self footerViewWithTitle:title];
+}
+
+- (UIView *)footerViewWithTitle:(NSString *)title
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(19, 0, 282, 20)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor colorWithHexString:kColorHexSectionHeaderTitle];
+    label.shadowColor = [UIColor whiteColor];
+    label.shadowOffset = CGSizeMake(0, 1);
+    label.font = [UIFont boldSystemFontOfSize:15.0];
+    label.text = title;
+    
+    /*
+    footerView.backgroundColor = [UIColor blackColor];
+    label.backgroundColor = [UIColor redColor];
+    */
+    
+    [footerView addSubview:label];
+    
+    return footerView;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self showHUD];
+    
+    if (indexPath.section == 0)
+    {
+        [self purchaseItemWithProductId:kProductIdSubscriptionMonth];
+    }
+    else
+    {
+        [self purchaseItemWithProductId:kProductIdSubscriptionYear];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Purchase
-
-- (void)didPushPurchaseMonthButton
-{
-    [self showHUD];
-    
-    [self purchaseItemWithProductId:kProductIdSubscriptionMonth];
-}
-
-- (void)didPushPurchaseYearButton
-{
-    [self showHUD];
-    
-    [self purchaseItemWithProductId:kProductIdSubscriptionYear];
-}
 
 - (void)purchaseItemWithProductId:(NSString *)productId
 {
@@ -120,8 +222,6 @@
          NSLog(@"Purchased: %@", purchasedFeature);
          
          [self hideHUDWithCompleted:YES];
-         
-         [self setPurchaseButtons];
          
          if ([purchasedFeature isEqualToString:kProductIdSubscriptionMonth])
          {

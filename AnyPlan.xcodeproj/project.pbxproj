@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F000F5A178E23E10034AC98 /* AnalyticsManager.m */; };
-		1F00DA2317886A3B006EF467 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2217886A3A006EF467 /* Icon.png */; };
-		1F00DA2517886A40006EF467 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F00DA2417886A40006EF467 /* Icon@2x.png */; };
 		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
 		1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC501175216F80004CD4B /* NoteInfoViewController.m */; };
 		1F22235B17266D830034CC80 /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235A17266D830034CC80 /* EditProjectViewController.m */; };
@@ -74,6 +72,8 @@
 		1F4A16D317B9009200136A4D /* IconColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A16D217B9009200136A4D /* IconColors.plist */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */; };
+		1F78463717C3759600AEAA02 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F78463617C3759600AEAA02 /* appIcon.png */; };
+		1F78463917C3759900AEAA02 /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F78463817C3759900AEAA02 /* appIcon@2x.png */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
 		1F8EB517177D9840007E4F58 /* check_HUD.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB515177D9840007E4F58 /* check_HUD.png */; };
 		1F8EB518177D9840007E4F58 /* check_HUD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8EB516177D9840007E4F58 /* check_HUD@2x.png */; };
@@ -170,6 +170,7 @@
 		1FBB8D9E17C0AD650006CFB9 /* add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBB8D9C17C0AD650006CFB9 /* add_white@2x.png */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
+		1FD49C8F17C75CC100DE9A70 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FD49C8E17C75CC100DE9A70 /* Settings.bundle */; };
 		1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C1176C345C0080FA18 /* Task+Additions.m */; };
 		1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C7176C379B0080FA18 /* EditMemoViewController.m */; };
 		1FE3094D172561510063BD50 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3094C172561510063BD50 /* MenuViewController.m */; };
@@ -190,8 +191,6 @@
 /* Begin PBXFileReference section */
 		1F000F59178E23E10034AC98 /* AnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsManager.h; sourceTree = "<group>"; };
 		1F000F5A178E23E10034AC98 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
-		1F00DA2217886A3A006EF467 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../Icon.png; sourceTree = "<group>"; };
-		1F00DA2417886A40006EF467 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../Icon@2x.png"; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		1F1A739F176758AA00EED3D5 /* AnyPlan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnyPlan-Prefix.pch"; sourceTree = "<group>"; };
@@ -267,6 +266,8 @@
 		1F5EE434172F7629004EAD94 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		1F78463617C3759600AEAA02 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appIcon.png; path = ../../appIcon.png; sourceTree = "<group>"; };
+		1F78463817C3759900AEAA02 /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appIcon@2x.png"; path = "../../appIcon@2x.png"; sourceTree = "<group>"; };
 		1F85D428176D9842009C7362 /* MemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoCell.h; sourceTree = "<group>"; };
 		1F85D429176D9842009C7362 /* MemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoCell.m; sourceTree = "<group>"; };
 		1F8EB515177D9840007E4F58 /* check_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_HUD.png; sourceTree = "<group>"; };
@@ -393,6 +394,7 @@
 		1FBD4CC617277A76003A5D5C /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
 		1FC969651749DBC700D84A37 /* SelectProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectProjectViewController.h; sourceTree = "<group>"; };
 		1FC969661749DBC700D84A37 /* SelectProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProjectViewController.m; sourceTree = "<group>"; };
+		1FD49C8E17C75CC100DE9A70 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1FD829C0176C345C0080FA18 /* Task+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Additions.h"; sourceTree = "<group>"; };
 		1FD829C1176C345C0080FA18 /* Task+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Additions.m"; sourceTree = "<group>"; };
 		1FD829C6176C379B0080FA18 /* EditMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMemoViewController.h; sourceTree = "<group>"; };
@@ -458,10 +460,10 @@
 			isa = PBXGroup;
 			children = (
 				1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */,
-				1F4A16D017B8D57900136A4D /* DefaultProjects.plist */,
+				1F2223671726A93D0034CC80 /* Localizable.strings */,
 				1F4A16CA17B8D1C600136A4D /* IconShapes.plist */,
 				1F4A16D217B9009200136A4D /* IconColors.plist */,
-				1F2223671726A93D0034CC80 /* Localizable.strings */,
+				1F4A16D017B8D57900136A4D /* DefaultProjects.plist */,
 				1FE30950172564FC0063BD50 /* Images */,
 			);
 			name = Resources;
@@ -481,6 +483,8 @@
 			children = (
 				1FA60AB8173E471C0037399E /* SettingViewController.h */,
 				1FA60AB9173E471C0037399E /* SettingViewController.m */,
+				1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */,
+				1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */,
 				1F9435F2177D31FA00C4E408 /* Account */,
 				1F9A21231769B5CE000F5E0C /* Project */,
 			);
@@ -709,6 +713,7 @@
 				1FA48EC11722416200D1AF30 /* Default.png */,
 				1FA48EC31722416200D1AF30 /* Default@2x.png */,
 				1FA48EC51722416200D1AF30 /* Default-568h@2x.png */,
+				1FD49C8E17C75CC100DE9A70 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -782,8 +787,6 @@
 				1F4734D917630BE900D78618 /* UIColor+ColorWithHex.m */,
 				1F9D072F1766129200D3BBF9 /* UIImage+Additions.h */,
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
-				1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */,
-				1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */,
 				1FB429B417B535CA00EECEB0 /* SectionHeaderView.h */,
 				1FB429B517B535CA00EECEB0 /* SectionHeaderView.m */,
 				1FBB8D9417C0A3230006CFB9 /* UIBarButtonItem+Additions.h */,
@@ -796,8 +799,6 @@
 		1FAE989217928FAC00DC16F9 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				1F00DA2217886A3A006EF467 /* Icon.png */,
-				1F00DA2417886A40006EF467 /* Icon@2x.png */,
 				1FBB8D5E17C08EE70006CFB9 /* list.png */,
 				1FBB8D5F17C08EE70006CFB9 /* list@2x.png */,
 				1FAF45971793C77A00B250BC /* gear.png */,
@@ -870,6 +871,8 @@
 		1FE30950172564FC0063BD50 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F78463817C3759900AEAA02 /* appIcon@2x.png */,
+				1F78463617C3759600AEAA02 /* appIcon.png */,
 				1F5EE428172F6B6A004EAD94 /* Task */,
 				1FE30951172564FC0063BD50 /* Common */,
 			);
@@ -1026,11 +1029,9 @@
 				1F4A169D17B8D19E00136A4D /* car@2x.png in Resources */,
 				1F3E36CE17858BF800BF8ED9 /* cross_HUD@2x.png in Resources */,
 				1F4A16AC17B8D19E00136A4D /* heart.png in Resources */,
-				1F00DA2317886A3B006EF467 /* Icon.png in Resources */,
 				1F4A16BD17B8D19E00136A4D /* person@2x.png in Resources */,
 				1F4A169817B8D19E00136A4D /* book.png in Resources */,
 				1F4A16BA17B8D19E00136A4D /* music.png in Resources */,
-				1F00DA2517886A40006EF467 /* Icon@2x.png in Resources */,
 				1F4A16AA17B8D19E00136A4D /* gift.png in Resources */,
 				1F4A16A417B8D19E00136A4D /* flag.png in Resources */,
 				1F4A16C617B8D19E00136A4D /* star.png in Resources */,
@@ -1092,6 +1093,9 @@
 				1FBB8D9A17C0ABFB0006CFB9 /* sectionHeader@2x.png in Resources */,
 				1FBB8D9D17C0AD650006CFB9 /* add_white.png in Resources */,
 				1FBB8D9E17C0AD650006CFB9 /* add_white@2x.png in Resources */,
+				1F78463717C3759600AEAA02 /* appIcon.png in Resources */,
+				1F78463917C3759900AEAA02 /* appIcon@2x.png in Resources */,
+				1FD49C8F17C75CC100DE9A70 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,6 @@
 
 #import "SettingViewController.h"
 
-#define kHeightForFooter 53
-
 @interface SettingViewController ()
 
 @property (assign, nonatomic) BOOL isPremiumUser;
@@ -91,7 +89,14 @@
 {
     if (section == 0)
     {
-        return 2;
+        if (self.isPremiumUser)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
     }
     else
     {
@@ -101,10 +106,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
     if (indexPath.section == 0)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
         if (indexPath.row == 0)
         {
             cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Plan", nil);
@@ -112,103 +117,53 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        else
+        else if (indexPath.row == 1)
         {
             cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Account", nil);
         }
-        
-        return cell;
+        else
+        {
+            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Upgrade", nil);
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"007aeb"];//iOS7のdetailLabelと同じ色
+        }
     }
     else if (indexPath.section == 1)
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_ManageProject", nil);
-        
-        return cell;
     }
     else
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedbackCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Feedback", nil);
-        
-        return cell;
     }
+    
+    return cell;
 }
 
 #pragma mark Section Header
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 || section == 1)
-    {
-        return kHeightForSectionHeaderGrouped;
-    }
-    else
-    {
-        return 0;
-    }
+    return kHeightForSectionHeaderGrouped;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSString *title;
+    
     if (section == 0)
     {
-        NSString *title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
-        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+        title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
     }
     else if (section == 1)
     {
-        NSString *title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
-        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+        title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
     }
     else
     {
-        return nil;
+        title = NSLocalizedString(@"SettingView_SectionHeader_Other", nil);
     }
-}
-
-#pragma mark Section Footer
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if (section == 0 && !self.isPremiumUser)
-    {
-        return kHeightForFooter;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (section == 0 && !self.isPremiumUser)
-    {
-        return [self viewForFooter];
-    }
-    else
-    {
-        return nil;
-    }
-}
-
-- (UIView *)viewForFooter
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, kHeightForFooter)];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self action:@selector(didPushFooterButton) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:NSLocalizedString(@"SettingView_SectionFooter_BecomePremium", nil) forState:UIControlStateNormal];
-    button.frame = CGRectMake(10, 5, 300, kHeightForFooter - 10);
-    [view addSubview:button];
-                      
-    return view;
-}
-
-- (void)didPushFooterButton
-{
-    [self showUpgradeAccountView];
+    return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
 }
 
 #pragma mark - Table view delegate
@@ -217,9 +172,16 @@
 {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 1)
+        if (indexPath.row == 0)
+        {
+        }
+        else if (indexPath.row == 1)
         {
             [self showUserAccountView];
+        }
+        else
+        {
+            [self showUpgradeAccountView];
         }
     }
     else if (indexPath.section == 1)

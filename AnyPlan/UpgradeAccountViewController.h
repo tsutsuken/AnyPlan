@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface UpgradeAccountViewController : UIViewController <MBProgressHUDDelegate>
-
-//@property (assign, nonatomic) BOOL isModal;
+@interface UpgradeAccountViewController : UITableViewController <MBProgressHUDDelegate>
 
 @end

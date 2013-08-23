@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>NounProject</string>
+			<key>FooterText</key>
+			<string>・List designed by Michael Zenaty from The Noun Project
+
+・Star  from The Noun Project
+
+・User  from The Noun Project
+
+・Friends designed by Rob Schill from The Noun Project
+
+・Couple designed by Shankar Narayan from The Noun Project
+
+・Running designed by Jakob Vogel from The Noun Project
+
+・Shopping Cart designed by Naomi Atkinson from The Noun Project
+
+・Coffee designed by Maurizio Pedrazzoli from The Noun Project
+
+・Gift designed by Andrew Richardson from The Noun Project
+
+・Footprint designed by Matthias Schmidt und Jule Steffen from The Noun Project
+
+・Rocket designed by Darcy Alan Patterson from The Noun Project
+
+・Suitcase designed by Ruben Sheep from The Noun Project
+
+・Home  from The Noun Project
+
+・Book designed by Ben Rex Furneaux from The Noun Project
+
+・Mountain designed by Jerry Wang from The Noun Project
+
+・Trophy  from The Noun Project
+
+・Flag designed by Adam Heller from The Noun Project
+
+・Inbox designed by Thomas Le Bas from The Noun Project
+
+・Check Box designed by Cris Dobbins from The Noun Project
+
+・Plus designed by Marat Magomedov from The Noun Project
+
+・Share designed by Egor Culcea from The Noun Project
+
+・Trash Can designed by Herbert Spencer from The Noun Project
+
+・Check Mark designed by Hrag Chanchanian from The Noun Project</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
