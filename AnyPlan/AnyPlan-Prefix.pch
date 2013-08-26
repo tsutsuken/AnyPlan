@@ -37,6 +37,7 @@
     #import "AnalyticsManager.h"
     #import "SectionHeaderView.h"
     #import "MenuCell.h"
+    #import "ImageCell.h"
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
     #import "UIBarButtonItem+Additions.h"
@@ -51,6 +52,8 @@
 #define kColorBarButtonTitleHighlighted [UIColor colorWithHexString:@"3c3c3c"]
 #define kColorBackGroundDark [UIColor colorWithHexString:@"262626"]//MenuViewの背景と同じ
 #define kColorPaleWhite [UIColor colorWithHexString:@"E3E3E3"]//MenuViewのセルテキストと同じ
+#define kColorDarkTextColor [UIColor colorWithHexString:@"474747"]//Cellのlabelと同じ
+#define kColorLightBlue [UIColor colorWithHexString:@"007aeb"]//iOS7のdetailLabelと同じ
 #define kImageDefaultProjectIcon @"rocket"
 #define kFrameForBarButtonItem CGRectMake(0, 0, 40, 30)
 #define kNotificationDidCloseManageProjectView @"kNotificationDidCloseManageProjectView"

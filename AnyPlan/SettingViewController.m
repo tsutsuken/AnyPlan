@@ -98,15 +98,20 @@
             return 3;
         }
     }
-    else
+    else if (section == 1)
     {
         return 1;
+    }
+    else
+    {
+        return 2;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.textLabel.textColor = kColorDarkTextColor;
     
     if (indexPath.section == 0)
     {
@@ -124,7 +129,7 @@
         else
         {
             cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Upgrade", nil);
-            cell.textLabel.textColor = [UIColor colorWithHexString:@"007aeb"];//iOS7のdetailLabelと同じ色
+            cell.textLabel.textColor = kColorLightBlue;
         }
     }
     else if (indexPath.section == 1)
@@ -133,7 +138,14 @@
     }
     else
     {
-        cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Feedback", nil);
+        if (indexPath.row == 0)
+        {
+            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Feedback", nil);
+        }
+        else
+        {
+            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_OurApp", nil);
+        }
     }
     
     return cell;
@@ -190,8 +202,15 @@
     }
     else
     {
-        [self showActionSheetSelectTopic];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (indexPath.row == 0)
+        {
+            [self showActionSheetSelectTopic];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        else
+        {
+            [self showRecommendAppView];
+        }
     }
 }
 
@@ -208,13 +227,6 @@
     }
 }
 
-#pragma mark ManageProjectView
-
-- (void)showManageProjectView
-{
-    [self performSegueWithIdentifier:@"showManageProjectView" sender:self];
-}
-
 #pragma mark UserAccountView
 
 - (void)showUserAccountView
@@ -227,6 +239,20 @@
 - (void)showUpgradeAccountView
 {
     [self performSegueWithIdentifier:@"showUpgradeAccountView" sender:self];
+}
+
+#pragma mark ManageProjectView
+
+- (void)showManageProjectView
+{
+    [self performSegueWithIdentifier:@"showManageProjectView" sender:self];
+}
+
+#pragma mark RecommendAppView
+
+- (void)showRecommendAppView
+{
+    [self performSegueWithIdentifier:@"showRecommendAppView" sender:self];
 }
 
 #pragma mark - Send Feedback

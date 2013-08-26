@@ -72,6 +72,12 @@
 		1F4A16D317B9009200136A4D /* IconColors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A16D217B9009200136A4D /* IconColors.plist */; };
 		1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5EE435172F7629004EAD94 /* TaskCell.m */; };
 		1F6157BB17813E43004E5F16 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */; };
+		1F6504D517CB3A87000BCF52 /* RecommendAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6504D417CB3A87000BCF52 /* RecommendAppViewController.m */; };
+		1F6504D817CB3DA3000BCF52 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6504D717CB3DA2000BCF52 /* ImageCell.m */; };
+		1F6504DF17CB561E000BCF52 /* appIcon_lvup.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6504DB17CB561E000BCF52 /* appIcon_lvup.png */; };
+		1F6504E017CB561E000BCF52 /* appIcon_lvup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6504DC17CB561E000BCF52 /* appIcon_lvup@2x.png */; };
+		1F6504E117CB561E000BCF52 /* appIcon_wannaDo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6504DD17CB561E000BCF52 /* appIcon_wannaDo.png */; };
+		1F6504E217CB561E000BCF52 /* appIcon_wannaDo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6504DE17CB561E000BCF52 /* appIcon_wannaDo@2x.png */; };
 		1F78463717C3759600AEAA02 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F78463617C3759600AEAA02 /* appIcon.png */; };
 		1F78463917C3759900AEAA02 /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F78463817C3759900AEAA02 /* appIcon@2x.png */; };
 		1F85D42A176D9842009C7362 /* MemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F85D429176D9842009C7362 /* MemoCell.m */; };
@@ -266,6 +272,14 @@
 		1F5EE434172F7629004EAD94 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		1F5EE435172F7629004EAD94 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		1F6157BA17813E43004E5F16 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		1F6504D317CB3A87000BCF52 /* RecommendAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendAppViewController.h; sourceTree = "<group>"; };
+		1F6504D417CB3A87000BCF52 /* RecommendAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendAppViewController.m; sourceTree = "<group>"; };
+		1F6504D617CB3DA2000BCF52 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		1F6504D717CB3DA2000BCF52 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		1F6504DB17CB561E000BCF52 /* appIcon_lvup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon_lvup.png; sourceTree = "<group>"; };
+		1F6504DC17CB561E000BCF52 /* appIcon_lvup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon_lvup@2x.png"; sourceTree = "<group>"; };
+		1F6504DD17CB561E000BCF52 /* appIcon_wannaDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon_wannaDo.png; sourceTree = "<group>"; };
+		1F6504DE17CB561E000BCF52 /* appIcon_wannaDo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon_wannaDo@2x.png"; sourceTree = "<group>"; };
 		1F78463617C3759600AEAA02 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appIcon.png; path = ../../appIcon.png; sourceTree = "<group>"; };
 		1F78463817C3759900AEAA02 /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appIcon@2x.png"; path = "../../appIcon@2x.png"; sourceTree = "<group>"; };
 		1F85D428176D9842009C7362 /* MemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoCell.h; sourceTree = "<group>"; };
@@ -485,6 +499,8 @@
 				1FA60AB9173E471C0037399E /* SettingViewController.m */,
 				1FB5923B17807B1B005FD134 /* UpgradeAccountViewController.h */,
 				1FB5923C17807B1B005FD134 /* UpgradeAccountViewController.m */,
+				1F6504D317CB3A87000BCF52 /* RecommendAppViewController.h */,
+				1F6504D417CB3A87000BCF52 /* RecommendAppViewController.m */,
 				1F9435F2177D31FA00C4E408 /* Account */,
 				1F9A21231769B5CE000F5E0C /* Project */,
 			);
@@ -563,6 +579,25 @@
 			path = Task;
 			sourceTree = "<group>";
 		};
+		1F6504D917CB55FD000BCF52 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1F6504DA17CB560F000BCF52 /* OtherAppIcon */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		1F6504DA17CB560F000BCF52 /* OtherAppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				1F6504DB17CB561E000BCF52 /* appIcon_lvup.png */,
+				1F6504DC17CB561E000BCF52 /* appIcon_lvup@2x.png */,
+				1F6504DD17CB561E000BCF52 /* appIcon_wannaDo.png */,
+				1F6504DE17CB561E000BCF52 /* appIcon_wannaDo@2x.png */,
+			);
+			name = OtherAppIcon;
+			sourceTree = "<group>";
+		};
 		1F9435F2177D31FA00C4E408 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +661,8 @@
 				1FAF459F1793EFBF00B250BC /* MenuCell.m */,
 				1FB3382F17B5D01B00E5CCAF /* CustomDetailCell.h */,
 				1FB3383017B5D01B00E5CCAF /* CustomDetailCell.m */,
+				1F6504D617CB3DA2000BCF52 /* ImageCell.h */,
+				1F6504D717CB3DA2000BCF52 /* ImageCell.m */,
 			);
 			name = UITableView;
 			sourceTree = "<group>";
@@ -873,6 +910,7 @@
 			children = (
 				1F78463817C3759900AEAA02 /* appIcon@2x.png */,
 				1F78463617C3759600AEAA02 /* appIcon.png */,
+				1F6504D917CB55FD000BCF52 /* Setting */,
 				1F5EE428172F6B6A004EAD94 /* Task */,
 				1FE30951172564FC0063BD50 /* Common */,
 			);
@@ -1096,6 +1134,10 @@
 				1F78463717C3759600AEAA02 /* appIcon.png in Resources */,
 				1F78463917C3759900AEAA02 /* appIcon@2x.png in Resources */,
 				1FD49C8F17C75CC100DE9A70 /* Settings.bundle in Resources */,
+				1F6504DF17CB561E000BCF52 /* appIcon_lvup.png in Resources */,
+				1F6504E017CB561E000BCF52 /* appIcon_lvup@2x.png in Resources */,
+				1F6504E117CB561E000BCF52 /* appIcon_wannaDo.png in Resources */,
+				1F6504E217CB561E000BCF52 /* appIcon_wannaDo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,6 +1254,8 @@
 				1FAF459D1793DF3400B250BC /* Project.m in Sources */,
 				1FAF45A01793EFC000B250BC /* MenuCell.m in Sources */,
 				1FBB8D9617C0A3230006CFB9 /* UIBarButtonItem+Additions.m in Sources */,
+				1F6504D517CB3A87000BCF52 /* RecommendAppViewController.m in Sources */,
+				1F6504D817CB3DA3000BCF52 /* ImageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
