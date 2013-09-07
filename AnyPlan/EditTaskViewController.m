@@ -56,11 +56,10 @@
 }
 
 - (void)setToolbar
-{    
-    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
-    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:customView];
+{
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self
+                                                                                  action:@selector(didPushDeleteButton)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -116,7 +115,7 @@
                 
                 if (self.isNewTask)
                 {
-                    [ANALYTICS trackEvent:kEventAddTask sender:self];
+                    [ANALYTICS trackEvent:kEventAddTask isImportant:YES sender:self];
                     [ANALYTICS trackPropertyWithTask:self.task sender:self];
                 }
             }
@@ -168,7 +167,7 @@
     }
     else if (indexPath.row == 1)
     {
-        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Project", nil);
         cell.detailLabel.text = self.task.project.title;
         cell.iconView.image = self.task.project.iconWithColor;
@@ -320,7 +319,6 @@
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                 target:self
                                                                                 action:@selector(didPushDoneButtonForPicker)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
     
     //Deleteボタンの作成
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"EditTaskView_Picker_Button_Delete", nil)

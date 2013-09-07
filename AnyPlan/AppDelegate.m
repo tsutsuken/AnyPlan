@@ -31,8 +31,6 @@
     [self setReviewRequestSystem];
     [self setAnalyticsSystem];
     
-    [self setDefaultAppearance];
-    
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
@@ -41,63 +39,6 @@
     deckController.leftController = [self menuViewNavigationController];
     
     return YES;
-}
-
-- (void)setDefaultAppearance
-{
-    // ツールバー
-    UIImage *toolbarImage = [UIImage imageNamed:@"toolbar.png"];
-    [[UIToolbar appearance] setBackgroundImage:toolbarImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [[UIToolbar appearance] setShadowImage:[UIImage imageNamed:@"shadow_toolbar"] forToolbarPosition:UIToolbarPositionAny];
-    
-    
-    // ナビゲーションバー
-    UIImage *navigationBackgroundImage = [UIImage imageNamed:@"navigationbar.png"];
-    [[UINavigationBar appearance] setBackgroundImage:navigationBackgroundImage forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[UIImage imageNamed:@"shadow_navigationbar"]];
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:[self textAttributesNormal]];
-    
-    
-    // バーボタンアイテム
-    UIImage *rightButtonImage = [[UIImage imageNamed:@"navbarbutton_normal.png"]
-                                 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    [[UIBarButtonItem appearance]
-     setBackgroundImage:rightButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    
-    UIImage *leftButtonImage = [[UIImage imageNamed:@"navbarbutton_back.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(4, 15, 4, 4)];
-    [[UIBarButtonItem appearance]
-     setBackButtonBackgroundImage:leftButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    UIImage *doneButtonImage = [[UIImage imageNamed:@"navbarbutton_done.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    
-    [[UIBarButtonItem appearance]
-     setBackgroundImage:doneButtonImage forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
-    
-    [[UIBarButtonItem appearance] setTitleTextAttributes:[self textAttributesNormal] forState:UIControlStateNormal];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:[self textAttributesHighlighted] forState:UIControlStateHighlighted];
-}
-
-- (NSDictionary *)textAttributesNormal
-{
-    NSDictionary *textAttributesDictionary = @{UITextAttributeTextColor:[UIColor colorWithHexString:kColorHexNavigationBarTitle],
-                                               UITextAttributeTextShadowColor:[UIColor whiteColor],
-                                               UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetMake(0, 1)]
-                                               };
-    
-    return textAttributesDictionary;
-}
-
-- (NSDictionary *)textAttributesHighlighted
-{
-    NSDictionary *textAttributesDictionary = @{UITextAttributeTextColor:kColorBarButtonTitleHighlighted,
-                                               UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetMake(0, 0)]
-                                               };
-    
-    return textAttributesDictionary;
 }
 
 - (void)setNotificationCenter
@@ -211,11 +152,11 @@
     
     if ([productId isEqualToString:kProductIdSubscriptionMonth])
     {
-        [ANALYTICS trackEvent:kEventResignPremiumMonth sender:self];
+        [ANALYTICS trackEvent:kEventResignPremiumMonth isImportant:YES sender:self];
     }
     else
     {
-        [ANALYTICS trackEvent:kEventResignPremiumYear sender:self];
+        [ANALYTICS trackEvent:kEventResignPremiumYear isImportant:YES sender:self];
     }
     
     [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType:kPropertyValueAccountTypeFree}];
@@ -427,6 +368,9 @@
 
 - (BOOL)canAddNewProject
 {
+#warning test
+    LOG_BOOL([self isPremiumUser], @"isPremiumUser");
+    
     BOOL canAddNewProject;
     
     int numberOfProject = [self numberOfProject];

@@ -8,6 +8,8 @@
 
 #import "MenuViewController.h"
 
+#define kSectionForSeparator 3
+
 @interface MenuViewController ()
 
 @end
@@ -21,25 +23,8 @@
     self.clearsSelectionOnViewWillAppear = NO;
     
     self.navigationController.navigationBarHidden = YES;
-    self.navigationController.toolbarHidden = NO;
     
     self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
-    
-    [self setToolbar];
-}
-
-- (void)setToolbar
-{
-    // ツールバー
-    UIImage *toolbarDarkImage = [UIImage imageNamed:@"toolbar_dark.png"];
-    [self.navigationController.toolbar setBackgroundImage:toolbarDarkImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    
-    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [customView setImage:[UIImage imageNamed:@"gear.png"] forState:UIControlStateNormal];
-    [customView addTarget:self action:@selector(showSettingView) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
-    
-    self.toolbarItems = @[buttonItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,55 +44,92 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int numberOfRows;
-    
-    if (section == 0)
+    if (section == 1)
     {
-        numberOfRows = 1;
-    }
-    else if (section == 1)
-    {
-        numberOfRows = [[self.fetchedResultsController fetchedObjects] count];
+        return [[self.fetchedResultsController fetchedObjects] count];
     }
     else
     {
-        numberOfRows = 1;
+        return 1;
     }
-    
-    return numberOfRows;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == kSectionForSeparator)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == kSectionForSeparator)
+    {
+        UIView *headerView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+        UIImageView *separator = [[UIImageView alloc] initWithFrame:CGRectMake(13, 0, 250, 1)];
+        separator.image = [UIImage imageNamed:@"separator_dark"];
+        
+        [headerView addSubview:separator];
+        
+        return headerView;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+    ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.selectedBackgroundView = [self highlightView];
+    cell.titleLabel.textColor = kColorPaleWhite;
+    cell.iconView.highlightedImage = nil;//highlightedImageが使い回されるのを防ぐため
     
     if (indexPath.section == 0)
     {
-        cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
+        UIColor *highlightedColor = [UIColor colorWithHexString:kColorHexDefaultProject];
+        cell.titleLabel.highlightedTextColor = highlightedColor;
         
-        UIColor *highlightColor = [UIColor colorWithHexString:kColorHexDefaultProject];
-        cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightColor];
-        cell.titleLabel.highlightedTextColor = highlightColor;
+        cell.titleLabel.text = NSLocalizedString(@"Common_Project_Category_All", nil);
+        cell.iconView.image = [[UIImage imageNamed:@"infinity"] imageTintedWithColor:highlightedColor];
     }
     else if (indexPath.section == 1)
     {
         Project *project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
+        
+        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
+        
         cell.titleLabel.text = project.title;
         cell.iconView.image = project.iconWithColor;
-        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:project.colorHex];
+    }
+    else if (indexPath.section == 2)
+    {
+        cell.titleLabel.textColor = kColorMiddleGray;
+        cell.titleLabel.highlightedTextColor = kColorPaleWhite;
+        
+        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
+        cell.iconView.image = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorMiddleGray];
+        cell.iconView.highlightedImage = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorPaleWhite];
     }
     else
     {
-        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
+        cell.titleLabel.textColor = kColorMiddleGray;
+        cell.titleLabel.highlightedTextColor = kColorPaleWhite;
         
-        cell.iconView.image = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorPaleWhite];
-        cell.titleLabel.highlightedTextColor = [UIColor colorWithHexString:kColorHexDefaultProject];
+        cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_Settings", nil);
+        cell.iconView.image = [[UIImage imageNamed:@"gear"] imageTintedWithColor:kColorMiddleGray];
+        cell.iconView.highlightedImage = [[UIImage imageNamed:@"gear"] imageTintedWithColor:kColorPaleWhite];
     }
     
     return cell;
@@ -115,9 +137,8 @@
 
 - (UIView *)highlightView
 {
-    //ハイライトを透明にする(SelectionStyleNoneではダメ。highlightedTextColorが反応しない)
     UIView *highlightView = [[UIView alloc] init];
-    highlightView.backgroundColor = [UIColor clearColor];
+    highlightView.backgroundColor = [UIColor colorWithHexString:@"1B1B1B"];
     
     return highlightView;
 }
@@ -126,16 +147,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 ||indexPath.section == 1)
-    {
-        [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller)
-         {
-             self.viewDeckController.centerController = [self tabBarControllerWithMenuIndexPath:indexPath];
-             
-             [NSThread sleepForTimeInterval:(300+arc4random()%700)/1000000.0]; // mimic delay... not really necessary
-         }];
-    }
-    else
+    if (indexPath.section == 2)
     {
         if ([APPDELEGATE canAddNewProject])
         {
@@ -147,6 +159,26 @@
         }
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else
+    {
+        [self.viewDeckController closeLeftViewBouncing:^(IIViewDeckController *controller)
+         {
+             UIViewController *centerController;
+             
+             if (indexPath.section == 3)
+             {
+                 centerController = [self settingViewNavigationController];
+             }
+             else
+             {
+                 centerController = [self tabBarControllerWithMenuIndexPath:indexPath];
+             }
+             
+             self.viewDeckController.centerController = centerController;
+             
+             [NSThread sleepForTimeInterval:(300+arc4random()%700)/1000000.0]; // mimic delay... not really necessary
+         }];
     }
 }
 
@@ -165,12 +197,6 @@
         Project *newProject = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         newProject.displayOrder = [NSNumber numberWithInt:[[self.fetchedResultsController fetchedObjects] count]];
         controller.project = newProject;
-    }
-    if([[segue identifier] isEqualToString:@"showSettingView"])
-    {
-        UINavigationController *navigationController = (UINavigationController*)segue.destinationViewController;
-        SettingViewController *controller = (SettingViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
     }
 }
 
@@ -249,10 +275,25 @@
         tabBarController.project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
     }
     
-    CustomTabBarController *existingTabBarController = (CustomTabBarController *)self.viewDeckController.centerController;
-    tabBarController.selectedIndex = existingTabBarController.selectedIndex;
-    
     return tabBarController;
 }
 
+- (UINavigationController *)settingViewNavigationController
+{
+    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UINavigationController *navigationController = (UINavigationController*) [mainStoryBoard instantiateViewControllerWithIdentifier:@"SettingViewNavigationController"];
+    
+    SettingViewController *controller = (SettingViewController *)navigationController.topViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+    
+    return navigationController;
+}
+
 @end
+
+
+
+
+
+

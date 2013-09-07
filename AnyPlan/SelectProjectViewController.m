@@ -50,14 +50,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectCell *cell = (ProjectCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+    ImageCell *cell = (ImageCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
 
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(ProjectCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = project.title;
@@ -141,7 +141,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(ProjectCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(ImageCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:

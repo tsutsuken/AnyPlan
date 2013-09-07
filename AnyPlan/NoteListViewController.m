@@ -33,10 +33,9 @@
                                                                             target:self.viewDeckController
                                                                             action:@selector(toggleLeftView)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(showEditNoteView)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(showEditNoteView)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,11 +64,6 @@
     return [sectionInfo numberOfObjects];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 78;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
@@ -94,26 +88,13 @@
 }
 
 #pragma mark Section Header
-/*
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     Note *note = [[sectionInfo objects] objectAtIndex:0];
     
     return note.editedMonthString;
-}
-*/
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return kHeightForSectionHeaderPlain;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    Note *note = [[sectionInfo objects] objectAtIndex:0];
-    
-    return [[SectionHeaderView alloc] initWithStyle:UITableViewStylePlain title:note.editedMonthString];
 }
 
 #pragma mark - Table view delegate

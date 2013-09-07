@@ -8,6 +8,9 @@
 
 #import "RecommendAppViewController.h"
 
+#define kAppIdLvUP @"523946175"
+#define kAppIdWannaDo @"668425656"
+
 @interface RecommendAppViewController ()
 
 @end
@@ -19,6 +22,13 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"RecommendAppView_Title", nil);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [ANALYTICS trackView:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,23 +75,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *appName;
+    NSString *appId;
     
     switch (indexPath.row)
     {
         case 0:
-            appName = @"523946175";
+            appId = kAppIdLvUP;
+            [ANALYTICS trackEvent:kEventOpenAppStoreLvUP isImportant:YES sender:self];
             break;
             
         case 1:
-            appName = @"668425656";
+            appId = kAppIdWannaDo;
+            [ANALYTICS trackEvent:kEventOpenAppStoreWannaDo isImportant:YES sender:self];
             break;
             
         default:
             break;
     }
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@", appName]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@", appId]];
     [[UIApplication sharedApplication] openURL:url];
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

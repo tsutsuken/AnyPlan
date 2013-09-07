@@ -82,20 +82,17 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self action:@selector(didPushCancelButton)];
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:self action:@selector(didPushDoneButton)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
-    self.navigationItem.rightBarButtonItem = doneButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                           target:self action:@selector(didPushDoneButton)];;
 }
 
 - (void)setToolbar
 {
     self.navigationController.toolbarHidden = NO;
     
-    UIButton *customView = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [customView setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
-    [customView addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self
+                                                                                  action:@selector(didPushDeleteButton)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -157,7 +154,7 @@
                 
                 if (self.isNew)
                 {
-                    [ANALYTICS trackEvent:kEventAddProject sender:self];
+                    [ANALYTICS trackEvent:kEventAddProject isImportant:YES sender:self];
                     [ANALYTICS trackPropertyWithKey:kPropertyKeyProjectTitle value:self.project.title sender:self];
                     [ANALYTICS registerSuperProperties:@{kPropertyKeyProjectCount:@([APPDELEGATE numberOfProject])}];
                 }
@@ -224,7 +221,7 @@
     }
     else
     {
-        ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
         cell.titleLabel.text = NSLocalizedString(@"EditProjectView_Cell_Icon", nil);
         cell.iconView.image = self.project.iconWithColor;
         

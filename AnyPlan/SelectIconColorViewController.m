@@ -64,6 +64,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.project.colorHex = [self.colorHexArray objectAtIndex:indexPath.item];
+    
+    [ANALYTICS trackEvent:kEventEditIcon isImportant:NO sender:self];
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyIconColorIndex value:[NSString stringWithFormat:@"%i",indexPath.item] sender:self];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -49,14 +49,17 @@
     [GA_TRACKER sendView:NSStringFromClass([sender class])];
 }
 
-- (void)trackEvent:(NSString *)event sender:(id)sender
+- (void)trackEvent:(NSString *)event isImportant:(BOOL)isImportant sender:(id)sender
 {
     [GA_TRACKER sendEventWithCategory:NSStringFromClass([sender class])
                            withAction:event
                             withLabel:@""
                             withValue:@-1];
     
-    [MP_TRACKER track:event];
+    if (isImportant)
+    {
+        [MP_TRACKER track:event];
+    }
 }
 
 - (void)trackPropertyWithKey:(NSString *)key value:(NSString *)value sender:(id)sender

@@ -27,11 +27,11 @@
     {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                               target:self action:@selector(didPushCancelButton)];
-        [ANALYTICS trackEvent:kEventShowUpgradeViewByLimit sender:self];
+        [ANALYTICS trackEvent:kEventShowUpgradeViewByLimit isImportant:YES sender:self];
     }
     else
     {
-        [ANALYTICS trackEvent:kEventShowUpgradeViewByButton sender:self];
+        [ANALYTICS trackEvent:kEventShowUpgradeViewByButton isImportant:YES sender:self];
     }
     
     self.explanationLabel.attributedText = [self attributedTextForHeader];
@@ -225,12 +225,12 @@
          
          if ([purchasedFeature isEqualToString:kProductIdSubscriptionMonth])
          {
-             [ANALYTICS trackEvent:kEventPurchasePremiumMonth sender:self];
+             [ANALYTICS trackEvent:kEventPurchasePremiumMonth isImportant:YES sender:self];
              [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType: kPropertyValueAccountTypePremiumMonth}];
          }
          else
          {
-             [ANALYTICS trackEvent:kEventPurchasePremiumYear sender:self];
+             [ANALYTICS trackEvent:kEventPurchasePremiumYear isImportant:YES sender:self];
              [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType: kPropertyValueAccountTypePremiumYear}];
          }
          

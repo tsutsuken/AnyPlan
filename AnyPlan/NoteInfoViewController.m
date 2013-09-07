@@ -55,7 +55,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+    ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
 
     cell.titleLabel.text = NSLocalizedString(@"NoteInfoView_Cell_Project", nil);
     cell.detailLabel.text = self.note.project.title;

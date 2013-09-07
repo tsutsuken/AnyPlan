@@ -24,7 +24,6 @@
     #import "AppDelegate.h"
     #import "UIImage+Additions.h"
     #import "EditableCell.h"
-    #import "ProjectCell.h"
     #import "NoteCell.h"
     #import "TaskCell.h"
     #import "NavigationBarTitleWithSubtitleView.h"
@@ -35,28 +34,25 @@
     #import "Flurry.h"
     #import "GAI.h"
     #import "AnalyticsManager.h"
-    #import "SectionHeaderView.h"
     #import "MenuCell.h"
     #import "ImageCell.h"
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
-    #import "UIBarButtonItem+Additions.h"
 
 #endif
 
 /*Common*/
 #define APPDELEGATE (AppDelegate *)[[UIApplication sharedApplication] delegate]
-#define kColorHexNavigationBarTitle @"787878"
-#define kColorHexNavigationBarSubTitle @"8C8C8C"
+#define kColorHexNavigationBarSubTitle @"787878"
 #define kColorHexDefaultProject @"4CC1D9"//colorlistの１４番目と同じ
 #define kColorBarButtonTitleHighlighted [UIColor colorWithHexString:@"3c3c3c"]
 #define kColorBackGroundDark [UIColor colorWithHexString:@"262626"]//MenuViewの背景と同じ
 #define kColorPaleWhite [UIColor colorWithHexString:@"E3E3E3"]//MenuViewのセルテキストと同じ
+#define kColorMiddleGray [UIColor colorWithHexString:@"787878"]//colorlistの１番目と同じ
 #define kColorDarkTextColor [UIColor colorWithHexString:@"474747"]//Cellのlabelと同じ
 #define kColorLightBlue [UIColor colorWithHexString:@"007aeb"]//iOS7のdetailLabelと同じ
 #define kImageDefaultProjectIcon @"rocket"
 #define kFrameForBarButtonItem CGRectMake(0, 0, 40, 30)
-#define kNotificationDidCloseManageProjectView @"kNotificationDidCloseManageProjectView"
 
 #define kMailAddressSupport @"info@lvupp.com"
 
@@ -85,18 +81,20 @@
 /*Analytics*/
 #define ANALYTICS  [AnalyticsManager sharedInstance]
 
-#define kEventShowWelcomeView @"WelcomeView Showed"
-#define kEventCreateAccount @"Account Created"
 #define kEventShowUpgradeViewByButton @"UpgradeView Showed By Button"
 #define kEventShowUpgradeViewByLimit @"UpgradeView Showed By Limit"
-#define kEventPurchasePremiumMonth @"Premium(Month) Purchased"
-#define kEventPurchasePremiumYear @"Premium(Year) Purchased"
-#define kEventResignPremiumMonth @"Premium(Month) Resigned"
-#define kEventResignPremiumYear @"Premium(Year) Resigned"
+#define kEventPurchasePremiumMonth @"Premium_Month Purchased"
+#define kEventPurchasePremiumYear @"Premium_Year Purchased"
+#define kEventResignPremiumMonth @"Premium_Month Resigned"
+#define kEventResignPremiumYear @"Premium_Year Resigned"
 #define kEventAddProject @"Project Added"
 #define kEventAddTask @"Task Added"
 #define kEventExecuteTask @"Task Executed"
 #define kEventAddNote @"Note Added"
+#define kEventEditIcon @"Icon Edited"
+#define kEventOpenAppStoreLvUP @"AppStore Of LvUP Opened"
+#define kEventOpenAppStoreWannaDo @"AppStore Of WannaDo Opened"
+
 
 #define kPropertyKeyAccountType @"Account Type"
 #define kPropertyKeyProjectCount @"Project Count"
@@ -106,7 +104,9 @@
 #define kPropertyKeyTaskRepeat @"Task Repeat"
 #define kPropertyKeyTaskMemo @"Task Memo"
 #define kPropertyKeyNoteText @"Note Text"
+#define kPropertyKeyIconName @"Selected Icon Name"
+#define kPropertyKeyIconColorIndex @"Selected Icon Color Index"
 
 #define kPropertyValueAccountTypeFree @"Free"
-#define kPropertyValueAccountTypePremiumMonth @"Premium(Month)"
-#define kPropertyValueAccountTypePremiumYear @"Premium(Year)"
+#define kPropertyValueAccountTypePremiumMonth @"Premium_Month"
+#define kPropertyValueAccountTypePremiumYear @"Premium_Year"

@@ -8,20 +8,11 @@
 
 #import "TaskListViewController.h"
 
-#define kTagForLabelInSectionHeaderView 1
-#define kTagForButtonInSectionHeaderView 2
-#define kErrorValueForSection -1
-#define kSectionNameForCompletedTask @"1"
-#define kShouldHideCompletedTask @"ShouldHideCompletedTask"
-
 @interface TaskListViewController ()
 
 @end
 
 @implementation TaskListViewController
-{
-    BOOL shouldHideCompletedTask;
-}
 
 - (void)awakeFromNib
 {
@@ -32,10 +23,6 @@
 {
     [super viewDidLoad];
     
-    //[self.tableView setBackgroundViewForGroupedStyle];
-
-    shouldHideCompletedTask = [[NSUserDefaults standardUserDefaults] boolForKey:kShouldHideCompletedTask];
-    
     NavigationBarTitleWithSubtitleView *titleView = [[NavigationBarTitleWithSubtitleView alloc] init];
     [titleView setTitle:[APPDELEGATE mainTitleForTabBarWithProject:self.project shouldDisplayAllProject:self.shouldDisplayAllProject]];
     [titleView setDetailTitle:self.title];
@@ -45,16 +32,19 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:self.viewDeckController
                                                                             action:@selector(toggleLeftView)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:self
-                                                                            action:@selector(showEditTaskViewWithNewTask)];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(showEditTaskViewWithNewTask)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+#warning test
+    LOG_METHOD;
+    LOG_BOOL([APPDELEGATE isPremiumUser], @"isPremiumUser");
     
     [ANALYTICS trackView:self];
 }
@@ -75,34 +65,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    
-    if (self.shouldDisplayAllProject)
-    {
-        return [sectionInfo numberOfObjects];
-    }
-    else
-    {
-        if (section == [self sectionForCompletedTask])
-        {
-            if (shouldHideCompletedTask)
-            {
-                return 0;
-            }
-            else
-            {
-                return [sectionInfo numberOfObjects];
-            }
-        }
-        else
-        {
-            return [sectionInfo numberOfObjects];
-        }
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return self.tableView.rowHeight;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,176 +87,19 @@
 
 #pragma mark Section Header
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (!self.shouldDisplayAllProject && section != [self sectionForCompletedTask])
-    {
-        return 0;
-    }
-    else
-    {
-        return kHeightForSectionHeaderGrouped;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (self.shouldDisplayAllProject)
     {
         id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
         Task *task = [[sectionInfo objects] objectAtIndex:0];
         
-        return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:task.project.title];
+        return task.project.title;
     }
     else
     {
-        if (section == [self sectionForCompletedTask])
-        {
-            return [self headerViewForCompletedTaskWithTitle:[self sectionTitleForCompletedTask]];
-        }
-        else
-        {
-            return nil;
-        }
+        return nil;
     }
-}
-
-- (int)sectionForCompletedTask
-{
-    int sectionForCompletedTask;
-    
-    int numberOfSections = [[self.fetchedResultsController sections] count];
-    
-    if (numberOfSections == 0)
-    {
-        sectionForCompletedTask = kErrorValueForSection;
-    }
-    else if (numberOfSections == 1)//完了or未完了
-    {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
-        if ([[sectionInfo name] isEqualToString:kSectionNameForCompletedTask])
-        {
-            sectionForCompletedTask = 0;
-        }
-        else
-        {
-            sectionForCompletedTask = kErrorValueForSection;
-        }
-    }
-    else//完了＋未完了
-    {
-        sectionForCompletedTask = 1;
-    }
-    
-    return sectionForCompletedTask;
-}
-
-- (UIControl *)headerViewForCompletedTaskWithTitle:(NSString *)title
-{
-    UIControl *headerView = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, kHeightForSectionHeaderGrouped)];
-    [headerView addTarget:self action:@selector(didTouchSectionHeader) forControlEvents:UIControlEventTouchUpInside];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:kFrameForSectionHeaderLabelGrouped];
-    label.tag = kTagForLabelInSectionHeaderView;
-    label.text              = title;
-    label.textColor         = [UIColor colorWithHexString:kColorHexSectionHeaderTitle];
-    label.font              = [UIFont boldSystemFontOfSize:17.0];
-    label.backgroundColor   = [UIColor clearColor];
-    label.shadowColor       = [UIColor whiteColor];
-    label.shadowOffset      = CGSizeMake(0, 1);
-    label.textAlignment     = NSTextAlignmentLeft;
-    label.numberOfLines     = 2;
-    [headerView addSubview:label];
-    
-    UIButton *eyeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    eyeButton.tag = kTagForButtonInSectionHeaderView;
-    eyeButton.userInteractionEnabled = NO;
-    
-    UIImage *eyeOpen = [UIImage imageNamed:@"eye_open.png"];
-    UIImage *eyeClosed = [UIImage imageNamed:@"eye_closed.png"];
-    [eyeButton setImage:eyeOpen forState:UIControlStateNormal];
-    [eyeButton setImage:eyeClosed forState:UIControlStateSelected];
-    
-    LOG_SIZE(eyeOpen.size, nil);
-    
-    eyeButton.frame = CGRectMake(276, 20, eyeOpen.size.width, eyeOpen.size.height);
-    
-    eyeButton.selected = [[NSUserDefaults standardUserDefaults] boolForKey:kShouldHideCompletedTask];
-    [headerView addSubview:eyeButton];
-    
-    return headerView;
-}
-
-- (void)didTouchSectionHeader
-{
-    [self.tableView beginUpdates];
-    
-    UIButton *eyeButton = (UIButton *)[self.view viewWithTag:kTagForButtonInSectionHeaderView];
-    
-    if (shouldHideCompletedTask)//Old Value
-    {
-        shouldHideCompletedTask = NO;
-        eyeButton.selected = NO;
-        [self.tableView insertRowsAtIndexPaths:[self indexPathsForCompletedTask] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else
-    {
-        shouldHideCompletedTask = YES;
-        eyeButton.selected = YES;
-        [self.tableView deleteRowsAtIndexPaths:[self indexPathsForCompletedTask] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:shouldHideCompletedTask forKey:kShouldHideCompletedTask];
-    [ud synchronize];
-    
-    [self.tableView endUpdates];
-}
-
-- (NSString *)sectionTitleForCompletedTask
-{
-    return [NSString stringWithFormat: NSLocalizedString(@"TaskListView_SectionHeader_CompletedTask_%i", nil),[self countOfCompletedTask]];
-}
-
-- (NSArray *)indexPathsForCompletedTask
-{
-    int sectionForCompletedTask = [self sectionForCompletedTask];
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:sectionForCompletedTask];
-    
-    NSMutableArray *indexPathsForCompletedTask = [NSMutableArray array];
-    
-    for (int i = 0;i < [sectionInfo numberOfObjects]; i++)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:sectionForCompletedTask];
-        [indexPathsForCompletedTask addObject:indexPath];
-    }
-    
-    return [indexPathsForCompletedTask copy];
-}
-
-- (void)updateLabelInSectionHeaderView
-{
-    UILabel *label = (UILabel*)[self.view viewWithTag:kTagForLabelInSectionHeaderView];
-    label.text = [self sectionTitleForCompletedTask];;
-}
-
-- (int)countOfCompletedTask
-{
-    int countOfCompletedTask;
-    
-    int sectionForCompletedTask = [self sectionForCompletedTask];
-    
-    if (sectionForCompletedTask == kErrorValueForSection)
-    {
-        countOfCompletedTask = 0;
-    }
-    else
-    {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:sectionForCompletedTask];
-        countOfCompletedTask = [sectionInfo numberOfObjects];
-    }
-    
-    return countOfCompletedTask;
 }
 
 #pragma mark - Table view delegate
@@ -349,7 +155,7 @@
                 
                 [selectedTask repeatTaskIfNeeded];
                 
-                [ANALYTICS trackEvent:kEventExecuteTask sender:self];
+                [ANALYTICS trackEvent:kEventExecuteTask isImportant:YES sender:self];
             }
             else
             {
@@ -560,19 +366,9 @@
             
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            
-            if (newIndexPath.section == [self sectionForCompletedTask] && shouldHideCompletedTask)
-            {
-                //Do nothing
-            }
-            else
-            {
-                [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            }
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
-    
-    [self updateLabelInSectionHeaderView];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller

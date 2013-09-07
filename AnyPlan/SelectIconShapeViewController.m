@@ -68,6 +68,8 @@
 {
     NSString *selectedImageName = [self.imageNameArray objectAtIndex:indexPath.item];
     self.project.icon = [UIImage imageNamed:selectedImageName];
+    
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyIconName value:selectedImageName sender:self];
 
     [self showSelectIconColorView];
 }

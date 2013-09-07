@@ -47,15 +47,13 @@
 
 - (void)setToolbar
 {
-    UIButton *deleteButtonSeed = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [deleteButtonSeed setImage:[UIImage imageNamed:@"trash.png"] forState:UIControlStateNormal];
-    [deleteButtonSeed addTarget:self action:@selector(didPushDeleteButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* deleteButton = [[UIBarButtonItem alloc] initWithCustomView:deleteButtonSeed];
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                  target:self
+                                                                                  action:@selector(didPushDeleteButton)];
     
-    UIButton *shareButtonSeed = [[UIButton alloc] initWithFrame:kFrameForBarButtonItem];
-    [shareButtonSeed setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
-    [shareButtonSeed addTarget:self action:@selector(didPushShareButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* shareButton = [[UIBarButtonItem alloc] initWithCustomView:shareButtonSeed];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                  target:self
+                                                                                  action:@selector(didPushShareButton)];
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -129,7 +127,7 @@
                 }
                 
                 if (self.isNewNote){
-                    [ANALYTICS trackEvent:kEventAddNote sender:self];
+                    [ANALYTICS trackEvent:kEventAddNote isImportant:YES sender:self];
                     [ANALYTICS trackPropertyWithKey:kPropertyKeyNoteText value:self.note.text sender:self];
                 }
                 
@@ -201,7 +199,6 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                target:self
                                                                                                action:@selector(didPushDoneButton)];
-        [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
         [rightBarButtonItems addObject:doneButton];
     }
     else

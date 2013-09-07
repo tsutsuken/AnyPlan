@@ -11,5 +11,6 @@
 @interface ImageCell : UITableViewCell
 @property IBOutlet UIImageView *iconView;
 @property IBOutlet UILabel *titleLabel;
+@property IBOutlet UILabel *detailLabel;
 
 @end

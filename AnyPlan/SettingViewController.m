@@ -22,19 +22,24 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"SettingView_Title", nil);
-
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:self action:@selector(didPushDoneButton)];
-    [doneButton setTitleColorForButtonStyle:UIBarButtonItemStyleDone];
-    self.navigationItem.rightBarButtonItem = doneButton;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:self.viewDeckController
+                                                                            action:@selector(toggleLeftView)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    self.viewDeckController.panningMode = IIViewDeckFullViewPanning;//ManageProjectViewでの制限を解除するため
+    
     //購入完了後に、購入ボタンが表示されるのを防ぐため
     self.isPremiumUser = [APPDELEGATE isPremiumUser];
+#warning test
+    LOG_BOOL(self.isPremiumUser, @"isPremiumUser");
+    
     [self.tableView reloadData];
 }
 
@@ -69,13 +74,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - CloseView
-
-- (void)didPushDoneButton
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -153,12 +151,7 @@
 
 #pragma mark Section Header
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return kHeightForSectionHeaderGrouped;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *title;
     
@@ -175,7 +168,7 @@
         title = NSLocalizedString(@"SettingView_SectionHeader_Other", nil);
     }
     
-    return [[SectionHeaderView alloc] initWithStyle:UITableViewStyleGrouped title:title];
+    return title;
 }
 
 #pragma mark - Table view delegate

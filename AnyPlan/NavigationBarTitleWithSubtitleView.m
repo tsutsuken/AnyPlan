@@ -25,9 +25,7 @@
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.font = [UIFont boldSystemFontOfSize:20];
-        titleLabel.textColor = [UIColor colorWithHexString:kColorHexNavigationBarTitle];
-        titleLabel.shadowColor = [UIColor whiteColor];
-        titleLabel.shadowOffset = CGSizeMake(0, 1);
+        titleLabel.textColor = [UIColor blackColor];
         titleLabel.text = @"";
         titleLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:titleLabel];
@@ -38,8 +36,6 @@
         detailTitleLabel.textAlignment = NSTextAlignmentCenter;
         detailTitleLabel.font = [UIFont boldSystemFontOfSize:13];
         detailTitleLabel.textColor = [UIColor colorWithHexString:kColorHexNavigationBarSubTitle];
-        detailTitleLabel.shadowColor = [UIColor whiteColor];
-        detailTitleLabel.shadowOffset = CGSizeMake(0, 1);
         detailTitleLabel.text = @"";
         detailTitleLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:detailTitleLabel];

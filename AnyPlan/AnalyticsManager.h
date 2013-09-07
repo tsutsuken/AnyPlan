@@ -12,7 +12,7 @@
 
 + (AnalyticsManager *)sharedInstance;
 - (void)trackView:(id)sender;
-- (void)trackEvent:(NSString *)event sender:(id)sender;
+- (void)trackEvent:(NSString *)event isImportant:(BOOL)isImportant sender:(id)sender;
 - (void)trackPropertyWithKey:(NSString *)key value:(NSString *)value sender:(id)sender;
 - (void)trackPropertyWithTask:(Task *)task sender:(id)sender;
 - (void)registerSuperProperties:(NSDictionary *)properties;

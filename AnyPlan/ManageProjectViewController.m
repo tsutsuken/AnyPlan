@@ -19,11 +19,10 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"ManageProjectView_Title", nil);
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add.png"]
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(didPushAddButton)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(didPushAddButton)];
     
     [self setTableView];
 }
@@ -40,32 +39,7 @@
     
     [self.navigationController setToolbarHidden:YES animated:animated];
     
-    [self checkDisplayOrder];
-}
-
-#warning test
-- (void)checkDisplayOrder
-{
-    for (Project *project in [self.fetchedResultsController fetchedObjects])
-    {
-        LOG(@"%@ %@", project.title, project.displayOrder);
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    if (![[self.navigationController viewControllers] containsObject:self])//前のViewに戻った時
-    {
-        [self sendNotification];
-    }
-}
-
-- (void)sendNotification
-{
-    NSNotification *notification = [NSNotification notificationWithName:kNotificationDidCloseManageProjectView object:nil userInfo:nil];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    self.viewDeckController.panningMode = IIViewDeckNoPanning;//並べ替えが出来ないというIIViewDeckの不具合を回避するため
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,13 +47,6 @@
     [super viewDidAppear:animated];
     
     [ANALYTICS trackView:self];
-    
-    //UITableViewControllerではないため、手動でやる必要がある
-    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-    if (indexPath)
-    {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,13 +70,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectCell *cell = (ProjectCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
+    ImageCell *cell = (ImageCell *)[tableView dequeueReusableCellWithIdentifier:@"ProjectCell"];
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(ProjectCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(ImageCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Project *project = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = project.title;
@@ -209,8 +176,6 @@
     [movingProject saveContext];
     
     [self.tableView reloadData];
-    
-    [self checkDisplayOrder];
 }
 
 
@@ -324,7 +289,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(ProjectCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(ImageCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
