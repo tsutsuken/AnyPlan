@@ -76,7 +76,7 @@
 /*In-App-Purchase*/
 #define kProductIdSubscriptionMonth @"com.lvup.AnyPlan.Purchase_AutoRenewable_Month"
 #define kProductIdSubscriptionYear @"com.lvup.AnyPlan.Purchase_AutoRenewable_Year"
-#define kMaxNumberOfProject 5
+#define kMaxNumberOfCustomProject 4
 
 /*Analytics*/
 #define ANALYTICS  [AnalyticsManager sharedInstance]
@@ -97,7 +97,7 @@
 
 
 #define kPropertyKeyAccountType @"Account Type"
-#define kPropertyKeyProjectCount @"Project Count"
+#define kPropertyKeyProjectCount @"Custom Project Count"
 #define kPropertyKeyProjectTitle @"Project Title"
 #define kPropertyKeyTaskTitle @"Task Title"
 #define kPropertyKeyTaskDueDateIsOn @"Task DueDate Is On"

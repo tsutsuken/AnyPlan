@@ -29,6 +29,6 @@
 - (Project *)inboxProjectInManagedObjectContext:(NSManagedObjectContext *)context;
 - (BOOL)isPremiumUser;
 - (BOOL)canAddNewProject;
-- (int)numberOfProject;
+- (int)numberOfCustomProject;
 
 @end

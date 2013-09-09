@@ -373,9 +373,9 @@
     
     BOOL canAddNewProject;
     
-    int numberOfProject = [self numberOfProject];
+    int numberOfCustomProject = [self numberOfCustomProject];
     
-    if (numberOfProject < kMaxNumberOfProject)
+    if (numberOfCustomProject < kMaxNumberOfCustomProject)
     {
         canAddNewProject = YES;
     }
@@ -394,17 +394,17 @@
     return canAddNewProject;
 }
 
-- (int)numberOfProject
+- (int)numberOfCustomProject
 {
-    int numberOfProject;
+    int numberOfCustomProject;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
 	[fetchRequest setEntity:entity];
     
-    numberOfProject = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    numberOfCustomProject = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil] - 1;//未分類プロジェクトの分を引く
     
-    return numberOfProject;
+    return numberOfCustomProject;
 }
 
 @end

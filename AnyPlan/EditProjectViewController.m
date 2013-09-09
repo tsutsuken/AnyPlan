@@ -156,7 +156,7 @@
                 {
                     [ANALYTICS trackEvent:kEventAddProject isImportant:YES sender:self];
                     [ANALYTICS trackPropertyWithKey:kPropertyKeyProjectTitle value:self.project.title sender:self];
-                    [ANALYTICS registerSuperProperties:@{kPropertyKeyProjectCount:@([APPDELEGATE numberOfProject])}];
+                    [ANALYTICS registerSuperProperties:@{kPropertyKeyProjectCount:@([APPDELEGATE numberOfCustomProject])}];
                 }
             }
         }

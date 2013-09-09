@@ -107,7 +107,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Qc-wz-qfU">
-                                            <rect key="frame" x="10" y="8" width="34" height="34"/>
+                                            <rect key="frame" x="2" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                             <state key="normal" image="checkbox_deselected.png">
@@ -210,7 +210,7 @@
         <scene sceneID="OEb-uO-PFd">
             <objects>
                 <navigationController definesPresentationContext="YES" id="b8I-AH-Hm6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="note.png" id="V0a-yq-DYT"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_note.png" id="V0a-yq-DYT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sad-AI-7h8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -415,7 +415,7 @@
         <scene sceneID="Cv8-Fc-L5X">
             <objects>
                 <navigationController definesPresentationContext="YES" id="oLe-jz-K77" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="check.png" id="KzQ-Mw-w1o"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_check.png" id="KzQ-Mw-w1o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QSb-Ww-gWD">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1033,10 +1033,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check.png" width="30" height="30"/>
-        <image name="checkbox_deselected.png" width="34" height="34"/>
-        <image name="checkbox_selected.png" width="34" height="34"/>
-        <image name="note.png" width="30" height="30"/>
+        <image name="checkbox_deselected.png" width="50" height="50"/>
+        <image name="checkbox_selected.png" width="50" height="50"/>
+        <image name="tab_check.png" width="27" height="22"/>
+        <image name="tab_note.png" width="20" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
