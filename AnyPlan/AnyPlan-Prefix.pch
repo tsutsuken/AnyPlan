@@ -26,7 +26,6 @@
     #import "EditableCell.h"
     #import "NoteCell.h"
     #import "TaskCell.h"
-    #import "NavigationBarTitleWithSubtitleView.h"
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
     #import "MKStoreManager.h"
@@ -38,6 +37,7 @@
     #import "ImageCell.h"
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
+    #import "CustomNavigationBarTitleView.h"
 
 #endif
 
@@ -106,6 +106,7 @@
 #define kPropertyKeyNoteText @"Note Text"
 #define kPropertyKeyIconName @"Selected Icon Name"
 #define kPropertyKeyIconColorIndex @"Selected Icon Color Index"
+#define kPropertyKeyDefaultProjectCount @"Default Project Count"
 
 #define kPropertyValueAccountTypeFree @"Free"
 #define kPropertyValueAccountTypePremiumMonth @"Premium_Month"

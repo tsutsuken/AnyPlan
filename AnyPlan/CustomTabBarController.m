@@ -8,25 +8,21 @@
 
 #import "CustomTabBarController.h"
 
+#define kKeyLastSelectedIndex @"kKeyLastSelectedIndex"
+
 @interface CustomTabBarController ()
 
 @end
 
 @implementation CustomTabBarController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.delegate = self;
+    
+    self.selectedIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kKeyLastSelectedIndex];
     
     for (UINavigationController *nvc in self.viewControllers)
     {
@@ -43,4 +39,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITabBarController delegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    int selectedIndex = tabBarController.selectedIndex;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults] ;
+    [userDefaults setInteger:selectedIndex forKey:kKeyLastSelectedIndex];
+    [userDefaults synchronize];
+}
+
 @end
+
+
+
+
+

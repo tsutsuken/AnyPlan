@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    NavigationBarTitleWithSubtitleView *titleView = [[NavigationBarTitleWithSubtitleView alloc] init];
+    CustomNavigationBarTitleView *titleView = [[CustomNavigationBarTitleView alloc] init];
     [titleView setTitle:[APPDELEGATE mainTitleForTabBarWithProject:self.project shouldDisplayAllProject:self.shouldDisplayAllProject]];
     [titleView setDetailTitle:self.title];
     self.navigationItem.titleView = titleView;

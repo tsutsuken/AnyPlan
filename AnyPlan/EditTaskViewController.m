@@ -43,14 +43,7 @@
     
     self.tabBarController.viewDeckController.enabled = NO;
 
-    if (self.isNewTask)
-    {
-        self.title = NSLocalizedString(@"EditTaskView_Title_NewTask", nil);
-    }
-    else
-    {
-        self.title = NSLocalizedString(@"EditTaskView_Title_ExistingTask", nil);
-    }
+    self.title = NSLocalizedString(@"EditTaskView_Title", nil);
     
     [self setToolbar];
 }
@@ -100,24 +93,11 @@
         {
             if(!self.tempTitle||[self.tempTitle isEqualToString:@""])
             {
-                if (self.isNewTask)
-                {
-                    [self.task.managedObjectContext deleteObject:self.task];
-                }
-                else
-                {
-                    self.task.title = NSLocalizedString(@"Common_Untitled", nil);
-                }
+                self.task.title = NSLocalizedString(@"Common_Untitled", nil);
             }
             else
             {
                 self.task.title = self.tempTitle;
-                
-                if (self.isNewTask)
-                {
-                    [ANALYTICS trackEvent:kEventAddTask isImportant:YES sender:self];
-                    [ANALYTICS trackPropertyWithTask:self.task sender:self];
-                }
             }
         }
         

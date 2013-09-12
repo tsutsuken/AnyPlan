@@ -278,11 +278,16 @@
 - (void)insertDefaultProjects
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"DefaultProjects" ofType:@"plist"];
-    NSArray *defaultListDataArray = [[NSArray alloc] initWithContentsOfFile:filePath];
+    NSArray *defaultProjectDataArray = [[NSArray alloc] initWithContentsOfFile:filePath];
     
-    for (int i = 0; i < [defaultListDataArray count]; i++)
+    int maxProjectCount = [defaultProjectDataArray count];//4
+    int projectCount = (int)(arc4random() % maxProjectCount) + 1;
+    [ANALYTICS registerSuperProperties:@{kPropertyKeyDefaultProjectCount:[NSNumber numberWithInt:projectCount]}];
+    //projectCount = maxProjectCount;
+    
+    for (int i = 0; i < projectCount; i++)
     {
-        NSDictionary *dictionary = [defaultListDataArray objectAtIndex:i];
+        NSDictionary *dictionary = [defaultProjectDataArray objectAtIndex:i];
         
         Project *project = (Project *)[NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:self.managedObjectContext];
         project.displayOrder = [NSNumber numberWithInt:i];

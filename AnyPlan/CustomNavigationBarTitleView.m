@@ -1,26 +1,29 @@
 //
-//  NavigationBarTitleWithSubtitleView.m
+//  CustomNavigationBarTitleView.m
 //  AnyPlan
 //
-//  Created by Ken Tsutsumi on 13/04/28.
+//  Created by Ken Tsutsumi on 2013/09/12.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
 //
 
-#import "NavigationBarTitleWithSubtitleView.h"
+#import "CustomNavigationBarTitleView.h"
 
-@implementation NavigationBarTitleWithSubtitleView
+@implementation CustomNavigationBarTitleView
 
 @synthesize titleLabel;
 @synthesize detailTitleLabel;
 
 - (id) init
 {
-    self = [super initWithFrame:CGRectMake(0, 0, 200, 44)];
+    int titleViewWIdth = 200;
+    
+    self = [super initWithFrame:CGRectMake(0, 0, titleViewWIdth, 44)];
     if (self) {
-        [self setBackgroundColor: [UIColor clearColor]];
-        [self setAutoresizesSubviews:YES];
         
-        CGRect titleFrame = CGRectMake(0, 2, 200, 24);
+        [self setBackgroundColor: [UIColor clearColor]];
+        [self setAutoresizingMask : (UIViewAutoresizingFlexibleWidth)];
+        
+        CGRect titleFrame = CGRectMake(0, 2, titleViewWIdth, 24);
         titleLabel = [[UILabel alloc] initWithFrame:titleFrame];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -28,9 +31,10 @@
         titleLabel.textColor = [UIColor blackColor];
         titleLabel.text = @"";
         titleLabel.adjustsFontSizeToFitWidth = YES;
+        [titleLabel setAutoresizingMask : (UIViewAutoresizingFlexibleWidth)];
         [self addSubview:titleLabel];
         
-        CGRect detailFrame = CGRectMake(0, 24, 200, 44-24);
+        CGRect detailFrame = CGRectMake(0, 24, titleViewWIdth, 44-24);
         detailTitleLabel = [[UILabel alloc] initWithFrame:detailFrame];
         detailTitleLabel.backgroundColor = [UIColor clearColor];
         detailTitleLabel.textAlignment = NSTextAlignmentCenter;
@@ -38,12 +42,8 @@
         detailTitleLabel.textColor = [UIColor colorWithHexString:kColorHexNavigationBarSubTitle];
         detailTitleLabel.text = @"";
         detailTitleLabel.adjustsFontSizeToFitWidth = YES;
+        [detailTitleLabel setAutoresizingMask : (UIViewAutoresizingFlexibleWidth)];
         [self addSubview:detailTitleLabel];
-        
-        [self setAutoresizingMask : (UIViewAutoresizingFlexibleLeftMargin |
-                                     UIViewAutoresizingFlexibleRightMargin |
-                                     UIViewAutoresizingFlexibleTopMargin |
-                                     UIViewAutoresizingFlexibleBottomMargin)];
     }
     return self;
 }
@@ -54,8 +54,8 @@
 }
 
 - (void)setDetailTitle:(NSString *)detailTitle
-{  
-    [self.detailTitleLabel setText:detailTitle];  
+{
+    [self.detailTitleLabel setText:detailTitle];
 }
 
 @end

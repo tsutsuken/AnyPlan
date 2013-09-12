@@ -8,6 +8,8 @@
 
 #import "TaskListViewController.h"
 
+#define kTagTextField 2
+
 @interface TaskListViewController ()
 
 @end
@@ -23,19 +25,53 @@
 {
     [super viewDidLoad];
     
-    NavigationBarTitleWithSubtitleView *titleView = [[NavigationBarTitleWithSubtitleView alloc] init];
+    [self setNavBarButtonsWithEditingTextField:NO];
+    
+    self.tableView.tableHeaderView = [self textFieldView];
+    
+    CustomNavigationBarTitleView *titleView = [[CustomNavigationBarTitleView alloc] init];
     [titleView setTitle:[APPDELEGATE mainTitleForTabBarWithProject:self.project shouldDisplayAllProject:self.shouldDisplayAllProject]];
     [titleView setDetailTitle:self.title];
     self.navigationItem.titleView = titleView;
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:self.viewDeckController
-                                                                            action:@selector(toggleLeftView)];
+}
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                           target:self
-                                                                                           action:@selector(showEditTaskViewWithNewTask)];
+- (void)setNavBarButtonsWithEditingTextField:(BOOL)editingTextField
+{
+    UIBarButtonItem *leftBarButtonItem;
+    UIBarButtonItem *rightBarButtonItem;
+    
+    if (editingTextField)
+    {
+        leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                          target:self
+                                                                          action:@selector(didPushCancelButton)];
+        
+        rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                           target:self
+                                                                           action:@selector(didPushDoneButton)];
+    }
+    else
+    {
+        leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
+                                                             style:UIBarButtonItemStyleBordered
+                                                            target:self.viewDeckController
+                                                            action:@selector(toggleLeftView)];
+        
+        rightBarButtonItem = self.editButtonItem;
+    }
+    
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+- (void)didPushCancelButton
+{
+    [self didFinishTextFieldWithSave:NO hideKeyBoard:YES];
+}
+
+- (void)didPushDoneButton
+{
+    [self didFinishTextFieldWithSave:YES hideKeyBoard:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,7 +142,48 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"showEditTaskView" sender:self.tableView];
+    [self performSegueWithIdentifier:@"showEditTaskView" sender:self];
+}
+
+#pragma mark - Table view edit
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    if (editing)
+    {
+        self.tabBarController.viewDeckController.enabled = NO;
+        self.navigationItem.leftBarButtonItem = nil;
+        
+        [UIView beginAnimations:nil context:nil];
+        self.tableView.tableHeaderView = nil;
+        self.tabBarController.tabBar.hidden = YES;
+        [UIView commitAnimations];
+    }
+    else
+    {
+        self.tabBarController.viewDeckController.enabled = YES;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
+                                                                                 style:UIBarButtonItemStyleBordered
+                                                                                target:self.viewDeckController
+                                                                                action:@selector(toggleLeftView)];
+        
+        [UIView beginAnimations:nil context:nil];
+        self.tableView.tableHeaderView = [self textFieldView];
+        self.tabBarController.tabBar.hidden = NO;
+        [UIView commitAnimations];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        Task *deletingTask = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:deletingTask];
+        [deletingTask saveContext];
+    }
 }
 
 #pragma mark - Check Box
@@ -178,6 +255,112 @@
     return indexPath;
 }
 
+#pragma mark - TextField
+
+- (UIView *)textFieldView
+{
+    int textFieldHeight = 50;
+    int topMargin = 15;
+    
+    int bottomMargin;
+    if (self.shouldDisplayAllProject)
+    {
+        bottomMargin = 0;//SectionHeaderの分、余白が大きく見るため、調整
+    }
+    else
+    {
+        bottomMargin = topMargin;
+    }
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, textFieldHeight + topMargin + bottomMargin)];
+    
+    UITextField *textField =  [[UITextField alloc] initWithFrame:CGRectMake(8, topMargin, 304, textFieldHeight)];
+    textField.delegate = self;
+    textField.tag = kTagTextField;
+    textField.placeholder = NSLocalizedString(@"TaskListView_TextField_PlaceHolder", nil);
+    
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.returnKeyType = UIReturnKeyNext;
+    textField.font = [UIFont boldSystemFontOfSize:20];
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [headerView addSubview:textField];
+    
+    return headerView;
+}
+
+- (void)didFinishTextFieldWithSave:(BOOL)save hideKeyBoard:(BOOL)hide
+{
+    UITextField *textField = (UITextField *)[self.view viewWithTag:kTagTextField];
+    
+    if (save)
+    {
+        if (textField.text.length != 0)
+        {
+            [self addTaskWithTitle:textField.text];
+        }
+    }
+    
+    if (hide)
+    {
+        [textField resignFirstResponder];
+    }
+    
+    textField.text = nil;
+}
+
+- (void)addTaskWithTitle:(NSString *)title
+{
+    [ANALYTICS trackEvent:kEventAddTask isImportant:YES sender:self];
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyTaskTitle value:title sender:self];
+
+    Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    newTask.title = title;
+    
+    if (self.shouldDisplayAllProject)
+    {
+        newTask.project = [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
+    }
+    else
+    {
+        newTask.project = self.project;
+    }
+    
+    [newTask saveContext];
+}
+
+#pragma mark TextField delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self setNavBarButtonsWithEditingTextField:YES];
+    
+    self.tabBarController.viewDeckController.enabled = NO;
+    
+    return YES;
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [self setNavBarButtonsWithEditingTextField:NO];
+    
+    self.tabBarController.viewDeckController.enabled = YES;
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.text.length == 0)
+    {
+        [self didFinishTextFieldWithSave:NO hideKeyBoard:YES];
+    }
+    else
+    {
+        [self didFinishTextFieldWithSave:YES hideKeyBoard:NO];
+    }
+    
+    return YES;
+}
+
 #pragma mark - Show Other View
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -188,45 +371,9 @@
     {
         EditTaskViewController *controller = (EditTaskViewController *)segue.destinationViewController;
         
-        BOOL isNewTask;
-        Task *editingTask;
-        
-        if (sender == self.tableView)//Existing Task
-        {
-            isNewTask = NO;
-            
-            Task *selectedTask = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-            editingTask = selectedTask;
-        }
-        else//New Task
-        {
-            isNewTask = YES;
-            
-            Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-            newTask.addedDate = [NSDate date];
-        
-            if (self.shouldDisplayAllProject)
-            {
-                newTask.project = [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
-            }
-            else
-            {
-                newTask.project = self.project;
-            }
-            
-            editingTask = newTask;
-        }
-        
-        controller.isNewTask = isNewTask;
-        controller.task = editingTask;
+        Task *selectedTask = [[self fetchedResultsController] objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        controller.task = selectedTask;
     }
-}
-
-#pragma mark EditTaskView
-
-- (void)showEditTaskViewWithNewTask
-{
-    [self performSegueWithIdentifier:@"showEditTaskView" sender:self.navigationItem.rightBarButtonItem];
 }
 
 #pragma mark - Fetched results controller

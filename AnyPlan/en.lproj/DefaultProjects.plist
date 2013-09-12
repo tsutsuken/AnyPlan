@@ -12,11 +12,27 @@
 	</dict>
 	<dict>
 		<key>title</key>
+		<string>Work</string>
+		<key>iconName</key>
+		<string>briefcase</string>
+		<key>colorHex</key>
+		<string>92D94C</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Private</string>
+		<key>iconName</key>
+		<string>home</string>
+		<key>colorHex</key>
+		<string>E5507F</string>
+	</dict>
+	<dict>
+		<key>title</key>
 		<string>Training</string>
 		<key>iconName</key>
 		<string>run</string>
 		<key>colorHex</key>
-		<string>E5507F</string>
+		<string>874CD9</string>
 	</dict>
 </array>
 </plist>

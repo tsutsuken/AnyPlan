@@ -7,23 +7,41 @@
 //
 
 #import "TaskCell.h"
+#define kFrameCheckBox CGRectMake(0, 0, 50, 50)
+#define kFrameTitleLabel CGRectMake(50, 14, 260, 21)
+#define kFrameDetailLabel CGRectMake(50, 35, 260, 14)
+#define kDeleteButtonSpaceWidth 38
 
 @implementation TaskCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)layoutSubviews
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+    if (self.editing)
+    {
+        self.checkBox.hidden = YES;
+        
+        CGRect frameForCheckBox = kFrameCheckBox;
+        frameForCheckBox.origin.x -= kDeleteButtonSpaceWidth;
+        self.checkBox.frame = frameForCheckBox;
+        
+        CGRect frameForTitleLabel = kFrameTitleLabel;
+        frameForTitleLabel.origin.x -= kDeleteButtonSpaceWidth;
+        self.titleLabel.frame = frameForTitleLabel;
+        
+        CGRect frameForDetailLabel = kFrameDetailLabel;
+        frameForDetailLabel.origin.x -= kDeleteButtonSpaceWidth;
+        self.detailLabel.frame = frameForDetailLabel;
     }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    else
+    {
+        self.checkBox.hidden = NO;
+        
+        self.checkBox.frame = kFrameCheckBox;
+        self.titleLabel.frame = kFrameTitleLabel;
+        self.detailLabel.frame = kFrameDetailLabel;
+    }
+    
+    [super layoutSubviews];
 }
 
 @end

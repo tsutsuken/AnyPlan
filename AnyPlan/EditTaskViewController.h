@@ -14,6 +14,5 @@
 @interface EditTaskViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) Task *task;
-@property (assign, nonatomic) BOOL isNewTask;
 
 @end

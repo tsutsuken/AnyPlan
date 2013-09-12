@@ -119,8 +119,8 @@
         cell.titleLabel.highlightedTextColor = kColorPaleWhite;
         
         cell.titleLabel.text = NSLocalizedString(@"MenuView_Cell_AddProject", nil);
-        cell.iconView.image = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorMiddleGray];
-        cell.iconView.highlightedImage = [[UIImage imageNamed:@"add_white"] imageTintedWithColor:kColorPaleWhite];
+        cell.iconView.image = [[UIImage imageNamed:@"add"] imageTintedWithColor:kColorMiddleGray];
+        cell.iconView.highlightedImage = [[UIImage imageNamed:@"add"] imageTintedWithColor:kColorPaleWhite];
     }
     else
     {
@@ -274,6 +274,11 @@
     {
         tabBarController.project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
     }
+    
+    /*
+     CustomTabBarController *existingTabBarController = (CustomTabBarController *)self.viewDeckController.centerController;
+     tabBarController.selectedIndex = existingTabBarController.selectedIndex;
+     */
     
     return tabBarController;
 }
