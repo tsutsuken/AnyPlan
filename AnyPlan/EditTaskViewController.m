@@ -87,7 +87,7 @@
         
         if (self.shouldDeleteTask)
         {
-            [self.task.managedObjectContext deleteObject:self.task];
+            [self.task delete];
         }
         else//BackButton Pushed
         {
@@ -99,9 +99,9 @@
             {
                 self.task.title = self.tempTitle;
             }
+            
+            [self.task saveContext];
         }
-        
-        [self.task saveContext];
     }
     else//次のViewに行った時
     {

@@ -47,6 +47,57 @@
     return iconWithColor;
 }
 
+#pragma mark - DisplayOrder of Tasks
+
+- (void)refreshDisplayOrderOfTasks
+{
+    //displayOrderに空白が出来ないようにする
+    NSArray *sortedTasks = [self sortedTasks];
+    int index = 0;
+    
+    for (Task * task in sortedTasks)
+    {
+        task.displayOrder = @(index);
+        index++;
+        
+        LOG(@"%@ %@", task.displayOrder, task.title);
+    }
+}
+
+- (NSArray *)sortedTasks
+{
+    //未完了のタスクのみ取得
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(project == %@) AND (isDone == NO)", self];
+    
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
+    
+    NSArray* sortedTasks = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    return sortedTasks;
+}
+
+- (int)numberOfUncompletedTask
+{
+    int uncompletedTaskCount;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    request.entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    request.predicate = [NSPredicate predicateWithFormat:@"(project == %@) AND (isDone == NO)", self];
+    request.includesSubentities = NO;
+    
+    uncompletedTaskCount = [self.managedObjectContext countForFetchRequest:request error:nil];
+    
+    LOG(@"uncompletedTaskCount_%i", uncompletedTaskCount);
+    
+    return uncompletedTaskCount;
+}
+
 #pragma mark - DisplayOrder of Projects
 
 - (void)refreshDisplayOrderOfProjects

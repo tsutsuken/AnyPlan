@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F000F5A178E23E10034AC98 /* AnalyticsManager.m */; };
 		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
+		1F127A0517E1DF3D00A21CA7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F127A0417E1DF3D00A21CA7 /* Task.m */; };
 		1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC501175216F80004CD4B /* NoteInfoViewController.m */; };
 		1F22235B17266D830034CC80 /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235A17266D830034CC80 /* EditProjectViewController.m */; };
 		1F22235F17269B8D0034CC80 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235E17269B8D0034CC80 /* EditableCell.m */; };
@@ -91,7 +92,6 @@
 		1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F911CBA1761E96400CA468A /* SelectIconColorViewController.m */; };
 		1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9435F0177D26B500C4E408 /* UserAccountViewController.m */; };
 		1F97700E17719FC4004321FF /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97700D17719FC4004321FF /* Repeat.m */; };
-		1F97701117719FD4004321FF /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97701017719FD4004321FF /* Task.m */; };
 		1F9770171771A102004321FF /* Repeat+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9770161771A102004321FF /* Repeat+Additions.m */; };
 		1F9A212217696FCD000F5E0C /* IconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A212117696FCD000F5E0C /* IconCell.m */; };
 		1F9D07311766129300D3BBF9 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9D07301766129300D3BBF9 /* UIImage+Additions.m */; };
@@ -164,6 +164,8 @@
 		1F000F5A178E23E10034AC98 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
+		1F127A0317E1DF3D00A21CA7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		1F127A0417E1DF3D00A21CA7 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		1F1A739F176758AA00EED3D5 /* AnyPlan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnyPlan-Prefix.pch"; sourceTree = "<group>"; };
 		1F1EC500175216F80004CD4B /* NoteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfoViewController.h; sourceTree = "<group>"; };
 		1F1EC501175216F80004CD4B /* NoteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoViewController.m; sourceTree = "<group>"; };
@@ -263,8 +265,6 @@
 		1F9435F0177D26B500C4E408 /* UserAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountViewController.m; sourceTree = "<group>"; };
 		1F97700C17719FC4004321FF /* Repeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repeat.h; sourceTree = "<group>"; };
 		1F97700D17719FC4004321FF /* Repeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repeat.m; sourceTree = "<group>"; };
-		1F97700F17719FD3004321FF /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		1F97701017719FD4004321FF /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		1F9770151771A102004321FF /* Repeat+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Repeat+Additions.h"; sourceTree = "<group>"; };
 		1F9770161771A102004321FF /* Repeat+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Repeat+Additions.m"; sourceTree = "<group>"; };
 		1F9A212017696FCD000F5E0C /* IconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconCell.h; sourceTree = "<group>"; };
@@ -568,8 +568,8 @@
 		1F9770141771A0AB004321FF /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				1F97700F17719FD3004321FF /* Task.h */,
-				1F97701017719FD4004321FF /* Task.m */,
+				1F127A0317E1DF3D00A21CA7 /* Task.h */,
+				1F127A0417E1DF3D00A21CA7 /* Task.m */,
 				1FD829C0176C345C0080FA18 /* Task+Additions.h */,
 				1FD829C1176C345C0080FA18 /* Task+Additions.m */,
 				1F97700C17719FC4004321FF /* Repeat.h */,
@@ -1076,6 +1076,7 @@
 				1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */,
 				1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */,
 				1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */,
+				1F127A0517E1DF3D00A21CA7 /* Task.m in Sources */,
 				1FA5EB6617585DBB00025605 /* Note.m in Sources */,
 				1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */,
 				1F911CBB1761E96400CA468A /* SelectIconColorViewController.m in Sources */,
@@ -1086,7 +1087,6 @@
 				1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */,
 				1F85D42A176D9842009C7362 /* MemoCell.m in Sources */,
 				1F97700E17719FC4004321FF /* Repeat.m in Sources */,
-				1F97701117719FD4004321FF /* Task.m in Sources */,
 				1F9770171771A102004321FF /* Repeat+Additions.m in Sources */,
 				1F9435F1177D26B500C4E408 /* UserAccountViewController.m in Sources */,
 				1FB5923D17807B1B005FD134 /* UpgradeAccountViewController.m in Sources */,

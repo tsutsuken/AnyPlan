@@ -11,8 +11,12 @@
 @interface Project (Additions)
 
 - (void)saveContext;
-- (void)deleteWithRefreshDisplayOrder:(BOOL)shouldRefresh;
 - (UIImage *)iconWithColor;
+- (void)refreshDisplayOrderOfTasks;
+- (int)numberOfUncompletedTask;
+- (void)deleteWithRefreshDisplayOrder:(BOOL)shouldRefresh;
+
+
 
 @end
 

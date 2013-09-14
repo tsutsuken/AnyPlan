@@ -38,7 +38,6 @@
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
     #import "CustomNavigationBarTitleView.h"
-
 #endif
 
 /*Common*/

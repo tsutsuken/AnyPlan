@@ -153,7 +153,7 @@
     
     if (editing)
     {
-        self.tabBarController.viewDeckController.enabled = NO;
+        self.tabBarController.viewDeckController.panningMode = IIViewDeckNoPanning;
         self.navigationItem.leftBarButtonItem = nil;
         
         [UIView beginAnimations:nil context:nil];
@@ -163,7 +163,7 @@
     }
     else
     {
-        self.tabBarController.viewDeckController.enabled = YES;
+        self.tabBarController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:self.viewDeckController
@@ -176,14 +176,90 @@
     }
 }
 
+#pragma mark Delete
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         Task *deletingTask = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:deletingTask];
-        [deletingTask saveContext];
+        [deletingTask delete];
     }
+}
+
+#pragma mark Move
+
+- (BOOL)tableView:(UITableView *)tableview canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.shouldDisplayAllProject)
+    {
+        return YES;
+    }
+    else
+    {
+        Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        if ([task.isDone boolValue])
+        {
+            return NO;
+        }
+        else
+        {
+            return YES;
+        }
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if( sourceIndexPath.section != proposedDestinationIndexPath.section )
+    {
+        return sourceIndexPath;
+    }
+    else
+    {
+        return proposedDestinationIndexPath;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    //http://stackoverflow.com/questions/1648223/how-can-i-maintain-display-order-in-uitableview-using-core-data
+    
+    NSUInteger fromRow = fromIndexPath.row;
+    NSUInteger toRow = toIndexPath.row;
+    
+    Task *movingTask = [self.fetchedResultsController.fetchedObjects objectAtIndex:fromRow];
+    movingTask.displayOrder =  [[NSNumber alloc] initWithInteger:toRow];
+    
+    //並べ替えの影響を受ける範囲（start,end）を求める
+    NSInteger start,end;
+    int delta;
+    
+    if (fromRow == toRow) {//セルを移動させなかった場合
+        return;
+    }
+    else if (fromRow < toRow){//セルを下に移動させた場合
+        delta = -1;
+        start = fromRow + 1;
+        end = toRow;
+    }
+    else {//セルを上に移動させた場合
+        delta = 1;
+        start = toRow;
+        end = fromRow - 1;
+    }
+    
+    for (NSUInteger i = start; i <= end; i++)
+    {
+        Task *task = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];
+        NSNumber *newDisplayOrder = @([task.displayOrder intValue] + delta);
+        task.displayOrder =  newDisplayOrder;
+    }
+    
+    [movingTask saveContext];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Check Box
@@ -193,8 +269,7 @@
     NSIndexPath* indexPath = [self indexPathForTaskWithEvent:event];
     Task *selectedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    BOOL isDoneOld = [selectedTask.isDone boolValue];
-    BOOL isDoneNew = !isDoneOld;
+    BOOL isDoneNew = ![selectedTask.isDone boolValue];
     
     //Cellを更新
     TaskCell *selectedCell =  (TaskCell *)[self.tableView cellForRowAtIndexPath:indexPath];
@@ -223,24 +298,15 @@
         dispatch_async(q_main, ^{
             
             Task *selectedTask = (Task *)[self.managedObjectContext objectWithID:objectID];
-            selectedTask.isDone = [[NSNumber alloc] initWithBool:isDone];
             
             if (isDone)
             {
-                selectedTask.completedDate = [NSDate date];
-                selectedTask.addedDate = nil;
-                
-                [selectedTask repeatTaskIfNeeded];
-                
-                [ANALYTICS trackEvent:kEventExecuteTask isImportant:YES sender:self];
+                [selectedTask execute];
             }
             else
             {
-                selectedTask.completedDate = nil;
-                selectedTask.addedDate = [NSDate date];
+                [selectedTask cancel];
             }
-            
-            [selectedTask saveContext];
         });
     });
 }
@@ -314,19 +380,35 @@
     [ANALYTICS trackPropertyWithKey:kPropertyKeyTaskTitle value:title sender:self];
 
     Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+
     newTask.title = title;
-    
-    if (self.shouldDisplayAllProject)
-    {
-        newTask.project = [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
-    }
-    else
-    {
-        newTask.project = self.project;
-    }
+    newTask.project = [self projectForNewTask];
+    [newTask setDisplayOrderInCurrentProject];
     
     [newTask saveContext];
 }
+
+- (Project *)projectForNewTask
+{
+    if (self.shouldDisplayAllProject)
+    {
+        return [APPDELEGATE inboxProjectInManagedObjectContext:self.managedObjectContext];
+    }
+    else
+    {
+        return self.project;
+    }
+}
+
+/*
+- (void)testDisplayOrder
+{
+    for (Task *task in [self.fetchedResultsController fetchedObjects])
+    {
+        LOG(@"%@ %@", task.displayOrder, task.title);
+    }
+}
+*/
 
 #pragma mark TextField delegate
 
@@ -450,7 +532,7 @@
     
     NSArray *sortDescriptors = [NSArray arrayWithObjects:
                    mainSortDescriptor,
-                   [[NSSortDescriptor alloc] initWithKey:@"addedDate" ascending:YES],
+                   [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:YES],
                    [[NSSortDescriptor alloc] initWithKey:@"completedDate" ascending:NO],
                    nil];
     

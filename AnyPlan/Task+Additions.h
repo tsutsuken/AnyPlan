@@ -11,6 +11,11 @@
 @interface Task (Additions)
 
 - (void)saveContext;
+- (void)delete;
+- (void)execute;
+- (void)cancel;
+- (void)setDisplayOrderInCurrentProject;
+- (void)switchToProject:(Project *)newProject;
 - (NSString *)dueDateStringShort;
 - (NSString *)dueDateStringLong;
 - (NSString *)repeatIconString;

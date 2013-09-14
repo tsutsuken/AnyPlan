@@ -26,6 +26,80 @@
     }
 }
 
+#pragma mark - Delete
+
+- (void)delete
+{
+    [self.managedObjectContext deleteObject:self];
+    
+    [self.project refreshDisplayOrderOfTasks];
+    
+    [self saveContext];
+}
+
+#pragma mark - isDone
+
+#pragma mark Execute
+
+- (void)execute
+{
+    [ANALYTICS trackEvent:kEventExecuteTask isImportant:YES sender:self];
+    
+    self.isDone = [[NSNumber alloc] initWithBool:YES];
+    [self.project refreshDisplayOrderOfTasks];
+    
+    self.completedDate = [NSDate date];
+    self.displayOrder = nil;
+    
+    [self repeatTaskIfNeeded];
+    
+    [self saveContext];
+}
+
+#pragma mark Cancel
+
+- (void)cancel
+{
+    self.isDone = [[NSNumber alloc] initWithBool:NO];
+    [self setDisplayOrderInCurrentProject];//isDoneを設定した後に実行する
+    
+    self.completedDate = nil;
+    
+    [self saveContext];
+}
+
+#pragma mark - DisplayOrder
+
+- (void)setDisplayOrderInCurrentProject
+{
+    int displayOrder = [self.project numberOfUncompletedTask] - 1;//自タスクの分を引く
+    self.displayOrder = @(displayOrder);
+}
+
+#pragma mark - Project
+
+- (void)switchToProject:(Project *)newProject
+{
+    if ([self.isDone boolValue])
+    {
+        self.project = newProject;
+    }
+    else
+    {
+        //以前のProjectを取得
+        Project *oldProject = self.project;
+        
+        //新しいProjectをセット
+        self.project = newProject;
+        
+        //新しいProjectでのdisplayOrderをセット
+        [self setDisplayOrderInCurrentProject];
+        
+        //古いProject内で、displayOrderをリフレッシュ
+        [oldProject refreshDisplayOrderOfTasks];
+    }
+}
+
 #pragma mark - DueDate
 
 - (NSString *)dueDateStringShort
@@ -88,13 +162,11 @@
         newTask.project = self.project;
         newTask.repeat = [self newRepeat];
         newTask.memo = self.memo;
-        
-        newTask.addedDate = [NSDate date];
         newTask.dueDate = [self newDueDate];
+        [newTask setDisplayOrderInCurrentProject];
         
         //下記は設定不要
-        //newTask.completedDate = nil;
-        //newTask.isDone = NO;
+        //completedDate,isDone
         
         [newTask saveContext];
     }

@@ -14,7 +14,8 @@
 
 @implementation SelectProjectViewController
 
-#define kKeyForProject @"Project"
+#define kPropertyNameProject @"Project"
+#define kEntityNameTask @"Task"
 
 - (void)viewDidLoad
 {
@@ -63,7 +64,7 @@
     cell.titleLabel.text = project.title;
     cell.iconView.image = project.iconWithColor;
     
-    if ([self.editedObject valueForKey:kKeyForProject] == project)
+    if ([self.editedObject valueForKey:kPropertyNameProject] == project)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -77,8 +78,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Project *selectedProject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self.editedObject setValue:selectedProject forKey:kKeyForProject];
+    Project *newProject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    //Taskの場合
+    if ([self.editedObject.entity.name isEqualToString:kEntityNameTask])
+    {
+        Task *task = (Task *)self.editedObject;
+        [task switchToProject:newProject];
+    }
+    else//Noteの場合
+    {
+        [self.editedObject setValue:newProject forKey:kPropertyNameProject];
+    }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
