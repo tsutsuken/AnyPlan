@@ -101,6 +101,8 @@
             }
             
             [self.task saveContext];
+            
+            [ANALYTICS trackPropertyWithTask:self.task sender:self];
         }
     }
     else//次のViewに行った時
@@ -176,11 +178,15 @@
         cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Memo", nil);
         cell.detailLabel.text = self.task.memo;
         
-        //ラベルのサイズを設定
-        CGSize labelSize = [self.task.memo sizeWithFont:cell.detailLabel.font
-                                      constrainedToSize:kMaxSizeForMemoLabel
-                                          lineBreakMode:cell.detailLabel.lineBreakMode];
-        cell.detailLabel.frame = CGRectMake(kDefaultOriginForMemoLabel.x, kDefaultOriginForMemoLabel.y, labelSize.width, labelSize.height);
+        //ラベルのRectを設定
+        CGRect labelRect = [self.task.memo boundingRectWithSize:kMaxSizeForMemoLabel
+                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                                        attributes:@{NSFontAttributeName:cell.detailLabel.font}
+                                                           context:nil];
+        
+        labelRect.size.height += 1;//小数点分、高さが足りないため
+        cell.detailLabel.frame = CGRectMake(kDefaultOriginForMemoLabel.x, kDefaultOriginForMemoLabel.y,
+                                            labelRect.size.width, labelRect.size.height);
         
         return cell;
     }

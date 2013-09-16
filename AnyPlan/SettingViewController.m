@@ -37,8 +37,10 @@
     
     //購入完了後に、購入ボタンが表示されるのを防ぐため
     self.isPremiumUser = [APPDELEGATE isPremiumUser];
+    /*
 #warning test
     LOG_BOOL(self.isPremiumUser, @"isPremiumUser");
+     */
     
     [self.tableView reloadData];
 }

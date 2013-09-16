@@ -94,6 +94,8 @@
 #define kEventOpenAppStoreLvUP @"AppStore Of LvUP Opened"
 #define kEventOpenAppStoreWannaDo @"AppStore Of WannaDo Opened"
 
+#define kPropertyKeyTaskCount @"Task Count"
+#define kPropertyKeyNoteCount @"Note Count"
 
 #define kPropertyKeyAccountType @"Account Type"
 #define kPropertyKeyProjectCount @"Custom Project Count"

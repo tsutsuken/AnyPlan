@@ -77,12 +77,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    /*
 #warning test
     LOG_METHOD;
     LOG_BOOL([APPDELEGATE isPremiumUser], @"isPremiumUser");
+     */
     
     [ANALYTICS trackView:self];
+    
+    [self testDisplayOrder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,6 +153,8 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+    
+    [self testDisplayOrder];
     
     if (editing)
     {
@@ -229,12 +234,16 @@
     NSUInteger fromRow = fromIndexPath.row;
     NSUInteger toRow = toIndexPath.row;
     
-    Task *movingTask = [self.fetchedResultsController.fetchedObjects objectAtIndex:fromRow];
+    
+    //移動するタスクのdisplayOrderを変更
+    Task *movingTask = [self.fetchedResultsController objectAtIndexPath:fromIndexPath];
     movingTask.displayOrder =  [[NSNumber alloc] initWithInteger:toRow];
     
-    //並べ替えの影響を受ける範囲（start,end）を求める
+    
+    ///並べ替えの影響を受けるタスクのdisplayOrderを変更
+    //影響を受ける範囲（start,end）を求める
     NSInteger start,end;
-    int delta;
+    int delta;//セルの移動方向
     
     if (fromRow == toRow) {//セルを移動させなかった場合
         return;
@@ -250,16 +259,21 @@
         end = fromRow - 1;
     }
     
+    //displayOrderを変更
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:fromIndexPath.section];
+    NSArray *tasksInSameSection = [sectionInfo objects];
+    
     for (NSUInteger i = start; i <= end; i++)
     {
-        Task *task = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];
-        NSNumber *newDisplayOrder = @([task.displayOrder intValue] + delta);
-        task.displayOrder =  newDisplayOrder;
+        Task *task = [tasksInSameSection objectAtIndex:i];
+        task.displayOrder = @([task.displayOrder intValue] + delta);
     }
     
     [movingTask saveContext];
     
     [self.tableView reloadData];
+    
+    [self testDisplayOrder];
 }
 
 #pragma mark - Check Box
@@ -400,7 +414,6 @@
     }
 }
 
-/*
 - (void)testDisplayOrder
 {
     for (Task *task in [self.fetchedResultsController fetchedObjects])
@@ -408,7 +421,6 @@
         LOG(@"%@ %@", task.displayOrder, task.title);
     }
 }
-*/
 
 #pragma mark TextField delegate
 

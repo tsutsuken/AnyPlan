@@ -31,8 +31,6 @@
     [self setReviewRequestSystem];
     [self setAnalyticsSystem];
     
-    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
-    
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
     deckController.centerController = [self tabBarController];
@@ -63,14 +61,13 @@
 
 - (void)setReviewRequestSystem
 {
-#warning 本番IDを入れる
-    [Appirater setAppId:@"523946175"];//LevelUp
+    [Appirater setAppId:@"668425525"];//AnyPlan
     [Appirater setDaysUntilPrompt:2];
     [Appirater setUsesUntilPrompt:4];
     [Appirater setTimeBeforeReminding:2];//「後で」を押された後に、何日間待つか
 
     [Appirater appLaunched:YES];//didFinishLaunchingWithOptionsの最後に呼ぶ必要がある
-    
+
     //[Appirater setDebug:YES];
 }
 
@@ -102,8 +99,17 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyProjectCount
+                              value:[NSString stringWithFormat:@"%i",[APPDELEGATE numberOfCustomProject]]
+                             sender:self];
+    
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyTaskCount
+                              value:[NSString stringWithFormat:@"%i",[APPDELEGATE numberOfTask]]
+                             sender:self];
+    
+    [ANALYTICS trackPropertyWithKey:kPropertyKeyNoteCount
+                              value:[NSString stringWithFormat:@"%i",[APPDELEGATE numberOfNote]]
+                             sender:self];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -373,8 +379,10 @@
 
 - (BOOL)canAddNewProject
 {
+    /*
 #warning test
     LOG_BOOL([self isPremiumUser], @"isPremiumUser");
+    */
     
     BOOL canAddNewProject;
     
@@ -410,6 +418,32 @@
     numberOfCustomProject = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil] - 1;//未分類プロジェクトの分を引く
     
     return numberOfCustomProject;
+}
+
+- (int)numberOfTask
+{
+    int numberOfTask;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+	[fetchRequest setEntity:entity];
+    
+    numberOfTask = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    
+    return numberOfTask;
+}
+
+- (int)numberOfNote
+{
+    int numberOfNote;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:self.managedObjectContext];
+	[fetchRequest setEntity:entity];
+    
+    numberOfNote = [self.managedObjectContext countForFetchRequest:fetchRequest error:nil];
+    
+    return numberOfNote;
 }
 
 @end
