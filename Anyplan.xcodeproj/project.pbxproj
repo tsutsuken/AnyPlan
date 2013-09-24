@@ -1236,8 +1236,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AnyPlan/Anyplan-Prefix.pch";
-				INFOPLIST_FILE = "AnyPlan/Anyplan-Info.plist";
+				GCC_PREFIX_HEADER = "Anyplan/Anyplan-Prefix.pch";
+				INFOPLIST_FILE = "Anyplan/Anyplan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Anyplan;
 				PROVISIONING_PROFILE = "E692B6D9-7636-4D0E-970B-933E3F775F28";
@@ -1258,8 +1258,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AnyPlan/Anyplan-Prefix.pch";
-				INFOPLIST_FILE = "AnyPlan/Anyplan-Info.plist";
+				GCC_PREFIX_HEADER = "Anyplan/Anyplan-Prefix.pch";
+				INFOPLIST_FILE = "Anyplan/Anyplan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Anyplan;
 				PROVISIONING_PROFILE = "5C0BDC42-6436-4623-B276-4D41431E76A9";
