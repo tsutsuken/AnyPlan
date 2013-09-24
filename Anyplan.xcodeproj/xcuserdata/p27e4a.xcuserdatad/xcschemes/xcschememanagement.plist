@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AnyPlan.xcscheme</key>
+		<key>Anyplan.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>AnyPlanDev.xcscheme</key>
+		<key>AnyplanDev.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>

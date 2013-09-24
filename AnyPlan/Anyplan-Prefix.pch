@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'AnyPlan' target in the 'AnyPlan' project
+// Prefix header for all source files of the 'Anyplan' target in the 'Anyplan' project
 //
 
 #import <Availability.h>
@@ -28,7 +28,6 @@
     #import "TaskCell.h"
     #import "CustomTabBarController.h"
     #import "UIColor+ColorWithHex.h"
-    #import "MKStoreManager.h"
     #import "Mixpanel.h"
     #import "Flurry.h"
     #import "GAI.h"
@@ -72,20 +71,9 @@
 #define LOG_BOOL(bool, comment)  NSLog(@"%@:%@",comment,(bool ? @"YES":@"NO"))
 #define LOG_DATE(date, comment)  NSLog(@"%@:%@",comment,[date description])
 
-/*In-App-Purchase*/
-#define kProductIdSubscriptionMonth @"com.lvup.AnyPlan.Purchase_AutoRenewable_Month"
-#define kProductIdSubscriptionYear @"com.lvup.AnyPlan.Purchase_AutoRenewable_Year"
-#define kMaxNumberOfCustomProject 4
-
 /*Analytics*/
 #define ANALYTICS  [AnalyticsManager sharedInstance]
 
-#define kEventShowUpgradeViewByButton @"UpgradeView Showed By Button"
-#define kEventShowUpgradeViewByLimit @"UpgradeView Showed By Limit"
-#define kEventPurchasePremiumMonth @"Premium_Month Purchased"
-#define kEventPurchasePremiumYear @"Premium_Year Purchased"
-#define kEventResignPremiumMonth @"Premium_Month Resigned"
-#define kEventResignPremiumYear @"Premium_Year Resigned"
 #define kEventAddProject @"Project Added"
 #define kEventAddTask @"Task Added"
 #define kEventExecuteTask @"Task Executed"
@@ -97,7 +85,6 @@
 #define kPropertyKeyTaskCount @"Task Count"
 #define kPropertyKeyNoteCount @"Note Count"
 
-#define kPropertyKeyAccountType @"Account Type"
 #define kPropertyKeyProjectCount @"Custom Project Count"
 #define kPropertyKeyProjectTitle @"Project Title"
 #define kPropertyKeyTaskTitle @"Task Title"
@@ -109,6 +96,3 @@
 #define kPropertyKeyIconColorIndex @"Selected Icon Color Index"
 #define kPropertyKeyDefaultProjectCount @"Default Project Count"
 
-#define kPropertyValueAccountTypeFree @"Free"
-#define kPropertyValueAccountTypePremiumMonth @"Premium_Month"
-#define kPropertyValueAccountTypePremiumYear @"Premium_Year"

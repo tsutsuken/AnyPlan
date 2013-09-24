@@ -27,8 +27,6 @@
 - (NSFetchedResultsController *)fetchedResultsControllerForProjectWithContext:(NSManagedObjectContext *)context;
 - (NSString *)mainTitleForTabBarWithProject:(Project *)project shouldDisplayAllProject:(BOOL)shouldDisplayAllProject;
 - (Project *)inboxProjectInManagedObjectContext:(NSManagedObjectContext *)context;
-- (BOOL)isPremiumUser;
-- (BOOL)canAddNewProject;
 - (int)numberOfCustomProject;
 
 @end

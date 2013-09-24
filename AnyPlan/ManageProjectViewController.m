@@ -1,6 +1,6 @@
 //
 //  ManageProjectViewController.m
-//  AnyPlan
+//  Anyplan
 //
 //  Created by Ken Tsutsumi on 13/05/11.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
@@ -206,14 +206,7 @@
 
 - (void)didPushAddButton
 {
-    if ([APPDELEGATE canAddNewProject])
-    {
-        [self showEditProjectViewWithNewProject];
-    }
-    else
-    {
-        [self showUpgradeAccountView];
-    }
+    [self showEditProjectViewWithNewProject];
 }
 
 #pragma mark EditProjectView

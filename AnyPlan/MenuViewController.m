@@ -1,6 +1,6 @@
 //
 //  MenuViewController.m
-//  AnyPlan
+//  Anyplan
 //
 //  Created by Ken Tsutsumi on 13/04/22.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
@@ -149,14 +149,7 @@
 {
     if (indexPath.section == 2)
     {
-        if ([APPDELEGATE canAddNewProject])
-        {
-            [self showEditProjectView];
-        }
-        else
-        {
-            [self showUpgradeAccountView];
-        }
+        [self showEditProjectView];
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
@@ -274,11 +267,6 @@
     {
         tabBarController.project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
     }
-    
-    /*
-     CustomTabBarController *existingTabBarController = (CustomTabBarController *)self.viewDeckController.centerController;
-     tabBarController.selectedIndex = existingTabBarController.selectedIndex;
-     */
     
     return tabBarController;
 }

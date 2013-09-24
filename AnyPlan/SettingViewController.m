@@ -1,6 +1,6 @@
 //
 //  SettingViewController.m
-//  AnyPlan
+//  Anyplan
 //
 //  Created by Ken Tsutsumi on 13/05/11.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
@@ -34,15 +34,6 @@
     [super viewWillAppear:animated];
     
     self.viewDeckController.panningMode = IIViewDeckFullViewPanning;//ManageProjectViewでの制限を解除するため
-    
-    //購入完了後に、購入ボタンが表示されるのを防ぐため
-    self.isPremiumUser = [APPDELEGATE isPremiumUser];
-    /*
-#warning test
-    LOG_BOOL(self.isPremiumUser, @"isPremiumUser");
-     */
-    
-    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -50,26 +41,6 @@
     [super viewDidAppear:animated];
     
     [ANALYTICS trackView:self];
-}
-
-- (NSString *)currentPlan
-{
-    NSString *currentPlan;
-    
-    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
-    {
-        currentPlan = NSLocalizedString(@"SettingView_PlanType_Premium_Month", nil);
-    }
-    else if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
-    {
-        currentPlan = NSLocalizedString(@"SettingView_PlanType_Premium_Year", nil);
-    }
-    else
-    {
-        currentPlan = NSLocalizedString(@"SettingView_PlanType_Free", nil);
-    }
-    
-    return currentPlan;
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,23 +53,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-    {
-        if (self.isPremiumUser)
-        {
-            return 2;
-        }
-        else
-        {
-            return 3;
-        }
-    }
-    else if (section == 1)
     {
         return 1;
     }
@@ -114,25 +74,6 @@
     cell.textLabel.textColor = kColorDarkTextColor;
     
     if (indexPath.section == 0)
-    {
-        if (indexPath.row == 0)
-        {
-            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Plan", nil);
-            cell.detailTextLabel.text = [self currentPlan];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Account", nil);
-        }
-        else
-        {
-            cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_Upgrade", nil);
-            cell.textLabel.textColor = kColorLightBlue;
-        }
-    }
-    else if (indexPath.section == 1)
     {
         cell.textLabel.text = NSLocalizedString(@"SettingView_Cell_ManageProject", nil);
     }
@@ -159,10 +100,6 @@
     
     if (section == 0)
     {
-        title = NSLocalizedString(@"SettingView_SectionHeader_Account", nil);
-    }
-    else if (section == 1)
-    {
         title = NSLocalizedString(@"SettingView_SectionHeader_Settings", nil);
     }
     else
@@ -178,20 +115,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
-    {
-        if (indexPath.row == 0)
-        {
-        }
-        else if (indexPath.row == 1)
-        {
-            [self showUserAccountView];
-        }
-        else
-        {
-            [self showUpgradeAccountView];
-        }
-    }
-    else if (indexPath.section == 1)
     {
         [self showManageProjectView];
     }
@@ -220,20 +143,6 @@
         ManageProjectViewController *controller = (ManageProjectViewController *)segue.destinationViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
-}
-
-#pragma mark UserAccountView
-
-- (void)showUserAccountView
-{
-    [self performSegueWithIdentifier:@"showUserAccountView" sender:self];
-}
-
-#pragma mark UpgradeAccountView
-
-- (void)showUpgradeAccountView
-{
-    [self performSegueWithIdentifier:@"showUpgradeAccountView" sender:self];
 }
 
 #pragma mark ManageProjectView

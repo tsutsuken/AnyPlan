@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1FA48EA91722416100D1AF30"
-               BuildableName = "AnyPlan.app"
-               BlueprintName = "AnyPlan"
-               ReferencedContainer = "container:AnyPlan.xcodeproj">
+               BuildableName = "Anyplan.app"
+               BlueprintName = "Anyplan"
+               ReferencedContainer = "container:Anyplan.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "1F490B6E175A0C5A0009B237"
                BuildableName = "AnyPlanDevTests.octest"
                BlueprintName = "AnyPlanDevTests"
-               ReferencedContainer = "container:AnyPlan.xcodeproj">
+               ReferencedContainer = "container:Anyplan.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1FA48EA91722416100D1AF30"
-            BuildableName = "AnyPlan.app"
-            BlueprintName = "AnyPlan"
-            ReferencedContainer = "container:AnyPlan.xcodeproj">
+            BuildableName = "Anyplan.app"
+            BlueprintName = "Anyplan"
+            ReferencedContainer = "container:Anyplan.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1FA48EA91722416100D1AF30"
-            BuildableName = "AnyPlan.app"
-            BlueprintName = "AnyPlan"
-            ReferencedContainer = "container:AnyPlan.xcodeproj">
+            BuildableName = "Anyplan.app"
+            BlueprintName = "Anyplan"
+            ReferencedContainer = "container:Anyplan.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1FA48EA91722416100D1AF30"
-            BuildableName = "AnyPlan.app"
-            BlueprintName = "AnyPlan"
-            ReferencedContainer = "container:AnyPlan.xcodeproj">
+            BuildableName = "Anyplan.app"
+            BlueprintName = "Anyplan"
+            ReferencedContainer = "container:Anyplan.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

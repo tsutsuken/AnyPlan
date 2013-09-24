@@ -1,14 +1,14 @@
 //
-//  AnyPlanTests.m
-//  AnyPlanTests
+//  AnyplanTests.m
+//  AnyplanTests
 //
 //  Created by Ken Tsutsumi on 13/04/20.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
 //
 
-#import "AnyPlanTests.h"
+#import "AnyplanTests.h"
 
-@implementation AnyPlanTests
+@implementation AnyplanTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in AnyPlanTests");
+    STFail(@"Unit tests are not implemented yet in AnyplanTests");
 }
 
 @end

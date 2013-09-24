@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -32,7 +32,7 @@
 			<key>CFBundleURLIconFile</key>
 			<string>Icon@2x</string>
 			<key>CFBundleURLName</key>
-			<string>com.kentsutsumi.AnyPlan</string>
+			<string>com.lvup.Anyplan</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>anyplan</string>
@@ -40,7 +40,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>17</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

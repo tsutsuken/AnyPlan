@@ -1,6 +1,6 @@
 //
 //  EditTaskViewController.m
-//  AnyPlan
+//  Anyplan
 //
 //  Created by Ken Tsutsumi on 13/04/25.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
@@ -325,7 +325,6 @@
     }
     else
     {
-        self.myTableView.contentInset = UIEdgeInsetsZero;
         [self.myTableView deselectRowAtIndexPath:kIndexPathForCellRepeat animated:YES];
     }
     
@@ -341,8 +340,6 @@
     }
     else
     {
-        self.myTableView.contentInset = UIEdgeInsetsZero;
-        
         [self.task.managedObjectContext deleteObject:self.task.repeat];
         self.task.repeat = nil;
         [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:NO];
@@ -359,6 +356,38 @@
     {
         [self.myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     }
+}
+
+#pragma mark DueDatePicker
+
+- (void)showDueDatePicker
+{
+    //アクションシートの作成
+    UIActionSheet *actionSheet = [self actionSheetForPicker];
+    actionSheet.tag = kTagForActionSheetDueDatePicker;
+    
+	//ピッカーの作成
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.minimumDate = [[NSDate date] initWithTimeIntervalSinceNow:-1*365*24*60*60];
+    [datePicker addTarget:self action:@selector(didChangeValueOnDatePicker:) forControlEvents:UIControlEventValueChanged];
+    if (!self.task.dueDate)
+    {
+        self.task.dueDate = [NSDate date];
+        [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
+    }
+    datePicker.date = self.task.dueDate;
+    [actionSheet addSubview:datePicker];
+    
+    self.myActionSheet = actionSheet;
+    [self.myActionSheet showInView:self.view];
+	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
+}
+
+-(void)didChangeValueOnDatePicker:(UIDatePicker*)datePicker
+{
+    self.task.dueDate = datePicker.date;
+    [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
 }
 
 #pragma mark RepeatPicker
@@ -395,12 +424,6 @@
     self.myActionSheet = actionSheet;
     [self.myActionSheet showInView:self.view];
 	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
-    
-    //TableViewの表示位置を調整
-    self.myTableView.contentInset = UIEdgeInsetsMake(0, 0, 216, 0);//216 = Picker+Toolbar-BottomToolbar(myActionSheetのframeは当てにならない)
-    [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]
-                            atScrollPosition:UITableViewScrollPositionMiddle
-                                    animated:YES];
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -443,38 +466,6 @@
     }
     
     [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:YES];
-}
-
-#pragma mark DueDatePicker
-
-- (void)showDueDatePicker
-{
-    //アクションシートの作成
-    UIActionSheet *actionSheet = [self actionSheetForPicker];
-    actionSheet.tag = kTagForActionSheetDueDatePicker;
-    
-	//ピッカーの作成
-    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    datePicker.minimumDate = [[NSDate date] initWithTimeIntervalSinceNow:-1*365*24*60*60];
-    [datePicker addTarget:self action:@selector(didChangeValueOnDatePicker:) forControlEvents:UIControlEventValueChanged];
-    if (!self.task.dueDate)
-    {
-        self.task.dueDate = [NSDate date];
-        [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
-    }
-    datePicker.date = self.task.dueDate;
-    [actionSheet addSubview:datePicker];
-    
-    self.myActionSheet = actionSheet;
-    [self.myActionSheet showInView:self.view];
-	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
-}
-
--(void)didChangeValueOnDatePicker:(UIDatePicker*)datePicker
-{
-    self.task.dueDate = datePicker.date;
-    [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
 }
 
 #pragma mark - TextField delegate

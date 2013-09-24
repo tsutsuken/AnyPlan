@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  AnyPlan
+//  Anyplan
 //
 //  Created by Ken Tsutsumi on 13/04/20.
 //  Copyright (c) 2013年 Ken Tsutsumi. All rights reserved.
@@ -25,11 +25,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkUpdates];
-    [self setNotificationCenter];//[MKStoreManager sharedManager]より先である必要がある
     
-    [MKStoreManager sharedManager];
     [self setReviewRequestSystem];
-    [self setAnalyticsSystem];
+    
+#warning test
+    //[self setAnalyticsSystem];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
@@ -37,14 +37,6 @@
     deckController.leftController = [self menuViewNavigationController];
     
     return YES;
-}
-
-- (void)setNotificationCenter
-{
-    //アプリ完全終了時に消えれば良いから、removeは不要
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didResignSubscription:)
-                                                 name:kSubscriptionsInvalidNotification object:nil];
 }
 
 - (void)setAnalyticsSystem
@@ -61,7 +53,7 @@
 
 - (void)setReviewRequestSystem
 {
-    [Appirater setAppId:@"668425525"];//AnyPlan
+    [Appirater setAppId:@"668425525"];//Anyplan
     [Appirater setDaysUntilPrompt:2];
     [Appirater setUsesUntilPrompt:4];
     [Appirater setTimeBeforeReminding:2];//「後で」を押された後に、何日間待つか
@@ -148,26 +140,6 @@
     }
 }
 
-#pragma mark - MKStorekit Delegate
-
-- (void)didResignSubscription:(NSNotification *)notification
-{
-    LOG(@"didResignSubscription_%@", [notification object]);
-    
-    NSString *productId = [notification object];
-    
-    if ([productId isEqualToString:kProductIdSubscriptionMonth])
-    {
-        [ANALYTICS trackEvent:kEventResignPremiumMonth isImportant:YES sender:self];
-    }
-    else
-    {
-        [ANALYTICS trackEvent:kEventResignPremiumYear isImportant:YES sender:self];
-    }
-    
-    [ANALYTICS registerSuperProperties:@{kPropertyKeyAccountType:kPropertyValueAccountTypeFree}];
-}
-
 #pragma mark - Core Data stack
 
 // Returns the managed object context for the application.
@@ -196,7 +168,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"AnyPlan" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Anyplan" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -209,7 +181,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"AnyPlan.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Anyplan.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -355,56 +327,6 @@
     NSArray *projectArray = [context executeFetchRequest:fetchRequest error:&error];
     
     return [projectArray objectAtIndex:0];
-}
-
-- (BOOL)isPremiumUser
-{
-    BOOL isPremiumUser;
-    
-    if ([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionMonth])
-    {
-        isPremiumUser = YES;
-    }
-    else if([[MKStoreManager sharedManager] isSubscriptionActive:kProductIdSubscriptionYear])
-    {
-        isPremiumUser = YES;
-    }
-    else
-    {
-        isPremiumUser = NO;
-    }
-
-    return isPremiumUser;
-}
-
-- (BOOL)canAddNewProject
-{
-    /*
-#warning test
-    LOG_BOOL([self isPremiumUser], @"isPremiumUser");
-    */
-    
-    BOOL canAddNewProject;
-    
-    int numberOfCustomProject = [self numberOfCustomProject];
-    
-    if (numberOfCustomProject < kMaxNumberOfCustomProject)
-    {
-        canAddNewProject = YES;
-    }
-    else
-    {
-        if ([self isPremiumUser])
-        {
-            canAddNewProject = YES;
-        }
-        else
-        {
-            canAddNewProject = NO;
-        }
-    }
-    
-    return canAddNewProject;
 }
 
 - (int)numberOfCustomProject
