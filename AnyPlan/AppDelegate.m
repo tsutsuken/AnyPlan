@@ -15,9 +15,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 #define kVersionNumber @"kVersionNumber"
-#define kProjectTitle @"kProjectTitle"
-#define kProjectIconImageName @"kProjectIconImageName"
-#define kProjectColorHex @"kProjectColorHex"
 #define kMixpanelToken @"72593cb7c1133b0ade53cef1b1bd4311"
 #define kFlurryApplicationKey @"8PPTHYBKBKJVFF4BK8Y8"
 #define kGoogleAnalyticsTrackingId @"UA-42302139-1"
@@ -28,8 +25,8 @@
     
     [self setReviewRequestSystem];
     
-#warning test
-    //[self setAnalyticsSystem];
+//#warning test
+    [self setAnalyticsSystem];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;

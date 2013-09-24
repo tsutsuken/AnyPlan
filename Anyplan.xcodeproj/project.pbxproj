@@ -102,9 +102,6 @@
 		1FA48EBA1722416200D1AF30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EB81722416200D1AF30 /* InfoPlist.strings */; };
 		1FA48EBC1722416200D1AF30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA48EBB1722416200D1AF30 /* main.m */; };
 		1FA48EC01722416200D1AF30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA48EBF1722416200D1AF30 /* AppDelegate.m */; };
-		1FA48EC21722416200D1AF30 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EC11722416200D1AF30 /* Default.png */; };
-		1FA48EC41722416200D1AF30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EC31722416200D1AF30 /* Default@2x.png */; };
-		1FA48EC61722416200D1AF30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EC51722416200D1AF30 /* Default-568h@2x.png */; };
 		1FA48EC91722416200D1AF30 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA48EC71722416200D1AF30 /* MainStoryboard.storyboard */; };
 		1FA48EDA1722416300D1AF30 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA48ED91722416300D1AF30 /* SenTestingKit.framework */; };
 		1FA48EDB1722416300D1AF30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA48EAD1722416200D1AF30 /* UIKit.framework */; };
@@ -188,7 +185,7 @@
 		1F3E312B17E0E90500067F9E /* CustomNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBarTitleView.m; sourceTree = "<group>"; };
 		1F3E36CB17858BF800BF8ED9 /* cross_HUD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross_HUD.png; sourceTree = "<group>"; };
 		1F3E36CC17858BF800BF8ED9 /* cross_HUD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross_HUD@2x.png"; sourceTree = "<group>"; };
-		1F3FDD3817D83CC0001D3CB2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1F3FDD3817D83CC0001D3CB2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Anyplan/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		1F3FDD3E17D8989E001D3CB2 /* separator_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = separator_dark.png; path = Common/separator_dark.png; sourceTree = "<group>"; };
 		1F3FDD4A17D89EA3001D3CB2 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		1F3FDD4B17D89EA3001D3CB2 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
@@ -279,9 +276,6 @@
 		1FA48EBB1722416200D1AF30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FA48EBE1722416200D1AF30 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1FA48EBF1722416200D1AF30 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1FA48EC11722416200D1AF30 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		1FA48EC31722416200D1AF30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		1FA48EC51722416200D1AF30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1FA48EC81722416200D1AF30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1FA48ED81722416300D1AF30 /* AnyplanTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyplanTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA48ED91722416300D1AF30 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -659,7 +653,6 @@
 				1F0D2C701725167800273284 /* ViewControllers */,
 				1F0D2C6F1725138600273284 /* Model */,
 				1F0D2C71172516B400273284 /* Resources */,
-				1F3FDD3817D83CC0001D3CB2 /* Images.xcassets */,
 				1FA48EB61722416200D1AF30 /* Supporting Files */,
 			);
 			path = Anyplan;
@@ -672,9 +665,6 @@
 				1FA48EB81722416200D1AF30 /* InfoPlist.strings */,
 				1F1A739F176758AA00EED3D5 /* Anyplan-Prefix.pch */,
 				1FA48EBB1722416200D1AF30 /* main.m */,
-				1FA48EC11722416200D1AF30 /* Default.png */,
-				1FA48EC31722416200D1AF30 /* Default@2x.png */,
-				1FA48EC51722416200D1AF30 /* Default-568h@2x.png */,
 				1FD49C8E17C75CC100DE9A70 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
@@ -780,6 +770,7 @@
 		1FE30950172564FC0063BD50 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F3FDD3817D83CC0001D3CB2 /* Images.xcassets */,
 				1F3FDD4F17D8A72B001D3CB2 /* MenuView */,
 				1F6504D917CB55FD000BCF52 /* SettingView */,
 				1F5EE428172F6B6A004EAD94 /* TaskListView */,
@@ -889,15 +880,12 @@
 			files = (
 				1FA48EBA1722416200D1AF30 /* InfoPlist.strings in Resources */,
 				1F4A16A517B8D19E00136A4D /* flag@2x.png in Resources */,
-				1FA48EC21722416200D1AF30 /* Default.png in Resources */,
 				1FA9E76517DD707B00A302B9 /* tab_note.png in Resources */,
 				1F4A16C717B8D19E00136A4D /* star@2x.png in Resources */,
 				1FA9E79617DD835700A302B9 /* checkbox_selected@2x.png in Resources */,
 				1F4A169C17B8D19E00136A4D /* car.png in Resources */,
 				1F4A169F17B8D19E00136A4D /* couple@2x.png in Resources */,
 				1F4A16A217B8D19E00136A4D /* eat.png in Resources */,
-				1FA48EC41722416200D1AF30 /* Default@2x.png in Resources */,
-				1FA48EC61722416200D1AF30 /* Default-568h@2x.png in Resources */,
 				1F4A169B17B8D19E00136A4D /* briefcase@2x.png in Resources */,
 				1FA48EC91722416200D1AF30 /* MainStoryboard.storyboard in Resources */,
 				1FA9E78D17DD816500A302B9 /* tab_check.png in Resources */,
@@ -1230,7 +1218,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1240,7 +1229,7 @@
 				INFOPLIST_FILE = "Anyplan/Anyplan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Anyplan;
-				PROVISIONING_PROFILE = "E692B6D9-7636-4D0E-970B-933E3F775F28";
+				PROVISIONING_PROFILE = "C1101175-C837-42FF-98CA-46DAC54A1A55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1251,8 +1240,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ken Tsutsumi (7W7BBEVAYM)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1262,8 +1251,8 @@
 				INFOPLIST_FILE = "Anyplan/Anyplan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Anyplan;
-				PROVISIONING_PROFILE = "5C0BDC42-6436-4623-B276-4D41431E76A9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C0BDC42-6436-4623-B276-4D41431E76A9";
+				PROVISIONING_PROFILE = "12343257-4188-4A11-946F-D6A3F4A86630";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "12343257-4188-4A11-946F-D6A3F4A86630";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
