@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>331B9390-D3CD-4F49-B533-07F1C57D26D0</string>
+	<string>FD73969E-9B50-4F9B-BFDA-49BEB212B3F8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>AnyPlan</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>26404C94-4196-4545-B580-FAE04B65C7C0</key>
-		<string>https://github.com/tsutsuken/AnyPlan.git</string>
+		<key>607BE2C5-AD73-44CF-AAA7-5675978A0152</key>
+		<string>https://github.com/tsutsuken/Anyplan.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AnyPlan.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>26404C94-4196-4545-B580-FAE04B65C7C0</key>
+		<key>607BE2C5-AD73-44CF-AAA7-5675978A0152</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/tsutsuken/AnyPlan.git</string>
+	<string>https://github.com/tsutsuken/Anyplan.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>26404C94-4196-4545-B580-FAE04B65C7C0</string>
+	<string>607BE2C5-AD73-44CF-AAA7-5675978A0152</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>26404C94-4196-4545-B580-FAE04B65C7C0</string>
+			<string>607BE2C5-AD73-44CF-AAA7-5675978A0152</string>
 			<key>IDESourceControlWCCName</key>
-			<string>AnyPlan</string>
+			<string>Anyplan</string>
 		</dict>
 	</array>
 </dict>
