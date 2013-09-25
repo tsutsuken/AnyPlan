@@ -93,10 +93,29 @@
             break;
     }
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@", appId]];
-    [[UIApplication sharedApplication] openURL:url];
+    [self showAppStoreWithId:appId];
+}
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+- (void)showAppStoreWithId:(NSString *)appId
+{
+    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+    storeViewController.delegate = self;
+    
+    [self presentViewController:storeViewController animated:YES completion:^()
+    {
+        [storeViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:appId}
+                                       completionBlock:^(BOOL result, NSError *error)
+         {
+             if (!result) {
+                 NSLog(@"error");
+             }
+         }];
+    }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

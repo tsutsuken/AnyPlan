@@ -229,7 +229,9 @@
     
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
     
-    subject = [NSString stringWithFormat:@"%@:%@", topic, appName];
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    subject = [NSString stringWithFormat:@"%@:%@(ver%@)", topic, appName, appVersion];
     
     return subject;
 }

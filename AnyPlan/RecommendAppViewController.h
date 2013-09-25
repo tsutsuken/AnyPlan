@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecommendAppViewController : UITableViewController
+@interface RecommendAppViewController : UITableViewController <SKStoreProductViewControllerDelegate>
 
 @end

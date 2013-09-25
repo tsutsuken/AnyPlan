@@ -50,7 +50,7 @@
 
 - (void)setReviewRequestSystem
 {
-    [Appirater setAppId:@"668425525"];//Anyplan
+    [Appirater setAppId:@"709551893"];//Anyplan
     [Appirater setDaysUntilPrompt:2];
     [Appirater setUsesUntilPrompt:4];
     [Appirater setTimeBeforeReminding:2];//「後で」を押された後に、何日間待つか
