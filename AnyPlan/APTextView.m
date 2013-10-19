@@ -14,6 +14,8 @@
 //https://devforums.apple.com/message/889840#889840
 
 
+//最後の一文字が編集出来なくなるので、実装しない
+/*
 //行末にカーソルが合わない問題、を解決
 - (UITextPosition *)closestPositionToPoint:(CGPoint)point
 {
@@ -26,6 +28,7 @@
     
     return pos;
 }
+*/
 
 //最後の行がキーボードに隠れる問題、を解決
 - (void)scrollRangeToVisible:(NSRange)range

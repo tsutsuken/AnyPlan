@@ -135,6 +135,7 @@
 		1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */; };
 		1FB9A94417BA32AD00150687 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB9A94317BA32AD00150687 /* MessageUI.framework */; };
 		1FBD4CC717277A76003A5D5C /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD4CC617277A76003A5D5C /* TaskListViewController.m */; };
+		1FC7381518128171004C8ABA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC7381418128171004C8ABA /* StoreKit.framework */; };
 		1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC969661749DBC700D84A37 /* SelectProjectViewController.m */; };
 		1FD49C8F17C75CC100DE9A70 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FD49C8E17C75CC100DE9A70 /* Settings.bundle */; };
 		1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD829C1176C345C0080FA18 /* Task+Additions.m */; };
@@ -322,6 +323,7 @@
 		1FB9A94317BA32AD00150687 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1FBD4CC517277A76003A5D5C /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
 		1FBD4CC617277A76003A5D5C /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
+		1FC7381418128171004C8ABA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1FC969651749DBC700D84A37 /* SelectProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectProjectViewController.h; sourceTree = "<group>"; };
 		1FC969661749DBC700D84A37 /* SelectProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProjectViewController.m; sourceTree = "<group>"; };
 		1FD49C8E17C75CC100DE9A70 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FC7381518128171004C8ABA /* StoreKit.framework in Frameworks */,
 				1FB9A94417BA32AD00150687 /* MessageUI.framework in Frameworks */,
 				1FA48EAE1722416200D1AF30 /* UIKit.framework in Frameworks */,
 				1FA48EB01722416200D1AF30 /* Foundation.framework in Frameworks */,
@@ -632,6 +635,7 @@
 		1FA48EAC1722416200D1AF30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FC7381418128171004C8ABA /* StoreKit.framework */,
 				1FB9A94317BA32AD00150687 /* MessageUI.framework */,
 				1FFB0B44178BCDA300274A92 /* Crashlytics.framework */,
 				1FA48EAD1722416200D1AF30 /* UIKit.framework */,

@@ -166,6 +166,9 @@
         if (controller.isNewNote)
         {
             [self.tableView reloadData];//Tableviewに反映されないのを防ぐため。どうにかしたい
+            
+            //iRate
+            [[iRate sharedInstance] logEvent:YES];
         }
 	}
 }

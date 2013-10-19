@@ -126,7 +126,8 @@
                     //Do nothing
                 }
                 
-                if (self.isNewNote){
+                if (self.isNewNote)
+                {
                     [ANALYTICS trackEvent:kEventAddNote isImportant:YES sender:self];
                     [ANALYTICS trackPropertyWithKey:kPropertyKeyNoteText value:self.note.text sender:self];
                 }

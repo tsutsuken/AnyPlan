@@ -6,12 +6,6 @@
 // project.
 
 
-// Appirater
-#define COCOAPODS_POD_AVAILABLE_Appirater
-#define COCOAPODS_VERSION_MAJOR_Appirater 1
-#define COCOAPODS_VERSION_MINOR_Appirater 0
-#define COCOAPODS_VERSION_PATCH_Appirater 3
-
 // FlurrySDK
 #define COCOAPODS_POD_AVAILABLE_FlurrySDK
 #define COCOAPODS_VERSION_MAJOR_FlurrySDK 4
@@ -48,4 +42,10 @@
 #define COCOAPODS_VERSION_MAJOR_ViewDeck 2
 #define COCOAPODS_VERSION_MINOR_ViewDeck 2
 #define COCOAPODS_VERSION_PATCH_ViewDeck 9
+
+// iRate
+#define COCOAPODS_POD_AVAILABLE_iRate
+#define COCOAPODS_VERSION_MAJOR_iRate 1
+#define COCOAPODS_VERSION_MINOR_iRate 8
+#define COCOAPODS_VERSION_PATCH_iRate 0
 

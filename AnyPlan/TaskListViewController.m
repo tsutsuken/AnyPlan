@@ -158,7 +158,7 @@
     
     if (editing)
     {
-        self.tabBarController.viewDeckController.panningMode = IIViewDeckNoPanning;
+        self.tabBarController.viewDeckController.enabled = NO;
         self.navigationItem.leftBarButtonItem = nil;
         
         [UIView beginAnimations:nil context:nil];
@@ -168,7 +168,7 @@
     }
     else
     {
-        self.tabBarController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
+        self.tabBarController.viewDeckController.enabled = YES;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:self.viewDeckController
@@ -316,6 +316,9 @@
             if (isDone)
             {
                 [selectedTask execute];
+                
+                //iRate
+                [[iRate sharedInstance] logEvent:YES];
             }
             else
             {
@@ -390,6 +393,7 @@
 
 - (void)addTaskWithTitle:(NSString *)title
 {
+    //Analytics
     [ANALYTICS trackEvent:kEventAddTask isImportant:YES sender:self];
     [ANALYTICS trackPropertyWithKey:kPropertyKeyTaskTitle value:title sender:self];
 
@@ -400,6 +404,9 @@
     [newTask setDisplayOrderInCurrentProject];
     
     [newTask saveContext];
+    
+    //iRate
+    [[iRate sharedInstance] logEvent:YES];
 }
 
 - (Project *)projectForNewTask

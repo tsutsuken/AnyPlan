@@ -25,8 +25,8 @@
     
     [self setReviewRequestSystem];
     
-//#warning test
-    [self setAnalyticsSystem];
+#warning test
+    //[self setAnalyticsSystem];
     
     IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
@@ -46,18 +46,6 @@
     
     //Set Top but after all 3rd party
     [Crashlytics startWithAPIKey:@"05bba97476be46a19cd9fe6700e03312cdd38e05"];
-}
-
-- (void)setReviewRequestSystem
-{
-    [Appirater setAppId:@"709551893"];//Anyplan
-    [Appirater setDaysUntilPrompt:2];
-    [Appirater setUsesUntilPrompt:4];
-    [Appirater setTimeBeforeReminding:2];//「後で」を押された後に、何日間待つか
-
-    [Appirater appLaunched:YES];//didFinishLaunchingWithOptionsの最後に呼ぶ必要がある
-
-    //[Appirater setDebug:YES];
 }
 
 - (CustomTabBarController *)tabBarController
@@ -109,7 +97,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [Appirater appEnteredForeground:YES];
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -233,13 +221,13 @@
     LOG(@"loaded_%f",loadedVersion);
     LOG(@"bundle_%f",bundleVersion);
     
-    if (loadedVersion == bundleVersion)//現在のバージョンを起動したことがある場合
+    if (loadedVersion == bundleVersion)//現在のバージョンを起動したことがある
     {
         //何もしない
     }
-    else
+    else//現在のバージョンを起動したことがない
     {
-        if (!loadedVersion)//一度も起動したことがない場合
+        if (!loadedVersion)//一度も起動したことがない
         {
             [self insertDefaultProjects];
         }
@@ -274,6 +262,42 @@
     }
     
     [self saveContext];
+}
+
+#pragma mark - Review Request System
+
+- (void)setReviewRequestSystem
+{
+    //① ＋「②のどちらか」が満たされたら発動
+    
+    //①
+    [iRate sharedInstance].daysUntilPrompt = 0;//アプリの利用開始からの日数。２だった
+    
+    //②
+    [iRate sharedInstance].usesUntilPrompt = 1000;//アプリの起動回数。４だった
+    [iRate sharedInstance].eventsUntilPrompt = 10;//タスクの追加、タスクの実行、ノートの追加
+    
+    //[[iRate sharedInstance] promptIfNetworkAvailable];
+}
+
+- (void)iRateDidPromptForRating
+{
+    [ANALYTICS trackEvent:kEventiRatePrompt isImportant:YES sender:self];
+}
+
+- (void)iRateUserDidAttemptToRateApp
+{
+    [ANALYTICS trackEvent:kEventiRateAttempt isImportant:YES sender:self];
+}
+
+- (void)iRateUserDidDeclineToRateApp
+{
+    [ANALYTICS trackEvent:kEventiRateDecline isImportant:YES sender:self];
+}
+
+- (void)iRateUserDidRequestReminderToRateApp
+{
+    [ANALYTICS trackEvent:kEventiRateRequestReminder isImportant:YES sender:self];
 }
 
 #pragma mark - Methods For Other Class

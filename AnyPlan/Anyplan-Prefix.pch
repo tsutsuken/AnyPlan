@@ -13,6 +13,7 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <QuartzCore/QuartzCore.h>
+    #import <StoreKit/StoreKit.h>
     #import "Project.h"
     #import "Project+Additions.h"
     #import "Task.h"
@@ -37,6 +38,8 @@
     #import "CustomDetailCell.h"
     #import "UIImage+Tint.h"
     #import "CustomNavigationBarTitleView.h"
+    #import "iRate.h"
+
 #endif
 
 /*Common*/
@@ -81,6 +84,10 @@
 #define kEventEditIcon @"Icon Edited"
 #define kEventOpenAppStoreLvUP @"AppStore Of LvUP Opened"
 #define kEventOpenAppStoreWannaDo @"AppStore Of WannaDo Opened"
+#define kEventiRatePrompt @"iRate Prompted"
+#define kEventiRateAttempt @"iRate Attempted"
+#define kEventiRateDecline @"iRate Declined"
+#define kEventiRateRequestReminder @"iRate Requested Reminder"
 
 #define kPropertyKeyTaskCount @"Task Count"
 #define kPropertyKeyNoteCount @"Note Count"
