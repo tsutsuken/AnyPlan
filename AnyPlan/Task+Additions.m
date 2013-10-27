@@ -8,6 +8,8 @@
 
 #import "Task+Additions.h"
 
+#define kKeyLocalNotificationID @"kKeyLocalNotificationID"
+
 @implementation Task (Additions)
 
 #pragma mark - Common
@@ -24,6 +26,8 @@
     }
     else {
     }
+    
+    [self refreshAlert];
 }
 
 #pragma mark - Delete
@@ -163,6 +167,8 @@
         newTask.repeat = [self newRepeat];
         newTask.memo = self.memo;
         newTask.dueDate = [self newDueDate];
+        newTask.alertDate = [self newAlertDate];
+        
         [newTask setDisplayOrderInCurrentProject];
         
         //下記は設定不要
@@ -192,7 +198,6 @@
     
     do
     {
-        LOG(@"do");
         newDueDate = [[NSCalendar currentCalendar] dateByAddingComponents:repeatIntervalComponents toDate:originDate options:0];
         
         originDate = newDueDate;
@@ -200,6 +205,38 @@
     while ([today timeIntervalSinceDate:newDueDate] > 0);
 
     return newDueDate;
+}
+
+- (NSDate *)newAlertDate
+{
+    NSDate *newAlertDate;
+    
+    if (!self.alertDate)
+    {
+        return nil;
+    }
+    
+    ////古い期日と、新しい期日の差分を求める
+    NSTimeInterval intervalOfDueDate;
+    
+    //古い期日
+    NSDate *oldDueDate;
+    if (self.dueDate) {
+        oldDueDate = [self.dueDate dateWithoutHour];
+    }
+    else {
+        oldDueDate = [[NSDate date] dateWithoutHour];
+    }
+    //新しい期日
+    NSDate *newDueDate = [[self newDueDate] dateWithoutHour];
+    
+    //差分
+    intervalOfDueDate = [newDueDate timeIntervalSinceDate:oldDueDate];//A-B
+    
+    ////差分から新しい通知日を求める
+    newAlertDate = [self.alertDate initWithTimeInterval:intervalOfDueDate sinceDate:self.alertDate];
+    
+    return newAlertDate;
 }
 
 - (NSDateComponents *)repeatIntervalComponents
@@ -242,6 +279,104 @@
     }
     
     return originDate;
+}
+
+#pragma mark - AlertDate
+
+- (NSString *)alertDateStringLong
+{
+    NSString *alertDateStringLong;
+    
+    if (self.alertDate)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterLongStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        alertDateStringLong = [formatter stringFromDate:self.alertDate];
+    }
+    else
+    {
+        alertDateStringLong = @"";//stringWithFormatで、nullという表示を防ぐため
+    }
+    
+    return alertDateStringLong;
+}
+
+- (void)refreshAlert
+{
+    NSLog(@"%s",__FUNCTION__);
+    
+    [self cancelAlert];
+    
+    if ([self shouldSetAlert])
+    {
+        [self setAlert];
+    }
+}
+
+- (void)cancelAlert
+{
+    NSLog(@"%s",__FUNCTION__);
+    
+    NSString *objectURIString = [[self.objectID URIRepresentation] absoluteString];
+    
+    for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications])
+    {
+        if([[aNotif.userInfo objectForKey:kKeyLocalNotificationID] isEqualToString:objectURIString])
+        {
+            [[UIApplication sharedApplication] cancelLocalNotification:aNotif];
+            NSLog(@"DidCancelOldAlert");
+            break;
+        }
+    }
+}
+
+- (BOOL)shouldSetAlert
+{
+    //ObjectIDがtemporayならエラーを出す?
+    NSLog(@"%s",__FUNCTION__);
+    
+    if (self.managedObjectContext == nil)
+    {
+        NSLog(@"NO:Task is deleted");
+        return NO;
+    }
+    else if (!self.alertDate)
+    {
+        NSLog(@"NO:AlertDate is nil");
+        return NO;
+    }
+    else if ([self.isDone boolValue])
+    {
+        NSLog(@"NO:Task is done");
+        return NO;
+    }
+    else
+    {
+        NSLog(@"YES:Should Set Alert");
+        return YES;
+    }
+}
+
+- (void)setAlert
+{
+    NSLog(@"%s",__FUNCTION__);
+    
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    notification.fireDate = self.alertDate;
+    NSLog(@"fireDate_%@",notification.fireDate);
+    
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.alertBody = self.title;
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    
+    NSString *objectURIString = [[self.objectID URIRepresentation] absoluteString];
+    
+    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:objectURIString forKey:kKeyLocalNotificationID];
+    notification.userInfo = infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 @end

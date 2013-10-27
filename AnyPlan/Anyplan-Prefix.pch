@@ -39,6 +39,7 @@
     #import "UIImage+Tint.h"
     #import "CustomNavigationBarTitleView.h"
     #import "iRate.h"
+    #import "NSDate+Additions.h"
 
 #endif
 
@@ -96,6 +97,7 @@
 #define kPropertyKeyProjectTitle @"Project Title"
 #define kPropertyKeyTaskTitle @"Task Title"
 #define kPropertyKeyTaskDueDateIsOn @"Task DueDate Is On"
+#define kPropertyKeyTaskAlertIsOn @"Task Alert Is On"
 #define kPropertyKeyTaskRepeat @"Task Repeat"
 #define kPropertyKeyTaskMemo @"Task Memo"
 #define kPropertyKeyNoteText @"Note Text"

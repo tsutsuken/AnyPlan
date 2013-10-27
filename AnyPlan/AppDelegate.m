@@ -28,12 +28,18 @@
 #warning test
     //[self setAnalyticsSystem];
     
-    IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
-    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
-    deckController.centerController = [self tabBarController];
-    deckController.leftController = [self menuViewNavigationController];
+    [self setViewControllers];
     
     return YES;
+}
+
+- (void)setViewControllers
+{
+    IIViewDeckController *deckController = (IIViewDeckController*) self.window.rootViewController;
+    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToCloseBouncing;
+    
+    deckController.centerController = [self tabBarController];
+    deckController.leftController = [self menuViewNavigationController];
 }
 
 - (void)setAnalyticsSystem
@@ -168,9 +174,14 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Anyplan.sqlite"];
     
+    //自動マイグレーションオプションを設定
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          

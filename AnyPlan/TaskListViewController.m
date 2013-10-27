@@ -158,7 +158,7 @@
     
     if (editing)
     {
-        self.tabBarController.viewDeckController.enabled = NO;
+        self.tabBarController.viewDeckController.panningMode = IIViewDeckNoPanning;//ViewDeckの並べ替え不具合を回避するため、enableではなくこっち
         self.navigationItem.leftBarButtonItem = nil;
         
         [UIView beginAnimations:nil context:nil];
@@ -168,7 +168,7 @@
     }
     else
     {
-        self.tabBarController.viewDeckController.enabled = YES;
+        self.tabBarController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"]
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:self.viewDeckController

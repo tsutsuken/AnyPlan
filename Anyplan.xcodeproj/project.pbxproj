@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1F000F5B178E23E10034AC98 /* AnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F000F5A178E23E10034AC98 /* AnalyticsManager.m */; };
 		1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EDC7B1756213B0096D4F1 /* NoteCell.m */; };
-		1F127A0517E1DF3D00A21CA7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F127A0417E1DF3D00A21CA7 /* Task.m */; };
 		1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1EC501175216F80004CD4B /* NoteInfoViewController.m */; };
 		1F22235B17266D830034CC80 /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235A17266D830034CC80 /* EditProjectViewController.m */; };
 		1F22235F17269B8D0034CC80 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F22235E17269B8D0034CC80 /* EditableCell.m */; };
@@ -131,6 +130,8 @@
 		1FAEB1F017D7831000B63B21 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEB1EE17D7831000B63B21 /* list@2x.png */; };
 		1FAF459D1793DF3400B250BC /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF459C1793DF3400B250BC /* Project.m */; };
 		1FAF45A01793EFC000B250BC /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF459F1793EFBF00B250BC /* MenuCell.m */; };
+		1FB0414B18165E8200F715FE /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0414A18165E8200F715FE /* Task.m */; };
+		1FB0414E1816932000F715FE /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0414D1816932000F715FE /* NSDate+Additions.m */; };
 		1FB3383117B5D01B00E5CCAF /* CustomDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB3383017B5D01B00E5CCAF /* CustomDetailCell.m */; };
 		1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB832DC176077C900F370AE /* SelectIconShapeViewController.m */; };
 		1FB9A94417BA32AD00150687 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB9A94317BA32AD00150687 /* MessageUI.framework */; };
@@ -160,8 +161,6 @@
 		1F000F5A178E23E10034AC98 /* AnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsManager.m; sourceTree = "<group>"; };
 		1F0EDC7A1756213B0096D4F1 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		1F0EDC7B1756213B0096D4F1 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
-		1F127A0317E1DF3D00A21CA7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		1F127A0417E1DF3D00A21CA7 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		1F1A739F176758AA00EED3D5 /* Anyplan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Anyplan-Prefix.pch"; sourceTree = "<group>"; };
 		1F1EC500175216F80004CD4B /* NoteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfoViewController.h; sourceTree = "<group>"; };
 		1F1EC501175216F80004CD4B /* NoteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoViewController.m; sourceTree = "<group>"; };
@@ -316,6 +315,11 @@
 		1FAF459C1793DF3400B250BC /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		1FAF459E1793EFBC00B250BC /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		1FAF459F1793EFBF00B250BC /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		1FB041481816566800F715FE /* Anyplan_1.1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anyplan_1.1.0.xcdatamodel; sourceTree = "<group>"; };
+		1FB0414918165E8200F715FE /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		1FB0414A18165E8200F715FE /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		1FB0414C1816932000F715FE /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		1FB0414D1816932000F715FE /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		1FB3382F17B5D01B00E5CCAF /* CustomDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailCell.h; sourceTree = "<group>"; };
 		1FB3383017B5D01B00E5CCAF /* CustomDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailCell.m; sourceTree = "<group>"; };
 		1FB832DB176077C900F370AE /* SelectIconShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectIconShapeViewController.h; sourceTree = "<group>"; };
@@ -555,8 +559,8 @@
 		1F9770141771A0AB004321FF /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				1F127A0317E1DF3D00A21CA7 /* Task.h */,
-				1F127A0417E1DF3D00A21CA7 /* Task.m */,
+				1FB0414918165E8200F715FE /* Task.h */,
+				1FB0414A18165E8200F715FE /* Task.m */,
 				1FD829C0176C345C0080FA18 /* Task+Additions.h */,
 				1FD829C1176C345C0080FA18 /* Task+Additions.m */,
 				1F97700C17719FC4004321FF /* Repeat.h */,
@@ -745,6 +749,8 @@
 				1F9D07301766129300D3BBF9 /* UIImage+Additions.m */,
 				1F4B0D0917F18466002F4BFE /* APTextView.h */,
 				1F4B0D0A17F18466002F4BFE /* APTextView.m */,
+				1FB0414C1816932000F715FE /* NSDate+Additions.h */,
+				1FB0414D1816932000F715FE /* NSDate+Additions.m */,
 				1F22235C17269B8D0034CC80 /* Cell */,
 			);
 			name = Common;
@@ -1066,13 +1072,13 @@
 				1FA76DA2172D05C000EC659C /* EditNoteViewController.m in Sources */,
 				1FA76DA8172D06F100EC659C /* Note+Additions.m in Sources */,
 				1FA76DCE172D704600EC659C /* CustomTabBarController.m in Sources */,
+				1FB0414B18165E8200F715FE /* Task.m in Sources */,
 				1F5EE436172F7629004EAD94 /* TaskCell.m in Sources */,
 				1FA60ABA173E471C0037399E /* SettingViewController.m in Sources */,
 				1FA60ABD173E4AB90037399E /* ManageProjectViewController.m in Sources */,
 				1FC969671749DBC700D84A37 /* SelectProjectViewController.m in Sources */,
 				1F1EC502175216F80004CD4B /* NoteInfoViewController.m in Sources */,
 				1F0EDC7C1756213B0096D4F1 /* NoteCell.m in Sources */,
-				1F127A0517E1DF3D00A21CA7 /* Task.m in Sources */,
 				1FA5EB6617585DBB00025605 /* Note.m in Sources */,
 				1F4B0D0B17F18466002F4BFE /* APTextView.m in Sources */,
 				1FB832DD176077C900F370AE /* SelectIconShapeViewController.m in Sources */,
@@ -1083,6 +1089,7 @@
 				1FD829C2176C345C0080FA18 /* Task+Additions.m in Sources */,
 				1FD829C8176C379B0080FA18 /* EditMemoViewController.m in Sources */,
 				1F85D42A176D9842009C7362 /* MemoCell.m in Sources */,
+				1FB0414E1816932000F715FE /* NSDate+Additions.m in Sources */,
 				1F97700E17719FC4004321FF /* Repeat.m in Sources */,
 				1F4B0D0F17F1A7C8002F4BFE /* Anyplan.xcdatamodeld in Sources */,
 				1F9770171771A102004321FF /* Repeat+Additions.m in Sources */,
@@ -1331,9 +1338,10 @@
 		1F4B0D0D17F1A7C8002F4BFE /* Anyplan.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1FB041481816566800F715FE /* Anyplan_1.1.0.xcdatamodel */,
 				1F4B0D0E17F1A7C8002F4BFE /* Anyplan.xcdatamodel */,
 			);
-			currentVersion = 1F4B0D0E17F1A7C8002F4BFE /* Anyplan.xcdatamodel */;
+			currentVersion = 1FB041481816566800F715FE /* Anyplan_1.1.0.xcdatamodel */;
 			path = Anyplan.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

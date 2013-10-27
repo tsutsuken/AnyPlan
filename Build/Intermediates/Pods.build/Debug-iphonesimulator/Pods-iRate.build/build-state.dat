@@ -1,0 +1,165 @@
+TPods-iRate
+v6
+r1
+cCheck dependencies
+cProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o /Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+c00000000521BCCE50000000000000176
+t1377553637
+s374
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/SDKSettings.plist
+c00000000522ACC8F00000000000003B5
+t1378536591
+s949
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/CoreServices/SystemVersion.plist
+c00000000522ACCD2000000000000019E
+t1378536658
+s414
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c00000000522ACCFA000000000088B570
+t1378536698
+s8959344
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/StoreKit.framework/StoreKit
+c00000000522ACD1A000000000006A870
+t1378536730
+s436336
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o
+t1382424774
+s3196
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate.LinkFileList
+c00000000526620C40000000000000109
+t1382424772
+s265
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o
+t1382424775
+s174052
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch
+t1382424773
+s5348136
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch
+t1382424773
+s5337960
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a
+t2
+s0
+
+N/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m
+c00000000526248F8000000000000007C
+t1382172920
+s124
+
+N/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch
+c00000000526248F8000000000000004D
+t1382172920
+s77
+
+N/Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m
+c00000000526248F3000000000000A471
+t1382172915
+s42097
+
+CBuild AST from /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m
+r0
+
+CBuild AST from /Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies739f54445816b841^5f44c3445816b841^---0#1#1#--18"Check dependencies36"F7C43D87-670A-409D-9D6B-EBEDBAE4A5DB-
+
+CCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s404117574.380730
+e404117574.678038
+r1
+xCompileC
+x/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o
+x/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Compile /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m233"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o Pods-iRate-dummy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler0a9f61465816b841^d194ad465816b841^---0#0#1#-19%DVTDocumentLocation2@68"file://localhost/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m0000000000000000^3877"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o Pods-iRate-dummy.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/p27e4a/github/Anyplan/Pods    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-generated-files.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-own-target-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-all-target-headers.hmap -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-project-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/include -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders/iRate -I/Users/p27e4a/github/Anyplan/Pods/Headers -I/Users/p27e4a/github/Anyplan/Pods/Headers/FlurrySDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/GoogleAnalytics-iOS-SDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/MBProgressHUD -I/Users/p27e4a/github/Anyplan/Pods/Headers/MGImageUtilities -I/Users/p27e4a/github/Anyplan/Pods/Headers/Mixpanel -I/Users/p27e4a/github/Anyplan/Pods/Headers/ViewDeck -I/Users/p27e4a/github/Anyplan/Pods/Headers/iRate -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources/i386 -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources -F/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator -include /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch -MMD -MT dependencies -MF /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.d --serialize-diagnostics /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.dia -c /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-dummy.m -o /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate-dummy.o36"A15790DA-A3D3-41B5-AE3E-E79D31ECAAE7-
+b1E121FF1-59A7-483D-B5E9-2F6E18AD1F9E
+
+CCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o /Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s404117574.555816
+e404117575.138966
+r1
+xCompileC
+x/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o
+x/Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m
+d/Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Compile /Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m223"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o iRate/iRate/iRate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler556a8e465816b841^1b9d23475816b841^---0#0#1#-19%DVTDocumentLocation2@69"file://localhost/Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m0000000000000000^3869"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o iRate/iRate/iRate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/p27e4a/github/Anyplan/Pods    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-generated-files.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-own-target-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-all-target-headers.hmap -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-project-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/include -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders/iRate -I/Users/p27e4a/github/Anyplan/Pods/Headers -I/Users/p27e4a/github/Anyplan/Pods/Headers/FlurrySDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/GoogleAnalytics-iOS-SDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/MBProgressHUD -I/Users/p27e4a/github/Anyplan/Pods/Headers/MGImageUtilities -I/Users/p27e4a/github/Anyplan/Pods/Headers/Mixpanel -I/Users/p27e4a/github/Anyplan/Pods/Headers/ViewDeck -I/Users/p27e4a/github/Anyplan/Pods/Headers/iRate -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources/i386 -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources -F/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator -fobjc-arc -DOS_OBJECT_USE_OBJC=0 -include /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch -MMD -MT dependencies -MF /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.d --serialize-diagnostics /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.dia -c /Users/p27e4a/github/Anyplan/Pods/iRate/iRate/iRate.m -o /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/iRate.o36"7B0DE3EC-763E-4E1C-ACD5-C2A875B6C3D8-
+b1E121FF1-59A7-483D-B5E9-2F6E18AD1F9E
+
+CLibtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a normal i386
+s404117575.183525
+e404117575.206874
+r1
+xLibtool
+x/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a
+xnormal
+xi386
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a normal i386101"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a normal i38671212f475816b841^38f634475816b841^---0#0#1#--979"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a normal i386    cd /Users/p27e4a/github/Anyplan/Pods    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator -filelist /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Objects-normal/i386/Pods-iRate.LinkFileList -framework Foundation -framework StoreKit -o /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/libPods-iRate.a36"F709268E-60AF-44B5-BB2B-B08654DBE85A-
+b1E121FF1-59A7-483D-B5E9-2F6E18AD1F9E
+
+CProcessPCH /Users/p27e4a/Library/Developer/Xcode/DerivedData/Anyplan-boucuazvyjhkdddhdfumihkcbfoa/Index/PrecompiledHeaders/Pods-iRate-prefix-bzmybloffhuasrflhnlrpofkatyg_ast/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /Users/p27e4a/Library/Developer/Xcode/DerivedData/Anyplan-boucuazvyjhkdddhdfumihkcbfoa/Index/PrecompiledHeaders/Pods-iRate-prefix-dxnygonmlgpsslaejghnnicpockl_ast/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s404117573.266140
+e404117573.937986
+r1
+xProcessPCH
+x/Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch
+xPods-iRate-prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch
+d/Users/p27e4a/github/Anyplan/Pods/Pods-environment.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection32"Precompile Pods-iRate-prefix.pch241"ProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler823b44455816b841^0b24f0455816b841^---0#0#1#-19%DVTDocumentLocation2@71"file://localhost/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch0000000000000000^3788"ProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/p27e4a/github/Anyplan/Pods    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-generated-files.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-own-target-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-all-target-headers.hmap -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-project-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/include -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders/iRate -I/Users/p27e4a/github/Anyplan/Pods/Headers -I/Users/p27e4a/github/Anyplan/Pods/Headers/FlurrySDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/GoogleAnalytics-iOS-SDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/MBProgressHUD -I/Users/p27e4a/github/Anyplan/Pods/Headers/MGImageUtilities -I/Users/p27e4a/github/Anyplan/Pods/Headers/Mixpanel -I/Users/p27e4a/github/Anyplan/Pods/Headers/ViewDeck -I/Users/p27e4a/github/Anyplan/Pods/Headers/iRate -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources/i386 -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources -F/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator -fobjc-arc -DOS_OBJECT_USE_OBJC=0 --serialize-diagnostics /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.dia -MMD -MT dependencies -MF /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.d -c /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch -o /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-btfmgfupytyveidkvstnaambudlc/Pods-iRate-prefix.pch.pch36"63AD3FED-B052-48D8-9FFD-CE05EF577C86-
+b1E121FF1-59A7-483D-B5E9-2F6E18AD1F9E
+
+CProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s404117572.678620
+e404117573.585969
+r1
+xProcessPCH
+x/Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch
+xPods-iRate-prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch
+d/Users/p27e4a/github/Anyplan/Pods/Pods-environment.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection32"Precompile Pods-iRate-prefix.pch241"ProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerf8fbad445816b841^2c0f96455816b841^---0#0#1#-19%DVTDocumentLocation2@71"file://localhost/Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch0000000000000000^3754"ProcessPCH /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch Pods-iRate-prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/p27e4a/github/Anyplan/Pods    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-generated-files.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-own-target-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-all-target-headers.hmap -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/Pods-iRate-project-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator/include -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders -I/Users/p27e4a/github/Anyplan/Pods/BuildHeaders/iRate -I/Users/p27e4a/github/Anyplan/Pods/Headers -I/Users/p27e4a/github/Anyplan/Pods/Headers/FlurrySDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/GoogleAnalytics-iOS-SDK -I/Users/p27e4a/github/Anyplan/Pods/Headers/MBProgressHUD -I/Users/p27e4a/github/Anyplan/Pods/Headers/MGImageUtilities -I/Users/p27e4a/github/Anyplan/Pods/Headers/Mixpanel -I/Users/p27e4a/github/Anyplan/Pods/Headers/ViewDeck -I/Users/p27e4a/github/Anyplan/Pods/Headers/iRate -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources/i386 -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-iRate.build/DerivedSources -F/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphonesimulator --serialize-diagnostics /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.dia -MMD -MT dependencies -MF /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.d -c /Users/p27e4a/github/Anyplan/Pods/Pods-iRate-prefix.pch -o /Users/p27e4a/github/Anyplan/Build/Intermediates/PrecompiledHeaders/Pods-iRate-prefix-ffobmrqpczfewtbsqukoxraxfepy/Pods-iRate-prefix.pch.pch36"9A5CD960-33BC-469E-8467-4C5C32995C35-
+b1E121FF1-59A7-483D-B5E9-2F6E18AD1F9E
+

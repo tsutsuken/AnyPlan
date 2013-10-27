@@ -18,6 +18,7 @@
 - (void)switchToProject:(Project *)newProject;
 - (NSString *)dueDateStringShort;
 - (NSString *)dueDateStringLong;
+- (NSString *)alertDateStringLong;
 - (NSString *)repeatIconString;
 - (void)repeatTaskIfNeeded;
 

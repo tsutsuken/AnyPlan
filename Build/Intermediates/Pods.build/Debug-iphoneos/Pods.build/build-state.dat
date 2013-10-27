@@ -1,0 +1,113 @@
+TPods
+v6
+r1
+cCheck dependencies
+cCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o /Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a normal armv7s
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk
+c0000000052415CB10000000000000110
+t1380015281
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/SDKSettings.plist
+c00000000522ACBFD000000000000036B
+t1378536445
+s875
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/CoreServices/SystemVersion.plist
+c00000000522ACC01000000000000019E
+t1378536449
+s414
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c00000000522ACC0D0000000000A8EAD0
+t1378536461
+s11070160
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o
+t1382856660
+s3328
+
+N/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods.LinkFileList
+c00000000526CB7D40000000000000079
+t1382856660
+s121
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-FlurrySDK.a
+c00000000526CB7CF0000000000000E78
+t1382856655
+s3704
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-GoogleAnalytics-iOS-SDK.a
+c00000000526CB7CF0000000000000F08
+t1382856655
+s3848
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-MBProgressHUD.a
+c00000000526CB7D0000000000002EF88
+t1382856656
+s192392
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-MGImageUtilities.a
+c00000000526CB7D00000000000007620
+t1382856656
+s30240
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-Mixpanel.a
+c00000000526CB7D4000000000003B980
+t1382856660
+s244096
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-ViewDeck.a
+c00000000526CB7D300000000000A6C30
+t1382856659
+s683056
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods-iRate.a
+c00000000526CB7D3000000000002DDA8
+t1382856659
+s187816
+
+N/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a
+t2
+s0
+
+N/Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m
+c00000000526248F80000000000000070
+t1382172920
+s112
+
+CBuild AST from /Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies14cb1154ef1cb841^8c862054ef1cb841^---0#1#1#--18"Check dependencies36"49D01423-D2C9-4D59-BE77-B061B6438136-
+
+CCompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o /Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s404549460.127774
+e404549460.440113
+r1
+xCompileC
+x/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o
+x/Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m
+xnormal
+xarmv7s
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection54"Compile /Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m212"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler4ad32054ef1cb841^19ac7054ef1cb841^---0#0#1#-19%DVTDocumentLocation2@53"file:///Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m0000000000000000^3381"CompileC /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o Pods-dummy.m normal armv7s objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/p27e4a/github/Anyplan/Pods    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7s -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -DCOCOAPODS=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=5.0 -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-generated-files.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-own-target-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-all-target-headers.hmap -iquote /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Pods-project-headers.hmap -I/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/include -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/FlurrySDK -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/GoogleAnalytics-iOS-SDK -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/MBProgressHUD -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/MGImageUtilities -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/Mixpanel -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/ViewDeck -I/Users/p27e4a/github/Anyplan/Pods/Pods/Headers/iRate -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources/armv7s -I/Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/DerivedSources -F/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos -MMD -MT dependencies -MF /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.d --serialize-diagnostics /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.dia -c /Users/p27e4a/github/Anyplan/Pods/Pods-dummy.m -o /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods-dummy.o36"9726D17B-6636-432B-875C-C1DF7EBDEAC1-
+b7E209C03-622C-4064-B048-6DE30A47C11E
+
+CLibtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a normal armv7s
+s404549460.443163
+e404549461.684654
+r1
+xLibtool
+x/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a
+xnormal
+xarmv7s
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a normal armv7s90"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a normal armv7s378d7154ef1cb841^0649af55ef1cb841^---0#0#1#--1185"Libtool /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a normal armv7s    cd /Users/p27e4a/github/Anyplan/Pods    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7s -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk -L/Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos -L/Users/p27e4a/github/Anyplan/Pods/Pods/FlurrySDK/Flurry -L/Users/p27e4a/github/Anyplan/Pods/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalytics-iOS-SDK/Library -filelist /Users/p27e4a/github/Anyplan/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/Objects-normal/armv7s/Pods.LinkFileList -framework Foundation -lPods-FlurrySDK -lPods-GoogleAnalytics-iOS-SDK -lPods-MBProgressHUD -lPods-MGImageUtilities -lPods-Mixpanel -lPods-ViewDeck -lPods-iRate -o /Users/p27e4a/github/Anyplan/Build/Products/Debug-iphoneos/libPods.a36"828CB687-F523-4D96-AA45-0E4B3B9AB940-
+b7E209C03-622C-4064-B048-6DE30A47C11E
+

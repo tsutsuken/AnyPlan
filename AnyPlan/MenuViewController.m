@@ -175,6 +175,38 @@
     }
 }
 
+- (UITabBarController *)tabBarControllerWithMenuIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    CustomTabBarController *tabBarController = (CustomTabBarController*) [mainStoryBoard instantiateViewControllerWithIdentifier:@"CenterTabBarController"];
+    tabBarController.managedObjectContext = self.managedObjectContext;
+    
+    if (indexPath.section == 0)
+    {
+        //すべて
+        tabBarController.shouldDisplayAllProject = YES;
+    }
+    else
+    {
+        tabBarController.project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
+    }
+    
+    return tabBarController;
+}
+
+- (UINavigationController *)settingViewNavigationController
+{
+    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    UINavigationController *navigationController = (UINavigationController*) [mainStoryBoard instantiateViewControllerWithIdentifier:@"SettingViewNavigationController"];
+    
+    SettingViewController *controller = (SettingViewController *)navigationController.topViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+    
+    return navigationController;
+}
+
 #pragma mark - Show Other View
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -237,13 +269,6 @@
     return _fetchedResultsController;
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    [self.tableView reloadData];
-}
-
 - (NSIndexPath *)projectIndexPathWithMenuIndexPath:(NSIndexPath *)indexPath
 {
     NSIndexPath *indexPathForProjectWith = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
@@ -251,42 +276,24 @@
     return indexPathForProjectWith;
 }
 
-- (UITabBarController *)tabBarControllerWithMenuIndexPath:(NSIndexPath *)indexPath
+//これを削除すると、frcの自動Trackが作動しない
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    CustomTabBarController *tabBarController = (CustomTabBarController*) [mainStoryBoard instantiateViewControllerWithIdentifier:@"CenterTabBarController"];
-    tabBarController.managedObjectContext = self.managedObjectContext;
-    
-    if (indexPath.section == 0)
-    {
-        //すべて
-        tabBarController.shouldDisplayAllProject = YES;
-    }
-    else
-    {
-        tabBarController.project = [self.fetchedResultsController objectAtIndexPath:[self projectIndexPathWithMenuIndexPath:indexPath]];
-    }
-    
-    return tabBarController;
+    [self reloadTableViewWithSelectedCell];
 }
 
-- (UINavigationController *)settingViewNavigationController
+- (void)reloadTableViewWithSelectedCell
 {
-    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
     
-    UINavigationController *navigationController = (UINavigationController*) [mainStoryBoard instantiateViewControllerWithIdentifier:@"SettingViewNavigationController"];
+    [self.tableView reloadData];
     
-    SettingViewController *controller = (SettingViewController *)navigationController.topViewController;
-    controller.managedObjectContext = self.managedObjectContext;
-    
-    return navigationController;
+    if (selectedIndexPath)
+    {
+        [self.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition: UITableViewScrollPositionNone];
+    }
 }
 
 @end
-
-
-
-
 
 

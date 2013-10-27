@@ -73,12 +73,16 @@
 - (void)trackPropertyWithTask:(Task *)task sender:(id)sender
 {
     //処理時間:0.002秒
-    NSString *isDueDateOn = [NSString stringWithFormat:@"%@",(task.dueDate ? @"YES":@"NO")];
     
     [self trackPropertyWithKey:kPropertyKeyTaskTitle value:task.title sender:sender];
     [self trackPropertyWithKey:kPropertyKeyTaskRepeat value:task.repeat.title sender:sender];
     [self trackPropertyWithKey:kPropertyKeyTaskMemo value:task.memo sender:sender];
+    
+    NSString *isDueDateOn = [NSString stringWithFormat:@"%@",(task.dueDate ? @"YES":@"NO")];
     [self trackPropertyWithKey:kPropertyKeyTaskDueDateIsOn value:isDueDateOn sender:sender];
+    
+    NSString *isAlertOn = [NSString stringWithFormat:@"%@",(task.alertDate ? @"YES":@"NO")];
+    [self trackPropertyWithKey:kPropertyKeyTaskAlertIsOn value:isAlertOn sender:sender];
 }
 
 - (void)registerSuperProperties:(NSDictionary *)properties

@@ -13,8 +13,10 @@
 #define kHeightForCustomActionSheet 500
 #define kTagForActionSheetDueDatePicker 1
 #define kTagForActionSheetRepeatPicker 2
+#define kTagForActionSheetAlertDatePicker 3
 #define kIndexPathForCellDueDate [NSIndexPath indexPathForRow:2 inSection:0]
 #define kIndexPathForCellRepeat [NSIndexPath indexPathForRow:3 inSection:0]
+#define kIndexPathForCellAlertDate [NSIndexPath indexPathForRow:4 inSection:0]
 
 
 @interface EditTaskViewController ()
@@ -132,7 +134,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,6 +174,14 @@
         
         return cell;
     }
+    else if (indexPath.row == 4)
+    {
+        CustomDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.titleLabel.text = NSLocalizedString(@"EditTaskView_Cell_Alert", nil);
+        cell.detailLabel.text = self.task.alertDateStringLong;
+        
+        return cell;
+    }
     else
     {
         MemoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MemoCell"];
@@ -194,7 +204,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 4)
+    if (indexPath.row == 5)
     {
         float heightForMemoCell;
         
@@ -240,6 +250,10 @@
     else if (indexPath.row == 3)
     {
         [self showRepeatPicker];
+    }
+    else if (indexPath.row == 4)
+    {
+        [self showAlertDatePicker];
     }
     else
     {
@@ -323,9 +337,13 @@
     {
         [self.myTableView deselectRowAtIndexPath:kIndexPathForCellDueDate animated:YES];
     }
-    else
+    else if (self.myActionSheet.tag == kTagForActionSheetRepeatPicker)
     {
         [self.myTableView deselectRowAtIndexPath:kIndexPathForCellRepeat animated:YES];
+    }
+    else
+    {
+        [self.myTableView deselectRowAtIndexPath:kIndexPathForCellAlertDate animated:YES];
     }
     
     [self.myActionSheet dismissWithClickedButtonIndex:0 animated:YES];
@@ -338,11 +356,16 @@
         self.task.dueDate = nil;
         [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:NO];
     }
-    else
+    else if (self.myActionSheet.tag == kTagForActionSheetRepeatPicker)
     {
         [self.task.managedObjectContext deleteObject:self.task.repeat];
         self.task.repeat = nil;
         [self reloadRowAtIndexPath:kIndexPathForCellRepeat withSelected:NO];
+    }
+    else
+    {
+        self.task.alertDate = nil;
+        [self reloadRowAtIndexPath:kIndexPathForCellAlertDate withSelected:NO];
     }
     
     [self.myActionSheet dismissWithClickedButtonIndex:0 animated:YES];
@@ -370,7 +393,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.minimumDate = [[NSDate date] initWithTimeIntervalSinceNow:-1*365*24*60*60];
-    [datePicker addTarget:self action:@selector(didChangeValueOnDatePicker:) forControlEvents:UIControlEventValueChanged];
+    [datePicker addTarget:self action:@selector(didChangeValueOnDueDatePicker:) forControlEvents:UIControlEventValueChanged];
     if (!self.task.dueDate)
     {
         self.task.dueDate = [NSDate date];
@@ -384,10 +407,57 @@
 	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
 }
 
--(void)didChangeValueOnDatePicker:(UIDatePicker*)datePicker
+-(void)didChangeValueOnDueDatePicker:(UIDatePicker*)datePicker
 {
     self.task.dueDate = datePicker.date;
     [self reloadRowAtIndexPath:kIndexPathForCellDueDate withSelected:YES];
+}
+
+#pragma mark AlertDatePicker
+
+- (void)showAlertDatePicker
+{
+    //アクションシートの作成
+    UIActionSheet *actionSheet = [self actionSheetForPicker];
+    actionSheet.tag = kTagForActionSheetAlertDatePicker;
+    
+	//ピッカーの作成
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
+    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    datePicker.minimumDate = [[NSDate date] initWithTimeIntervalSinceNow:-1*365*24*60*60];
+    datePicker.minuteInterval = 5;
+    [datePicker addTarget:self action:@selector(didChangeValueOnAlertDatePicker:) forControlEvents:UIControlEventValueChanged];
+    if (!self.task.alertDate)
+    {
+        self.task.alertDate = [self anHourLater];
+        [self reloadRowAtIndexPath:kIndexPathForCellAlertDate withSelected:YES];
+    }
+    datePicker.date = self.task.alertDate;
+    [actionSheet addSubview:datePicker];
+    
+    self.myActionSheet = actionSheet;
+    [self.myActionSheet showInView:self.view];
+	[self.myActionSheet setBounds:CGRectMake(0, 0, self.view.frame.size.width, kHeightForCustomActionSheet)];//高さは、手動で調整
+}
+
+- (NSDate *)anHourLater
+{
+    NSDate *anHourLater;
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit;
+    NSDateComponents *dateComp = [cal components:unitFlags fromDate:[NSDate date]];
+    
+    [dateComp setHour:[dateComp hour] +1];//次の日への変更も、自動で対応
+    anHourLater = [cal dateFromComponents:dateComp];
+    
+    return anHourLater;
+}
+
+-(void)didChangeValueOnAlertDatePicker:(UIDatePicker*)datePicker
+{
+    self.task.alertDate = datePicker.date;
+    [self reloadRowAtIndexPath:kIndexPathForCellAlertDate withSelected:YES];
 }
 
 #pragma mark RepeatPicker

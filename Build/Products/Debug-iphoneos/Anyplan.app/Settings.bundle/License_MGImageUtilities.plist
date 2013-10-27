@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>MGImageUtilities</string>
+			<key>FooterText</key>
+			<string>The license for the code is included with this project; it&apos;s basically a BSD license with attribution.
+
+I can&apos;t answer any questions about how to use the code, but I always welcome emails telling me that you&apos;re using it or just saying thanks. I hope you find it useful!
+
+Cheers,
+Matt Legend Gemmell
+http://mattgemmell.com/</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
